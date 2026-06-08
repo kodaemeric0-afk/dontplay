@@ -881,6 +881,47 @@
           "invoiceUrl": null
         }
       ]
+    },
+    {
+      "id": "3563d540-0e00-4663-8feb-24a7891e608d",
+      "username": "PowershellTest2026",
+      "passwordHash": "$2a$12$g0s9C.Vs/0T9vtASYbakdeOCT3gOXyqgwIeB3jXTIJhbrLdcwFJeu",
+      "role": "user",
+      "createdAt": "2026-06-08T17:43:39.974Z",
+      "failedLoginAttempts": 0,
+      "lockedUntil": null,
+      "lastLogin": null,
+      "balance": 0,
+      "totalSpent": 0,
+      "plan": null,
+      "planExpiresAt": null,
+      "planStartedAt": null,
+      "transactions": [],
+      "domains": [],
+      "pages": [],
+      "campaigns": [],
+      "cloudflareToken": null,
+      "pendingPayments": []
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "username": "admin_prod",
+      "passwordHash": "\\/4NKYN99sKOkp7uxCg2kHwHD3M8.fIE4Eq.EQiStxe",
+      "role": "admin",
+      "createdAt": "2026-06-08T18:36:49.656Z",
+      "failedLoginAttempts": 0,
+      "lockedUntil": null,
+      "lastLogin": null,
+      "balance": 1000,
+      "totalSpent": 0,
+      "plan": "max",
+      "planExpiresAt": "2027-06-08T18:36:49.657Z",
+      "planStartedAt": "2026-06-08T18:36:49.657Z",
+      "transactions": [],
+      "domains": [],
+      "pages": [],
+      "cloudflareToken": null,
+      "pendingPayments": []
     }
   ]
 }
