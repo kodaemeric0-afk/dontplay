@@ -1,5 +1,9 @@
 'use strict';
 
+// Load environment variables - try .env.production first if NODE_ENV not set
+if (!process.env.NODE_ENV) {
+  require('dotenv').config({ path: '.env.production' });
+}
 require('dotenv').config();
 
 const express    = require('express');
