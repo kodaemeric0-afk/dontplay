@@ -142,7 +142,7 @@ app.use(session({
   secret:            config.session.secret,
   name:              config.session.name,
   resave:            false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   rolling:           true,
   cookie: {
     httpOnly:  true,
