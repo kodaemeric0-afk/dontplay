@@ -141,7 +141,7 @@ app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 app.use(session({
   secret:            config.session.secret,
   name:              config.session.name,
-  resave:            false,
+  resave:            true,
   saveUninitialized: true,
   rolling:           true,
   cookie: {
@@ -151,6 +151,12 @@ app.use(session({
     maxAge:    config.session.maxAge,
   },
 }));
+
+/* Force session cookie to be sent on every response */
+app.use((req, res, next) => {
+  req.session.touch();
+  next();
+});
 
 /* Bloquer les fichiers sensibles */
 app.use((req, res, next) => {
