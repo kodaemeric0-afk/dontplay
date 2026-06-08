@@ -22,6 +22,10 @@ const security   = require('./lib/security');
 
 const app  = express();
 const ROOT = __dirname;
+
+/* Trust Railway reverse proxy for secure cookies */
+app.set('trust proxy', 1);
+
 const smsRuntime = smsLib.createRuntime(path.resolve(ROOT, config.sms?.storagePath || './data/sms.json'));
 
 /* ── Tracking in-memory store ────────────────────────────────── */
