@@ -1,0 +1,72 @@
+{
+  "redirects": [
+    {
+      "id": "390cb4cb-c2e2-4517-935a-7ea4b8036c9d",
+      "userId": "719614ac-283c-4afc-a82e-37ae20d24448",
+      "domain": "c-assu-vital.com",
+      "type": "text",
+      "slug": "test",
+      "targetType": "external",
+      "targetValue": "https://c-assu-vital.com/",
+      "targetUrl": "https://c-assu-vital.com/",
+      "redirectType": "302",
+      "notes": "Tt",
+      "clicks": 0,
+      "stats": [],
+      "active": true,
+      "createdAt": "2026-05-21T20:42:38.537Z",
+      "updatedAt": "2026-05-22T00:04:32.746Z"
+    },
+    {
+      "id": "testredir_qvk62fhlq2o",
+      "userId": "test-user",
+      "domain": "example.com",
+      "type": "text",
+      "slug": "redir-a",
+      "targetType": "domain",
+      "targetValue": "https://destination-a.com",
+      "targetUrl": "https://destination-a.com",
+      "redirectType": "302",
+      "notes": "test 1",
+      "clicks": 0,
+      "stats": [],
+      "active": true,
+      "createdAt": "2026-05-22T22:45:56.203Z",
+      "updatedAt": "2026-05-22T22:45:56.203Z"
+    },
+    {
+      "id": "testredir_9sbfh163taj",
+      "userId": "test-user",
+      "domain": "example.com",
+      "type": "text",
+      "slug": "redir-b",
+      "targetType": "domain",
+      "targetValue": "https://destination-b.net",
+      "targetUrl": "https://destination-b.net",
+      "redirectType": "301",
+      "notes": "test 2",
+      "clicks": 0,
+      "stats": [],
+      "active": true,
+      "createdAt": "2026-05-22T22:45:56.207Z",
+      "updatedAt": "2026-05-22T22:45:56.207Z"
+    },
+    {
+      "id": "testredir_szua94msbob",
+      "userId": "test-user",
+      "domain": "otherdomain.fr",
+      "type": "text",
+      "slug": "redir-c",
+      "targetType": "domain",
+      "targetValue": "https://destination-c.org",
+      "targetUrl": "https://destination-c.org",
+      "redirectType": "302",
+      "notes": "test 3",
+      "clicks": 0,
+      "stats": [],
+      "active": true,
+      "createdAt": "2026-05-22T22:45:56.218Z",
+      "updatedAt": "2026-05-22T22:45:56.218Z"
+    }
+  ]
+}

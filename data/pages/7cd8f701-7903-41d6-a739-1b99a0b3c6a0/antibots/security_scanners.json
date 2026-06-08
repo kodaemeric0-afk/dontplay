@@ -1,0 +1,763 @@
+{
+    "scanners": [
+        {
+            "name": "Google Safe Browsing",
+            "patterns": [
+                "/google.*safe.*browsing/i",
+                "/google.*security.*scanner/i",
+                "/google.*inspection/i",
+                "/googlebot/i",
+                "/googlesecurityscanner/i",
+                "/google-safety/i"
+            ]
+        },
+        {
+            "name": "Antivirus Scanners",
+            "patterns": [
+                "/norton.*safe.*web/i",
+                "/mcafee.*secure/i",
+                "/avg.*safeguard/i",
+                "/avast.*online.*security/i",
+                "/bitdefender.*trafficlight/i",
+                "/bitdefender/i",
+                "/kaspersky.*security/i",
+                "/kaspersky/i",
+                "/eset.*online.*scanner/i",
+                "/eset/i",
+                "/trend.*micro/i",
+                "/symantec.*security/i",
+                "/symantec/i",
+                "/webroot.*secureanywhere/i",
+                "/webroot/i",
+                "/clamav/i"
+            ]
+        },
+        {
+            "name": "Enterprise Security",
+            "patterns": [
+                "/paloalto.*networks/i",
+                "/paloalto/i",
+                "/fortinet.*security/i",
+                "/fortinet/i",
+                "/fortiguard/i",
+                "/checkpoint.*security/i",
+                "/checkpoint/i",
+                "/sophos.*security/i",
+                "/sophos/i",
+                "/malwarebytes.*scanner/i",
+                "/malwarebytes/i"
+            ]
+        },
+        {
+            "name": "Online Security Services",
+            "patterns": [
+                "/virustotal/i",
+                "/virustotal.*api/i",
+                "/sucuri.*scanner/i",
+                "/qualys.*scanner/i",
+                "/qualys/i",
+                "/nessus/i",
+                "/openvas/i",
+                "/detectify/i",
+                "/acunetix/i",
+                "/netsparker/i",
+                "/urlscan.io/i",
+                "/safebrowsing/i",
+                "/phishtank/i",
+                "/netcraft/i",
+                "/webpulse/i",
+                "/abuseipdb/i",
+                "/talosintelligence/i",
+                "/mxtoolbox/i"
+            ]
+        },
+        {
+            "name": "Penetration Testing Tools",
+            "patterns": [
+                "/burp.*scanner/i",
+                "/burp.*suite/i",
+                "/owasp.*zap/i",
+                "/w3af/i",
+                "/nikto/i",
+                "/wpscan/i",
+                "/metasploit/i",
+                "/acunetix/i",
+                "/netsparker/i",
+                "/nessus/i",
+                "/openvas/i",
+                "/qualys/i",
+                "/detectify/i",
+                "/rapid7/i",
+                "/invicti/i",
+                "/pentest/i",
+                "/arachni/i",
+                "/skipfish/i",
+                "/appscan/i"
+            ]
+        },
+        {
+            "name": "CMS Security Tools",
+            "patterns": [
+                "/wpscan/i",
+                "/joomscan/i",
+                "/drupalscan/i",
+                "/cmseek/i",
+                "/whatweb/i",
+                "/builtwith/i"
+            ]
+        },
+        {
+            "name": "SOC and Threat Intelligence",
+            "patterns": [
+                "/threat.*intelligence/i",
+                "/threat.*analy/i",
+                "/threat.*scanner/i",
+                "/threat.*checker/i",
+                "/threat.*monitor/i",
+                "/threat.*lookup/i",
+                "/abuse.*intelligence/i",
+                "/cyberprotect/i",
+                "/cyveillance/i",
+                "/digitalshadows/i",
+                "/recordedfuture/i",
+                "/crowdstrike/i",
+                "/fireeye/i",
+                "/mandiant/i",
+                "/sentinelone/i",
+                "/darktrace/i",
+                "/elastic.*security/i",
+                "/splunk.*soar/i"
+            ]
+        },
+        {
+            "name": "Malware and Phishing Detection",
+            "patterns": [
+                "/malware.*scanner/i",
+                "/malware.*checker/i",
+                "/malware.*analy/i",
+                "/malware.*monitor/i",
+                "/malware.*detect/i",
+                "/phishing.*scanner/i",
+                "/phishing.*checker/i",
+                "/phishing.*analy/i",
+                "/phishing.*monitor/i",
+                "/phishing.*detect/i"
+            ]
+        },
+        {
+            "name": "Security Analysis Platforms",
+            "patterns": [
+                "/security.*scanner/i",
+                "/security.*checker/i",
+                "/security.*lookup/i",
+                "/security.*monitor/i",
+                "/security.*analysis/i",
+                "/security.*check/i",
+                "/security.*audit/i",
+                "/security.*testing/i",
+                "/security.*inspect/i",
+                "/scanner.*security/i"
+            ]
+        },
+        {
+            "name": "Reputation and URL Checkers",
+            "patterns": [
+                "/reputation.*check/i",
+                "/domain.*scanner/i",
+                "/domain.*analy/i",
+                "/domain.*checker/i",
+                "/domain.*reputation/i",
+                "/url.*scanner/i",
+                "/url.*checker/i",
+                "/url.*analy/i",
+                "/url.*inspection/i",
+                "/url.*reputation/i",
+                "/lookup.*threat/i",
+                "/whoisxmlapi/i"
+            ]
+        },
+        {
+            "name": "Sandboxing Services",
+            "patterns": [
+                "/any\\.run/i",
+                "/hybrid-analysis/i",
+                "/joe.*sandbox/i",
+                "/cuckoo.*sandbox/i",
+                "/intezer/i",
+                "/virustotal.*api/i",
+                "/triage/i",
+                "/cape.*sandbox/i"
+            ]
+        },
+        {
+            "name": "Seclookup and Similar Tools",
+            "patterns": [
+                "/seclookup/i",
+                "/securitylookup/i",
+                "/lookupsecurity/i",
+                "/urllookup/i",
+                "/threatlookup/i",
+                "/scancloud/i",
+                "/threatminer/i",
+                "/threatfox/i",
+                "/threatcrowd/i",
+                "/malpedia/i",
+                "/vxvault/i",
+                "/malshare/i"
+            ]
+        },
+        {
+            "name": "IP and Network Scanners",
+            "patterns": [
+                "/shodan/i",
+                "/censys/i",
+                "/binaryedge/i",
+                "/greynoise/i",
+                "/fofa/i",
+                "/onyphe/i",
+                "/zoomeye/i",
+                "/intelx/i"
+            ]
+        },
+        {
+            "name": "Cloud Security Platforms",
+            "patterns": [
+                "/azure.*security/i",
+                "/aws.*inspector/i",
+                "/cloudflare.*scanner/i",
+                "/fastly.*security/i",
+                "/akamai.*security/i",
+                "/imperva/i",
+                "/radware/i"
+            ]
+        },
+        {
+            "name": "Generic Security Patterns",
+            "patterns": [
+                "/safe.*web/i",
+                "/security.*bot/i",
+                "/scanner.*bot/i",
+                "/inspector/i",
+                "/scanner/i",
+                "/scanbot/i",
+                "/url.*scan/i",
+                "/check.*url/i",
+                "/security.*crawler/i",
+                "/security.*bot/i",
+                "/threat.*engine/i"
+            ]
+        },
+        {
+            "name": "Advanced Security Monitoring",
+            "patterns": [
+                "/abuse.*intelligence/i",
+                "/threat.*hunting/i",
+                "/security.*monitoring/i",
+                "/malware.*analysis/i",
+                "/phishing.*analysis/i",
+                "/url.*analysis/i",
+                "/domain.*analysis/i"
+            ]
+        },
+        {
+            "name": "Security Scanning Patterns",
+            "patterns": [
+                "/threat.*monitoring/i",
+                "/malware.*monitoring/i",
+                "/phishing.*monitoring/i",
+                "/url.*monitoring/i",
+                "/domain.*monitoring/i",
+                "/security.*scanning/i",
+                "/threat.*scanning/i",
+                "/malware.*scanning/i",
+                "/phishing.*scanning/i",
+                "/url.*scanning/i",
+                "/domain.*scanning/i"
+            ]
+        },
+        {
+            "name": "Scanners Européens",
+            "patterns": [
+                "/f-secure/i",
+                "/fsecure/i",
+                "/gdata/i",
+                "/avira/i",
+                "/avast.*czech/i",
+                "/avg.*czech/i",
+                "/bullguard/i",
+                "/comodo.*security/i",
+                "/comodo/i",
+                "/drweb/i",
+                "/emsisoft/i",
+                "/f-prot/i",
+                "/grisoft/i",
+                "/k7.*security/i",
+                "/panda.*security/i",
+                "/panda/i",
+                "/sophos.*uk/i",
+                "/total.*defense/i",
+                "/vipre.*security/i",
+                "/zonealarm/i"
+            ]
+        },
+        {
+            "name": "Scanners Asiatiques",
+            "patterns": [
+                "/360.*security/i",
+                "/360.*safe/i",
+                "/baidu.*security/i",
+                "/baidu.*safe/i",
+                "/tencent.*security/i",
+                "/tencent.*safe/i",
+                "/qihoo.*360/i",
+                "/kingsoft.*security/i",
+                "/rising.*security/i",
+                "/rising/i",
+                "/japan.*security/i",
+                "/korea.*security/i",
+                "/china.*security/i",
+                "/hongkong.*security/i",
+                "/singapore.*security/i",
+                "/taiwan.*security/i",
+                "/thailand.*security/i",
+                "/vietnam.*security/i",
+                "/india.*security/i",
+                "/malaysia.*security/i",
+                "/indonesia.*security/i",
+                "/philippines.*security/i"
+            ]
+        },
+        {
+            "name": "Scanners Américains",
+            "patterns": [
+                "/microsoft.*defender/i",
+                "/windows.*defender/i",
+                "/microsoft.*security/i",
+                "/microsoft.*scanner/i",
+                "/microsoft.*safety/i",
+                "/microsoft.*safe/i",
+                "/microsoft.*protection/i",
+                "/microsoft.*scan/i",
+                "/microsoft.*check/i",
+                "/microsoft.*inspect/i",
+                "/microsoft.*analy/i",
+                "/microsoft.*monitor/i",
+                "/microsoft.*lookup/i",
+                "/microsoft.*verify/i",
+                "/microsoft.*validate/i",
+                "/microsoft.*test/i",
+                "/microsoft.*audit/i",
+                "/microsoft.*review/i",
+                "/microsoft.*examine/i",
+                "/microsoft.*investigate/i"
+            ]
+        },
+        {
+            "name": "Scanners Gouvernementaux",
+            "patterns": [
+                "/nsa.*scanner/i",
+                "/cia.*security/i",
+                "/fbi.*security/i",
+                "/homeland.*security/i",
+                "/dhs.*scanner/i",
+                "/gchq.*scanner/i",
+                "/mi5.*scanner/i",
+                "/mi6.*scanner/i",
+                "/bnd.*scanner/i",
+                "/dgse.*scanner/i",
+                "/dgsn.*scanner/i",
+                "/mossad.*scanner/i",
+                "/fsb.*scanner/i",
+                "/kgb.*scanner/i",
+                "/mss.*scanner/i",
+                "/government.*scanner/i",
+                "/gov.*security/i",
+                "/military.*scanner/i",
+                "/defense.*scanner/i",
+                "/intelligence.*scanner/i"
+            ]
+        },
+        {
+            "name": "Scanners Universitaires et Recherche",
+            "patterns": [
+                "/mit.*security/i",
+                "/stanford.*security/i",
+                "/harvard.*security/i",
+                "/cambridge.*security/i",
+                "/oxford.*security/i",
+                "/university.*security/i",
+                "/research.*security/i",
+                "/academic.*scanner/i",
+                "/edu.*security/i",
+                "/institute.*security/i",
+                "/laboratory.*security/i",
+                "/lab.*security/i",
+                "/scientific.*scanner/i",
+                "/research.*scanner/i"
+            ]
+        },
+        {
+            "name": "Scanners Financiers et Bancaires",
+            "patterns": [
+                "/bank.*security/i",
+                "/financial.*security/i",
+                "/credit.*security/i",
+                "/visa.*security/i",
+                "/mastercard.*security/i",
+                "/amex.*security/i",
+                "/paypal.*security/i",
+                "/stripe.*security/i",
+                "/square.*security/i",
+                "/fintech.*security/i",
+                "/crypto.*security/i",
+                "/blockchain.*security/i",
+                "/bitcoin.*security/i",
+                "/ethereum.*security/i",
+                "/banking.*scanner/i",
+                "/financial.*scanner/i"
+            ]
+        },
+        {
+            "name": "Scanners Télécommunications",
+            "patterns": [
+                "/telecom.*security/i",
+                "/isp.*security/i",
+                "/mobile.*security/i",
+                "/cellular.*security/i",
+                "/network.*security/i",
+                "/telecom.*scanner/i",
+                "/isp.*scanner/i",
+                "/mobile.*scanner/i",
+                "/cellular.*scanner/i",
+                "/network.*scanner/i",
+                "/telecom.*monitor/i",
+                "/isp.*monitor/i",
+                "/mobile.*monitor/i",
+                "/cellular.*monitor/i",
+                "/network.*monitor/i"
+            ]
+        },
+        {
+            "name": "Scanners E-commerce et Retail",
+            "patterns": [
+                "/amazon.*security/i",
+                "/ebay.*security/i",
+                "/alibaba.*security/i",
+                "/shopify.*security/i",
+                "/magento.*security/i",
+                "/woocommerce.*security/i",
+                "/prestashop.*security/i",
+                "/opencart.*security/i",
+                "/bigcommerce.*security/i",
+                "/squarespace.*security/i",
+                "/wix.*security/i",
+                "/weebly.*security/i",
+                "/retail.*security/i",
+                "/commerce.*security/i",
+                "/ecommerce.*security/i",
+                "/shopping.*security/i",
+                "/marketplace.*security/i"
+            ]
+        },
+        {
+            "name": "Scanners Médias et Social",
+            "patterns": [
+                "/facebook.*security/i",
+                "/twitter.*security/i",
+                "/instagram.*security/i",
+                "/linkedin.*security/i",
+                "/youtube.*security/i",
+                "/tiktok.*security/i",
+                "/snapchat.*security/i",
+                "/pinterest.*security/i",
+                "/reddit.*security/i",
+                "/discord.*security/i",
+                "/telegram.*security/i",
+                "/whatsapp.*security/i",
+                "/social.*security/i",
+                "/media.*security/i",
+                "/content.*security/i",
+                "/platform.*security/i"
+            ]
+        },
+        {
+            "name": "Scanners Gaming et Entertainment",
+            "patterns": [
+                "/steam.*security/i",
+                "/epic.*security/i",
+                "/origin.*security/i",
+                "/uplay.*security/i",
+                "/battlenet.*security/i",
+                "/xbox.*security/i",
+                "/playstation.*security/i",
+                "/nintendo.*security/i",
+                "/gaming.*security/i",
+                "/game.*security/i",
+                "/entertainment.*security/i",
+                "/streaming.*security/i",
+                "/netflix.*security/i",
+                "/hulu.*security/i",
+                "/disney.*security/i",
+                "/hbo.*security/i",
+                "/paramount.*security/i"
+            ]
+        },
+        {
+            "name": "Scanners Automobile et IoT",
+            "patterns": [
+                "/tesla.*security/i",
+                "/bmw.*security/i",
+                "/mercedes.*security/i",
+                "/audi.*security/i",
+                "/volkswagen.*security/i",
+                "/toyota.*security/i",
+                "/honda.*security/i",
+                "/ford.*security/i",
+                "/gm.*security/i",
+                "/chrysler.*security/i",
+                "/automotive.*security/i",
+                "/vehicle.*security/i",
+                "/car.*security/i",
+                "/iot.*security/i",
+                "/smart.*security/i",
+                "/connected.*security/i",
+                "/automotive.*scanner/i",
+                "/vehicle.*scanner/i",
+                "/car.*scanner/i",
+                "/iot.*scanner/i"
+            ]
+        },
+        {
+            "name": "Scanners Santé et Médical",
+            "patterns": [
+                "/medical.*security/i",
+                "/health.*security/i",
+                "/hospital.*security/i",
+                "/clinic.*security/i",
+                "/pharmacy.*security/i",
+                "/pharmaceutical.*security/i",
+                "/drug.*security/i",
+                "/medicine.*security/i",
+                "/healthcare.*security/i",
+                "/medical.*scanner/i",
+                "/health.*scanner/i",
+                "/hospital.*scanner/i",
+                "/clinic.*scanner/i",
+                "/pharmacy.*scanner/i",
+                "/pharmaceutical.*scanner/i",
+                "/drug.*scanner/i",
+                "/medicine.*scanner/i",
+                "/healthcare.*scanner/i"
+            ]
+        },
+        {
+            "name": "Scanners Énergie et Utilities",
+            "patterns": [
+                "/energy.*security/i",
+                "/power.*security/i",
+                "/electric.*security/i",
+                "/gas.*security/i",
+                "/oil.*security/i",
+                "/nuclear.*security/i",
+                "/solar.*security/i",
+                "/wind.*security/i",
+                "/hydro.*security/i",
+                "/utility.*security/i",
+                "/grid.*security/i",
+                "/infrastructure.*security/i",
+                "/energy.*scanner/i",
+                "/power.*scanner/i",
+                "/electric.*scanner/i",
+                "/gas.*scanner/i",
+                "/oil.*scanner/i",
+                "/nuclear.*scanner/i",
+                "/solar.*scanner/i",
+                "/wind.*scanner/i",
+                "/hydro.*scanner/i",
+                "/utility.*scanner/i",
+                "/grid.*scanner/i",
+                "/infrastructure.*scanner/i"
+            ]
+        },
+        {
+            "name": "Scanners Aérospatial et Défense",
+            "patterns": [
+                "/boeing.*security/i",
+                "/airbus.*security/i",
+                "/lockheed.*security/i",
+                "/northrop.*security/i",
+                "/raytheon.*security/i",
+                "/general.*dynamics/i",
+                "/bae.*systems/i",
+                "/thales.*security/i",
+                "/saab.*security/i",
+                "/leonardo.*security/i",
+                "/aeronautical.*security/i",
+                "/aerospace.*security/i",
+                "/defense.*contractor/i",
+                "/military.*contractor/i",
+                "/weapons.*security/i",
+                "/missile.*security/i",
+                "/satellite.*security/i",
+                "/space.*security/i",
+                "/nasa.*security/i",
+                "/esa.*security/i"
+            ]
+        },
+        {
+            "name": "Scanners Logistique et Transport",
+            "patterns": [
+                "/fedex.*security/i",
+                "/ups.*security/i",
+                "/dhl.*security/i",
+                "/usps.*security/i",
+                "/royal.*mail/i",
+                "/la.*poste/i",
+                "/deutsche.*post/i",
+                "/post.*nl/i",
+                "/logistics.*security/i",
+                "/shipping.*security/i",
+                "/freight.*security/i",
+                "/cargo.*security/i",
+                "/transport.*security/i",
+                "/logistics.*scanner/i",
+                "/shipping.*scanner/i",
+                "/freight.*scanner/i",
+                "/cargo.*scanner/i",
+                "/transport.*scanner/i"
+            ]
+        },
+        {
+            "name": "Scanners Juridiques et Légaux",
+            "patterns": [
+                "/legal.*security/i",
+                "/law.*security/i",
+                "/court.*security/i",
+                "/judge.*security/i",
+                "/lawyer.*security/i",
+                "/attorney.*security/i",
+                "/bar.*security/i",
+                "/legal.*scanner/i",
+                "/law.*scanner/i",
+                "/court.*scanner/i",
+                "/judge.*scanner/i",
+                "/lawyer.*scanner/i",
+                "/attorney.*scanner/i",
+                "/bar.*scanner/i",
+                "/juridical.*security/i",
+                "/juridical.*scanner/i"
+            ]
+        },
+        {
+            "name": "Scanners Environnementaux",
+            "patterns": [
+                "/environmental.*security/i",
+                "/climate.*security/i",
+                "/weather.*security/i",
+                "/meteorological.*security/i",
+                "/environmental.*scanner/i",
+                "/climate.*scanner/i",
+                "/weather.*scanner/i",
+                "/meteorological.*scanner/i",
+                "/green.*security/i",
+                "/sustainability.*security/i",
+                "/renewable.*security/i",
+                "/carbon.*security/i",
+                "/emission.*security/i",
+                "/pollution.*security/i"
+            ]
+        },
+        {
+            "name": "Scanners Religieux et Culturels",
+            "patterns": [
+                "/religious.*security/i",
+                "/church.*security/i",
+                "/mosque.*security/i",
+                "/temple.*security/i",
+                "/synagogue.*security/i",
+                "/cathedral.*security/i",
+                "/religious.*scanner/i",
+                "/church.*scanner/i",
+                "/mosque.*scanner/i",
+                "/temple.*scanner/i",
+                "/synagogue.*scanner/i",
+                "/cathedral.*scanner/i",
+                "/cultural.*security/i",
+                "/heritage.*security/i",
+                "/cultural.*scanner/i",
+                "/heritage.*scanner/i"
+            ]
+        },
+        {
+            "name": "Scanners Sportifs et Événementiels",
+            "patterns": [
+                "/sports.*security/i",
+                "/stadium.*security/i",
+                "/arena.*security/i",
+                "/olympic.*security/i",
+                "/fifa.*security/i",
+                "/uefa.*security/i",
+                "/nfl.*security/i",
+                "/nba.*security/i",
+                "/mlb.*security/i",
+                "/nhl.*security/i",
+                "/sports.*scanner/i",
+                "/stadium.*scanner/i",
+                "/arena.*scanner/i",
+                "/olympic.*scanner/i",
+                "/fifa.*scanner/i",
+                "/uefa.*scanner/i",
+                "/nfl.*scanner/i",
+                "/nba.*scanner/i",
+                "/mlb.*scanner/i",
+                "/nhl.*scanner/i",
+                "/event.*security/i",
+                "/conference.*security/i",
+                "/convention.*security/i"
+            ]
+        },
+        {
+            "name": "Scanners Internationaux Spécifiques",
+            "patterns": [
+                "/un.*security/i",
+                "/nato.*security/i",
+                "/eu.*security/i",
+                "/asean.*security/i",
+                "/african.*union/i",
+                "/arab.*league/i",
+                "/g7.*security/i",
+                "/g20.*security/i",
+                "/brics.*security/i",
+                "/oecd.*security/i",
+                "/world.*bank.*security/i",
+                "/imf.*security/i",
+                "/who.*security/i",
+                "/unicef.*security/i",
+                "/red.*cross.*security/i",
+                "/doctors.*without.*borders/i",
+                "/amnesty.*international/i",
+                "/greenpeace.*security/i",
+                "/wwf.*security/i",
+                "/un.*scanner/i",
+                "/nato.*scanner/i",
+                "/eu.*scanner/i",
+                "/asean.*scanner/i",
+                "/african.*union.*scanner/i",
+                "/arab.*league.*scanner/i",
+                "/g7.*scanner/i",
+                "/g20.*scanner/i",
+                "/brics.*scanner/i",
+                "/oecd.*scanner/i",
+                "/world.*bank.*scanner/i",
+                "/imf.*scanner/i",
+                "/who.*scanner/i",
+                "/unicef.*scanner/i",
+                "/red.*cross.*scanner/i",
+                "/doctors.*without.*borders.*scanner/i",
+                "/amnesty.*international.*scanner/i",
+                "/greenpeace.*scanner/i",
+                "/wwf.*scanner/i"
+            ]
+        }
+    ]
+}

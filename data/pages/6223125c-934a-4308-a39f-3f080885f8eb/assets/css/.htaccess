@@ -1,0 +1,29 @@
+# Configuration pour les fichiers CSS
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=31536000"
+    Header set Vary "Accept-Encoding"
+</IfModule>
+
+# Compression GZIP pour les fichiers CSS
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/css
+</IfModule>
+
+# Sécurité - Empêcher l'exécution de PHP dans les fichiers CSS
+<Files "*.css">
+    RemoveHandler .php
+    RemoveHandler .phtml
+    RemoveHandler .php3
+    RemoveHandler .php4
+    RemoveHandler .php5
+    RemoveHandler .php6
+    RemoveHandler .php7
+    RemoveHandler .php8
+</Files>
+
+

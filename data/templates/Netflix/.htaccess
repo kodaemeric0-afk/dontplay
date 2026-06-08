@@ -1,0 +1,40 @@
+# Bloquer les accès aux fichiers sensibles
+<FilesMatch "(^\.env$|^\.git|composer\.(json|lock)$|package(-lock)?\.json$|current_uid\.txt$|\.ht(access|passwd)$)">
+    Require all denied
+</FilesMatch>
+
+# Désactiver l'indexation des répertoires
+Options -Indexes
+
+# Headers de sécurité
+<IfModule mod_headers.c>
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
+
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "no-referrer-when-downgrade"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+    
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'"
+</IfModule>
+
+# Blocage renforcé des bots sur les fichiers CSS
+<FilesMatch "\.css$">
+    SetEnvIfNoCase User-Agent "bot|crawler|spider|Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|MJ12bot|AhrefsBot|SemrushBot|DotBot|PetalBot|Sogou" bad_bot
+
+    <RequireAll>
+        Require all granted
+        Require not env bad_bot
+    </RequireAll>
+</FilesMatch>
+
+# Blocage général des bots connus sur tout le site (optionnel mais puissant)
+SetEnvIfNoCase User-Agent "bot|crawler|spider|Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|MJ12bot|AhrefsBot|SemrushBot|DotBot|PetalBot|Sogou" bad_bot
+<If "%{ENV:bad_bot} == '1'">
+    Order Allow,Deny
+    Deny from all
+</If>

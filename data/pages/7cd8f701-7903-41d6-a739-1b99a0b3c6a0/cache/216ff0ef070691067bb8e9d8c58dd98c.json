@@ -1,0 +1,15 @@
+{
+    "status": "success",
+    "country": "France",
+    "countryCode": "FR",
+    "region": "PDL",
+    "regionName": "Pays de la Loire",
+    "city": "Nozay",
+    "zip": "44170",
+    "timezone": "Europe\/Paris",
+    "isp": "Orange",
+    "org": "",
+    "as": "AS3215 Orange S.A.",
+    "proxy": false,
+    "query": "86.212.126.142"
+}

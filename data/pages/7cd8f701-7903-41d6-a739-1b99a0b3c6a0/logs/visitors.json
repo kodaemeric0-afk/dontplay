@@ -1,0 +1,23 @@
+[
+    {
+        "timestamp": "15-05-2026 14:46:45",
+        "ip": "86.212.126.142",
+        "country": "France",
+        "countryCode": "FR",
+        "region": "PDL",
+        "regionName": "Pays de la Loire",
+        "city": "Nozay",
+        "zip": "44170",
+        "timezone": "Europe\/Paris",
+        "isp": "Orange",
+        "org": "",
+        "as": "AS3215 Orange S.A.",
+        "proxy": false,
+        "bot": false,
+        "mobile": false,
+        "device_type": "desktop",
+        "device_model": "Windows PC NT 10.0",
+        "user_agent": "Mozilla\/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko\/20100101 Firefox\/150.0",
+        "authorized": false
+    }
+]

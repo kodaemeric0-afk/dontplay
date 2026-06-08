@@ -1,0 +1,29 @@
+{
+    "29647485": {
+        "requests": 1,
+        "successful": 0,
+        "failed": 1,
+        "avg_duration": 0.018991947174072266,
+        "max_duration": 0.018991947174072266,
+        "sources": {
+            "api": 1
+        },
+        "ips": {
+            "45.88.138.44": 1
+        }
+    },
+    "29647486": {
+        "requests": 2,
+        "successful": 2,
+        "failed": 0,
+        "avg_duration": 0.035601139068603516,
+        "max_duration": 0.035601139068603516,
+        "sources": {
+            "user_detect": 2
+        },
+        "ips": {
+            "86.212.126.142": 2
+        },
+        "cache_hits": 2
+    }
+}

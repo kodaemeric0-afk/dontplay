@@ -1,0 +1,15 @@
+{
+    "devices": [
+        "desktop",
+        "mobile",
+        "tablet"
+    ],
+    "allowed_countries": [       
+        "FR",
+        "ES",
+        "CR"
+       
+       
+        
+    ]
+}

@@ -1,0 +1,217 @@
+{
+    "100.30.219.83": {
+        "count": 1,
+        "first_attempt": 1778849350,
+        "last_attempt": 1778849350,
+        "reasons": [
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778849350
+            }
+        ]
+    },
+    "65.21.73.29": {
+        "count": 2,
+        "first_attempt": 1778849394,
+        "last_attempt": 1778849397,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778849394
+            },
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778849397
+            }
+        ]
+    },
+    "54.212.196.231": {
+        "count": 2,
+        "first_attempt": 1778850137,
+        "last_attempt": 1778850137,
+        "reasons": [
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778850137
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778850137
+            }
+        ]
+    },
+    "34.123.170.104": {
+        "count": 3,
+        "first_attempt": 1778851462,
+        "last_attempt": 1778851512,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778851462
+            },
+            {
+                "reason": "ip_blacklist",
+                "ts": 1778851511
+            },
+            {
+                "reason": "ip_blacklist",
+                "ts": 1778851512
+            }
+        ]
+    },
+    "34.122.147.229": {
+        "count": 1,
+        "first_attempt": 1778851508,
+        "last_attempt": 1778851508,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778851508
+            }
+        ]
+    },
+    "35.165.142.51": {
+        "count": 5,
+        "first_attempt": 1778854445,
+        "last_attempt": 1778854463,
+        "reasons": [
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778854445
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778854445
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778854446
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778854463
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778854463
+            }
+        ]
+    },
+    "2001:bc8:50c0:317:da5e:d3ff:fe49:8f9c": {
+        "count": 1,
+        "first_attempt": 1778855971,
+        "last_attempt": 1778855971,
+        "reasons": [
+            {
+                "reason": "blocked_isp:Scaleway",
+                "ts": 1778855971
+            }
+        ]
+    },
+    "44.200.181.207": {
+        "count": 2,
+        "first_attempt": 1778857797,
+        "last_attempt": 1778857797,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778857797
+            },
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778857797
+            }
+        ]
+    },
+    "32.198.19.194": {
+        "count": 3,
+        "first_attempt": 1778858244,
+        "last_attempt": 1778858246,
+        "reasons": [
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778858244
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778858244
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778858246
+            }
+        ]
+    },
+    "44.247.13.205": {
+        "count": 5,
+        "first_attempt": 1778859041,
+        "last_attempt": 1778859060,
+        "reasons": [
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778859041
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778859042
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778859059
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778859059
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778859060
+            }
+        ]
+    },
+    "52.16.245.145": {
+        "count": 2,
+        "first_attempt": 1778859961,
+        "last_attempt": 1778859962,
+        "reasons": [
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778859961
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778859962
+            }
+        ]
+    },
+    "3.237.84.133": {
+        "count": 2,
+        "first_attempt": 1778863574,
+        "last_attempt": 1778863574,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778863574
+            },
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778863574
+            }
+        ]
+    },
+    "198.232.6.154": {
+        "count": 2,
+        "first_attempt": 1778864302,
+        "last_attempt": 1778864302,
+        "reasons": [
+            {
+                "reason": "blocked_isp:M247",
+                "ts": 1778864302
+            },
+            {
+                "reason": "blocked_isp:M247",
+                "ts": 1778864302
+            }
+        ]
+    }
+}

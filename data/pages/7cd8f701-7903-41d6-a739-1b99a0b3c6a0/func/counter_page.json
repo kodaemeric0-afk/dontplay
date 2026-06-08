@@ -1,0 +1,15 @@
+{
+    "total_banned": 0,
+    "last_reset": "2025-11-02 15:49:23",
+    "reasons": [],
+    "infos": {
+        "count": 1,
+        "by_ip": []
+    },
+    "login": {
+        "count": 1,
+        "by_ip": [
+            "86.212.126.142"
+        ]
+    }
+}

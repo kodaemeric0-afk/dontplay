@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dontplay — Sender</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#06060e;--surface:rgba(255,255,255,0.035);--surface-h:rgba(255,255,255,0.065);--border:rgba(255,255,255,0.07);--border-h:rgba(255,255,255,0.13);--text:#f0f2f8;--muted:#52556b;--muted-2:#8b8fa8;--violet:#8b5cf6;--violet-d:#6d28d9;--violet-dim:rgba(139,92,246,0.12);--teal:#2dd4bf;--green:#4ade80;--green-dim:rgba(74,222,128,0.1);--red:#fb7185;--red-dim:rgba(251,113,133,0.1);--amber:#fbbf24;--amber-dim:rgba(251,191,36,0.1);--r:16px;--r-sm:10px;--nav-h:64px}
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.055) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0}
+    body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 0%,rgba(139,92,246,0.1) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 85% 90%,rgba(45,212,191,0.07) 0%,transparent 50%);pointer-events:none;z-index:0}
+    #loader{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .6s,visibility .6s}
+    #loader.hidden{opacity:0;visibility:hidden}
+    .loader-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent;border-top-color:var(--violet);border-right-color:rgba(139,92,246,0.3);animation:spin 1s linear infinite}
+    .loader-logo-inner{position:absolute;inset:8px;border-radius:14px;background:linear-gradient(135deg,var(--violet),var(--violet-d));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;box-shadow:0 0 30px rgba(139,92,246,0.4)}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .loader-text{font-size:13px;font-weight:500;color:var(--muted-2);letter-spacing:.08em;text-transform:uppercase;animation:blink 1.4s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:.4}50%{opacity:1}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;padding:0 24px;background:rgba(6,6,14,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;margin-right:28px}
+    .nav-logo-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--violet),var(--violet-d));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;box-shadow:0 0 16px rgba(139,92,246,0.3)}
+    .nav-logo-text{font-size:16px;font-weight:800;color:var(--text);letter-spacing:-0.01em}
+    .nav-links{display:flex;align-items:center;gap:1px;flex:1}
+    .nav-link{padding:5px 12px;border-radius:var(--r-sm);font-size:13px;font-weight:500;color:var(--muted-2);text-decoration:none;white-space:nowrap;transition:color .18s,background .18s}
+    .nav-link:hover{color:var(--text);background:var(--surface)}
+    .nav-link.active{color:var(--text);background:var(--surface-h);font-weight:600}
+    .nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .nav-balance{display:flex;align-items:center;gap:6px;padding:5px 12px;background:var(--green-dim);border:1px solid rgba(74,222,128,0.18);border-radius:99px;font-size:12.5px;font-weight:700;color:var(--green)}
+    .btn-logout{display:flex;align-items:center;gap:6px;padding:6px 13px;border-radius:var(--r-sm);background:var(--surface);border:1px solid var(--border);color:var(--muted-2);font-size:12.5px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .18s}
+    .btn-logout:hover{background:var(--red-dim);border-color:rgba(251,113,133,0.25);color:var(--red)}
+    main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:calc(var(--nav-h) + 40px) 24px 80px}
+    .page-header{margin-bottom:36px}
+    .page-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+    .page-sub{font-size:14px;color:var(--muted-2)}
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px;cursor:not-allowed;position:relative;overflow:hidden;transition:all .2s}
+    .tool-card.active{cursor:pointer;opacity:1}
+    .tool-card.active:hover{background:var(--surface-h);border-color:var(--border-h)}
+    .tool-card.disabled{opacity:.5;cursor:not-allowed}
+    .tool-card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .tool-card-body{flex:1}
+    .tool-card-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+    .tool-card-desc{font-size:12.5px;color:var(--muted-2);line-height:1.5}
+    .tool-badge{position:absolute;top:14px;right:14px;padding:3px 10px;border-radius:99px;font-size:10.5px;font-weight:700;background:var(--amber-dim);color:var(--amber);border:1px solid rgba(251,191,36,.2)}
+    .anim-fade{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+    .anim-fade.in{opacity:1;transform:none}
+    @media(max-width:768px){main{padding:calc(var(--nav-h) + 24px) 16px 60px}.tools-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="loader">
+  <div style="position:relative;width:64px;height:64px">
+    <div class="loader-ring"></div>
+    <div class="loader-logo-inner">D</div>
+  </div>
+  <span class="loader-text">Chargement…</span>
+</div>
+<nav>
+  <a href="/dashboard" class="nav-logo">
+    <div class="nav-logo-mark">D</div>
+    <span class="nav-logo-text">Dontplay</span>
+  </a>
+  <div class="nav-links">
+    <a href="/dashboard" class="nav-link">Dashboard</a>
+    <a href="/pages" class="nav-link">Pages</a>
+    <a href="/domaines" class="nav-link">Domaines</a>
+    <a href="/sender" class="nav-link active">Sender</a>
+    <a href="/shop" class="nav-link">Shop</a>
+    <a href="/plans" class="nav-link">Plans</a>
+    <a href="/compte" class="nav-link">Compte</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-balance" id="nav-balance"><i data-lucide="wallet" style="width:12px;height:12px"></i> — €</div>
+    <button class="btn-logout" id="btn-logout"><i data-lucide="log-out" style="width:13px;height:13px"></i>Déconnexion</button>
+  </div>
+</nav>
+<main>
+  <div class="page-header anim-fade" data-d="0">
+    <div class="page-title">Sender</div>
+    <div class="page-sub">Outils d'envoi de masse — SMS et email</div>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-card anim-fade active" data-d="1" onclick="location.href='/sender-sms'">
+      <div class="tool-card-icon" style="background:rgba(45,212,191,0.12)">
+        <i data-lucide="message-square" style="width:20px;height:20px;color:#2dd4bf"></i>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-card-name">Sender SMS</div>
+        <div class="tool-card-desc">Envoi de SMS en masse vers une liste de destinataires avec personnalisation du contenu.</div>
+      </div>
+    </div>
+    <div class="tool-card anim-fade disabled" data-d="2">
+      <div class="tool-badge">Bientôt</div>
+      <div class="tool-card-icon" style="background:rgba(139,92,246,0.12)">
+        <i data-lucide="mail" style="width:20px;height:20px;color:#8b5cf6"></i>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-card-name">Sender Mail</div>
+        <div class="tool-card-desc">Campagnes email à grande échelle avec rotation de serveurs SMTP et gestion des bounces.</div>
+      </div>
+    </div>
+    <div class="tool-card anim-fade disabled" data-d="3">
+      <div class="tool-badge">Bientôt</div>
+      <div class="tool-card-icon" style="background:rgba(251,191,36,0.12)">
+        <i data-lucide="landmark" style="width:20px;height:20px;color:#fbbf24"></i>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-card-name">Sender mail bank</div>
+        <div class="tool-card-desc">Envoi d'emails ciblés avec templates bancaires et suivi des ouvertures en temps réel.</div>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+  lucide.createIcons();
+  async function init() {
+    const me = await fetch('/api/auth/me').then(r => r.json()).catch(() => null);
+    if (!me?.id) { location.href = '/login'; return; }
+    const bal = (me.balance ?? 0).toFixed(2).replace('.', ',');
+    document.getElementById('nav-balance').innerHTML = `<i data-lucide="wallet" style="width:12px;height:12px"></i> ${bal} €`;
+    lucide.createIcons();
+    document.getElementById('loader').classList.add('hidden');
+    document.querySelectorAll('.anim-fade').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 60 + i * 60);
+    });
+  }
+  document.getElementById('btn-logout').addEventListener('click', async () => {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    location.href = '/login';
+  });
+  init();
+</script>
+<script>
+// Balance click opens recharge (redirect to /compte)
+(function(){
+  const nb = document.getElementById('nav-balance');
+  if (!nb) return; nb.style.cursor = 'pointer';
+  nb.addEventListener('click', () => { try { location.href = '/compte'; } catch(e){ location.href = '/compte'; } });
+})();
+</script>
+<footer style="padding:16px 24px;display:flex;justify-content:center;gap:28px;font-size:13px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;border-top:1px solid var(--border);flex-wrap:wrap;">
+  <span>📧 <a href="mailto:dontplayaio@protonmail.com" style="color:var(--violet);text-decoration:none;">dontplayaio@protonmail.com</a></span>
+  <span>💬 <a href="https://t.me/DontPlaySupport" target="_blank" style="color:var(--violet);text-decoration:none;">Support Telegram</a></span>
+  <span>📢 <a href="https://t.me/+BGMAPKKaeBRlOGQ0" target="_blank" style="color:var(--violet);text-decoration:none;">Canal Telegram</a></span>
+</footer>
+</body>
+</html>

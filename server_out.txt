@@ -1,0 +1,16 @@
+◇ injected env (19) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+
+  ✓ Dontplay démarré
+  → http://0.0.0.0:3000
+  → DB  : json
+  → ENV : development
+
+[0mGET / [36m302[0m 17.589 ms - 28[0m
+[0mHEAD /login [32m200[0m 974.648 ms - 25765[0m
+[0mHEAD /login [32m200[0m 14.591 ms - 25765[0m
+[0mGET /api/shop/client/demo [36m302[0m 27.493 ms - 28[0m
+[0mGET /login [32m200[0m 38.596 ms - 25765[0m
+[0mGET /api/cart/demo [36m302[0m 14.928 ms - 28[0m
+[0mGET /login [36m304[0m 1.930 ms - -[0m
+[0mGET /api/shop/commandes/demo [36m302[0m 8.373 ms - 28[0m
+[0mGET /login [36m304[0m 13.948 ms - -[0m

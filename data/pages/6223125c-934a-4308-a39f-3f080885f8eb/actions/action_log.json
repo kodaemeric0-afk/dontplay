@@ -1,0 +1,16 @@
+[
+    {
+        "action": "auth",
+        "uid": "user_6a05cc74b3e491.42975595",
+        "timestamp": 1778765146,
+        "datetime": "2026-05-14 13:25:46",
+        "chat_id": -5214657562
+    },
+    {
+        "action": "auth_error",
+        "uid": "user_6a05cc74b3e491.42975595",
+        "timestamp": 1778765273,
+        "datetime": "2026-05-14 13:27:53",
+        "chat_id": -5214657562
+    }
+]

@@ -1,0 +1,339 @@
+﻿
+    html,
+    body {
+        overscroll-behavior-y: contain
+    }
+
+    #dip body,
+    html#dip {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+        color: #333;
+        font-size: .8rem
+    }
+
+    #dip body div {
+        box-sizing: border-box !important
+    }
+
+    .dip-h1 {
+        font-size: 1.2rem !important;
+        font-weight: 700
+    }
+
+    .dip-mx-auto {
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .dip-text-center {
+        text-align: center !important
+    }
+
+    .dip-text-left {
+        text-align: left !important
+    }
+
+    .dip-text-right {
+        text-align: right !important
+    }
+
+    .dip-text-bold {
+        font-weight: 700
+    }
+
+    .dip-row,
+    [class*=dip-col] {
+        width: 100%
+    }
+
+    .dip-row {
+        display: flex;
+        flex-wrap: wrap
+    }
+
+    .dip-col-12:after,
+    .dip-row:after {
+        content: " ";
+        display: table;
+        height: 1px;
+        clear: both !important
+    }
+
+    [class*=dip-col] {
+        position: relative;
+        flex-basis: 0;
+        flex-grow: 1;
+        overflow-x: hidden
+    }
+
+    .dip-col-6 {
+        flex: 0 0 49.9999% !important
+    }
+
+    .dip-col-12 {
+        flex: 0 0 99.9999% !important
+    }
+
+    .dip-wrapper {
+        width: 100%;
+        max-width: 420px;
+        background-color: #fff;
+        padding: 12px;
+        margin: 0 auto
+    }
+
+    .dip-wrapper img {
+        max-width: 100%;
+        height: auto
+    }
+
+    .dip-mb-4 {
+        margin-bottom: 20px
+    }
+
+    .dip-mb-3 {
+        margin-bottom: 18px
+    }
+
+    .dip-mb-2 {
+        margin-bottom: 12px
+    }
+
+    .dip-py-3 {
+        padding-top: 18px;
+        padding-bottom: 18px
+    }
+
+    .dip-caret:before {
+        content: "+";
+        margin-right: 12px;
+        color: #999
+    }
+
+    #show-sms-link {
+        cursor: pointer
+    }
+
+    .circle-timer-container {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px auto 10px
+    }
+
+    .timer-text {
+        position: absolute;
+        font-size: 1.3em
+    }
+
+    .circle-timer {
+        transform: rotate(-90deg);
+        transform-origin: center;
+        width: 140px;
+        height: 140px
+    }
+
+    @media screen and (min-width:250px) {
+
+        #dip body,
+        html#dip {
+            display: flex;
+            align-items: center;
+            font-size: .85rem
+        }
+
+        .dip-wrapper {
+            width: 100%;
+            max-width: 250px
+        }
+
+        .dip-mb-4 {
+            margin-bottom: 10px
+        }
+
+        .dip-wrapper img {
+            max-width: 90%;
+            height: auto
+        }
+
+        .circle-timer-container {
+            width: 80px;
+            height: 80px;
+            margin: 10px auto 10px
+        }
+
+        .circle-timer {
+            width: 80px;
+            height: 80px
+        }
+    }
+
+    @media screen and (min-width:390px) {
+
+        #dip body,
+        html#dip {
+            display: flex;
+            align-items: center;
+            font-size: .9rem
+        }
+
+        .dip-wrapper {
+            width: 100%;
+            max-width: 350px
+        }
+
+        .dip-wrapper img {
+            max-width: 75%;
+            height: auto
+        }
+
+        .dip-mb-4 {
+            margin-bottom: 10px
+        }
+
+        .circle-timer-container {
+            width: 90px;
+            height: 90px;
+            margin: 10px auto 10px
+        }
+
+        .circle-timer {
+            width: 90px;
+            height: 90px
+        }
+    }
+
+    @media screen and (min-width:500px) {
+
+        #dip body,
+        html#dip {
+            display: flex;
+            align-items: center;
+            font-size: 1rem
+        }
+
+        .dip-wrapper {
+            width: 100%;
+            max-width: 450px
+        }
+
+        .dip-wrapper img {
+            max-width: 75%;
+            height: auto
+        }
+
+        .dip-mb-4 {
+            margin-bottom: 20px
+        }
+
+        .dip-mb-2 {
+            margin-top: 40px
+        }
+
+        .circle-timer-container {
+            width: 120px;
+            height: 120px;
+            margin: 10px auto 10px
+        }
+
+        .circle-timer {
+            width: 120px;
+            height: 120px
+        }
+    }
+
+    @media screen and (min-width:600px) {
+
+        #dip body,
+        html#dip {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem
+        }
+
+        .dip-wrapper {
+            width: 100%;
+            max-width: 500px
+        }
+
+        .dip-wrapper img {
+            max-width: 70%;
+            height: auto
+        }
+
+        .dip-mb-4 {
+            margin-bottom: 5px
+        }
+
+        .dip-mb-2 {
+            margin-top: 10px
+        }
+
+        .dip-py-3 {
+            padding-top: 12px;
+            padding-bottom: 12px
+        }
+
+        .circle-timer-container {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto 10px
+        }
+
+        .circle-timer {
+            width: 100px;
+            height: 100px
+        }
+
+        .timer-text {
+            font-size: 1.5em
+        }
+    }
+
+    @media screen and (min-width:650px) {
+
+        #dip body,
+        html#dip {
+            display: flex;
+            align-items: center;
+            font-size: 1rem
+        }
+
+        .dip-wrapper {
+            width: 100%;
+            max-width: 420px
+        }
+
+        .dip-wrapper img {
+            max-width: 80%;
+            height: auto
+        }
+
+        .dip-mb-4 {
+            margin-bottom: 20px
+        }
+
+        .timer-text {
+            font-size: 1.5em
+        }
+
+        .circle-timer-container {
+            width: 140px;
+            height: 140px;
+            margin: 10px auto 10px
+        }
+
+        .circle-timer {
+            width: 140px;
+            height: 140px
+        }
+    }

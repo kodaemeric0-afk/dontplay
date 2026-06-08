@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dontplay — Sender SMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #06060e; --surface: rgba(255,255,255,0.035);
+      --surface-h: rgba(255,255,255,0.065);
+      --border: rgba(255,255,255,0.07); --border-h: rgba(255,255,255,0.13);
+      --text: #f0f2f8; --muted: #52556b; --muted-2: #8b8fa8;
+      --violet: #8b5cf6; --violet-d: #6d28d9; --violet-dim: rgba(139,92,246,0.12);
+      --teal: #2dd4bf; --teal-dim: rgba(45,212,191,0.1);
+      --green: #4ade80; --green-dim: rgba(74,222,128,0.1);
+      --red: #fb7185; --red-dim: rgba(251,113,133,0.1);
+      --amber: #fbbf24; --amber-dim: rgba(251,191,36,0.1);
+      --r: 16px; --r-sm: 10px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 28px 28px; pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 10% 0%, rgba(139,92,246,0.1) 0%, transparent 55%),
+                  radial-gradient(ellipse 50% 40% at 90% 90%, rgba(45,212,191,0.07) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    #loader {
+      position: fixed; inset: 0; z-index: 1000; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 24px;
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo-wrap { position: relative; width: 64px; height: 64px; }
+    .loader-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--violet);
+      border-right-color: rgba(139,92,246,0.3);
+      animation: spin 1s linear infinite;
+    }
+    .loader-logo-inner {
+      position: absolute; inset: 8px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 800; color: #fff;
+      box-shadow: 0 0 30px rgba(139,92,246,0.4);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-text {
+      font-size: 13px; font-weight: 500; color: var(--muted-2);
+      letter-spacing: .08em; text-transform: uppercase;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:.4} 50%{opacity:1} }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; padding: 0 24px; gap: 32px;
+      background: rgba(6,6,14,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo-mark {
+      width: 32px; height: 32px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px; color: #fff;
+    }
+    .nav-logo-text { font-weight: 700; font-size: 15px; color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 2px; flex: 1; }
+    .nav-link {
+      padding: 6px 12px; border-radius: 8px; font-size: 13.5px;
+      font-weight: 500; color: var(--muted-2); text-decoration: none;
+      transition: color .15s, background .15s;
+    }
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+    .nav-link.active { color: var(--text); background: var(--surface-h); }
+    .nav-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+    .service-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .service-card {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      cursor: pointer;
+      transition: border-color .18s, background .18s, transform .18s;
+    }
+    .service-card:hover { border-color: var(--violet); transform: translateY(-1px); }
+    .service-card.selected {
+      border-color: var(--teal);
+      background: rgba(45,212,191,0.1);
+    }
+    .service-card-title { font-weight: 700; margin-bottom: 6px; }
+    .service-card-meta { font-size: 13px; color: var(--muted-2); line-height: 1.4; }
+    .service-empty { font-size: 13px; color: var(--muted-2); padding: 12px 0; }
+    .nav-balance {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12.5px; font-weight: 600; color: var(--muted-2);
+      padding: 5px 12px; border-radius: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+    }
+    .btn-logout {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted-2); font-size: 12.5px; font-weight: 500;
+      cursor: pointer; transition: all .15s;
+    }
+    .btn-logout:hover { color: var(--text); border-color: var(--border-h); background: var(--red-dim);}
+    .nav-hamburger {
+      display: none; background: none; border: 1px solid var(--border);
+      border-radius: var(--r-sm); color: var(--muted-2);
+      cursor: pointer; padding: 5px 8px; align-items: center;
+      justify-content: center; flex-shrink: 0; transition: all .18s;
+    }
+    .nav-hamburger:hover { color: var(--text); background: var(--surface-h); }
+    main {
+      position: relative; z-index: 1;
+      padding: calc(var(--nav-h) + 32px) 24px 60px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .page-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 32px; gap: 20px; flex-wrap: wrap; }
+    .page-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--violet); margin-bottom: 10px; }
+    .page-title { font-size: 28px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 6px; }
+    .page-sub { font-size: 14px; color: var(--muted-2); line-height: 1.6; max-width: 560px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--r-sm); font-size: 13px;
+      font-weight: 600; cursor: pointer; font-family: inherit;
+      border: none; transition: all .18s;
+    }
+    .btn-primary { background: var(--violet); color: #fff; }
+    .btn-primary:hover { background: var(--violet-d); }
+    .btn-primary:disabled { opacity: .4; cursor: not-allowed; }
+    .btn-ghost { background: var(--surface); color: var(--muted-2); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); border-color: var(--border-h); }
+    .btn-danger { background: var(--red-dim); color: var(--red); border: 1px solid rgba(251,113,133,.25); }
+    .btn-danger:hover { background: rgba(251,113,133,0.2); }
+    .btn-sm { padding: 5px 10px; font-size: 12px; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 28px; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; }
+    .stat-label { font-size: 11px; font-weight: 600; color: var(--muted-2); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+    .stat-val { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 22px; margin-bottom: 20px; }
+    .card-title { font-size: 15px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+    .table-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); gap: 12px; flex-wrap: wrap; }
+    .table-title { font-size: 15px; font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { font-size: 11px; font-weight: 700; color: var(--muted-2); text-transform: uppercase; letter-spacing: .07em; padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.015); white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--surface-h); }
+    td { padding: 12px 16px; font-size: 13px; vertical-align: middle; }
+    .empty-state { padding: 40px 20px; text-align: center; color: var(--muted-2); font-size: 13px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 11px; font-weight: 600; color: var(--muted-2); text-transform: uppercase; letter-spacing: .06em; }
+    .field input, .field textarea, .field select {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 9px 12px;
+      font-size: 13.5px;
+      color: var(--text);
+      font-family: inherit;
+      outline: none;
+      transition: border .18s;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--violet); }
+    .field textarea { resize: vertical; min-height: 100px; }
+    .field select option { background: #0d0d1a; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .upload-zone {
+      border: 2px dashed rgba(139,92,246,.4);
+      border-radius: var(--r-sm);
+      padding: 28px; text-align: center; cursor: pointer;
+      background: var(--violet-dim); transition: all .2s;
+    }
+    .upload-zone:hover, .upload-zone.dragover { border-color: var(--teal); background: rgba(45,212,191,.08); }
+    .vars { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .var-btn {
+      padding: 6px 10px; border-radius: 6px;
+      border: 1px solid var(--violet); background: var(--violet-dim);
+      color: var(--violet); font-size: 11px; font-weight: 600;
+      cursor: pointer; font-family: inherit; transition: all .15s;
+    }
+    .var-btn.active { background: var(--violet); color: #fff; box-shadow: 0 0 12px rgba(139,92,246,.4); }
+    .var-btn:hover { background: rgba(139,92,246,.2); }
+    .var-cat { font-size: 10px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; margin-top: 6px; }
+    .preview-box {
+      padding: 14px; border-radius: var(--r-sm);
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      line-height: 1.65; font-size: 13px;
+    }
+    .preview-box .hl { color: var(--teal); font-weight: 700; }
+    .char-count { font-size: 12px; color: var(--muted-2); margin-top: 4px; text-align: right; }
+    .char-count.warn { color: var(--amber); } .char-count.err { color: var(--red); }
+    .summary {
+      background: linear-gradient(135deg, var(--violet-dim), var(--teal-dim));
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 16px; margin-bottom: 16px;
+    }
+    .summary-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+    .summary-row .l { color: var(--muted-2); } .summary-row .v { font-weight: 700; }
+    .control-panel { display: none; } .control-panel.show { display: block; }
+    .progress { height: 8px; background: rgba(255,255,255,.08); border-radius: 99px; overflow: hidden; margin: 12px 0; }
+    .progress>div { height: 100%; background: linear-gradient(90deg, var(--violet), var(--teal)); transition: width .35s; width: 0; }
+    .ctrl-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+    .ctrl-stat { text-align: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface); }
+    .ctrl-stat b { display: block; font-size: 20px; }
+    .ctrl-stat span { font-size: 10px; color: var(--muted-2); text-transform: uppercase; }
+    .tpl-item { padding: 14px; border: 1px solid var(--border); border-radius: var(--r-sm); margin-bottom: 10px; background: var(--surface); }
+    .tpl-item h4 { font-size: 14px; margin-bottom: 6px; }
+    .tpl-item p { font-size: 12px; color: var(--muted-2); word-break: break-word; margin-bottom: 10px; }
+    .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 99px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; }
+    .badge-pending { background: rgba(251,191,36,.15); color: var(--amber); border: 1px solid rgba(251,191,36,.2); }
+    .badge-running { background: rgba(59,130,246,.15); color: #93c5fd; border: 1px solid rgba(59,130,246,.2); }
+    .badge-paused { background: var(--violet-dim); color: var(--violet); border: 1px solid rgba(139,92,246,.2); }
+    .badge-completed, .badge-done { background: var(--green-dim); color: var(--green); border: 1px solid rgba(74,222,128,.2); }
+    .badge-stopped, .badge-failed { background: var(--red-dim); color: var(--red); border: 1px solid rgba(251,113,133,.2); }
+    .price-badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 700; background: var(--teal-dim); color: var(--teal); margin-left: 6px; }
+    .toast {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      padding: 11px 18px; border-radius: var(--r-sm);
+      font-size: 13px; font-weight: 600;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity .25s, transform .25s; pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: none; }
+    .toast.ok { background: var(--green-dim); color: var(--green); border: 1px solid rgba(74,222,128,.25); }
+    .toast.err { background: var(--red-dim); color: var(--red); border: 1px solid rgba(251,113,133,.25); }
+    .modal-bg {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,.75); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; opacity: 0; visibility: hidden;
+      transition: opacity .2s, visibility .2s;
+    }
+    .modal-bg.open { opacity: 1; visibility: visible; }
+    .modal {
+      background: #0d0d1a; border: 1px solid var(--border-h);
+      border-radius: var(--r); width: 100%; max-width: 480px;
+      padding: 26px; display: flex; flex-direction: column; gap: 16px;
+      transform: translateY(12px); transition: transform .2s;
+    }
+    .modal-bg.open .modal { transform: none; }
+    .modal.wide { max-width: 700px; }
+    .modal-title { font-size: 18px; font-weight: 800; letter-spacing: -.01em; }
+    .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; }
+    .plan-gate { text-align: center; padding: 60px 32px; border-radius: var(--r); border: 1px solid var(--border); background: var(--surface); }
+    .plan-gate h2 { font-size: 22px; margin-bottom: 10px; }
+    .plan-gate p { color: var(--muted-2); margin-bottom: 24px; }
+    .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 22px; overflow-x: auto; }
+    .tab-btn {
+      padding: 11px 16px; background: none; border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--muted-2); font-weight: 600; font-size: 13px;
+      cursor: pointer; font-family: inherit; white-space: nowrap;
+      transition: all .15s;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--violet); border-bottom-color: var(--violet); }
+    .tab-pane { display: none; } .tab-pane.active { display: block; }
+    .anim-fade { opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s; }
+    .anim-fade.in { opacity: 1; transform: none; }
+    .qrcode-box {
+      background: #fff; border-radius: 12px;
+      padding: 20px; text-align: center;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+    }
+    .qrcode-box img { max-width: 200px; border-radius: 8px; padding: 8px; background: #fff; }
+    .qrcode-box .addr {
+      font-size: 11px; color: #333; word-break: break-all;
+      background: #f0f2f8; padding: 8px 10px;
+      border-radius: 6px; max-width: 100%;
+    }
+    .recharge-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.mob-open { position: fixed; top: var(--nav-h); left: 0; right: 0; background: rgba(6,6,14,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 8px; flex-direction: column; z-index: 99; gap: 2px; display: flex; }
+      .nav-hamburger { display: flex; }
+      main { padding-left: 16px; padding-right: 16px; }
+      .field-row, .field-row-3 { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .recharge-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo-wrap">
+    <div class="loader-ring"></div>
+    <div class="loader-logo-inner">D</div>
+  </div>
+  <span class="loader-text">Chargement…</span>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<nav role="navigation" aria-label="Navigation principale">
+  <a href="/dashboard" class="nav-logo" aria-label="Dontplay — Accueil">
+    <div class="nav-logo-mark" aria-hidden="true">D</div>
+    <span class="nav-logo-text">Dontplay</span>
+  </a>
+  <div class="nav-links" role="list">
+    <a href="/dashboard" class="nav-link" role="listitem">Dashboard</a>
+    <a href="/pages" class="nav-link" role="listitem">Pages</a>
+    <a href="/domaines" class="nav-link" role="listitem">Domaines</a>
+    <a href="/redirections" class="nav-link" role="listitem">Redirections</a>
+    <a href="/sender" class="nav-link active" role="listitem">Sender</a>
+    <a href="/shop" class="nav-link" role="listitem">Shop</a>
+    <a href="/plans" class="nav-link" role="listitem">Plans</a>
+    <a href="/compte" class="nav-link" role="listitem">Compte</a>
+    <a href="/admin" class="nav-link" role="listitem" id="nav-admin" style="display:none">Admin</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-balance" id="nav-balance">
+      <i data-lucide="wallet" style="width:12px;height:12px" aria-hidden="true"></i>
+      — €
+    </div>
+    <button id="btn-logout" class="btn-logout" aria-label="Se déconnecter">
+      <i data-lucide="log-out" style="width:13px;height:13px" aria-hidden="true"></i>
+      Déconnexion
+    </button>
+  </div>
+  <button id="nav-hamburger" class="nav-hamburger" aria-label="Menu">
+    <i data-lucide="menu" style="width:18px;height:18px"></i>
+  </button>
+</nav>
+
+<main>
+
+  <div class="page-header anim-fade" data-d="0">
+    <div>
+      <div class="page-eyebrow">
+        <i data-lucide="message-square" style="width:10px;height:10px" aria-hidden="true"></i>
+        Envoi de masse
+      </div>
+      <h1 class="page-title">Sender SMS</h1>
+      <p class="page-sub">Importez vos contacts, personnalisez vos messages avec 12 variables dynamiques, choisissez votre pays et pilotez vos campagnes en temps réel.</p>
+    </div>
+    <a href="/sender" class="btn btn-ghost"><i data-lucide="arrow-left" style="width:14px;height:14px"></i> Retour</a>
+  </div>
+
+  <!-- Plan gate -->
+  <div id="plan-gate" class="plan-gate" style="display:none">
+    <h2><i data-lucide="lock" style="width:22px;height:22px;vertical-align:-4px"></i> Plan Max requis</h2>
+    <p>Le Sender SMS est exclusivement réservé au plan Max. Souscrivez un abonnement pour débloquer l'accès.</p>
+    <a href="/plans" class="btn btn-primary"><i data-lucide="zap"></i> Voir les plans</a>
+  </div>
+
+  <!-- Main content -->
+  <div id="app" style="display:none">
+
+    <!-- Stats row -->
+    <div class="stats-row anim-fade" data-d="1">
+      <div class="stat-card">
+        <div class="stat-label">Solde</div>
+        <div class="stat-val" id="stat-balance">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Campagnes</div>
+        <div class="stat-val" id="stat-campaigns">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">SMS envoyés</div>
+        <div class="stat-val" id="stat-sent">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Coût / SMS</div>
+        <div class="stat-val" id="stat-cost">—</div>
+      </div>
+    </div>
+
+    <!-- Control panel (campagne en cours) -->
+    <div class="card control-panel" id="control-panel" style="border-left:3px solid var(--violet)">
+      <div class="card-title"><i data-lucide="activity" style="width:16px;height:16px"></i> Campagne en cours</div>
+      <p id="ctrl-name" style="font-size:13px;color:var(--muted-2);margin-bottom:8px">—</p>
+      <div class="progress"><div id="progress-bar"></div></div>
+      <div class="ctrl-stats">
+        <div class="ctrl-stat"><b id="ctrl-sent" style="color:var(--green)">0</b><span>Envoyés</span></div>
+        <div class="ctrl-stat"><b id="ctrl-failed" style="color:var(--red)">0</b><span>Échoués</span></div>
+        <div class="ctrl-stat"><b id="ctrl-left">0</b><span>Restants</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary btn-sm" id="btn-pause"><i data-lucide="pause"></i> Pause</button>
+        <button class="btn btn-ghost btn-sm" id="btn-resume" style="display:none"><i data-lucide="play"></i> Reprendre</button>
+        <button class="btn btn-danger btn-sm" id="btn-stop"><i data-lucide="square"></i> Stop</button>
+      </div>
+    </div>
+
+    <!-- Quick recharge row -->
+    <div class="card anim-fade" data-d="2" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-size:12px;color:var(--muted-2);margin-bottom:6px;font-weight:600">Recharge rapide</div>
+        <div class="recharge-grid" style="margin:0">
+          <button type="button" class="btn btn-ghost btn-sm" data-amt="10">+10€</button>
+          <button type="button" class="btn btn-ghost btn-sm" data-amt="25">+25€</button>
+          <button type="button" class="btn btn-ghost btn-sm" data-amt="50">+50€</button>
+          <button type="button" class="btn btn-ghost btn-sm" data-amt="100">+100€</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" id="btn-recharge"><i data-lucide="wallet"></i> Recharger (crypto)</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs anim-fade" data-d="3">
+      <button type="button" class="tab-btn active" data-tab="create">✏️ Créer campagne</button>
+      <button type="button" class="tab-btn" data-tab="templates">📋 Templates</button>
+      <button type="button" class="tab-btn" data-tab="history">📊 Historique</button>
+    </div>
+
+    <!-- Tab: Create campaign -->
+    <div id="tab-create" class="tab-pane active">
+
+      <!-- Step 1: Import -->
+      <div class="card anim-fade" data-d="4">
+        <div class="card-title"><i data-lucide="upload" style="width:15px;height:15px"></i> Étape 1 — Importer les numéros</div>
+
+        <div class="field-row-3" style="margin-bottom:14px">
+          <div class="field">
+            <label>Pays / Indicatif <span id="dial-price-badge" class="price-badge">0.50€/SMS</span></label>
+            <select id="default-dial" onchange="updateDialPrice()">
+              <option value="+33" data-price="0.50">🇫🇷 France (+33) — 0,50€</option>
+              <option value="+32" data-price="0.55">🇧🇪 Belgique (+32) — 0,55€</option>
+              <option value="+41" data-price="0.60">🇨🇭 Suisse (+41) — 0,60€</option>
+              <option value="+44" data-price="0.55">🇬🇧 Royaume-Uni (+44) — 0,55€</option>
+              <option value="+34" data-price="0.55">🇪🇸 Espagne (+34) — 0,55€</option>
+              <option value="+39" data-price="0.60">🇮🇹 Italie (+39) — 0,60€</option>
+              <option value="+49" data-price="0.60">🇩🇪 Allemagne (+49) — 0,60€</option>
+              <option value="+31" data-price="0.60">🇳🇱 Pays-Bas (+31) — 0,60€</option>
+              <option value="+352" data-price="0.50">🇱🇺 Luxembourg (+352) — 0,50€</option>
+              <option value="+351" data-price="0.55">🇵🇹 Portugal (+351) — 0,55€</option>
+              <option value="+48" data-price="0.50">🇵🇱 Pologne (+48) — 0,50€</option>
+              <option value="+420" data-price="0.55">🇨🇿 Tchéquie (+420) — 0,55€</option>
+              <option value="+43" data-price="0.60">🇦🇹 Autriche (+43) — 0,60€</option>
+              <option value="+36" data-price="0.50">🇭🇺 Hongrie (+36) — 0,50€</option>
+              <option value="+40" data-price="0.45">🇷🇴 Roumanie (+40) — 0,45€</option>
+              <option value="+1" data-price="0.35">🇺🇸 USA / Canada (+1) — 0,35€</option>
+              <option value="+212" data-price="0.40">🇲🇦 Maroc (+212) — 0,40€</option>
+              <option value="+213" data-price="0.40">🇩🇿 Algérie (+213) — 0,40€</option>
+              <option value="+216" data-price="0.40">🇹🇳 Tunisie (+216) — 0,40€</option>
+              <option value="+221" data-price="0.45">🇸🇳 Sénégal (+221) — 0,45€</option>
+              <option value="+225" data-price="0.45">🇨🇮 Côte d'Ivoire (+225) — 0,45€</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Vitesse d'envoi</label>
+            <select id="campaign-speed">
+              <option value="5">Lent (5/min)</option>
+              <option value="20" selected>Normal (20/min)</option>
+              <option value="60">Rapide (60/min)</option>
+              <option value="120">Turbo (120/min)</option>
+            </select>
+          </div>
+          <div class="field" style="min-width:320px">
+            <label>Service disponible</label>
+            <div id="service-options" class="service-options">
+              <div class="service-empty">Choisissez un pays pour afficher les options SMS disponibles.</div>
+            </div>
+          </div>
+          <div class="field" id="sender-id-field" style="display:none">
+            <label>Sender ID / Short code (optionnel)</label>
+            <input type="text" id="sender-id-input" placeholder="Entrez SID ou short code à utiliser">
+            <div style="font-size:12px;color:var(--muted-2);margin-top:6px">Renseignez ce champ si vous souhaitez envoyer avec un Sender ID ou short code spécifique.</div>
+          </div>
+          <div class="field" style="display:none">
+            <label>Route SMS</label>
+            <select id="route-select">
+              <option value="auto">Auto</option>
+              <option value="sim">Route SIM</option>
+              <option value="shortcode">Short code</option>
+              <option value="sid">SID</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="upload-zone" id="upload-zone">
+          <i data-lucide="file-up" style="width:32px;height:32px;color:var(--violet);margin-bottom:10px" aria-hidden="true"></i>
+          <p style="font-weight:600;margin-bottom:6px">Glissez un fichier ou cliquez pour sélectionner</p>
+          <p style="font-size:12px;color:var(--muted-2)">.txt, .csv, .xlsx — Séparateurs : , ; ou tabulation</p>
+          <input type="file" id="file-input" accept=".txt,.csv,.xlsx" hidden>
+        </div>
+
+        <div class="field" style="margin-top:14px">
+          <label>Ou collez vos contacts (une ligne par contact)</label>
+          <textarea id="manual-input" placeholder="Format: prénom;nom;téléphone;email;adresse;code_postal;ville;date_naissance;numero_colis;date;iban;bic
+Ex: Jean;Dupont;0612345678;jean@mail.com;1 rue de Paris;75001;Paris;01/01/1990;COLIS123;15/06/2026;FR7630001007941234567890185;CMCIFRPP
+Ex: Marie;Martin;0712345678;marie@mail.com;2 av Lyon;69001;Lyon;;;;
+"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" id="btn-import" style="width:100%;margin-top:8px">
+          <i data-lucide="check" style="width:14px;height:14px"></i> Valider l'import
+        </button>
+      </div>
+
+      <!-- Preview contacts -->
+      <div class="card" id="block-preview" style="display:none">
+        <div class="card-title"><i data-lucide="users" style="width:15px;height:15px"></i> Aperçu des contacts</div>
+        <div class="summary">
+          <div class="summary-row"><span class="l">Total lignes</span><span class="v" id="imp-total">0</span></div>
+          <div class="summary-row"><span class="l">Valides</span><span class="v" id="imp-valid" style="color:var(--green)">0</span></div>
+          <div class="summary-row"><span class="l">Invalides / doublons</span><span class="v" id="imp-invalid" style="color:var(--red)">0</span></div>
+          <div class="summary-row"><span class="l">Coût estimé</span><span class="v" id="imp-cost" style="color:var(--teal)">0,00 €</span></div>
+        </div>
+        <div style="overflow-x:auto;max-height:220px;border-radius:var(--r-sm);border:1px solid var(--border)">
+          <table>
+            <thead><tr><th>Prénom</th><th>Nom</th><th>Téléphone</th><th>Ville</th><th>Email</th></tr></thead>
+            <tbody id="preview-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Step 2: Message -->
+      <div class="card" id="block-message" style="display:none">
+        <div class="card-title"><i data-lucide="pen-line" style="width:15px;height:15px"></i> Étape 2 — Composer le message</div>
+        <p style="font-size:12px;color:var(--muted-2);margin-bottom:12px">
+          Cliquez sur une variable ci-dessous pour l'insérer dans votre message.
+          <span style="font-weight:600;color:var(--teal)">160 caractères max.</span>
+        </p>
+
+        <div style="margin-bottom:14px">
+          <div class="var-cat">🆔 Identité (5 variables)</div>
+          <div class="vars">
+            <button type="button" class="var-btn" data-var="{prenom}" title="Prénom">{prenom}</button>
+            <button type="button" class="var-btn" data-var="{nom}" title="Nom">{nom}</button>
+            <button type="button" class="var-btn" data-var="{phone}" title="Téléphone">{phone}</button>
+            <button type="button" class="var-btn" data-var="{email}" title="Email">{email}</button>
+            <button type="button" class="var-btn" data-var="{date_naissance}" title="Date de naissance">{date_naissance}</button>
+          </div>
+          <div class="var-cat">📍 Adresse (3 variables)</div>
+          <div class="vars">
+            <button type="button" class="var-btn" data-var="{adresse}" title="Adresse">{adresse}</button>
+            <button type="button" class="var-btn" data-var="{code_postal}" title="Code postal">{code_postal}</button>
+            <button type="button" class="var-btn" data-var="{ville}" title="Ville">{ville}</button>
+          </div>
+          <div class="var-cat">📦 Commande / Colis (2 variables)</div>
+          <div class="vars">
+            <button type="button" class="var-btn" data-var="{numero_colis}" title="Numéro de colis">{numero_colis}</button>
+            <button type="button" class="var-btn" data-var="{date}" title="Date">{date}</button>
+          </div>
+          <div class="var-cat">🏦 Bancaire (2 variables)</div>
+          <div class="vars">
+            <button type="button" class="var-btn" data-var="{iban}" title="IBAN">{iban}</button>
+            <button type="button" class="var-btn" data-var="{bic}" title="BIC">{bic}</button>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Nom de campagne</label>
+            <input type="text" id="campaign-name" placeholder="ex: Promo Mars 2026">
+          </div>
+          <div class="field">
+            <label>Longueur <span class="char-count" id="char-count" style="display:inline;float:right">0 / 160</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <textarea id="message-input" maxlength="160" rows="4" placeholder="Bonjour {prenom}, votre colis {numero_colis} est prêt. Livraison prévue le {date}. Merci !"></textarea>
+        </div>
+
+        <label style="font-size:12px;color:var(--muted-2);display:block;margin-bottom:6px;margin-top:8px;font-weight:600">
+          <i data-lucide="eye" style="width:12px;height:12px;vertical-align:-2px"></i> Aperçu personnalisé (1er contact)
+        </label>
+        <div class="preview-box" id="preview-text">—</div>
+      </div>
+
+      <!-- Confirmation -->
+      <div class="card" id="block-confirm" style="display:none">
+        <div class="card-title"><i data-lucide="send" style="width:15px;height:15px"></i> Confirmation</div>
+        <div class="summary">
+          <div class="summary-row"><span class="l">Campagne</span><span class="v" id="cf-name">—</span></div>
+          <div class="summary-row"><span class="l">Destinataires</span><span class="v" id="cf-total">0</span></div>
+          <div class="summary-row"><span class="l">Prix unitaire</span><span class="v" id="cf-unit-price" style="color:var(--teal)">0,50 €</span></div>
+          <div class="summary-row"><span class="l">Coût total</span><span class="v" id="cf-cost" style="color:var(--teal)">0,00 €</span></div>
+          <div class="summary-row" style="border-top:1px solid var(--border);padding-top:10px;margin-top:6px">
+            <span class="l">Solde après envoi</span>
+            <span class="v" id="cf-balance">—</span>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="btn-send" style="width:100%" disabled>
+          <i data-lucide="rocket" style="width:15px;height:15px"></i> Lancer la campagne
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab: Templates -->
+    <div id="tab-templates" class="tab-pane">
+      <div class="card">
+        <div class="table-header" style="border-bottom:1px solid var(--border)">
+          <div class="table-title">📋 Mes templates</div>
+          <button type="button" class="btn btn-primary btn-sm" id="btn-new-tpl">
+            <i data-lucide="plus" style="width:13px;height:13px"></i> Nouveau
+          </button>
+        </div>
+        <div id="templates-list" style="padding:20px">
+          <p style="color:var(--muted-2);font-size:13px">Aucun template pour le moment.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: History -->
+    <div id="tab-history" class="tab-pane">
+      <div class="table-wrap">
+        <div class="table-header">
+          <div class="table-title">📊 Historique des campagnes</div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <select id="filter-status" style="padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:12px;font-family:inherit;outline:none">
+              <option value="">Tous les statuts</option>
+              <option value="running">En cours</option>
+              <option value="paused">Pause</option>
+              <option value="pending">En attente</option>
+              <option value="completed">Terminé</option>
+              <option value="stopped">Arrêté</option>
+            </select>
+            <button type="button" class="btn btn-ghost btn-sm" id="btn-export-history">
+              <i data-lucide="download" style="width:12px;height:12px"></i> Export CSV
+            </button>
+          </div>
+        </div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Nom</th><th>Date</th><th>Total</th>
+                <th>Envoyés</th><th>Échecs</th><th>Coût</th>
+                <th>Statut</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="history-tbody">
+              <tr><td colspan="8" class="empty-state">Chargement…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Modal: Template -->
+<div class="modal-bg" id="modal-tpl">
+  <div class="modal">
+    <div class="modal-title" id="tpl-modal-title">Nouveau template</div>
+    <input type="hidden" id="tpl-edit-id">
+    <div class="field"><label>Nom du template</label><input type="text" id="tpl-name" placeholder="ex: Relance colis"></div>
+    <div class="field"><label>Contenu du message</label><textarea id="tpl-content" rows="5" placeholder="Bonjour {prenom}..."></textarea></div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" data-close="modal-tpl">Annuler</button>
+      <button type="button" class="btn btn-primary" id="btn-save-tpl"><i data-lucide="save" style="width:13px;height:13px"></i> Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Logs -->
+<div class="modal-bg" id="modal-logs">
+  <div class="modal wide">
+    <div class="modal-title" id="logs-title">Logs d'envoi</div>
+    <div style="overflow:auto;max-height:360px">
+      <table>
+        <thead><tr><th>Date</th><th>Téléphone</th><th>Statut</th><th>Erreur</th></tr></thead>
+        <tbody id="logs-tbody"></tbody>
+      </table>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost btn-sm" id="btn-export-logs"><i data-lucide="download"></i> Export CSV</button>
+      <button type="button" class="btn btn-ghost" data-close="modal-logs">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Recharge -->
+<div class="modal-bg" id="modal-recharge">
+  <div class="modal">
+    <div class="modal-title">💰 Recharger le solde</div>
+    <p style="font-size:13px;color:var(--muted-2);margin-bottom:12px">
+      Paiement sécurisé via <strong style="color:var(--violet)">NowPayments</strong> — crypto acceptée.
+    </p>
+    <div class="field-row">
+      <div class="field">
+        <label>Montant (€)</label>
+        <input type="number" id="recharge-custom-amount" value="50" min="1" step="1">
+      </div>
+      <div class="field">
+        <label>Devise</label>
+        <select id="recharge-currency">
+          <option value="btc">₿ Bitcoin (BTC)</option>
+          <option value="eth">⟠ Ethereum (ETH)</option>
+          <option value="sol">◎ Solana (SOL)</option>
+          <option value="ltc">Ł Litecoin (LTC)</option>
+          <option value="usdt">₮ USDT</option>
+          <option value="usdc">Ʉ USDC</option>
+          <option value="trx">⛃ Tron (TRX)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field" id="recharge-network-field" style="display:none">
+      <label>Réseau</label>
+      <select id="recharge-network"></select>
+    </div>
+
+    <!-- QR Code box -->
+    <div id="recharge-qr-box" style="display:none">
+      <div class="qrcode-box" id="qrcode-container"></div>
+      <div id="payment-info" style="display:none;text-align:center;margin-top:12px">
+        <div style="font-size:12px;color:var(--muted-2);margin-bottom:6px">Adresse de paiement</div>
+        <div id="crypto-pay-address" class="crypto-address-box" style="margin:0 auto;max-width:260px;word-break:break-all;"></div>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-copy-address" style="margin-top:8px;">Copier l'adresse</button>
+      </div>
+      <div id="payment-status" style="font-size:12px;text-align:center;color:var(--amber);display:none;margin-top:8px">
+        <i data-lucide="loader" style="width:14px;height:14px;animation:spin 1s linear infinite;vertical-align:-2px"></i>
+        En attente de confirmation blockchain...
+      </div>
+    </div>
+
+    <!-- Init view -->
+    <div id="recharge-init">
+      <div style="text-align:center;padding:18px;background:var(--violet-dim);border:1px solid rgba(139,92,246,.2);border-radius:var(--r-sm);margin-bottom:8px">
+        <div style="font-size:28px;font-weight:800;color:var(--violet)" id="recharge-label">+50 €</div>
+        <div style="font-size:12px;color:var(--muted-2);margin-top:4px">Paiement unique, crédité instantanément</div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close="modal-recharge">Annuler</button>
+        <button type="button" class="btn btn-primary" id="btn-go-recharge">
+          <i data-lucide="credit-card" style="width:13px;height:13px"></i> Générer le paiement
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  let user = null, contacts = [], templates = [], costPerSms = 0.50, campaignsCache = [];
+  let activeId = null, logsId = null, pollIv = null, paymentPollIv = null;
+  let selectedRouteType = 'auto';
+  let selectedRoutePrice = null;
+  const STATUS = { pending:'En attente', running:'En cours', paused:'Pause', completed:'Terminé', done:'Terminé', stopped:'Arrêté', failed:'Échoué' };
+  let CRYPTO_NETWORKS = {
+    usdt: [
+      { id: 'trx', label: 'TRC20' },
+      { id: 'erc20', label: 'ERC20' },
+      { id: 'bep20', label: 'BEP20' },
+    ],
+    usdc: [
+      { id: 'erc20', label: 'ERC20' },
+      { id: 'sol', label: 'SOL' },
+      { id: 'bep20', label: 'BEP20' },
+    ],
+  };
+
+  async function loadCryptoNetworks() {
+    try {
+      const res = await fetch('/api/payments/crypto/currencies');
+      const data = await res.json();
+      if (res.ok && data.currencyNetworks) {
+        CRYPTO_NETWORKS = data.currencyNetworks;
+      }
+    } catch {}
+  }
+
+  function renderNetworkOptions(currency) {
+    const select = $('recharge-network');
+    const field = $('recharge-network-field');
+    const networks = CRYPTO_NETWORKS[currency] || [];
+    if (!field || !select) return;
+    if (!networks.length) {
+      field.style.display = 'none';
+      select.innerHTML = '';
+      return;
+    }
+    field.style.display = '';
+    select.innerHTML = networks.map(n => `<option value="${n.id}">${n.label}</option>`).join('');
+  }
+
+  function toast(msg, err) {
+    const t = $('toast');
+    t.textContent = msg;
+    t.className = 'toast show ' + (err ? 'err' : 'ok');
+    clearTimeout(t._t);
+    t._t = setTimeout(() => t.classList.remove('show'), 3200);
+  }
+  function esc(s) {
+    return String(s ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  function hasAccess(u) { const ok = u?.plan && (!u.planExpiresAt || new Date(u.planExpiresAt) > new Date()); return ok && ['max','business'].includes(u.plan); }
+  async function getCsrf() { const d = await fetch('/api/auth/csrf').then(r => r.json()).catch(() => ({})); return d.csrfToken || ''; }
+
+  function formatPrice(value) {
+    return value === null || value === undefined ? '—' : Number(value).toFixed(2).replace('.', ',') + ' €';
+  }
+
+  async function loadServiceOptions(countryDial) {
+    const container = $('service-options');
+    container.innerHTML = '<div class="service-empty">Chargement des services disponibles…</div>';
+    try {
+      const d = await fetch(`/api/sender/sms/services/${encodeURIComponent(countryDial)}`).then(r => r.json());
+      if (!Array.isArray(d.services) || !d.services.length) {
+        container.innerHTML = '<div class="service-empty">Aucun service SMS disponible pour ce pays.</div>';
+        selectedRouteType = 'auto';
+        selectedRoutePrice = null;
+        $('route-select').value = 'auto';
+        updateConfirm();
+        return;
+      }
+      renderServiceOptions(d.services);
+    } catch (err) {
+      container.innerHTML = '<div class="service-empty">Erreur lors du chargement des services.</div>';
+      selectedRouteType = 'auto';
+      selectedRoutePrice = null;
+      $('route-select').value = 'auto';
+      updateConfirm();
+    }
+  }
+
+  function renderServiceOptions(services) {
+    const container = $('service-options');
+    container.innerHTML = services.map(s => {
+      const selected = s.routeType === selectedRouteType ? ' selected' : '';
+      return `<div class="service-card${selected}" data-route="${esc(s.routeType)}" data-price="${esc(s.price !== null && s.price !== undefined ? s.price : '')}">
+        <div class="service-card-title">${esc(s.display)}</div>
+        <div class="service-card-meta">Prix : ${esc(s.price !== null && s.price !== undefined ? formatPrice(s.price) : 'Prix pays par défaut')}</div>
+        <div class="service-card-meta">Options : ${esc(s.providers)} fournisseur(s) actif(s)</div>
+      </div>`;
+    }).join('');
+    container.querySelectorAll('.service-card').forEach(card => card.onclick = () => selectServiceOption(card.dataset.route));
+    const defaultOption = services.find(s => s.routeType === selectedRouteType) || services[0];
+    if (defaultOption) {
+      selectServiceOption(defaultOption.routeType, false);
+    }
+  }
+
+  function selectServiceOption(routeType, updateCards = true) {
+    selectedRouteType = routeType || 'auto';
+    const card = $('service-options').querySelector(`.service-card[data-route="${selectedRouteType}"]`);
+    selectedRoutePrice = card ? parseFloat(card.dataset.price) || null : null;
+    $('route-select').value = selectedRouteType;
+    if (updateCards) {
+      const cards = $('service-options').querySelectorAll('.service-card');
+      cards.forEach(card => card.classList.toggle('selected', card.dataset.route === selectedRouteType));
+    }
+    updateConfirm();
+    // show sender id input when route requires SID or short code
+    const sidField = $('sender-id-field');
+    if (sidField) {
+      if (selectedRouteType === 'sid' || selectedRouteType === 'shortcode') sidField.style.display = '';
+      else sidField.style.display = 'none';
+    }
+  }
+
+  function updateDialPrice() {
+    const sel = $('default-dial');
+    const opt = sel.options[sel.selectedIndex];
+    costPerSms = parseFloat(opt.dataset.price || 0.50);
+    selectedRoutePrice = null;
+    $('stat-cost').textContent = costPerSms.toFixed(2) + ' €';
+    $('dial-price-badge').textContent = costPerSms.toFixed(2) + '€/SMS';
+    $('cf-unit-price').textContent = costPerSms.toFixed(2) + ' €';
+    $('route-select').value = 'auto';
+    loadServiceOptions(sel.value);
+    updateConfirm();
+  }
+  window.updateDialPrice = updateDialPrice;
+
+  async function init() {
+    const [me, cryptoCfg] = await Promise.all([
+      fetch('/api/auth/me').then(r => r.json()).catch(() => ({})),
+      fetch('/api/payments/crypto/currencies').then(r => r.json()).catch(() => ({})),
+    ]);
+    if (cryptoCfg?.currencyNetworks) CRYPTO_NETWORKS = cryptoCfg.currencyNetworks;
+    if (!me?.id) { location.href = '/login'; return; }
+    user = me;
+    if (me.role === 'admin') $('nav-admin').style.display = '';
+    const bal = (me.balance ?? 0).toFixed(2).replace('.', ',');
+    $('nav-balance').innerHTML = `<i data-lucide="wallet" style="width:12px;height:12px"></i> ${bal} €`;
+    if (!hasAccess(me)) { $('plan-gate').style.display = 'block'; $('app').style.display = 'none'; }
+    else { $('plan-gate').style.display = 'none'; $('app').style.display = 'block'; await loadStats(); await loadTemplates(); await loadHistory(); await checkActive(); updateDialPrice(); }
+    $('loader').classList.add('hidden');
+    document.querySelectorAll('.anim-fade').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 80 + i * 60);
+    });
+    lucide.createIcons();
+  }
+
+  async function loadStats() {
+    const d = await fetch('/api/sender/stats').then(r => r.json()).catch(() => ({}));
+    $('stat-balance').textContent = ((d.balance ?? 0).toFixed(2)).replace('.', ',') + ' €';
+    $('stat-campaigns').textContent = d.campaigns ?? 0;
+    $('stat-sent').textContent = d.sent ?? 0;
+    if (user) user.balance = d.balance;
+  }
+
+  function showBlocks() {
+    $('block-preview').style.display = contacts.length ? 'block' : 'none';
+    $('block-message').style.display = contacts.length ? 'block' : 'none';
+    $('block-confirm').style.display = contacts.length ? 'block' : 'none';
+  }
+
+  function applyParseResult(parsed) {
+    const raw = parsed.contacts || [];
+    contacts = raw.map(c => ({
+      phone: c.phone || c.phoneRaw || '',
+      prenom: c.first || c.first_name || c.prenom || '',
+      nom: c.last || c.last_name || c.nom || '',
+      ville: c.ville || c.city || '',
+      company: c.company || '',
+      email: c.email || '',
+      numero_colis: c.numero_colis || '',
+      date: c.date || '',
+      date_naissance: c.date_naissance || '',
+      adresse: c.adresse || '',
+      code_postal: c.code_postal || '',
+      iban: c.iban || '',
+      bic: c.bic || '',
+    }));
+    const invalid = (parsed.invalid?.length || 0) + (parsed.duplicates?.length || 0);
+    $('imp-total').textContent = (parsed.stats?.total ?? raw.length) || raw.length;
+    $('imp-valid').textContent = contacts.length;
+    $('imp-invalid').textContent = invalid;
+    const estCost = contacts.length * costPerSms;
+    $('imp-cost').textContent = estCost.toFixed(2).replace('.', ',') + ' €';
+    $('preview-tbody').innerHTML = contacts.slice(0, 12).map(c =>
+      `<tr><td>${esc(c.prenom)}</td><td>${esc(c.nom)}</td><td>${esc(c.phone)}</td><td>${esc(c.ville)}</td><td>${esc(c.email)}</td></tr>`
+    ).join('') || '<tr><td colspan="5">Aucun contact valide</td></tr>';
+    showBlocks();
+    updateConfirm();
+    toast(contacts.length ? `${contacts.length} contacts valides — ${estCost.toFixed(2)}€ estimé` : 'Aucun numéro valide', !contacts.length);
+  }
+
+  async function validateImport(payload) {
+    const token = await getCsrf();
+    const r = await fetch('/api/sender/validate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token },
+      body: JSON.stringify({ ...payload, defaultDial: $('default-dial').value }),
+    });
+    const d = await r.json();
+    if (!r.ok) { toast(d.error || 'Erreur validation', true); return; }
+    applyParseResult(d);
+  }
+
+  async function importManual() {
+    const text = $('manual-input').value.trim();
+    if (!text) { toast('Collez des numéros ou importez un fichier', true); return; }
+    await validateImport({ text });
+  }
+
+  async function importFile(file) {
+    if (file.name.endsWith('.xlsx')) {
+      const buf = await file.arrayBuffer();
+      const wb = XLSX.read(buf, { type: 'array' });
+      const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1 });
+      if (!rows.length) { toast('Fichier vide', true); return; }
+      const h = rows[0].map(String);
+      const data = rows.slice(1).map(r => { const o = {}; h.forEach((hi, i) => { o[String(hi).toLowerCase()] = r[i]; }); return o; });
+      await validateImport({ contacts: data });
+      return;
+    }
+    const text = await file.text();
+    const token = await getCsrf();
+    const r = await fetch('/api/sender/sms/upload', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token },
+      body: JSON.stringify({ filename: file.name, content: text, defaultDial: $('default-dial').value }),
+    });
+    const d = await r.json();
+    if (!r.ok) { toast(d.error || 'Erreur import', true); return; }
+    applyParseResult(d);
+  }
+
+  function syncVarBtns() {
+    const msg = $('message-input').value;
+    document.querySelectorAll('.var-btn').forEach(b => { b.classList.toggle('active', msg.includes(b.dataset.var)); });
+  }
+
+  function toggleVar(btn) {
+    const v = btn.dataset.var;
+    const ta = $('message-input');
+    if (ta.value.includes(v)) { ta.value = ta.value.split(v).join('').replace(/\s+/g, ' ').trim(); }
+    else { ta.value += (ta.value ? ' ' : '') + v; }
+    syncVarBtns(); updatePreview();
+  }
+
+  async function updatePreview() {
+    const msg = $('message-input').value;
+    const n = msg.length;
+    const cc = $('char-count');
+    cc.textContent = n + ' / 160';
+    cc.className = 'char-count' + (n > 160 ? ' err' : n > 140 ? ' warn' : '');
+    if (!msg || !contacts[0]) { $('preview-text').textContent = msg || '—'; updateConfirm(); return; }
+    const token = await getCsrf();
+    const r = await fetch('/api/sender/preview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token },
+      body: JSON.stringify({ message: msg, contact: contacts[0] }),
+    });
+    const d = await r.json();
+    const text = d.previews?.[0] || msg;
+    $('preview-text').innerHTML = text.split(/(\{[^}]+\})/g).map(p => /^\{/.test(p) ? '<span class="hl">' + esc(p) + '</span>' : esc(p)).join('');
+    syncVarBtns(); updateConfirm();
+  }
+
+  function updateConfirm() {
+    const name = $('campaign-name').value.trim() || 'Campagne sans nom';
+    const n = contacts.length;
+    const unitPrice = selectedRoutePrice !== null && !Number.isNaN(selectedRoutePrice) ? selectedRoutePrice : costPerSms;
+    const cost = n * unitPrice;
+    const after = (user?.balance ?? 0) - cost;
+    $('cf-name').textContent = name;
+    $('cf-total').textContent = n;
+    $('cf-unit-price').textContent = unitPrice.toFixed(2) + ' €';
+    $('cf-cost').textContent = cost.toFixed(2).replace('.', ',') + ' €';
+    $('cf-balance').textContent = after.toFixed(2).replace('.', ',') + ' €';
+    $('cf-balance').style.color = after < 0 ? 'var(--red)' : 'var(--green)';
+    $('btn-send').disabled = !n || !$('message-input').value.trim() || after < 0 || !name;
+  }
+
+  async function sendCampaign() {
+    const name = $('campaign-name').value.trim();
+    const message = $('message-input').value.trim();
+    if (!name || !message || !contacts.length) return;
+    const unitPrice = selectedRoutePrice !== null && !Number.isNaN(selectedRoutePrice) ? selectedRoutePrice : costPerSms;
+    const totalCost = contacts.length * unitPrice;
+    $('btn-send').disabled = true;
+    try {
+      const token = await getCsrf();
+      const r = await fetch('/api/sender/campaigns', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token },
+        body: JSON.stringify({
+          name,
+          message,
+          contacts,
+          defaultDial: $('default-dial').value,
+          speed: parseInt($('campaign-speed').value, 10) || 20,
+          senderId: $('sender-id-input') ? $('sender-id-input').value.trim() : '',
+          providerType: 'auto',
+          routeType: selectedRouteType || 'auto',
+          costPerSms: unitPrice,
+        }),
+      });
+      const d = await r.json();
+      if (!r.ok) { toast(d.error || 'Erreur création', true); return; }
+      const rs = await fetch(`/api/sender/campaigns/${d.campaign.id}/start`, { method: 'POST', headers: { 'X-CSRF-Token': token } });
+      const sd = await rs.json();
+      if (!rs.ok) { toast(sd.error || 'Démarrage échoué', true); return; }
+      toast('Campagne lancée avec succès !');
+      user.balance = (user.balance ?? 0) - totalCost;
+      showPanel(d.campaign.id, name);
+      loadStats(); loadHistory();
+    } catch (e) { toast('Erreur réseau', true); }
+    finally { $('btn-send').disabled = false; updateConfirm(); }
+  }
+
+  function showPanel(id, name) { activeId = id; $('control-panel').classList.add('show'); $('ctrl-name').textContent = name || id; if (pollIv) clearInterval(pollIv); pollIv = setInterval(pollStatus, 2500); pollStatus(); }
+  function hidePanel() { activeId = null; $('control-panel').classList.remove('show'); if (pollIv) clearInterval(pollIv); pollIv = null; }
+
+  async function pollStatus() {
+    if (!activeId) return;
+    const r = await fetch(`/api/sender/sms/status/${activeId}`); const c = await r.json();
+    if (!r.ok) return;
+    const total = (c.sent || 0) + (c.failed || 0) + (c.pending || 0);
+    const pct = total ? Math.round(((c.sent || 0) / total) * 100) : 0;
+    $('progress-bar').style.width = pct + '%';
+    $('ctrl-sent').textContent = c.sent || 0; $('ctrl-failed').textContent = c.failed || 0; $('ctrl-left').textContent = c.pending || 0;
+    const paused = c.status === 'paused';
+    $('btn-pause').style.display = paused ? 'none' : 'inline-flex'; $('btn-resume').style.display = paused ? 'inline-flex' : 'none';
+    if (['completed', 'done', 'stopped', 'failed'].includes(c.status)) { hidePanel(); loadHistory(); loadStats(); }
+  }
+
+  async function checkActive() {
+    const list = await fetch('/api/sender/sms/list').then(r => r.json()).catch(() => ({ campaigns: [] }));
+    const run = (list.campaigns || []).find(c => c.status === 'running' || c.status === 'paused');
+    if (run) showPanel(run.id, run.name);
+  }
+
+  async function loadTemplates() {
+    const d = await fetch('/api/sender/sms/templates').then(r => r.json());
+    templates = d.templates || []; const el = $('templates-list');
+    if (!templates.length) { el.innerHTML = '<p style="color:var(--muted-2);font-size:13px">Aucun template. Créez-en un !</p>'; return; }
+    el.innerHTML = templates.map(t => `<div class="tpl-item"><h4>${esc(t.name)}</h4><p>${esc(t.content)}</p>
+      <button type="button" class="btn btn-ghost btn-sm" data-use-tpl="${esc(t.id)}">Utiliser</button>
+      <button type="button" class="btn btn-ghost btn-sm" data-edit-tpl="${esc(t.id)}">Modifier</button>
+      <button type="button" class="btn btn-danger btn-sm" data-del-tpl="${esc(t.id)}">Supprimer</button></div>`).join('');
+    el.querySelectorAll('[data-use-tpl]').forEach(b => b.onclick = () => useTpl(b.dataset.useTpl));
+    el.querySelectorAll('[data-edit-tpl]').forEach(b => b.onclick = () => editTpl(b.dataset.editTpl));
+    el.querySelectorAll('[data-del-tpl]').forEach(b => b.onclick = () => delTpl(b.dataset.delTpl));
+  }
+  function useTpl(id) { const t = templates.find(x => x.id === id); if (!t) return; $('message-input').value = t.content; document.querySelector('[data-tab="create"]').click(); syncVarBtns(); updatePreview(); toast('Template appliqué'); }
+  function editTpl(id) { const t = templates.find(x => x.id === id); if (t) openTplModal('Modifier template', t.id, t.name, t.content); }
+  function openTplModal(title, id, name, content) { $('tpl-modal-title').textContent = title; $('tpl-edit-id').value = id || ''; $('tpl-name').value = name || ''; $('tpl-content').value = content || ''; $('modal-tpl').classList.add('open'); }
+  async function saveTpl() { const name = $('tpl-name').value.trim(), content = $('tpl-content').value.trim(), id = $('tpl-edit-id').value; if (!name || !content) { toast('Nom et message requis', true); return; } const token = await getCsrf(); const r = await fetch(id ? `/api/sender/sms/templates/${id}` : '/api/sender/sms/templates', { method: id ? 'PUT' : 'POST', headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token }, body: JSON.stringify({ name, content }) }); if (!r.ok) { toast('Erreur enregistrement', true); return; } $('modal-tpl').classList.remove('open'); loadTemplates(); toast('Template enregistré'); }
+  async function delTpl(id) { if (!confirm('Supprimer ce template ?')) return; const token = await getCsrf(); await fetch(`/api/sender/sms/templates/${id}`, { method: 'DELETE', headers: { 'X-CSRF-Token': token } }); loadTemplates(); toast('Template supprimé'); }
+  async function loadHistory() { const d = await fetch('/api/sender/sms/list').then(r => r.json()); campaignsCache = d.campaigns || []; renderHistory(); }
+
+  function renderHistory() {
+    const filter = $('filter-status').value;
+    const rows = campaignsCache.filter(c => !filter || c.status === filter);
+    const tb = $('history-tbody');
+    if (!rows.length) { tb.innerHTML = '<tr><td colspan="8" class="empty-state">Aucune campagne</td></tr>'; return; }
+    tb.innerHTML = rows.map(c => { const st = c.status || 'pending'; const cost = ((c.total || 0) * costPerSms).toFixed(2); return `<tr>
+      <td style="font-weight:600">${esc(c.name)}</td>
+      <td style="color:var(--muted-2);font-size:12px">${c.created ? new Date(c.created).toLocaleString('fr-FR') : '—'}</td>
+      <td>${c.total ?? 0}</td>
+      <td style="color:var(--green)">${c.sent ?? 0}</td>
+      <td style="color:var(--red)">${c.failed ?? 0}</td>
+      <td style="color:var(--teal);font-weight:600">${cost.replace('.', ',')} €</td>
+      <td><span class="badge badge-${st}">${STATUS[st] || st}</span></td>
+      <td style="white-space:nowrap">
+        <button type="button" class="btn btn-ghost btn-sm" data-logs="${c.id}">Logs</button>
+        ${st === 'running' ? `<button type="button" class="btn btn-ghost btn-sm" data-pause="${c.id}">Pause</button>` : ''}
+        ${st === 'paused' ? `<button type="button" class="btn btn-ghost btn-sm" data-resume="${c.id}">Reprendre</button>` : ''}
+        ${['running','paused','pending'].includes(st) ? `<button type="button" class="btn btn-danger btn-sm" data-stop="${c.id}">Stop</button>` : ''}
+      </td>
+    </tr>`; }).join('');
+    tb.querySelectorAll('[data-logs]').forEach(b => b.onclick = () => openLogs(b.dataset.logs));
+    tb.querySelectorAll('[data-pause]').forEach(b => b.onclick = () => campAction(b.dataset.pause, 'pause'));
+    tb.querySelectorAll('[data-resume]').forEach(b => b.onclick = () => campAction(b.dataset.resume, 'resume'));
+    tb.querySelectorAll('[data-stop]').forEach(b => b.onclick = () => campAction(b.dataset.stop, 'stop'));
+  }
+
+  async function campAction(id, action) {
+    if (action === 'stop' && !confirm('Arrêter cette campagne ?')) return;
+    const token = await getCsrf();
+    if (action === 'stop') { await fetch(`/api/sender/campaigns/${id}/stop`, { method: 'DELETE', headers: { 'X-CSRF-Token': token } }); if (activeId === id) hidePanel(); }
+    else { await fetch(`/api/sender/campaigns/${id}/${action}`, { method: 'POST', headers: { 'X-CSRF-Token': token } }); if (activeId === id) pollStatus(); else { const c = campaignsCache.find(x => x.id === id); if (c) showPanel(id, c.name); } }
+    loadHistory(); toast(action === 'stop' ? 'Campagne arrêtée' : 'OK');
+  }
+
+  async function openLogs(id) {
+    logsId = id; const d = await fetch(`/api/sender/campaigns/${id}/logs`).then(r => r.json());
+    $('logs-title').textContent = 'Logs — ' + id.slice(0, 8); const logs = d.logs || [];
+    $('logs-tbody').innerHTML = logs.length ? logs.slice(0, 300).map(l => `<tr><td style="font-size:12px;color:var(--muted-2)">${l.createdAt ? new Date(l.createdAt).toLocaleString('fr-FR') : '—'}</td><td>${esc(l.phone)}</td><td>${esc(l.status)}</td><td style="font-size:12px;color:var(--muted-2)">${esc(l.error)}</td></tr>`).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--muted-2)">Aucun log</td></tr>';
+    $('modal-logs').classList.add('open');
+  }
+
+  function exportHistoryCsv() { const h = 'nom,date,total,envoyes,echecs,statut\n'; const l = campaignsCache.map(c => [c.name, c.created, c.total, c.sent, c.failed, c.status].map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(',')); downloadCsv('campagnes-sms.csv', h + l.join('\n')); }
+  function downloadCsv(name, content) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([content], { type: 'text/csv;charset=utf-8' })); a.download = name; a.click(); }
+
+  // Paiement crypto avec QR code
+  async function generatePayment() {
+    const amount = parseFloat($('recharge-custom-amount').value) || 50;
+    const currency = $('recharge-currency').value;
+    const network = $('recharge-network')?.value || '';
+    if (amount < 1) { toast('Montant minimum 1€', true); return; }
+    $('recharge-init').style.display = 'none';
+    $('recharge-qr-box').style.display = 'block';
+    $('qrcode-container').innerHTML = '<div style="padding:30px;color:#333"><i data-lucide="loader" style="width:24px;height:24px;animation:spin 1s linear infinite;color:var(--violet)"></i><p style="margin-top:10px;font-size:13px">Génération du paiement...</p></div>';
+    try {
+      const token = await getCsrf();
+      const r = await fetch('/api/payments/crypto/create', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token },
+        body: JSON.stringify({ amount, currency, network }),
+      });
+      const d = await r.json();
+      if (!r.ok) { toast(d.error || 'Erreur paiement', true); $('recharge-init').style.display = 'block'; $('recharge-qr-box').style.display = 'none'; return; }
+      const p = d.payment;
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(p.cryptoAddress || '')}`;
+      $('qrcode-container').innerHTML = `
+        <div style="font-weight:700;font-size:14px;color:#333">📱 Scannez pour payer</div>
+        <img src="${qrUrl}" alt="QR Code de paiement">
+        <div class="addr">${esc(p.cryptoAddress || 'Adresse en attente...')}</div>
+        <div style="font-size:12px;color:#666">Montant exact à envoyer : <strong style="color:var(--violet)">${p.cryptoAmount || '—'} ${currency.toUpperCase()}</strong></div>
+      `;
+      const paymentInfo = document.getElementById('payment-info');
+      if (paymentInfo) paymentInfo.style.display = 'block';
+      const addressEl = document.getElementById('crypto-pay-address');
+      if (addressEl) {
+        addressEl.textContent = p.cryptoAddress || 'Adresse en attente...';
+        addressEl.dataset.address = p.cryptoAddress || '';
+      }
+      const copyBtn = document.getElementById('btn-copy-address');
+      if (copyBtn) {
+        copyBtn.onclick = function() {
+          const addr = document.getElementById('crypto-pay-address')?.dataset.address || '';
+          if (!addr) return;
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(addr).then(() => {
+              copyBtn.innerHTML = '<i data-lucide="check" style="width:13px;height:13px"></i> Copié !';
+              setTimeout(() => { copyBtn.innerHTML = '<i data-lucide="copy" style="width:13px;height:13px"></i> Copier'; }, 2000);
+              lucide.createIcons();
+            });
+          }
+        };
+      }
+      lucide.createIcons();
+      $('payment-status').style.display = 'block';
+      $('payment-status').innerHTML = '<i data-lucide="loader" style="width:14px;height:14px;animation:spin 1s linear infinite;vertical-align:-2px"></i> En attente de confirmation blockchain...';
+      lucide.createIcons();
+      if (paymentPollIv) clearInterval(paymentPollIv);
+      paymentPollIv = setInterval(async () => {
+        try {
+          const s = await fetch(`/api/payments/crypto/status/${p.id}`).then(r => r.json());
+          if (s.confirmed) {
+            clearInterval(paymentPollIv); paymentPollIv = null;
+            $('payment-status').innerHTML = '<span style="color:var(--green);font-weight:600">✓ Paiement confirmé ! Solde mis à jour.</span>';
+            toast('Paiement confirmé !');
+            loadStats();
+            setTimeout(() => { $('modal-recharge').classList.remove('open'); location.reload(); }, 2000);
+          }
+        } catch (e) {}
+      }, 3000);
+    } catch (e) { toast('Erreur réseau', true); $('recharge-init').style.display = 'block'; $('recharge-qr-box').style.display = 'none'; }
+  }
+
+  // Logout
+  async function logout() { await fetch('/api/auth/logout', { method: 'POST' }); location.href = '/login'; }
+
+  // ── Event listeners ──
+  $('btn-import')?.addEventListener('click', importManual);
+  $('upload-zone')?.addEventListener('click', () => $('file-input')?.click());
+  $('file-input')?.addEventListener('change', e => { if (e.target.files[0]) importFile(e.target.files[0]); });
+  $('upload-zone')?.addEventListener('dragover', e => { e.preventDefault(); $('upload-zone')?.classList.add('dragover'); });
+  $('upload-zone')?.addEventListener('dragleave', () => $('upload-zone')?.classList.remove('dragover'));
+  $('upload-zone')?.addEventListener('drop', e => { e.preventDefault(); $('upload-zone')?.classList.remove('dragover'); if (e.dataTransfer.files[0]) importFile(e.dataTransfer.files[0]); });
+  document.querySelectorAll('.var-btn').forEach(b => b.onclick = () => toggleVar(b));
+  $('message-input')?.addEventListener('input', updatePreview);
+  $('campaign-name')?.addEventListener('input', updateConfirm);
+  $('btn-send')?.addEventListener('click', sendCampaign);
+  $('btn-pause')?.addEventListener('click', () => activeId && campAction(activeId, 'pause'));
+  $('btn-resume')?.addEventListener('click', () => activeId && campAction(activeId, 'resume'));
+  $('btn-stop')?.addEventListener('click', () => activeId && campAction(activeId, 'stop'));
+  $('btn-new-tpl')?.addEventListener('click', () => openTplModal('Nouveau template'));
+  $('btn-save-tpl')?.addEventListener('click', saveTpl);
+  $('filter-status')?.addEventListener('change', renderHistory);
+  $('btn-export-history')?.addEventListener('click', exportHistoryCsv);
+  $('btn-export-logs')?.addEventListener('click', () => { if (logsId) window.open(`/api/sender/campaigns/${logsId}/logs?format=csv`, '_blank'); });
+  document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => $(b.dataset.close)?.classList.remove('open'));
+  document.querySelectorAll('[data-amt]').forEach(b => b.onclick = () => { $('recharge-custom-amount').value = b.dataset.amt; $('recharge-label').textContent = '+' + b.dataset.amt + ' €'; $('recharge-qr-box').style.display = 'none'; $('recharge-init').style.display = 'block'; $('modal-recharge').classList.add('open'); renderNetworkOptions($('recharge-currency').value); });
+  $('btn-recharge')?.addEventListener('click', () => { $('recharge-custom-amount').value = 50; $('recharge-currency').value = 'btc'; renderNetworkOptions('btc'); $('recharge-label').textContent = '+50 €'; $('recharge-qr-box').style.display = 'none'; $('recharge-init').style.display = 'block'; $('modal-recharge').classList.add('open'); });
+  $('recharge-currency')?.addEventListener('change', () => renderNetworkOptions($('recharge-currency').value));
+  $('btn-go-recharge')?.addEventListener('click', generatePayment);
+  document.querySelectorAll('.tab-btn').forEach(btn => { btn.onclick = () => { document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active')); btn.classList.add('active'); $('tab-' + btn.dataset.tab)?.classList.add('active'); }; });
+  $('btn-logout')?.addEventListener('click', logout);
+  document.querySelectorAll('.modal-bg').forEach(bg => { bg.addEventListener('click', e => { if (e.target === bg) bg.classList.remove('open'); }); });
+
+  // Mobile nav
+  (function () {
+    const ham = document.getElementById('nav-hamburger'), navL = document.querySelector('.nav-links');
+    if (!ham) return;
+    ham.addEventListener('click', () => { const op = navL.classList.toggle('mob-open'); ham.setAttribute('aria-expanded', op); ham.innerHTML = op ? '<i data-lucide="x" style="width:18px;height:18px"></i>' : '<i data-lucide="menu" style="width:18px;height:18px"></i>'; lucide.createIcons(); });
+    document.querySelectorAll('.nav-links .nav-link').forEach(a => a.addEventListener('click', () => { navL.classList.remove('mob-open'); ham.setAttribute('aria-expanded', 'false'); ham.innerHTML = '<i data-lucide="menu" style="width:18px;height:18px"></i>'; lucide.createIcons(); }));
+  })();
+
+  init();
+})();
+// Balance click opens recharge modal or redirects to /compte
+(function(){
+  const nb = document.getElementById('nav-balance');
+  if (!nb) return;
+  nb.style.cursor = 'pointer';
+  nb.addEventListener('click', () => {
+    try {
+      if (typeof openRecharge === 'function') return openRecharge();
+      const mr = document.getElementById('modal-recharge');
+      if (mr) {
+        if (typeof renderNetworkOptions === 'function') renderNetworkOptions('btc');
+        mr.classList.add('open');
+        return;
+      }
+      location.href = '/compte';
+    } catch (e) { location.href = '/compte'; }
+  });
+})();
+</script>
+<footer style="padding:16px 24px;display:flex;justify-content:center;gap:28px;font-size:13px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;border-top:1px solid var(--border);flex-wrap:wrap;">
+  <span>📧 <a href="mailto:dontplayaio@protonmail.com" style="color:var(--violet);text-decoration:none;">dontplayaio@protonmail.com</a></span>
+  <span>💬 <a href="https://t.me/DontPlaySupport" target="_blank" style="color:var(--violet);text-decoration:none;">Support Telegram</a></span>
+  <span>📢 <a href="https://t.me/+BGMAPKKaeBRlOGQ0" target="_blank" style="color:var(--violet);text-decoration:none;">Canal Telegram</a></span>
+</footer>
+</body>
+</html>

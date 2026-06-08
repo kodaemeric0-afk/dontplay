@@ -1,0 +1,10 @@
+{
+    "status": "success",
+    "countryCode": "ES",
+    "isp": "Vodafone Espana S.A.U.",
+    "as": "AS12430 VODAFONE ESPANA S.A.U.",
+    "mobile": true,
+    "proxy": false,
+    "hosting": false,
+    "query": "81.60.43.244"
+}

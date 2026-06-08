@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dontplay — Connexion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#06060e; --surface:rgba(255,255,255,0.04); --surface-h:rgba(255,255,255,0.07);
+      --border:rgba(255,255,255,0.08); --border-h:rgba(255,255,255,0.15);
+      --text:#f0f2f8; --muted:#52556b; --muted-2:#8b8fa8;
+      --violet:#8b5cf6; --violet-d:#6d28d9; --violet-dim:rgba(139,92,246,0.12);
+      --green:#4ade80; --green-dim:rgba(74,222,128,0.1);
+      --red:#fb7185; --red-dim:rgba(251,113,133,0.1);
+      --amber:#fbbf24;
+      --r:16px; --r-sm:10px;
+    }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* Dot grid */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none; z-index: 0;
+    }
+    /* Ambient light */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(139,92,246,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 110%, rgba(45,212,191,0.09) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(167,139,250,0.05) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Orbs décoratifs */
+    .orb {
+      position: fixed; border-radius: 50%;
+      filter: blur(80px); pointer-events: none; z-index: 0; opacity: .45;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+    .orb-1 { width:420px; height:420px; background:rgba(139,92,246,.25); top:-120px; left:-80px; animation-delay: 0s; }
+    .orb-2 { width:300px; height:300px; background:rgba(45,212,191,.12); bottom:-100px; right:-60px; animation-delay:-5s; }
+    @keyframes drift { from{transform:translate(0,0) scale(1)} to{transform:translate(30px,20px) scale(1.05)} }
+
+    /* Card wrapper */
+    .card-wrap {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 440px;
+      padding: 16px;
+    }
+
+    .card {
+      background: rgba(13,13,28,0.85);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 36px 36px 32px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 32px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,0.04) inset;
+      animation: slideUp .5s cubic-bezier(.22,1,.36,1);
+    }
+    @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+    /* Shimmer top */
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 30px; right: 30px; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139,92,246,0.5), transparent);
+      border-radius: 99px;
+    }
+
+    /* Logo */
+    .logo-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 10px; margin-bottom: 28px;
+    }
+    .logo-mark {
+      width: 52px; height: 52px; border-radius: 16px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 800; color: #fff;
+      box-shadow: 0 0 40px rgba(139,92,246,0.5), 0 8px 24px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .logo-mark::after {
+      content: '';
+      position: absolute; inset: -1px; border-radius: 17px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+      pointer-events: none;
+    }
+    .logo-name { font-size: 19px; font-weight: 800; color: var(--text); letter-spacing: -.02em; }
+    .logo-sub  { font-size: 12px; color: var(--muted); margin-top: -4px; }
+
+    /* Tabs */
+    .auth-tabs {
+      display: flex; gap: 4px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 4px;
+      margin-bottom: 26px;
+    }
+    .auth-tab {
+      flex: 1; padding: 8px; border-radius: 7px;
+      font-size: 13px; font-weight: 600; text-align: center;
+      cursor: pointer; border: none; font-family: inherit;
+      color: var(--muted-2); background: transparent;
+      transition: all .2s;
+    }
+    .auth-tab:hover { color: var(--text); }
+    .auth-tab.active {
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(139,92,246,.35);
+    }
+
+    /* Form */
+    .form { display: flex; flex-direction: column; gap: 14px; }
+    .form-pane { display: none; }
+    .form-pane.show { display: contents; }
+
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field-label {
+      font-size: 12px; font-weight: 600; color: var(--muted-2);
+      display: flex; align-items: center; gap: 4px;
+    }
+    .field-label .req { color: var(--red); font-size: 13px; }
+
+    .input-wrap { position: relative; }
+    .input-icon {
+      position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+      color: var(--muted); pointer-events: none;
+      display: flex; align-items: center;
+    }
+    .input-toggle {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      color: var(--muted); cursor: pointer; background: none; border: none;
+      display: flex; align-items: center; transition: color .15s; padding: 0;
+    }
+    .input-toggle:hover { color: var(--muted-2); }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%; padding: 10px 40px 10px 38px;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid var(--border); border-radius: var(--r-sm);
+      color: var(--text); font-size: 13.5px; font-family: inherit;
+      outline: none; transition: border-color .18s, box-shadow .18s;
+    }
+    input[type="text"]::placeholder,
+    input[type="email"]::placeholder,
+    input[type="password"]::placeholder { color: var(--muted); }
+    input:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(139,92,246,0.14); }
+    input.error { border-color: var(--red) !important; box-shadow: 0 0 0 3px rgba(251,113,133,0.12) !important; }
+    input.ok    { border-color: rgba(74,222,128,.5); }
+    input:not([type="password"]) { padding-right: 13px; }
+
+    /* Password strength */
+    .pwd-strength { display: none; margin-top: 6px; }
+    .pwd-strength.show { display: block; }
+    .pwd-bars { display: flex; gap: 4px; margin-bottom: 4px; }
+    .pwd-bar {
+      flex: 1; height: 3px; border-radius: 99px;
+      background: rgba(255,255,255,0.07);
+      transition: background .25s;
+    }
+    .pwd-bar.weak   { background: var(--red); }
+    .pwd-bar.medium { background: var(--amber); }
+    .pwd-bar.strong { background: var(--green); }
+    .pwd-label { font-size: 11px; color: var(--muted); }
+    .pwd-label.weak   { color: var(--red); }
+    .pwd-label.medium { color: var(--amber); }
+    .pwd-label.strong { color: var(--green); }
+
+    /* Alert */
+    .alert {
+      display: none; align-items: flex-start; gap: 10px;
+      padding: 11px 14px; border-radius: var(--r-sm);
+      font-size: 12.5px; font-weight: 500; line-height: 1.5;
+    }
+    .alert.show { display: flex; }
+    .alert.error { background: var(--red-dim); border: 1px solid rgba(251,113,133,.25); color: var(--red); }
+    .alert.success { background: var(--green-dim); border: 1px solid rgba(74,222,128,.25); color: var(--green); }
+
+    /* Submit button */
+    .btn-submit {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 11px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      color: #fff; font-size: 14px; font-weight: 700; font-family: inherit;
+      border: none; border-radius: var(--r-sm); cursor: pointer;
+      box-shadow: 0 6px 24px rgba(139,92,246,.35);
+      transition: transform .18s, box-shadow .18s, opacity .18s;
+      margin-top: 4px;
+    }
+    .btn-submit:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(139,92,246,.45); }
+    .btn-submit:active:not(:disabled) { transform: translateY(0); }
+    .btn-submit:disabled { opacity: .55; cursor: not-allowed; }
+    .btn-submit .spinner { animation: spin 0.8s linear infinite; display: none; }
+    .btn-submit.loading .spinner { display: block; }
+    .btn-submit.loading .btn-label { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Requirements list */
+    .pwd-reqs { display: none; flex-direction: column; gap: 4px; margin-top: 6px; }
+    .pwd-reqs.show { display: flex; }
+    .req-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--muted); transition: color .2s; }
+    .req-item.met { color: var(--green); }
+    .req-item i { flex-shrink: 0; }
+
+    /* Footer */
+    .card-footer { margin-top: 20px; text-align: center; font-size: 12px; color: var(--muted); }
+
+    @media (max-width: 480px) {
+      .card-wrap { padding: 12px; }
+      .card { padding: 28px 24px 24px; border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="card-wrap">
+  <div class="card">
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <div class="logo-mark">D</div>
+      <div class="logo-name">Dontplay</div>
+      <div class="logo-sub">La référence du spamming français</div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab active" id="tab-login"    onclick="switchTab('login')"    role="tab">Connexion</button>
+      <button class="auth-tab"        id="tab-register" onclick="switchTab('register')" role="tab">Inscription</button>
+    </div>
+
+    <!-- Alert -->
+    <div class="alert" id="alert" role="alert">
+      <i data-lucide="alert-circle" style="width:15px;height:15px;flex-shrink:0;margin-top:1px"></i>
+      <span id="alert-text"></span>
+    </div>
+
+    <!-- Form -->
+    <div class="form">
+
+      <!-- ── LOGIN ── -->
+      <div class="form-pane show" id="pane-login">
+
+        <div class="field">
+          <label class="field-label" for="login-username">Nom d'utilisateur</label>
+          <div class="input-wrap">
+            <span class="input-icon"><i data-lucide="user" style="width:15px;height:15px"></i></span>
+            <input type="text" id="login-username" placeholder="Votre identifiant" autocomplete="username" maxlength="20" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="login-password">Mot de passe</label>
+          <div class="input-wrap">
+            <span class="input-icon"><i data-lucide="lock" style="width:15px;height:15px"></i></span>
+            <input type="password" id="login-password" placeholder="••••••••••" autocomplete="current-password" />
+            <button class="input-toggle" type="button" onclick="togglePwd('login-password',this)" tabindex="-1" aria-label="Afficher le mot de passe">
+              <i data-lucide="eye" style="width:15px;height:15px"></i>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-submit" id="btn-login" onclick="submitLogin()">
+          <span class="btn-label">Se connecter</span>
+          <svg class="spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </button>
+
+      </div>
+
+      <!-- ── REGISTER ── -->
+      <div class="form-pane" id="pane-register">
+
+        <div class="field">
+          <label class="field-label" for="reg-username">Nom d'utilisateur <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon"><i data-lucide="user" style="width:15px;height:15px"></i></span>
+            <input type="text" id="reg-username" placeholder="3-20 caractères" autocomplete="username" maxlength="20" oninput="validateRegField('reg-username')" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="reg-password">Mot de passe <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon"><i data-lucide="lock" style="width:15px;height:15px"></i></span>
+            <input type="password" id="reg-password" placeholder="••••••••••" autocomplete="new-password" oninput="onPwdInput()" />
+            <button class="input-toggle" type="button" onclick="togglePwd('reg-password',this)" tabindex="-1">
+              <i data-lucide="eye" style="width:15px;height:15px"></i>
+            </button>
+          </div>
+          <!-- Barre de force -->
+          <div class="pwd-strength" id="pwd-strength">
+            <div class="pwd-bars">
+              <div class="pwd-bar" id="bar-1"></div>
+              <div class="pwd-bar" id="bar-2"></div>
+              <div class="pwd-bar" id="bar-3"></div>
+              <div class="pwd-bar" id="bar-4"></div>
+            </div>
+            <div class="pwd-label" id="pwd-label">—</div>
+          </div>
+          <!-- Requirements -->
+          <div class="pwd-reqs" id="pwd-reqs">
+            <div class="req-item" id="req-len"><i data-lucide="circle" style="width:11px;height:11px"></i>Au moins 12 caractères</div>
+            <div class="req-item" id="req-upper"><i data-lucide="circle" style="width:11px;height:11px"></i>Une majuscule (A-Z)</div>
+            <div class="req-item" id="req-num"><i data-lucide="circle" style="width:11px;height:11px"></i>Un chiffre (0-9)</div>
+            <div class="req-item" id="req-special"><i data-lucide="circle" style="width:11px;height:11px"></i>Un caractère spécial (!@#$…)</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="reg-confirm">Confirmer le mot de passe <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon"><i data-lucide="lock-keyhole" style="width:15px;height:15px"></i></span>
+            <input type="password" id="reg-confirm" placeholder="••••••••••" autocomplete="new-password" oninput="validateConfirm()" />
+            <button class="input-toggle" type="button" onclick="togglePwd('reg-confirm',this)" tabindex="-1">
+              <i data-lucide="eye" style="width:15px;height:15px"></i>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-submit" id="btn-register" onclick="submitRegister()">
+          <span class="btn-label">Créer un compte</span>
+          <svg class="spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </button>
+
+      </div>
+
+    </div><!-- /form -->
+
+    <div class="card-footer">
+      Dontplay &copy; 2026 — Accès réservé aux membres
+    </div>
+
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  let csrfToken = null;
+  let activeTab = 'login';
+
+  /* ── CSRF ───────────────────────────────────────────────────── */
+  async function fetchCsrf() {
+    try {
+      const r = await fetch('/api/auth/csrf', { credentials: 'include' });
+      const d = await r.json();
+      csrfToken = d.csrfToken;
+    } catch {
+      showAlert('Impossible de contacter le serveur. Vérifiez que node server.js est démarré.', 'error');
+    }
+  }
+  fetchCsrf();
+
+  /* ── Tabs ───────────────────────────────────────────────────── */
+  function switchTab(tab) {
+    activeTab = tab;
+    document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+    document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+    document.getElementById('pane-login').classList.toggle('show', tab === 'login');
+    document.getElementById('pane-register').classList.toggle('show', tab === 'register');
+    hideAlert();
+    if (tab === 'login') document.getElementById('login-username').focus();
+    else document.getElementById('reg-username').focus();
+  }
+
+  /* ── Alert ──────────────────────────────────────────────────── */
+  function showAlert(msg, type = 'error') {
+    const el = document.getElementById('alert');
+    el.className = 'alert show ' + type;
+    document.getElementById('alert-text').textContent = msg;
+    lucide.createIcons();
+  }
+  function hideAlert() {
+    document.getElementById('alert').classList.remove('show');
+  }
+
+  function getApiError(data, fallback = 'Erreur serveur.') {
+    if (!data) return fallback;
+    if (data.details && Array.isArray(data.details) && data.details.length) {
+      return data.details.map(e => e.msg).join(' ');
+    }
+    return data.error || fallback;
+  }
+
+  /* ── Show/hide password ─────────────────────────────────────── */
+  function togglePwd(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const isText = input.type === 'text';
+    input.type = isText ? 'password' : 'text';
+    btn.innerHTML = isText
+      ? '<i data-lucide="eye" style="width:15px;height:15px"></i>'
+      : '<i data-lucide="eye-off" style="width:15px;height:15px"></i>';
+    lucide.createIcons();
+  }
+
+  /* ── Password strength ──────────────────────────────────────── */
+  function onPwdInput() {
+    const val = document.getElementById('reg-password').value;
+    document.getElementById('pwd-strength').classList.toggle('show', val.length > 0);
+    document.getElementById('pwd-reqs').classList.toggle('show', val.length > 0);
+
+    const checks = {
+      len:     val.length >= 12,
+      upper:   /[A-Z]/.test(val),
+      num:     /[0-9]/.test(val),
+      special: /[!@#$%^&*()\-_=+\[\]{};:'",.<>/?`~\\|]/.test(val),
+    };
+
+    // Requirement items
+    setReq('req-len',     checks.len);
+    setReq('req-upper',   checks.upper);
+    setReq('req-num',     checks.num);
+    setReq('req-special', checks.special);
+
+    // Score
+    const score = Object.values(checks).filter(Boolean).length;
+    const bars  = ['bar-1','bar-2','bar-3','bar-4'];
+    const lbl   = document.getElementById('pwd-label');
+    bars.forEach((id, i) => {
+      const bar = document.getElementById(id);
+      bar.className = 'pwd-bar';
+      if (score >= 1 && i < 1) bar.classList.add('weak');
+      if (score >= 2 && i < 2) bar.classList.add('medium');
+      if (score >= 3 && i < 3) bar.classList.add('strong');
+      if (score >= 4 && i < 4) bar.classList.add('strong');
+    });
+
+    if (score <= 1) { lbl.className='pwd-label weak';   lbl.textContent='Faible'; }
+    else if (score === 2) { lbl.className='pwd-label medium'; lbl.textContent='Moyen'; }
+    else if (score === 3) { lbl.className='pwd-label strong'; lbl.textContent='Fort'; }
+    else { lbl.className='pwd-label strong'; lbl.textContent='Très fort'; }
+
+    validateConfirm();
+  }
+
+  function setReq(id, met) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('met', met);
+    /* Remplacer l'icône (SVG ou <i>) à chaque appel */
+    const existing = el.querySelector('svg') || el.querySelector('i');
+    const icon = document.createElement('i');
+    icon.setAttribute('data-lucide', met ? 'check-circle-2' : 'circle');
+    icon.style.cssText = 'width:11px;height:11px';
+    if (existing) existing.replaceWith(icon);
+    lucide.createIcons({ nodes: [icon] });
+  }
+
+  /* ── Field validation ───────────────────────────────────────── */
+  function validateRegField(id) {
+    const input = document.getElementById(id);
+    const val   = input.value.trim();
+    if (id === 'reg-username') {
+      const ok = /^[a-zA-Z0-9_-]{3,20}$/.test(val);
+      input.classList.toggle('ok', ok && val.length > 0);
+      input.classList.toggle('error', !ok && val.length > 0);
+    }
+  }
+
+  function validateConfirm() {
+    const pwd = document.getElementById('reg-password').value;
+    const cfm = document.getElementById('reg-confirm');
+    if (!cfm.value) { cfm.classList.remove('ok','error'); return; }
+    const match = cfm.value === pwd;
+    cfm.classList.toggle('ok',    match);
+    cfm.classList.toggle('error', !match);
+  }
+
+  /* ── Keyboard: Enter submits ────────────────────────────────── */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      if (activeTab === 'login')    submitLogin();
+      else                          submitRegister();
+    }
+  });
+
+  /* ── LOGIN ──────────────────────────────────────────────────── */
+  async function submitLogin() {
+    if (!csrfToken) { await fetchCsrf(); if (!csrfToken) return; }
+    hideAlert();
+
+    const username = document.getElementById('login-username').value.trim();
+    const password = document.getElementById('login-password').value;
+
+    if (!username || !password) {
+      showAlert('Veuillez remplir tous les champs.', 'error');
+      return;
+    }
+
+    const btn = document.getElementById('btn-login');
+    btn.disabled = true;
+    btn.classList.add('loading');
+
+    try {
+      const res  = await fetch('/api/auth/login', {
+        method:  'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+        body:    JSON.stringify({ username, password }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        showAlert('Connexion réussie. Redirection…', 'success');
+        setTimeout(() => { window.location.href = data.redirect; }, 600);
+      } else {
+        showAlert(getApiError(data, 'Erreur de connexion.'), 'error');
+        await fetchCsrf(); // Renouveler le token après échec
+      }
+    } catch {
+      showAlert('Impossible de contacter le serveur.', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+  }
+
+  /* ── REGISTER ───────────────────────────────────────────────── */
+  async function submitRegister() {
+    if (!csrfToken) { await fetchCsrf(); if (!csrfToken) return; }
+    hideAlert();
+
+    const username        = document.getElementById('reg-username').value.trim();
+    const password        = document.getElementById('reg-password').value;
+    const confirmPassword = document.getElementById('reg-confirm').value;
+
+    if (!username || !password || !confirmPassword) {
+      showAlert('Veuillez remplir tous les champs.', 'error');
+      return;
+    }
+    if (password !== confirmPassword) {
+      showAlert('Les mots de passe ne correspondent pas.', 'error');
+      return;
+    }
+
+    const btn = document.getElementById('btn-register');
+    btn.disabled = true;
+    btn.classList.add('loading');
+
+    try {
+      const res  = await fetch('/api/auth/register', {
+        method:  'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+        body:    JSON.stringify({ username, password, confirmPassword }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        showAlert('Compte créé. Redirection…', 'success');
+        setTimeout(() => { window.location.href = data.redirect; }, 600);
+      } else {
+        showAlert(getApiError(data, 'Erreur lors de l\'inscription.'), 'error');
+        await fetchCsrf();
+      }
+    } catch {
+      showAlert('Impossible de contacter le serveur.', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+  }
+</script>
+<footer style="position:fixed;bottom:0;left:0;right:0;z-index:10;padding:12px 24px;display:flex;justify-content:center;gap:28px;font-size:13px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;backdrop-filter:blur(12px);background:rgba(6,6,14,0.7);border-top:1px solid var(--border);flex-wrap:wrap;">
+  <span>📧 <a href="mailto:dontplayaio@protonmail.com" style="color:var(--violet);text-decoration:none;">dontplayaio@protonmail.com</a></span>
+  <span>💬 <a href="https://t.me/DontPlaySupport" target="_blank" style="color:var(--violet);text-decoration:none;">Support Telegram</a></span>
+  <span>📢 <a href="https://t.me/+BGMAPKKaeBRlOGQ0" target="_blank" style="color:var(--violet);text-decoration:none;">Canal Telegram</a></span>
+</footer>
+</body>
+</html>

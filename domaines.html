@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dontplay — Domaines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #06060e;
+      --surface:    rgba(255,255,255,0.035);
+      --surface-h:  rgba(255,255,255,0.065);
+      --surface-2:  rgba(255,255,255,0.025);
+      --border:     rgba(255,255,255,0.07);
+      --border-h:   rgba(255,255,255,0.13);
+      --text:       #f0f2f8;
+      --muted:      #52556b;
+      --muted-2:    #8b8fa8;
+      --violet:     #8b5cf6;
+      --violet-d:   #6d28d9;
+      --violet-dim: rgba(139,92,246,0.12);
+      --violet-b:   rgba(139,92,246,0.22);
+      --teal:       #2dd4bf;
+      --teal-dim:   rgba(45,212,191,0.12);
+      --green:      #4ade80;
+      --green-dim:  rgba(74,222,128,0.1);
+      --red:        #fb7185;
+      --red-dim:    rgba(251,113,133,0.1);
+      --amber:      #fbbf24;
+      --amber-dim:  rgba(251,191,36,0.1);
+      --r:          16px;
+      --r-sm:       10px;
+      --r-xs:       7px;
+      --nav-h:      64px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* dot-grid */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% 0%,  rgba(139,92,246,0.1)  0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 90% 90%, rgba(45,212,191,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 30% at 50% 50%, rgba(167,139,250,0.04) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── Loader ─────────────────────────────────────────── */
+    #loader {
+      position: fixed; inset: 0; z-index: 1000;
+      background: var(--bg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 24px;
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo-wrap { position: relative; width: 64px; height: 64px; }
+    .loader-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--violet);
+      border-right-color: rgba(139,92,246,0.3);
+      animation: spin 1s linear infinite;
+    }
+    .loader-logo-inner {
+      position: absolute; inset: 8px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 800; color: #fff;
+      box-shadow: 0 0 30px rgba(139,92,246,0.4);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-text {
+      font-size: 13px; font-weight: 500; color: var(--muted-2);
+      letter-spacing: .08em; text-transform: uppercase;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+    /* ── Navbar ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      padding: 0 24px;
+      background: rgba(6,6,14,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 9px;
+      text-decoration: none; flex-shrink: 0; margin-right: 28px;
+    }
+    .nav-logo-mark {
+      width: 32px; height: 32px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: #fff;
+      box-shadow: 0 0 16px rgba(139,92,246,0.3); flex-shrink: 0;
+    }
+    .nav-logo-text { font-size: 16px; font-weight: 800; color: var(--text); letter-spacing: -.01em; }
+    .nav-links { display: flex; align-items: center; gap: 1px; flex: 1; }
+    .nav-link {
+      padding: 5px 12px; border-radius: var(--r-sm);
+      font-size: 13px; font-weight: 500; color: var(--muted-2);
+      text-decoration: none; cursor: pointer; white-space: nowrap;
+      transition: color .18s, background .18s;
+    }
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+    .nav-link.active { color: var(--text); background: var(--surface-h); font-weight: 600; }
+    .nav-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .nav-balance {
+      display: flex; align-items: center; gap: 6px;
+      padding: 5px 12px;
+      background: var(--green-dim); border: 1px solid rgba(74,222,128,0.18);
+      border-radius: 99px; font-size: 12.5px; font-weight: 700; color: var(--green);
+      cursor: default;
+    }
+    .nav-pill-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 9px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted-2); cursor: pointer;
+      transition: all .18s; position: relative;
+    }
+    .nav-pill-btn:hover { background: var(--surface-h); border-color: var(--border-h); color: var(--text); }
+    .notif-dot {
+      position: absolute; top: 6px; right: 6px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--red); border: 1.5px solid var(--bg);
+    }
+    .btn-logout {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 13px; border-radius: var(--r-sm);
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted-2); font-size: 12.5px; font-weight: 500;
+      cursor: pointer; font-family: inherit; transition: all .18s;
+    }
+    .btn-logout:hover { background: var(--red-dim); border-color: rgba(251,113,133,0.25); color: var(--red); }
+
+    /* ── Layout ─────────────────────────────────────────── */
+    main {
+      position: relative; z-index: 1;
+      max-width: 1240px; margin: 0 auto;
+      padding: calc(var(--nav-h) + 40px) 24px 80px;
+    }
+
+    /* ── Page header ─────────────────────────────────────── */
+    .page-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 32px; gap: 16px; flex-wrap: wrap;
+    }
+    .page-header-left {}
+    .page-eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 3px 10px; border-radius: 99px;
+      background: var(--violet-dim); border: 1px solid rgba(139,92,246,0.2);
+      font-size: 11px; font-weight: 600; color: var(--violet);
+      letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .page-title { font-size: 28px; font-weight: 800; letter-spacing: -.03em; color: var(--text); }
+    .page-sub { font-size: 13.5px; color: var(--muted-2); margin-top: 4px; line-height: 1.6; }
+
+    /* ── Buttons ─────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border-radius: var(--r-sm);
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      color: #fff; font-size: 13px; font-weight: 700;
+      cursor: pointer; border: none; font-family: inherit;
+      box-shadow: 0 4px 18px rgba(139,92,246,0.3);
+      transition: transform .18s, box-shadow .18s, opacity .18s;
+      text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(139,92,246,0.45); opacity:.92; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 16px; border-radius: var(--r-sm);
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted-2); font-size: 13px; font-weight: 500;
+      cursor: pointer; font-family: inherit; transition: all .18s; white-space: nowrap;
+    }
+    .btn-ghost:hover { background: var(--surface-h); border-color: var(--border-h); color: var(--text); }
+    .btn-danger {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 14px; border-radius: var(--r-sm);
+      background: var(--red-dim); border: 1px solid rgba(251,113,133,0.2);
+      color: var(--red); font-size: 12.5px; font-weight: 600;
+      cursor: pointer; font-family: inherit; transition: all .18s; white-space: nowrap;
+    }
+    .btn-danger:hover { background: rgba(251,113,133,0.18); border-color: rgba(251,113,133,0.35); }
+    .btn-sm { padding: 6px 13px; font-size: 12px; }
+
+    /* ── Card ────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      backdrop-filter: blur(12px);
+      overflow: hidden; position: relative;
+      transition: border-color .22s;
+    }
+    .card:hover { border-color: var(--border-h); }
+    .card-shimmer {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    }
+    .card-hd {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 0; gap: 12px;
+    }
+    .card-hd-left { display: flex; align-items: center; gap: 10px; }
+    .card-icon {
+      width: 32px; height: 32px; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .card-title { font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
+    .card-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+    .card-bd { padding: 16px 20px 20px; }
+
+    /* ── Top grid ────────────────────────────────────────── */
+    .top-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    /* ── Search domain ───────────────────────────────────── */
+    .search-row {
+      display: flex; gap: 8px; align-items: stretch;
+    }
+    .search-input-wrap {
+      flex: 1; position: relative;
+      display: flex; align-items: center;
+    }
+    .search-input-wrap i {
+      position: absolute; left: 12px;
+      color: var(--muted); pointer-events: none; flex-shrink: 0;
+    }
+    .input-field {
+      width: 100%; padding: 10px 12px 10px 38px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border); border-radius: var(--r-sm);
+      color: var(--text); font-size: 13.5px; font-family: inherit;
+      outline: none; transition: border-color .18s, box-shadow .18s;
+    }
+    .input-field::placeholder { color: var(--muted); }
+    .input-field:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(139,92,246,0.12); }
+    .input-plain {
+      width: 100%; padding: 10px 12px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border); border-radius: var(--r-sm);
+      color: var(--text); font-size: 13.5px; font-family: inherit;
+      outline: none; transition: border-color .18s, box-shadow .18s;
+    }
+    .input-plain::placeholder { color: var(--muted); }
+    .input-plain:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(139,92,246,0.12); }
+
+    /* Custom select */
+    .select-wrap { position: relative; }
+    .select-custom {
+      appearance: none;
+      padding: 10px 34px 10px 12px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border); border-radius: var(--r-sm);
+      color: var(--text); font-size: 13.5px; font-family: inherit;
+      cursor: pointer; outline: none;
+      transition: border-color .18s, box-shadow .18s;
+      min-width: 90px;
+    }
+    .select-custom:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(139,92,246,0.12); }
+    .select-wrap::after {
+      content: '';
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid var(--muted);
+      pointer-events: none;
+    }
+    /* Dropdown options styling */
+    .select-custom option { background: #1a1a2e; color: var(--text); }
+
+    /* Price chips */
+    .ext-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .ext-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 10px; border-radius: 99px;
+      background: var(--surface-h); border: 1px solid var(--border);
+      font-size: 11.5px; font-weight: 600; color: var(--muted-2);
+      cursor: pointer; transition: all .18s; user-select: none;
+    }
+    .ext-chip:hover { border-color: var(--violet); color: var(--violet); background: var(--violet-dim); }
+    .ext-chip.active { border-color: var(--violet); color: var(--violet); background: var(--violet-dim); }
+    .ext-chip-price { color: var(--violet); font-weight: 700; font-size: 11px; }
+
+    /* Search result */
+    .search-result {
+      margin-top: 12px; padding: 10px 14px;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.2);
+      display: none; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .search-result.show { display: flex; }
+    .search-result-name { font-size: 13.5px; font-weight: 700; color: var(--text); }
+    .search-result-price { font-size: 12px; color: var(--muted-2); margin-top: 2px; }
+    .search-result-avail { display: flex; align-items: center; gap: 6px; }
+    .avail-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .avail-dot.ok { background: var(--green); box-shadow: 0 0 6px rgba(74,222,128,.4); }
+    .avail-dot.taken { background: var(--red); box-shadow: 0 0 6px rgba(251,113,133,.4); }
+    .avail-label { font-size: 12px; font-weight: 600; }
+    .avail-label.ok { color: var(--green); }
+    .avail-label.taken { color: var(--red); }
+
+    /* ── Namecheap status badge ──────────────────────────── */
+    .badge-ok {
+      display: inline-flex; align-items: center;
+      padding: 3px 10px; border-radius: 99px;
+      font-size: 11.5px; font-weight: 700;
+      background: var(--surface-h); color: var(--muted-2);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Domain table ────────────────────────────────────── */
+    .domains-card { margin-top: 16px; }
+    .domains-table-hd {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 0; gap: 12px;
+    }
+    .table-wrap { padding: 12px 20px 8px; }
+    .domain-table { width: 100%; border-collapse: collapse; }
+    .domain-table th {
+      font-size: 11px; font-weight: 600; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .06em;
+      padding: 0 12px 10px; text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .domain-table th:last-child { text-align: right; }
+    .domain-row { transition: background .18s; }
+    .domain-row:hover > td { background: rgba(255,255,255,0.02); }
+    .domain-row > td {
+      padding: 13px 12px; font-size: 13px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .domain-row:last-child > td { border-bottom: none; }
+
+    .domain-name { font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; }
+    .domain-name-ext { color: var(--violet); }
+    .domain-date { font-size: 12px; color: var(--muted-2); }
+    .domain-expire { font-size: 12.5px; color: var(--text); font-weight: 600; }
+    .domain-expire-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .ptr-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 9px; border-radius: 99px;
+      font-size: 11.5px; font-weight: 600;
+    }
+    .ptr-ip    { background: var(--violet-dim); color: var(--violet); border: 1px solid rgba(139,92,246,.2); }
+    .ptr-none  { background: var(--surface-h);  color: var(--muted);  border: 1px solid var(--border); }
+    .ptr-page  { background: var(--teal-dim);   color: var(--teal);   border: 1px solid rgba(45,212,191,.2); }
+    .ptr-redir { background: var(--amber-dim);  color: var(--amber);  border: 1px solid rgba(251,191,36,.2); }
+
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 9px; border-radius: 99px;
+      font-size: 11px; font-weight: 700; letter-spacing: .03em;
+    }
+    .status-ok     { background: var(--green-dim); color: var(--green); border: 1px solid rgba(74,222,128,.2); }
+    .status-warn   { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(251,191,36,.2); }
+    .status-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+    .row-actions { display: flex; align-items: center; gap: 6px; justify-content: flex-end; }
+    .action-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 12px; border-radius: var(--r-xs);
+      font-size: 12px; font-weight: 600;
+      cursor: pointer; border: 1px solid var(--border);
+      font-family: inherit; transition: all .18s;
+      background: var(--surface); color: var(--muted-2);
+    }
+    .action-btn:hover { background: var(--surface-h); border-color: var(--border-h); color: var(--text); }
+    .action-btn.manage { color: var(--violet); border-color: rgba(139,92,246,.2); background: var(--violet-dim); }
+    .action-btn.manage:hover { background: rgba(139,92,246,.2); border-color: rgba(139,92,246,.35); }
+    .action-btn.del { color: var(--red); border-color: rgba(251,113,133,.15); background: var(--red-dim); }
+    .action-btn.del:hover { background: rgba(251,113,133,.2); }
+
+    /* ── Expand panel (mode de pointage) ─────────────────── */
+    .expand-row > td {
+      padding: 0; border-bottom: 1px solid var(--border);
+    }
+    .expand-inner {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .35s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+      opacity: 0;
+    }
+    .expand-inner.open { max-height: 400px; opacity: 1; }
+    .expand-content {
+      padding: 16px 20px 18px;
+      background: rgba(0,0,0,0.18);
+    }
+    .expand-label {
+      font-size: 11px; font-weight: 600; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px;
+    }
+
+    /* Mode tabs */
+    .mode-tabs { display: flex; gap: 4px; margin-bottom: 14px; flex-wrap: wrap; }
+    .mode-tab {
+      padding: 6px 14px; border-radius: var(--r-xs);
+      font-size: 12.5px; font-weight: 600;
+      cursor: pointer; border: 1px solid var(--border);
+      background: var(--surface); color: var(--muted-2);
+      font-family: inherit; transition: all .18s;
+    }
+    .mode-tab:hover { background: var(--surface-h); color: var(--text); }
+    .mode-tab.active {
+      background: var(--violet-dim); color: var(--violet);
+      border-color: rgba(139,92,246,.3);
+    }
+
+    /* Mode panels */
+    .mode-panel { display: none; }
+    .mode-panel.show { display: block; }
+
+    .mode-row { display: flex; gap: 8px; align-items: center; }
+    .mode-row .input-plain { flex: 1; }
+
+    .redirect-grid { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: start; }
+    .redirect-options { display: flex; flex-direction: column; gap: 8px; }
+    .redirect-type-row { display: flex; gap: 6px; align-items: center; }
+    .redirect-type-label { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .type-chip {
+      padding: 4px 11px; border-radius: 99px;
+      font-size: 11.5px; font-weight: 700; cursor: pointer;
+      border: 1px solid var(--border); background: var(--surface); color: var(--muted-2);
+      font-family: inherit; transition: all .18s;
+    }
+    .type-chip.active { background: var(--violet-dim); color: var(--violet); border-color: rgba(139,92,246,.3); }
+    .https-toggle { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .toggle-label { font-size: 12px; color: var(--muted-2); }
+    .toggle-switch {
+      position: relative; width: 34px; height: 18px;
+      cursor: pointer;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-track {
+      position: absolute; inset: 0;
+      background: var(--surface-h); border: 1px solid var(--border);
+      border-radius: 99px; transition: all .2s;
+    }
+    .toggle-track::after {
+      content: '';
+      position: absolute; top: 2px; left: 2px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--muted); transition: all .2s;
+    }
+    .toggle-switch input:checked + .toggle-track { background: var(--violet-dim); border-color: rgba(139,92,246,.4); }
+    .toggle-switch input:checked + .toggle-track::after { transform: translateX(16px); background: var(--violet); }
+
+    .page-select-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .page-option {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 13px; border-radius: var(--r-sm);
+      border: 1px solid var(--border); background: var(--surface);
+      cursor: pointer; transition: all .18s;
+    }
+    .page-option:hover { border-color: var(--border-h); background: var(--surface-h); }
+    .page-option.selected { border-color: rgba(139,92,246,.35); background: var(--violet-dim); }
+    .page-option-icon {
+      width: 28px; height: 28px; border-radius: 7px;
+      background: var(--violet-dim); color: var(--violet);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .page-option-name { font-size: 12.5px; font-weight: 600; color: var(--text); }
+    .page-option-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+    .page-empty-state {
+      text-align: center; padding: 20px;
+      font-size: 13px; color: var(--muted);
+    }
+
+    /* save row */
+    .save-row {
+      display: flex; align-items: center; justify-content: flex-end;
+      gap: 8px; margin-top: 12px;
+    }
+    .save-hint { font-size: 11.5px; color: var(--muted); flex: 1; }
+
+    /* ── Empty domains state ─────────────────────────────── */
+    .empty-domains {
+      text-align: center; padding: 48px 20px;
+    }
+    .empty-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 1.5px dashed rgba(139,92,246,0.35);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px; position: relative; color: var(--violet);
+    }
+    .empty-icon::before {
+      content: ''; position: absolute; inset: 5px;
+      border-radius: 50%; background: var(--violet-dim);
+    }
+    .empty-icon i { position: relative; }
+
+    /* ── Count badge ─────────────────────────────────────── */
+    .count-badge {
+      padding: 2px 9px; border-radius: 99px;
+      font-size: 11px; font-weight: 700;
+      background: var(--violet-dim); color: var(--violet);
+      border: 1px solid rgba(139,92,246,.2);
+    }
+
+    /* ── Animations ──────────────────────────────────────── */
+    .anim-fade {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1);
+    }
+    .anim-fade.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .anim-fade, .expand-inner { transition: none; }
+      .loader-ring { animation: none; }
+    }
+
+    /* ── Modal ───────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal {
+      background: #0d0d1b; border: 1px solid var(--border);
+      border-radius: 20px; width: 100%; max-width: 520px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
+      transform: translateY(16px) scale(0.98);
+      transition: transform .25s cubic-bezier(.22,1,.36,1);
+      display: flex; flex-direction: column; max-height: 90vh;
+    }
+    .modal-overlay.open .modal { transform: none; }
+    .modal-hd {
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .modal-icon {
+      width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-title { font-size: 15px; font-weight: 800; flex: 1; }
+    .modal-sub-text { font-size: 12px; color: var(--muted-2); margin-top: 2px; }
+    .modal-close-x {
+      background: none; border: none; color: var(--muted); cursor: pointer;
+      display: flex; align-items: center; padding: 4px;
+      border-radius: 6px; transition: color .15s, background .15s;
+    }
+    .modal-close-x:hover { color: var(--text); background: var(--surface-h); }
+    .modal-bd {
+      overflow-y: auto; padding: 16px 20px;
+      display: flex; flex-direction: column; gap: 8px; flex: 1;
+    }
+    .modal-ft {
+      padding: 14px 20px; border-top: 1px solid var(--border);
+      display: flex; gap: 8px; justify-content: flex-end; flex-shrink: 0;
+    }
+    .btn-ghost-sm {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--r-sm);
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted-2); font-size: 13px; font-weight: 500;
+      cursor: pointer; font-family: inherit; transition: all .18s;
+    }
+    .btn-ghost-sm:hover { background: var(--surface-h); color: var(--text); }
+
+    .modal-empty {
+      text-align: center; padding: 30px 0; color: var(--muted); font-size: 13px;
+    }
+
+    /* ── Zone items (CF import) ───────────────────────────── */
+    .zone-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 14px; border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer; transition: border-color .15s, background .15s;
+      user-select: none;
+    }
+    .zone-item:hover:not(.zone-item--already) {
+      background: var(--surface-h); border-color: var(--border-h);
+    }
+    .zone-item--selected {
+      border-color: var(--amber) !important;
+      background: rgba(251,191,36,0.06) !important;
+    }
+    .zone-item--already {
+      opacity: .55; cursor: default;
+    }
+    .zone-item-check {
+      width: 18px; height: 18px; border-radius: 6px; flex-shrink: 0;
+      border: 1.5px solid var(--border-h);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .15s, background .15s;
+    }
+    .zone-item--selected .zone-item-check {
+      background: var(--amber); border-color: var(--amber);
+    }
+    .zone-item--already .zone-item-check {
+      background: var(--surface-h); border-color: transparent;
+    }
+    .zone-item-name { font-size: 13.5px; font-weight: 600; color: var(--text); }
+    .zone-item-plan { font-size: 11.5px; color: var(--muted-2); margin-top: 2px; }
+    .zone-badge-already {
+      font-size: 11px; font-weight: 600; color: var(--muted);
+      background: var(--surface-h); border: 1px solid var(--border);
+      padding: 3px 8px; border-radius: 20px; white-space: nowrap;
+    }
+    .zone-badge-active {
+      font-size: 11px; font-weight: 600; color: var(--green);
+      background: var(--green-dim); border: 1px solid rgba(74,222,128,0.2);
+      padding: 3px 8px; border-radius: 20px; white-space: nowrap;
+    }
+    .zone-badge-pending {
+      font-size: 11px; font-weight: 600; color: var(--amber);
+      background: var(--amber-dim); border: 1px solid rgba(251,191,36,0.2);
+      padding: 3px 8px; border-radius: 20px; white-space: nowrap;
+    }
+    .cf-zones-list-wrap {
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .cf-modal-select-all {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2px 10px; border-bottom: 1px solid var(--border); margin-bottom: 4px;
+    }
+    .cf-modal-select-all span { font-size: 12px; color: var(--muted-2); }
+    .cf-modal-select-all button {
+      font-size: 12px; font-weight: 600; color: var(--amber);
+      background: none; border: none; cursor: pointer; font-family: inherit;
+      padding: 0; transition: opacity .15s;
+    }
+    .cf-modal-select-all button:hover { opacity: .75; }
+
+    /* ── Scrollbar ────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 99px; }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    .nav-hamburger{display:none;background:none;border:1px solid var(--border);border-radius:var(--r-sm);color:var(--muted-2);cursor:pointer;padding:5px 8px;align-items:center;justify-content:center;flex-shrink:0;transition:all .18s}
+    .nav-hamburger:hover{color:var(--text);background:var(--surface-h)}
+    @media (max-width: 900px) {
+      .top-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(6,6,14,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:8px;flex-direction:column;z-index:99;gap:2px }
+      .nav-links.mob-open { display:flex }
+      .nav-hamburger { display:flex }
+      .nav-logo-text { display:none }
+      main { padding: calc(var(--nav-h) + 24px) 16px 60px; }
+      .domain-table th:nth-child(3),
+      .domain-table td:nth-child(3) { display: none; }
+    }
+    @media (max-width: 560px) {
+      .domain-table th:nth-child(2),
+      .domain-table td:nth-child(2),
+      .domain-table th:nth-child(4),
+      .domain-table td:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Modal Enregistrement Domaine -->
+<div class="modal-overlay" id="register-modal">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-hd">
+      <div class="modal-icon" style="background:var(--teal-dim);color:var(--teal)">
+        <i data-lucide="shopping-cart" style="width:17px;height:17px"></i>
+      </div>
+      <div style="flex:1">
+        <div class="modal-title">Enregistrer un domaine</div>
+        <div class="modal-sub-text" id="reg-modal-sub">Complétez vos informations de contact</div>
+      </div>
+      <button class="modal-close-x" onclick="closeRegModal()" aria-label="Fermer">
+        <i data-lucide="x" style="width:16px;height:16px"></i>
+      </button>
+    </div>
+    <div class="modal-bd" style="display:flex;flex-direction:column;gap:10px">
+      <div style="padding:10px 13px;border-radius:var(--r-sm);background:var(--teal-dim);border:1px solid rgba(45,212,191,.2);font-size:12.5px;color:var(--teal);font-weight:600" id="reg-domain-display">—</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">Prénom *</label><input class="input-plain" id="reg-fname" placeholder="John" /></div>
+        <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">Nom *</label><input class="input-plain" id="reg-lname" placeholder="Doe" /></div>
+      </div>
+      <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">Email *</label><input class="input-plain" id="reg-email" type="email" placeholder="john@example.com" /></div>
+      <div style="display:grid;grid-template-columns:80px 1fr;gap:8px">
+        <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">Code pays</label><input class="input-plain" id="reg-phone-cc" placeholder="1" value="1" /></div>
+        <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">Téléphone *</label><input class="input-plain" id="reg-phone" placeholder="5551234567" /></div>
+      </div>
+      <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">Adresse *</label><input class="input-plain" id="reg-addr" placeholder="123 Main Street" /></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">Ville *</label><input class="input-plain" id="reg-city" placeholder="Paris" /></div>
+        <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">Code postal *</label><input class="input-plain" id="reg-zip" placeholder="75001" /></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">Pays (code ISO) *</label><input class="input-plain" id="reg-country" placeholder="FR" maxlength="2" style="text-transform:uppercase" /></div>
+        <div><label style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px">État / Région</label><input class="input-plain" id="reg-state" placeholder="IDF" /></div>
+      </div>
+    </div>
+    <div class="modal-ft">
+      <button class="btn-ghost-sm" onclick="closeRegModal()">Annuler</button>
+      <button class="btn-primary btn-sm" id="btn-confirm-register" onclick="confirmRegister()">
+        <i data-lucide="check" style="width:13px;height:13px"></i>
+        <span id="btn-reg-lbl">Confirmer l'enregistrement</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Cloudflare Zones Modal -->
+<div class="modal-overlay" id="cf-zones-modal">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-hd">
+      <div class="modal-icon" style="background:var(--amber-dim);color:var(--amber)">
+        <i data-lucide="cloud" style="width:17px;height:17px"></i>
+      </div>
+      <div style="flex:1">
+        <div class="modal-title">Importer des zones Cloudflare</div>
+        <div class="modal-sub-text" id="cf-zones-sub">Chargement…</div>
+      </div>
+      <button class="modal-close-x" onclick="closeCfModal()" aria-label="Fermer">
+        <i data-lucide="x" style="width:16px;height:16px"></i>
+      </button>
+    </div>
+    <div class="modal-bd" style="max-height:380px;overflow-y:auto">
+      <div id="cf-zones-list">
+        <div class="modal-empty">
+          <i data-lucide="loader" style="width:20px;height:20px;opacity:.4;display:block;margin:0 auto 8px"></i>
+          Chargement des zones…
+        </div>
+      </div>
+    </div>
+    <div class="modal-ft" style="align-items:center">
+      <span id="cf-zones-selected-label" style="font-size:12px;color:var(--muted-2);flex:1"></span>
+      <button class="btn-ghost-sm" onclick="closeCfModal()">Annuler</button>
+      <button class="btn-primary btn-sm" id="btn-import-zones" disabled style="opacity:.4;cursor:not-allowed" onclick="importSelectedZones()">
+        <i data-lucide="download" style="width:13px;height:13px"></i>
+        Importer
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Loader -->
+<div id="loader" role="status" aria-label="Chargement Dontplay">
+  <div class="loader-logo-wrap">
+    <div class="loader-ring"></div>
+    <div class="loader-logo-inner">D</div>
+  </div>
+  <span class="loader-text">Chargement…</span>
+</div>
+
+<!-- Navbar -->
+<nav role="navigation" aria-label="Navigation principale">
+  <a href="/dashboard" class="nav-logo" aria-label="Dontplay — Accueil">
+    <div class="nav-logo-mark" aria-hidden="true">D</div>
+    <span class="nav-logo-text">Dontplay</span>
+  </a>
+  <div class="nav-links" role="list">
+    <a href="/dashboard" class="nav-link" role="listitem">Dashboard</a>
+    <a href="/pages" class="nav-link" role="listitem">Pages</a>
+    <a href="/domaines" class="nav-link active" role="listitem">Domaines</a>
+    <a href="/redirections" class="nav-link" role="listitem">Redirections</a>
+    <a href="/sender" class="nav-link" role="listitem">Sender</a>
+    <a href="/shop" class="nav-link" role="listitem">Shop</a>
+    <a href="/plans" class="nav-link" role="listitem">Plans</a>
+    <a href="/compte" class="nav-link" role="listitem">Compte</a>
+    <a href="/admin" class="nav-link" role="listitem" id="nav-admin" style="display:none">Admin</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-balance" id="nav-balance">
+      <i data-lucide="wallet" style="width:12px;height:12px" aria-hidden="true"></i>
+      — €
+    </div>
+    <button class="nav-pill-btn" aria-label="Notifications">
+      <i data-lucide="bell" style="width:15px;height:15px" aria-hidden="true"></i>
+      <span class="notif-dot" aria-hidden="true"></span>
+    </button>
+    <button class="btn-logout" aria-label="Se déconnecter">
+      <i data-lucide="log-out" style="width:13px;height:13px" aria-hidden="true"></i>
+      Déconnexion
+    </button>
+  </div>
+  <button id="nav-hamburger" class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+    <i data-lucide="menu" style="width:18px;height:18px"></i>
+  </button>
+</nav>
+
+<main>
+
+  <!-- Page Header -->
+  <div class="page-header anim-fade" data-d="0">
+    <div class="page-header-left">
+      <div class="page-eyebrow">
+        <i data-lucide="globe" style="width:10px;height:10px" aria-hidden="true"></i>
+        Gestion DNS
+      </div>
+      <h1 class="page-title">Domaines</h1>
+      <p class="page-sub">Enregistrez, configurez et pointez vos domaines en quelques clics.</p>
+    </div>
+    <button class="btn-primary" onclick="openSearch()">
+      <i data-lucide="plus" style="width:14px;height:14px" aria-hidden="true"></i>
+      Enregistrer un domaine
+    </button>
+  </div>
+
+  <!-- Top grid: Search + Cloudflare -->
+  <div class="top-grid">
+
+    <!-- Search & Register -->
+    <div class="card anim-fade" data-d="1">
+      <div class="card-shimmer"></div>
+      <div class="card-hd">
+        <div class="card-hd-left">
+          <div class="card-icon" style="background:var(--violet-dim);color:var(--violet)">
+            <i data-lucide="search" style="width:15px;height:15px" aria-hidden="true"></i>
+          </div>
+          <div>
+            <div class="card-title">Rechercher et enregistrer</div>
+            <div class="card-sub">Vérifiez la disponibilité d'un domaine</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-bd">
+        <div class="search-row">
+          <div class="search-input-wrap" style="flex:1">
+            <input type="text" class="input-field" id="domain-search-input"
+              placeholder="Chercher un domaine" autocomplete="off"
+              oninput="onSearchInput(this.value)" />
+          </div>
+          <div class="select-wrap">
+            <select class="select-custom" id="ext-select" onchange="onExtChange(this.value)">
+              <option value=".com">.com — €12.99</option>
+              <option value=".org">.org — €9.99</option>
+              <option value=".net">.net — €15.99</option>
+              <option value=".info">.info — €11.99</option>
+              <option value=".xyz">.xyz — €11.99</option>
+            </select>
+          </div>
+          <button class="btn-primary btn-sm" onclick="searchDomain()" aria-label="Rechercher">
+            <i data-lucide="search" style="width:13px;height:13px" aria-hidden="true"></i>
+            Chercher
+          </button>
+        </div>
+
+        <!-- Search result -->
+        <div class="search-result" id="search-result">
+          <div>
+            <div class="search-result-name" id="result-name">—</div>
+            <div class="search-result-price" id="result-price">—</div>
+          </div>
+          <div class="search-result-avail">
+            <div class="avail-dot ok" id="avail-dot"></div>
+            <span class="avail-label ok" id="avail-label">Disponible</span>
+            <button class="btn-primary btn-sm" id="register-btn" style="margin-left:8px">
+              <i data-lucide="shopping-cart" style="width:12px;height:12px" aria-hidden="true"></i>
+              Acheter
+            </button>
+          </div>
+        </div>
+
+        <!-- Extension chips -->
+        <div class="ext-chips" id="ext-chips">
+          <span class="ext-chip active" data-ext=".com" onclick="selectExt('.com',this)">
+            .com <span class="ext-chip-price">€12.99</span>
+          </span>
+          <span class="ext-chip" data-ext=".net" onclick="selectExt('.net',this)">
+            .net <span class="ext-chip-price">€15.99</span>
+          </span>
+          <span class="ext-chip" data-ext=".org" onclick="selectExt('.org',this)">
+            .org <span class="ext-chip-price">€9.99</span>
+          </span>
+          <span class="ext-chip" data-ext=".info" onclick="selectExt('.info',this)">
+            .info <span class="ext-chip-price">€11.99</span>
+          </span>
+          <span class="ext-chip" data-ext=".xyz" onclick="selectExt('.xyz',this)">
+            .xyz <span class="ext-chip-price">€11.99</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cloudflare connect -->
+    <div class="card anim-fade" data-d="2">
+      <div class="card-shimmer"></div>
+      <div class="card-hd">
+        <div class="card-icon" style="background:var(--amber-dim);color:var(--amber)">
+          <i data-lucide="cloud" style="width:15px;height:15px" aria-hidden="true"></i>
+        </div>
+        <span class="card-title">Cloudflare</span>
+      </div>
+      <div class="card-bd" style="padding:0 20px 20px;display:flex;flex-direction:column;gap:12px">
+
+        <!-- connected state -->
+        <div id="cf-connected-info" style="display:none;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--green);font-weight:600">
+            <i data-lucide="check-circle-2" style="width:14px;height:14px"></i>
+            Compte connecté
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn-primary btn-sm" style="flex:1" onclick="openCfZonesModal()">
+              <i data-lucide="download" style="width:12px;height:12px"></i>
+              Importer des zones
+            </button>
+            <button class="btn-ghost-sm" id="btn-cf-disconnect" onclick="disconnectCf()">
+              <i data-lucide="log-out" style="width:12px;height:12px"></i>
+              Déconnecter
+            </button>
+          </div>
+        </div>
+
+        <!-- input state -->
+        <div id="cf-input-section" style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:12.5px;color:var(--muted-2);line-height:1.6">
+            Connectez votre compte Cloudflare pour gérer les DNS et importer vos zones.
+          </div>
+          <input class="input-plain" id="cf-token" type="password"
+            placeholder="API Token Cloudflare" autocomplete="off" />
+          <button class="btn-primary btn-sm" id="btn-cf-save" onclick="saveCfToken()">
+            <i data-lucide="link" style="width:12px;height:12px"></i>
+            <span id="btn-cf-save-lbl">Connecter Cloudflare</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /top-grid -->
+
+  <!-- Domains table -->
+  <div class="card domains-card anim-fade" data-d="3">
+    <div class="card-shimmer"></div>
+    <div class="domains-table-hd">
+      <div class="card-hd-left">
+        <div class="card-icon" style="background:var(--teal-dim);color:var(--teal)">
+          <i data-lucide="list" style="width:15px;height:15px" aria-hidden="true"></i>
+        </div>
+        <div>
+          <div class="card-title">Tes domaines</div>
+          <div class="card-sub">Cliquez sur un domaine pour le configurer</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="count-badge" id="domain-count">3 domaines</span>
+        <button class="btn-ghost btn-sm" onclick="refreshDomains()">
+          <i data-lucide="refresh-cw" style="width:12px;height:12px" id="refresh-icon" aria-hidden="true"></i>
+          Rafraîchir
+        </button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="domain-table" aria-label="Liste de vos domaines">
+        <thead>
+          <tr>
+            <th>Domaine</th>
+            <th>Créé</th>
+            <th>Expire</th>
+            <th>Pointe vers</th>
+            <th>Statut</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="domains-tbody">
+          <!-- populated by JS -->
+          <tr id="domains-empty-row"><td colspan="6" style="text-align:center;padding:32px 0;color:var(--muted);font-size:13px">
+            <i data-lucide="inbox" style="width:28px;height:28px;opacity:.3;margin-bottom:8px;display:block;margin:0 auto 8px"></i>
+            Aucun domaine — importez depuis Cloudflare ou enregistrez-en un.
+          </td></tr>
+          <!-- REMOVED STATIC ROW 1 -->
+          <tr class="domain-row" id="row-1-old" style="display:none"><td>
+            <td>
+              <div class="domain-name">
+                <i data-lucide="globe-2" style="width:13px;height:13px;color:var(--muted)" aria-hidden="true"></i>
+                niggerchain<span class="domain-name-ext">.xyz</span>
+              </div>
+            </td>
+            <td><div class="domain-date">25/03/2026</div></td>
+            <td>
+              <div class="domain-expire">25/03/2027</div>
+              <div class="domain-expire-sub">365j restants</div>
+            </td>
+            <td>
+              <span class="ptr-badge ptr-ip" id="ptr-1">
+                <i data-lucide="server" style="width:10px;height:10px" aria-hidden="true"></i>
+                91.92.243.166
+              </span>
+            </td>
+            <td>
+              <span class="status-badge status-ok">
+                <span class="status-dot"></span>
+                Registered
+              </span>
+            </td>
+            <td class="row-actions">
+              <button class="action-btn manage" onclick="toggleExpand('expand-1','row-1')" aria-expanded="false" id="toggle-1">
+                <i data-lucide="settings-2" style="width:12px;height:12px" aria-hidden="true"></i>
+                Gérer
+              </button>
+              <button class="action-btn del" onclick="confirmDelete('niggerchain.xyz')" aria-label="Supprimer niggerchain.xyz">
+                <i data-lucide="trash-2" style="width:12px;height:12px" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
+          <tr class="expand-row" id="expand-1">
+            <td colspan="6">
+              <div class="expand-inner" id="inner-1">
+                <div class="expand-content">
+                  <div class="expand-label">Mode de pointage — niggerchain.xyz</div>
+                  <div class="mode-tabs">
+                    <button class="mode-tab" onclick="setMode('1','none',this)">
+                      <i data-lucide="ban" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Aucun
+                    </button>
+                    <button class="mode-tab active" onclick="setMode('1','ip',this)">
+                      <i data-lucide="server" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Adresse IP
+                    </button>
+                    <button class="mode-tab" onclick="setMode('1','page',this)">
+                      <i data-lucide="layout-template" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Ma Page
+                    </button>
+                    <button class="mode-tab" onclick="setMode('1','redirect',this)">
+                      <i data-lucide="corner-right-down" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Redirection URL
+                    </button>
+                  </div>
+                  <!-- Panels -->
+                  <div class="mode-panel" id="panel-1-none">
+                    <p style="font-size:12.5px;color:var(--muted);padding:8px 0">Aucune redirection — le domaine ne pointera nulle part.</p>
+                    <div class="save-row">
+                      <button class="btn-primary btn-sm" onclick="saveMode('1','none')">
+                        <i data-lucide="save" style="width:12px;height:12px" aria-hidden="true"></i>Appliquer
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mode-panel show" id="panel-1-ip">
+                    <div class="mode-row">
+                      <input type="text" class="input-plain" id="ip-1" value="91.92.243.166" placeholder="Ex: 91.92.243.166" style="flex:1;font-family:monospace" />
+                    </div>
+                    <div class="save-row">
+                      <span class="save-hint">Un enregistrement DNS A sera créé automatiquement.</span>
+                      <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-1','row-1','toggle-1')">Annuler</button>
+                      <button class="btn-primary btn-sm" onclick="saveMode('1','ip')">
+                        <i data-lucide="save" style="width:12px;height:12px" aria-hidden="true"></i>Sauvegarder
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mode-panel" id="panel-1-page">
+                    <div class="page-empty-state">
+                      <i data-lucide="layout-template" style="width:28px;height:28px;color:var(--muted);margin-bottom:8px" aria-hidden="true"></i>
+                      <p>Aucune page créée pour l'instant.<br>
+                      <a href="/dashboard" style="color:var(--violet);text-decoration:none">Créez une page</a> depuis le dashboard.</p>
+                    </div>
+                  </div>
+                  <div class="mode-panel" id="panel-1-redirect">
+                    <div style="display:flex;flex-direction:column;gap:10px">
+                      <input type="url" class="input-plain" id="redir-url-1" placeholder="https://destination.com/page" />
+                      <div class="redirect-type-row">
+                        <span class="redirect-type-label">Type :</span>
+                        <button class="type-chip active" id="type301-1" onclick="setType('1','301')">301 Permanent</button>
+                        <button class="type-chip" id="type302-1" onclick="setType('1','302')">302 Temporaire</button>
+                      </div>
+                      <div class="https-toggle">
+                        <label class="toggle-switch" aria-label="Forcer HTTPS">
+                          <input type="checkbox" id="https-1" checked />
+                          <div class="toggle-track"></div>
+                        </label>
+                        <span class="toggle-label">Forcer HTTPS</span>
+                      </div>
+                    </div>
+                    <div class="save-row">
+                      <span class="save-hint">La redirection sera active sous 5 minutes.</span>
+                      <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-1','row-1','toggle-1')">Annuler</button>
+                      <button class="btn-primary btn-sm" onclick="saveMode('1','redirect')">
+                        <i data-lucide="corner-right-down" style="width:12px;height:12px" aria-hidden="true"></i>Sauvegarder
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 2 -->
+          <tr class="domain-row" id="row-2">
+            <td>
+              <div class="domain-name">
+                <i data-lucide="globe-2" style="width:13px;height:13px;color:var(--muted)" aria-hidden="true"></i>
+                vovozaga<span class="domain-name-ext">.xyz</span>
+              </div>
+            </td>
+            <td><div class="domain-date">22/03/2026</div></td>
+            <td>
+              <div class="domain-expire">22/03/2027</div>
+              <div class="domain-expire-sub">363j restants</div>
+            </td>
+            <td>
+              <span class="ptr-badge ptr-ip" id="ptr-2">
+                <i data-lucide="server" style="width:10px;height:10px" aria-hidden="true"></i>
+                91.92.243.166
+              </span>
+            </td>
+            <td>
+              <span class="status-badge status-ok">
+                <span class="status-dot"></span>
+                Registered
+              </span>
+            </td>
+            <td class="row-actions">
+              <button class="action-btn manage" onclick="toggleExpand('expand-2','row-2')" aria-expanded="false" id="toggle-2">
+                <i data-lucide="settings-2" style="width:12px;height:12px" aria-hidden="true"></i>
+                Gérer
+              </button>
+              <button class="action-btn del" onclick="confirmDelete('vovozaga.xyz')" aria-label="Supprimer vovozaga.xyz">
+                <i data-lucide="trash-2" style="width:12px;height:12px" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
+          <tr class="expand-row" id="expand-2">
+            <td colspan="6">
+              <div class="expand-inner" id="inner-2">
+                <div class="expand-content">
+                  <div class="expand-label">Mode de pointage — vovozaga.xyz</div>
+                  <div class="mode-tabs">
+                    <button class="mode-tab" onclick="setMode('2','none',this)">
+                      <i data-lucide="ban" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Aucun
+                    </button>
+                    <button class="mode-tab active" onclick="setMode('2','ip',this)">
+                      <i data-lucide="server" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Adresse IP
+                    </button>
+                    <button class="mode-tab" onclick="setMode('2','page',this)">
+                      <i data-lucide="layout-template" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Ma Page
+                    </button>
+                    <button class="mode-tab" onclick="setMode('2','redirect',this)">
+                      <i data-lucide="corner-right-down" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Redirection URL
+                    </button>
+                  </div>
+                  <div class="mode-panel" id="panel-2-none">
+                    <p style="font-size:12.5px;color:var(--muted);padding:8px 0">Aucune redirection active.</p>
+                    <div class="save-row">
+                      <button class="btn-primary btn-sm" onclick="saveMode('2','none')">
+                        <i data-lucide="save" style="width:12px;height:12px" aria-hidden="true"></i>Appliquer
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mode-panel show" id="panel-2-ip">
+                    <div class="mode-row">
+                      <input type="text" class="input-plain" id="ip-2" value="91.92.243.166" placeholder="Ex: 91.92.243.166" style="flex:1;font-family:monospace" />
+                    </div>
+                    <div class="save-row">
+                      <span class="save-hint">Enregistrement DNS A automatique.</span>
+                      <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-2','row-2','toggle-2')">Annuler</button>
+                      <button class="btn-primary btn-sm" onclick="saveMode('2','ip')">
+                        <i data-lucide="save" style="width:12px;height:12px" aria-hidden="true"></i>Sauvegarder
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mode-panel" id="panel-2-page">
+                    <div class="page-empty-state">
+                      <i data-lucide="layout-template" style="width:28px;height:28px;color:var(--muted);margin-bottom:8px" aria-hidden="true"></i>
+                      <p>Aucune page disponible. <a href="/dashboard" style="color:var(--violet);text-decoration:none">Créez-en une</a>.</p>
+                    </div>
+                  </div>
+                  <div class="mode-panel" id="panel-2-redirect">
+                    <div style="display:flex;flex-direction:column;gap:10px">
+                      <input type="url" class="input-plain" id="redir-url-2" placeholder="https://destination.com/page" />
+                      <div class="redirect-type-row">
+                        <span class="redirect-type-label">Type :</span>
+                        <button class="type-chip active" id="type301-2" onclick="setType('2','301')">301 Permanent</button>
+                        <button class="type-chip" id="type302-2" onclick="setType('2','302')">302 Temporaire</button>
+                      </div>
+                      <div class="https-toggle">
+                        <label class="toggle-switch">
+                          <input type="checkbox" id="https-2" checked />
+                          <div class="toggle-track"></div>
+                        </label>
+                        <span class="toggle-label">Forcer HTTPS</span>
+                      </div>
+                    </div>
+                    <div class="save-row">
+                      <span class="save-hint">Active sous 5 minutes.</span>
+                      <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-2','row-2','toggle-2')">Annuler</button>
+                      <button class="btn-primary btn-sm" onclick="saveMode('2','redirect')">
+                        <i data-lucide="corner-right-down" style="width:12px;height:12px" aria-hidden="true"></i>Sauvegarder
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 3 -->
+          <tr class="domain-row" id="row-3">
+            <td>
+              <div class="domain-name">
+                <i data-lucide="globe-2" style="width:13px;height:13px;color:var(--muted)" aria-hidden="true"></i>
+                wtfvera<span class="domain-name-ext">.xyz</span>
+              </div>
+            </td>
+            <td><div class="domain-date">24/03/2026</div></td>
+            <td>
+              <div class="domain-expire">24/03/2027</div>
+              <div class="domain-expire-sub">364j restants</div>
+            </td>
+            <td>
+              <span class="ptr-badge ptr-none" id="ptr-3">
+                Aucun
+              </span>
+            </td>
+            <td>
+              <span class="status-badge status-ok">
+                <span class="status-dot"></span>
+                Registered
+              </span>
+            </td>
+            <td class="row-actions">
+              <button class="action-btn manage" onclick="toggleExpand('expand-3','row-3')" aria-expanded="false" id="toggle-3">
+                <i data-lucide="settings-2" style="width:12px;height:12px" aria-hidden="true"></i>
+                Gérer
+              </button>
+              <button class="action-btn del" onclick="confirmDelete('wtfvera.xyz')" aria-label="Supprimer wtfvera.xyz">
+                <i data-lucide="trash-2" style="width:12px;height:12px" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
+          <tr class="expand-row" id="expand-3">
+            <td colspan="6">
+              <div class="expand-inner" id="inner-3">
+                <div class="expand-content">
+                  <div class="expand-label">Mode de pointage — wtfvera.xyz</div>
+                  <div class="mode-tabs">
+                    <button class="mode-tab active" onclick="setMode('3','none',this)">
+                      <i data-lucide="ban" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Aucun
+                    </button>
+                    <button class="mode-tab" onclick="setMode('3','ip',this)">
+                      <i data-lucide="server" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Adresse IP
+                    </button>
+                    <button class="mode-tab" onclick="setMode('3','page',this)">
+                      <i data-lucide="layout-template" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Ma Page
+                    </button>
+                    <button class="mode-tab" onclick="setMode('3','redirect',this)">
+                      <i data-lucide="corner-right-down" style="width:11px;height:11px;margin-right:4px" aria-hidden="true"></i>Redirection URL
+                    </button>
+                  </div>
+                  <div class="mode-panel show" id="panel-3-none">
+                    <p style="font-size:12.5px;color:var(--muted);padding:8px 0">Aucune redirection active pour ce domaine.</p>
+                    <div class="save-row">
+                      <button class="btn-primary btn-sm" onclick="saveMode('3','none')">
+                        <i data-lucide="save" style="width:12px;height:12px" aria-hidden="true"></i>Appliquer
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mode-panel" id="panel-3-ip">
+                    <div class="mode-row">
+                      <input type="text" class="input-plain" id="ip-3" placeholder="Ex: 91.92.243.166" style="flex:1;font-family:monospace" />
+                    </div>
+                    <div class="save-row">
+                      <span class="save-hint">Enregistrement DNS A automatique.</span>
+                      <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-3','row-3','toggle-3')">Annuler</button>
+                      <button class="btn-primary btn-sm" onclick="saveMode('3','ip')">
+                        <i data-lucide="save" style="width:12px;height:12px" aria-hidden="true"></i>Sauvegarder
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mode-panel" id="panel-3-page">
+                    <div class="page-empty-state">
+                      <i data-lucide="layout-template" style="width:28px;height:28px;color:var(--muted);margin-bottom:8px" aria-hidden="true"></i>
+                      <p>Aucune page disponible. <a href="/dashboard" style="color:var(--violet);text-decoration:none">Créez-en une</a>.</p>
+                    </div>
+                  </div>
+                  <div class="mode-panel" id="panel-3-redirect">
+                    <div style="display:flex;flex-direction:column;gap:10px">
+                      <input type="url" class="input-plain" id="redir-url-3" placeholder="https://destination.com/page" />
+                      <div class="redirect-type-row">
+                        <span class="redirect-type-label">Type :</span>
+                        <button class="type-chip active" id="type301-3" onclick="setType('3','301')">301 Permanent</button>
+                        <button class="type-chip" id="type302-3" onclick="setType('3','302')">302 Temporaire</button>
+                      </div>
+                      <div class="https-toggle">
+                        <label class="toggle-switch">
+                          <input type="checkbox" id="https-3" checked />
+                          <div class="toggle-track"></div>
+                        </label>
+                        <span class="toggle-label">Forcer HTTPS</span>
+                      </div>
+                    </div>
+                    <div class="save-row">
+                      <span class="save-hint">Active sous 5 minutes.</span>
+                      <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-3','row-3','toggle-3')">Annuler</button>
+                      <button class="btn-primary btn-sm" onclick="saveMode('3','redirect')">
+                        <i data-lucide="corner-right-down" style="width:12px;height:12px" aria-hidden="true"></i>Sauvegarder
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  lucide.createIcons();
+
+  const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+  /* ── Loader ─────────────────────────────────────────── */
+  let csrfToken   = null;
+  let _domains    = [];
+  let _userPages  = [];
+  const _selectedPageMap = {};
+
+  async function fetchCsrf() {
+    try { csrfToken = (await fetch('/api/auth/csrf').then(r => r.json())).csrfToken; } catch {}
+  }
+
+  /* ── Domains render ─────────────────────────────────── */
+  function renderDomainRow(domain, i) {
+    const m        = domain.name.match(/^(.*?)(\.[^.]+)$/) || ['', domain.name, ''];
+    const nameBase = m[1], nameExt = m[2];
+    const created  = domain.createdAt
+      ? new Date(domain.createdAt).toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit', year:'numeric' })
+      : '—';
+    const expires  = domain.expiresAt
+      ? new Date(domain.expiresAt).toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit', year:'numeric' })
+      : '—';
+    const daysLeft = domain.expiresAt
+      ? Math.max(0, Math.ceil((new Date(domain.expiresAt) - new Date()) / 86400000))
+      : null;
+    const srcIcon  = domain.source === 'cloudflare'
+      ? `<i data-lucide="cloud" style="width:10px;height:10px;color:var(--amber)" title="Cloudflare"></i>`
+      : domain.source === 'namecheap'
+      ? `<i data-lucide="globe" style="width:10px;height:10px;color:var(--teal)" title="Namecheap"></i>`
+      : '';
+    const statusHtml = domain.status === 'active'
+      ? `<span class="status-badge status-ok"><span class="status-dot"></span>Actif</span>`
+      : `<span class="status-badge status-warn"><span class="status-dot"></span>En attente</span>`;
+    const pt       = domain.pointing || {};
+    const ptMode   = pt.mode || 'none';
+    /* ptr badge */
+    const ptrHtml = ptMode === 'ip'
+      ? `<span class="ptr-badge ptr-ip" id="ptr-${i}"><i data-lucide="server" style="width:10px;height:10px"></i> ${esc(pt.ip)}</span>`
+      : ptMode === 'redirect'
+      ? `<span class="ptr-badge ptr-redir" id="ptr-${i}"><i data-lucide="corner-right-down" style="width:10px;height:10px"></i> ${esc((pt.redirectUrl||'').substring(0,22))}</span>`
+      : ptMode === 'page'
+      ? `<span class="ptr-badge ptr-page" id="ptr-${i}"><i data-lucide="layout-template" style="width:10px;height:10px"></i> ${esc(pt.pageName||'Ma Page')}</span>`
+      : `<span class="ptr-badge ptr-none" id="ptr-${i}">Aucun</span>`;
+    /* mode tabs active */
+    const tabNone   = ptMode === 'none'     ? ' active' : '';
+    const tabIp     = ptMode === 'ip'       ? ' active' : '';
+    const tabPage   = ptMode === 'page'     ? ' active' : '';
+    const tabRedir  = ptMode === 'redirect' ? ' active' : '';
+    /* panels show */
+    const panNone  = ptMode === 'none'     ? ' show' : '';
+    const panIp    = ptMode === 'ip'       ? ' show' : '';
+    const panPage  = ptMode === 'page'     ? ' show' : '';
+    const panRedir = ptMode === 'redirect' ? ' show' : '';
+    return `
+      <tr class="domain-row" id="row-${i}">
+        <td><div class="domain-name">
+          <i data-lucide="globe-2" style="width:13px;height:13px;color:var(--muted)"></i>
+          ${nameBase}<span class="domain-name-ext">${nameExt}</span> ${srcIcon}
+        </div></td>
+        <td><div class="domain-date">${created}</div></td>
+        <td>
+          <div class="domain-expire">${expires}</div>
+          ${daysLeft !== null ? `<div class="domain-expire-sub">${daysLeft}j restants</div>` : ''}
+        </td>
+        <td>${ptrHtml}</td>
+        <td>${statusHtml}</td>
+        <td class="row-actions">
+          <button class="action-btn manage" onclick="toggleExpand('expand-${i}','row-${i}')" aria-expanded="false" id="toggle-${i}">
+            <i data-lucide="settings-2" style="width:12px;height:12px"></i> Gérer
+          </button>
+          <button class="action-btn del" onclick="deleteDomain('${domain.id}','${domain.name}')" aria-label="Supprimer ${domain.name}">
+            <i data-lucide="trash-2" style="width:12px;height:12px"></i>
+          </button>
+        </td>
+      </tr>
+      <tr class="expand-row" id="expand-${i}">
+        <td colspan="6"><div class="expand-inner" id="inner-${i}">
+          <div class="expand-content">
+            <div class="expand-label">Mode de pointage — ${domain.name}
+              ${domain.source==='cloudflare' ? '<span style="font-size:10.5px;color:var(--amber);margin-left:6px;font-weight:600"><i data-lucide="cloud" style="width:9px;height:9px;margin-right:2px"></i>Cloudflare DNS actif</span>' : ''}
+            </div>
+            <div class="mode-tabs">
+              <button class="mode-tab${tabNone}"   onclick="setMode('${i}','none',this)"><i data-lucide="ban" style="width:11px;height:11px;margin-right:4px"></i>Aucun</button>
+              <button class="mode-tab${tabIp}"     onclick="setMode('${i}','ip',this)"><i data-lucide="server" style="width:11px;height:11px;margin-right:4px"></i>Adresse IP</button>
+              <button class="mode-tab${tabPage}"   onclick="setMode('${i}','page',this)"><i data-lucide="layout-template" style="width:11px;height:11px;margin-right:4px"></i>Ma Page</button>
+              <button class="mode-tab${tabRedir}"  onclick="setMode('${i}','redirect',this)"><i data-lucide="corner-right-down" style="width:11px;height:11px;margin-right:4px"></i>Redirection URL</button>
+            </div>
+            <div class="mode-panel${panNone}" id="panel-${i}-none">
+              <p style="font-size:12.5px;color:var(--muted);padding:8px 0">Aucune redirection active — le domaine ne pointera nulle part.</p>
+              <div class="save-row">
+                <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-${i}','row-${i}','toggle-${i}')">Annuler</button>
+                <button class="btn-primary btn-sm" id="save-btn-${i}-none" onclick="saveMode('${i}','none')"><i data-lucide="save" style="width:12px;height:12px"></i>Appliquer</button>
+              </div>
+            </div>
+            <div class="mode-panel${panIp}" id="panel-${i}-ip">
+              <div class="mode-row"><input type="text" class="input-plain" id="ip-${i}" value="${esc(pt.ip||'')}" placeholder="Ex: 91.92.243.166" style="flex:1;font-family:monospace" /></div>
+              <div class="save-row">
+                <span class="save-hint">${domain.source==='cloudflare' ? 'Enregistrement DNS A + WWW créé sur Cloudflare.' : 'Enregistrement DNS A automatique.'}</span>
+                <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-${i}','row-${i}','toggle-${i}')">Annuler</button>
+                <button class="btn-primary btn-sm" id="save-btn-${i}-ip" onclick="saveMode('${i}','ip')"><i data-lucide="save" style="width:12px;height:12px"></i>Sauvegarder</button>
+              </div>
+            </div>
+            <div class="mode-panel${panPage}" id="panel-${i}-page">
+              ${!_userPages.length
+                ? `<p style="font-size:12.5px;color:var(--muted);padding:8px 0">Aucune page. <a href="/pages" style="color:var(--violet);text-decoration:none">Créez-en une</a>.</p>`
+                : _userPages.map(p => `<div class="domain-option${pt.pageId===p.id?' selected':''}" onclick="selectPage('${i}','${esc(p.id)}','${esc(p.name)}',this)" style="margin-bottom:6px">
+                    <span style="font-size:13px;font-weight:700;color:var(--text)">${esc(p.name)}</span>
+                    <span style="font-size:11px;color:var(--muted-2)">${esc(p.templateName||'')}</span>
+                  </div>`).join('') + `
+                  <div class="save-row" style="margin-top:10px">
+                    <span class="save-hint">${domain.source==='cloudflare' ? 'DNS A + WWW → serveur (HTTPS via Cloudflare).' : 'Pointage configuré.'}</span>
+                    <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-${i}','row-${i}','toggle-${i}')">Annuler</button>
+                    <button class="btn-primary btn-sm" id="save-btn-${i}-page" onclick="saveMode('${i}','page')"><i data-lucide="save" style="width:12px;height:12px"></i>Sauvegarder</button>
+                  </div>`
+              }
+            </div>
+            <div class="mode-panel${panRedir}" id="panel-${i}-redirect">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <input type="url" class="input-plain" id="redir-url-${i}" value="${esc(pt.redirectUrl||'')}" placeholder="https://destination.com/page" />
+                <div class="redirect-type-row">
+                  <span class="redirect-type-label">Type :</span>
+                  <button class="type-chip${pt.redirectType==='302'?'':' active'}" id="type301-${i}" onclick="setType('${i}','301')">301 Permanent</button>
+                  <button class="type-chip${pt.redirectType==='302'?' active':''}" id="type302-${i}" onclick="setType('${i}','302')">302 Temporaire</button>
+                </div>
+              </div>
+              <div class="save-row">
+                <span class="save-hint">${domain.source==='cloudflare' ? 'Page Rule créée sur Cloudflare.' : 'Active sous 5 minutes.'}</span>
+                <button class="btn-ghost btn-sm" onclick="cancelExpand('expand-${i}','row-${i}','toggle-${i}')">Annuler</button>
+                <button class="btn-primary btn-sm" id="save-btn-${i}-redirect" onclick="saveMode('${i}','redirect')"><i data-lucide="corner-right-down" style="width:12px;height:12px"></i>Sauvegarder</button>
+              </div>
+            </div>
+          </div>
+        </div></td>
+      </tr>`;
+  }
+
+  function renderDomains(domains) {
+    _domains = domains;
+    const tbody = document.getElementById('domains-tbody');
+    const count = document.getElementById('domain-count');
+    if (!domains.length) {
+      tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:32px 0;color:var(--muted);font-size:13px">
+        <i data-lucide="inbox" style="width:28px;height:28px;opacity:.3;display:block;margin:0 auto 8px"></i>
+        Aucun domaine — importez depuis Cloudflare ou enregistrez-en un.
+      </td></tr>`;
+    } else {
+      tbody.innerHTML = domains.map((d, i) => renderDomainRow(d, i)).join('');
+    }
+    if (count) count.textContent = `${domains.length} domaine${domains.length !== 1 ? 's' : ''}`;
+    lucide.createIcons();
+  }
+
+  async function loadDomains() {
+    try {
+      const domains = await fetch('/api/domains').then(r => r.json());
+      renderDomains(Array.isArray(domains) ? domains : []);
+    } catch { renderDomains([]); }
+  }
+
+  /* ── Delete domain ──────────────────────────────────── */
+  async function deleteDomain(id, name) {
+    if (!confirm(`Supprimer ${name} ? Cette action est irréversible.`)) return;
+    if (!csrfToken) await fetchCsrf();
+    try {
+      const r = await fetch(`/api/domains/${id}`, {
+        method: 'DELETE',
+        headers: { 'X-CSRF-Token': csrfToken },
+      });
+      const d = await r.json();
+      if (d.success) { showToast(`${name} supprimé.`, 'warn'); await loadDomains(); }
+      else showToast(d.error || 'Erreur.', 'err');
+    } catch { showToast('Impossible de contacter le serveur.', 'err'); }
+  }
+
+  /* ── Namecheap status ───────────────────────────────── */
+  function loadNcStatus() {
+    fetch('/api/domains/nc/status').then(r => r.json()).then(d => {
+      const badge  = document.getElementById('nc-status-badge');
+      const detail = document.getElementById('nc-status-detail');
+      if (badge) {
+        badge.textContent   = d.configured ? 'Configuré' : 'Non configuré';
+        badge.style.background  = d.configured ? 'var(--green-dim)' : 'var(--red-dim)';
+        badge.style.color       = d.configured ? 'var(--green)'     : 'var(--red)';
+        badge.style.borderColor = d.configured ? 'rgba(74,222,128,.2)' : 'rgba(251,113,133,.2)';
+      }
+      if (detail) detail.textContent = d.configured
+        ? 'API Namecheap opérationnelle.'
+        : 'Configurez NC_USER dans config.js.';
+    }).catch(() => {});
+  }
+
+  /* ── [CF functions removed] ─────────────────────────── */
+  function setCfConnectedState(connected) {
+    document.getElementById('cf-connected-info').style.display = connected ? 'flex' : 'none';
+    document.getElementById('cf-input-section').style.display  = connected ? 'none' : 'flex';
+  }
+
+  async function saveCfToken() {
+    const val = document.getElementById('cf-token').value.trim();
+    if (!val) { showToast('Veuillez entrer un token.', 'warn'); return; }
+    if (!csrfToken) await fetchCsrf();
+    const btn = document.getElementById('btn-cf-save');
+    const lbl = document.getElementById('btn-cf-save-lbl');
+    btn.disabled = true; lbl.textContent = 'Vérification…';
+    try {
+      const r = await fetch('/api/domains/cloudflare/connect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+        body: JSON.stringify({ token: val }),
+      });
+      const d = await r.json();
+      if (d.success) {
+        setCfConnectedState(true);
+        showToast('Compte Cloudflare connecté — toutes les permissions OK');
+      } else {
+        showToast(d.error || 'Erreur.', 'err');
+      }
+    } catch { showToast('Impossible de contacter le serveur.', 'err'); }
+    finally { btn.disabled = false; lbl.textContent = 'Sauvegarder'; }
+  }
+
+  async function disconnectCf() {
+    if (!confirm('Déconnecter Cloudflare ? Vos domaines importés seront conservés.')) return;
+    if (!csrfToken) await fetchCsrf();
+    try {
+      await fetch('/api/domains/cloudflare/disconnect', {
+        method: 'POST', headers: { 'X-CSRF-Token': csrfToken },
+      });
+      setCfConnectedState(false);
+      document.getElementById('cf-token').value = '';
+      showToast('Cloudflare déconnecté.', 'warn');
+    } catch { showToast('Erreur.', 'err'); }
+  }
+
+  /* ── CF Zones modal ─────────────────────────────────── */
+  let _cfZones = [];
+  let _selectedZones = new Set();
+
+  async function openCfZonesModal() {
+    _selectedZones = new Set();
+    const modal = document.getElementById('cf-zones-modal');
+    const list  = document.getElementById('cf-zones-list');
+    const sub   = document.getElementById('cf-zones-sub');
+    const btn   = document.getElementById('btn-import-zones');
+    list.innerHTML = '<div class="modal-empty">Chargement des zones…</div>';
+    sub.textContent = 'Chargement…';
+    btn.disabled = true; btn.style.opacity = '.4'; btn.style.cursor = 'not-allowed';
+    modal.classList.add('open');
+    lucide.createIcons();
+    try {
+      const r = await fetch('/api/domains/cloudflare/zones');
+      const d = await r.json();
+      if (!r.ok) { list.innerHTML = `<div class="modal-empty" style="color:var(--red)">${esc(d.error || 'Erreur')}</div>`; sub.textContent = 'Erreur'; return; }
+      _cfZones = d;
+      const available = d.filter(z => !z.alreadyAdded).length;
+      sub.textContent = `${d.length} zone${d.length !== 1 ? 's' : ''} trouvée${d.length !== 1 ? 's' : ''}`;
+      if (!d.length) { list.innerHTML = '<div class="modal-empty">Aucune zone trouvée sur ce compte.</div>'; return; }
+      list.innerHTML = `
+        ${available > 1 ? `<div class="cf-modal-select-all">
+          <span>${available} zone${available > 1 ? 's' : ''} disponible${available > 1 ? 's' : ''}</span>
+          <button onclick="selectAllZones()">Tout sélectionner</button>
+        </div>` : ''}
+        <div class="cf-zones-list-wrap">
+          ${d.map((z, i) => `
+            <div class="zone-item${z.alreadyAdded ? ' zone-item--already' : ''}" id="zone-item-${i}"
+              onclick="${z.alreadyAdded ? '' : `toggleZone(${i})`}">
+              <div class="zone-item-check" id="zone-check-${i}">
+                ${z.alreadyAdded ? '<i data-lucide="check" style="width:10px;height:10px;color:var(--muted-2)"></i>' : ''}
+              </div>
+              <div style="flex:1;min-width:0">
+                <div class="zone-item-name">${esc(z.name)}</div>
+                <div class="zone-item-plan">${esc(z.plan || z.planName || 'Free')}</div>
+              </div>
+              ${z.alreadyAdded
+                ? '<span class="zone-badge-already">Déjà importé</span>'
+                : `<span class="${z.status === 'active' ? 'zone-badge-active' : 'zone-badge-pending'}">${z.status === 'active' ? 'Actif' : 'En attente'}</span>`}
+            </div>`).join('')}
+        </div>`;
+      lucide.createIcons();
+      _updateZoneFooter();
+    } catch { list.innerHTML = '<div class="modal-empty" style="color:var(--red)">Impossible de charger les zones.</div>'; sub.textContent = 'Erreur'; }
+  }
+
+  function _updateZoneFooter() {
+    const btn = document.getElementById('btn-import-zones');
+    const lbl = document.getElementById('cf-zones-selected-label');
+    const ok  = _selectedZones.size > 0;
+    btn.disabled = !ok;
+    btn.style.opacity = ok ? '1' : '.4';
+    btn.style.cursor  = ok ? 'pointer' : 'not-allowed';
+    if (lbl) lbl.textContent = ok
+      ? `${_selectedZones.size} zone${_selectedZones.size > 1 ? 's' : ''} sélectionnée${_selectedZones.size > 1 ? 's' : ''}`
+      : '';
+  }
+
+  function toggleZone(i) {
+    const zone = _cfZones[i];
+    if (!zone || zone.alreadyAdded) return;
+    const item  = document.getElementById(`zone-item-${i}`);
+    const check = document.getElementById(`zone-check-${i}`);
+    if (_selectedZones.has(i)) {
+      _selectedZones.delete(i);
+      item.classList.remove('zone-item--selected');
+      check.innerHTML = '';
+    } else {
+      _selectedZones.add(i);
+      item.classList.add('zone-item--selected');
+      check.innerHTML = '<i data-lucide="check" style="width:10px;height:10px;color:#1a1a2e"></i>';
+    }
+    lucide.createIcons();
+    _updateZoneFooter();
+  }
+
+  function selectAllZones() {
+    _cfZones.forEach((z, i) => {
+      if (z.alreadyAdded) return;
+      _selectedZones.add(i);
+      const item  = document.getElementById(`zone-item-${i}`);
+      const check = document.getElementById(`zone-check-${i}`);
+      if (item)  item.classList.add('zone-item--selected');
+      if (check) check.innerHTML = '<i data-lucide="check" style="width:10px;height:10px;color:#1a1a2e"></i>';
+    });
+    lucide.createIcons();
+    _updateZoneFooter();
+  }
+
+  function closeCfModal() {
+    document.getElementById('cf-zones-modal').classList.remove('open');
+  }
+
+  async function importSelectedZones() {
+    if (_selectedZones.size === 0) return;
+    if (!csrfToken) await fetchCsrf();
+    const toImport = [..._selectedZones].map(i => _cfZones[i]);
+    const btn = document.getElementById('btn-import-zones');
+    btn.disabled = true; btn.style.opacity = '.4';
+    try {
+      const r = await fetch('/api/domains/cloudflare/import', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+        body: JSON.stringify({ zones: toImport }),
+      });
+      const d = await r.json();
+      if (d.success) {
+        closeCfModal();
+        showToast(`${d.imported} domaine${d.imported !== 1 ? 's' : ''} importé${d.imported !== 1 ? 's' : ''} !`);
+        await loadDomains();
+      } else {
+        showToast(d.error || 'Erreur.', 'err');
+      }
+    } catch { showToast('Erreur serveur.', 'err'); }
+    finally { btn.disabled = false; btn.style.opacity = '1'; }
+  }
+
+  document.getElementById('cf-zones-modal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeCfModal();
+  });
+
+  async function loadUserPages() {
+    try {
+      const p = await fetch('/api/pages').then(r => r.json());
+      _userPages = Array.isArray(p) ? p : [];
+    } catch { _userPages = []; }
+  }
+
+  window.addEventListener('DOMContentLoaded', async () => {
+    await Promise.all([fetchCsrf(), loadUserPages(), loadDomains()]);
+
+    /* Check CF connection status */
+    try {
+      const s = await fetch('/api/domains/cloudflare/status').then(r => r.json());
+      setCfConnectedState(s.connected);
+    } catch {}
+
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.querySelectorAll('.anim-fade').forEach(el => {
+        const d = parseInt(el.dataset.d || 0) * 110;
+        setTimeout(() => el.classList.add('in'), d);
+      });
+      lucide.createIcons();
+    }, 900);
+  });
+
+  /* ── Expand / collapse rows ─────────────────────────── */
+  let openRow = null;
+
+  function toggleExpand(expandId, rowId, toggleId) {
+    const inner  = document.getElementById('inner-' + expandId.split('-')[1]);
+    const btn    = document.getElementById('toggle-' + expandId.split('-')[1]);
+    const isOpen = inner.classList.contains('open');
+
+    // close any open row first
+    if (openRow && openRow !== expandId) {
+      const prevId  = openRow.split('-')[1];
+      document.getElementById('inner-' + prevId).classList.remove('open');
+      const prevBtn = document.getElementById('toggle-' + prevId);
+      if (prevBtn) {
+        prevBtn.setAttribute('aria-expanded','false');
+        prevBtn.innerHTML = '<i data-lucide="settings-2" style="width:12px;height:12px" aria-hidden="true"></i> Gérer';
+        lucide.createIcons();
+      }
+    }
+
+    if (isOpen) {
+      inner.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      btn.innerHTML = '<i data-lucide="settings-2" style="width:12px;height:12px" aria-hidden="true"></i> Gérer';
+      openRow = null;
+    } else {
+      inner.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      btn.innerHTML = '<i data-lucide="x" style="width:12px;height:12px" aria-hidden="true"></i> Fermer';
+      openRow = expandId;
+    }
+    lucide.createIcons();
+  }
+
+  function cancelExpand(expandId, rowId, toggleId) {
+    const id   = expandId.split('-')[1];
+    const inner = document.getElementById('inner-' + id);
+    const btn   = document.getElementById('toggle-' + id);
+    inner.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+    btn.innerHTML = '<i data-lucide="settings-2" style="width:12px;height:12px" aria-hidden="true"></i> Gérer';
+    openRow = null;
+    lucide.createIcons();
+  }
+
+  /* ── Page selection (mode page) ────────────────────── */
+  function selectPage(rowId, pageId, pageName, el) {
+    _selectedPageMap[rowId] = { id: pageId, name: pageName };
+    el.closest('.mode-panel').querySelectorAll('.domain-option').forEach(d => d.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  /* ── Mode tabs ──────────────────────────────────────── */
+  function setMode(rowId, mode, tabEl) {
+    const panels = ['none','ip','page','redirect'];
+    panels.forEach(p => {
+      const el = document.getElementById('panel-' + rowId + '-' + p);
+      if (el) el.classList.toggle('show', p === mode);
+    });
+    // update tab active states
+    if (tabEl) {
+      tabEl.closest('.mode-tabs').querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+      tabEl.classList.add('active');
+    }
+  }
+
+  /* ── Redirect type chips ────────────────────────────── */
+  function setType(rowId, type) {
+    document.getElementById('type301-' + rowId).classList.toggle('active', type === '301');
+    document.getElementById('type302-' + rowId).classList.toggle('active', type === '302');
+  }
+
+  /* ── Save mode — appel API réel ────────────────────── */
+  async function saveMode(rowId, mode) {
+    const domain = _domains[parseInt(rowId)];
+    if (!domain) return;
+
+    const ip           = document.getElementById('ip-' + rowId)?.value?.trim()       || null;
+    const redirectUrl  = document.getElementById('redir-url-' + rowId)?.value?.trim() || null;
+    const redirectType = document.getElementById('type302-' + rowId)?.classList.contains('active') ? '302' : '301';
+    const pt           = domain.pointing || {};
+    const pageData     = mode === 'page'
+      ? (_selectedPageMap[rowId] || (pt.pageId ? { id: pt.pageId, name: pt.pageName } : null))
+      : null;
+    if (mode === 'page' && !pageData) { showToast('Sélectionnez une page.', 'warn'); return; }
+
+    const btn = document.getElementById(`save-btn-${rowId}-${mode}`);
+    if (btn) {
+      btn.disabled   = true;
+      btn.innerHTML  = '<i data-lucide="loader-2" style="width:12px;height:12px;animation:spin .8s linear infinite"></i> Sauvegarde…';
+      lucide.createIcons();
+    }
+
+    try {
+      const r = await fetch(`/api/domains/${domain.id}/point`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+        body:    JSON.stringify({ mode, ip, redirectUrl, redirectType, pageId: pageData?.id || null, pageName: pageData?.name || null }),
+      });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || 'Erreur serveur');
+
+      /* Mettre à jour _domains en mémoire */
+      _domains[parseInt(rowId)] = { ...domain, pointing: { mode, ip, redirectUrl, redirectType, pageId: pageData?.id || null, pageName: pageData?.name || null } };
+
+      /* Mettre à jour le badge ptr */
+      const ptr = document.getElementById('ptr-' + rowId);
+      if (ptr) {
+        const clsMap  = { none:'ptr-none', ip:'ptr-ip', redirect:'ptr-redir', page:'ptr-page' };
+        const iconMap = {
+          none:     '',
+          ip:       '<i data-lucide="server" style="width:10px;height:10px"></i> ',
+          redirect: '<i data-lucide="corner-right-down" style="width:10px;height:10px"></i> ',
+          page:     '<i data-lucide="layout-template" style="width:10px;height:10px"></i> ',
+        };
+        const textMap = { none:'Aucun', ip: ip||'—', redirect:(redirectUrl||'—').substring(0,22), page: pageData?.name || pt.pageName || 'Ma Page' };
+        ptr.className = 'ptr-badge ' + (clsMap[mode] || 'ptr-none');
+        ptr.innerHTML = (iconMap[mode] || '') + (textMap[mode] || mode);
+        lucide.createIcons();
+      }
+
+      const labels = { none:'Aucune redirection', ip:'Adresse IP', page:'Ma Page', redirect:'Redirection URL' };
+      showToast('✓ ' + (labels[mode] || mode) + ' appliqué.');
+      cancelExpand('expand-' + rowId, 'row-' + rowId, 'toggle-' + rowId);
+
+      /* Renouveler CSRF */
+      const csrf = await fetch('/api/auth/csrf').then(r => r.json()).catch(() => null);
+      if (csrf?.csrfToken) csrfToken = csrf.csrfToken;
+
+    } catch (err) {
+      showToast('Erreur : ' + err.message, 'err');
+      const csrf = await fetch('/api/auth/csrf').then(r => r.json()).catch(() => null);
+      if (csrf?.csrfToken) csrfToken = csrf.csrfToken;
+      if (btn) {
+        btn.disabled  = false;
+        btn.innerHTML = '<i data-lucide="save" style="width:12px;height:12px"></i>Sauvegarder';
+        lucide.createIcons();
+      }
+    }
+  }
+
+  /* ── Extension chips ────────────────────────────────── */
+  function selectExt(ext, el) {
+    document.querySelectorAll('.ext-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('ext-select').value = ext;
+    if (document.getElementById('domain-search-input').value) searchDomain();
+  }
+
+  function onExtChange(val) {
+    document.querySelectorAll('.ext-chip').forEach(c => {
+      c.classList.toggle('active', c.dataset.ext === val);
+    });
+    if (document.getElementById('domain-search-input').value) searchDomain();
+  }
+
+  /* ── Domain search ──────────────────────────────────── */
+  const extPrices = { '.com':'€12.99', '.net':'€15.99', '.org':'€9.99', '.info':'€11.99', '.xyz':'€11.99' };
+  let searchTimer  = null;
+
+  function onSearchInput(val) {
+    clearTimeout(searchTimer);
+    if (!val.trim()) { document.getElementById('search-result').classList.remove('show'); return; }
+    searchTimer = setTimeout(() => searchDomain(), 600);
+  }
+
+  async function searchDomain() {
+    const name = document.getElementById('domain-search-input').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,'');
+    const ext  = document.getElementById('ext-select').value;
+    if (!name) return;
+
+    const full = name + ext;
+    const tld  = ext.replace(/^\./, '');
+    const res  = document.getElementById('search-result');
+    const dot  = document.getElementById('avail-dot');
+    const lbl  = document.getElementById('avail-label');
+    const btn  = document.getElementById('register-btn');
+
+    document.getElementById('result-name').textContent  = full;
+    document.getElementById('result-price').textContent = 'Vérification en cours…';
+    dot.className    = 'avail-dot';
+    lbl.className    = 'avail-label';
+    lbl.textContent  = '…';
+    btn.style.display = 'none';
+    res.classList.add('show');
+    lucide.createIcons();
+
+    try {
+      const r    = await fetch('/api/domains/nc/check', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ domain: full }),
+      });
+      const data = await r.json();
+
+      if (!r.ok) {
+        /* NC non configuré → fallback local */
+        const price = extPrices[ext] || '€9.99';
+        const taken = ['google','facebook','youtube','amazon','microsoft'].includes(name);
+        document.getElementById('result-price').textContent = taken
+          ? 'Ce domaine est déjà enregistré'
+          : `Disponible à ${price}/an`;
+        dot.className   = 'avail-dot ' + (taken ? 'taken' : 'ok');
+        lbl.className   = 'avail-label ' + (taken ? 'taken' : 'ok');
+        lbl.textContent = taken ? 'Non disponible' : 'Disponible';
+        if (!taken) {
+          btn.style.display   = '';
+          btn.dataset.domain  = full;
+          btn.dataset.price   = price;
+          btn.onclick         = () => registerDomain(full, price);
+        }
+        lucide.createIcons();
+        return;
+      }
+
+      /* Parse réponse Namecheap */
+      const entry = (data.data || [])[0];
+      if (!entry) throw new Error('Réponse Namecheap inattendue');
+
+      const available = entry.available === true;
+      const price     = entry.price
+        ? `€${parseFloat(entry.price).toFixed(2)}/an`
+        : (extPrices[ext] ? `${extPrices[ext]}/an` : '€9.99/an');
+
+      document.getElementById('result-price').textContent = available
+        ? `Disponible à ${price}`
+        : 'Ce domaine est déjà enregistré ou indisponible';
+
+      dot.className   = 'avail-dot '   + (available ? 'ok' : 'taken');
+      lbl.className   = 'avail-label ' + (available ? 'ok' : 'taken');
+      lbl.textContent = available ? 'Disponible' : 'Non disponible';
+
+      if (available) {
+        btn.style.display  = '';
+        btn.dataset.domain = full;
+        btn.dataset.price  = price;
+        btn.onclick        = () => registerDomain(full, price);
+      }
+      lucide.createIcons();
+
+    } catch (err) {
+      document.getElementById('result-price').textContent = 'Erreur de vérification';
+      dot.className   = 'avail-dot taken';
+      lbl.className   = 'avail-label taken';
+      lbl.textContent = 'Erreur';
+      showToast('Recherche : ' + err.message, 'err');
+      lucide.createIcons();
+    }
+  }
+
+  /* ── Register domain modal ───────────────────────── */
+  let _pendingDomain = null;
+
+  function registerDomain(domain, price) {
+    _pendingDomain = { domain, price };
+    document.getElementById('reg-domain-display').textContent = `${domain}  —  ${price}`;
+    document.getElementById('reg-modal-sub').textContent      = `Enregistrement de ${domain}`;
+    document.getElementById('btn-reg-lbl').textContent        = 'Confirmer l\'enregistrement';
+    document.getElementById('btn-confirm-register').disabled  = false;
+    document.getElementById('register-modal').classList.add('open');
+    lucide.createIcons();
+  }
+
+  function closeRegModal() {
+    document.getElementById('register-modal').classList.remove('open');
+  }
+
+  async function confirmRegister() {
+    if (!_pendingDomain) return;
+
+    const fname   = document.getElementById('reg-fname').value.trim();
+    const lname   = document.getElementById('reg-lname').value.trim();
+    const email   = document.getElementById('reg-email').value.trim();
+    const phone   = document.getElementById('reg-phone').value.trim();
+    const phoneCC = document.getElementById('reg-phone-cc').value.trim() || '1';
+    const addr    = document.getElementById('reg-addr').value.trim();
+    const city    = document.getElementById('reg-city').value.trim();
+    const zip     = document.getElementById('reg-zip').value.trim();
+    const country = document.getElementById('reg-country').value.trim().toUpperCase();
+    const state   = document.getElementById('reg-state').value.trim();
+
+    if (!fname || !lname || !email || !phone || !addr || !city || !zip || !country) {
+      showToast('Tous les champs obligatoires (*) doivent être remplis.', 'err');
+      return;
+    }
+
+    const btn = document.getElementById('btn-confirm-register');
+    btn.disabled = true;
+    document.getElementById('btn-reg-lbl').textContent = 'Enregistrement…';
+    lucide.createIcons();
+
+    const contact = {
+      firstName: fname, lastName: lname,
+      email,
+      address: addr,
+      city, zip, country, state: state || city,
+      phone: `+${parseInt(phoneCC) || 1}.${phone}`,
+    };
+
+    try {
+      const r = await fetch('/api/domains/nc/register', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+        body:    JSON.stringify({ domain: _pendingDomain.domain, contact }),
+      });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || 'Erreur serveur');
+
+      /* Renouveler CSRF */
+      const csrf = await fetch('/api/auth/csrf').then(r => r.json()).catch(() => null);
+      if (csrf?.csrfToken) csrfToken = csrf.csrfToken;
+
+      closeRegModal();
+      showToast(`✓ ${_pendingDomain.domain} enregistré !`);
+      await loadDomains();
+
+    } catch (err) {
+      showToast('Erreur : ' + err.message, 'err');
+      const csrf = await fetch('/api/auth/csrf').then(r => r.json()).catch(() => null);
+      if (csrf?.csrfToken) csrfToken = csrf.csrfToken;
+      btn.disabled = false;
+      document.getElementById('btn-reg-lbl').textContent = 'Confirmer l\'enregistrement';
+      lucide.createIcons();
+    }
+  }
+
+  function openSearch() {
+    document.getElementById('domain-search-input').focus();
+    document.getElementById('domain-search-input').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  /* ── Refresh ────────────────────────────────────────── */
+  async function refreshDomains() {
+    const icon = document.getElementById('refresh-icon');
+    icon.style.animation = 'spin 0.7s linear';
+    await loadDomains();
+    setTimeout(() => { icon.style.animation = ''; }, 700);
+    showToast('Liste actualisée.');
+  }
+
+  /* ── Toast ──────────────────────────────────────────── */
+  function showToast(msg, type = 'ok') {
+    let t = document.getElementById('toast');
+    if (!t) {
+      t = document.createElement('div');
+      t.id = 'toast';
+      Object.assign(t.style, {
+        position:'fixed', bottom:'28px', right:'24px', zIndex:'9999',
+        padding:'11px 18px', borderRadius:'10px', fontSize:'13px', fontWeight:'600',
+        fontFamily:'Plus Jakarta Sans, sans-serif',
+        backdropFilter:'blur(12px)', transition:'opacity .3s, transform .3s',
+        display:'flex', alignItems:'center', gap:'8px',
+        boxShadow:'0 8px 30px rgba(0,0,0,0.4)',
+        maxWidth:'340px',
+      });
+      document.body.appendChild(t);
+    }
+    const colors = {
+      ok:   { bg:'rgba(74,222,128,0.12)',  border:'rgba(74,222,128,0.25)',  color:'#4ade80' },
+      warn: { bg:'rgba(251,191,36,0.12)',  border:'rgba(251,191,36,0.25)',  color:'#fbbf24' },
+      err:  { bg:'rgba(251,113,133,0.12)', border:'rgba(251,113,133,0.25)', color:'#fb7185' },
+    };
+    const c = colors[type] || colors.ok;
+    Object.assign(t.style, { background:c.bg, border:'1px solid ' + c.border, color:c.color, opacity:'1', transform:'translateY(0)' });
+    t.textContent = msg;
+
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => {
+      t.style.opacity = '0'; t.style.transform = 'translateY(8px)';
+    }, 3000);
+  }
+
+  document.querySelector('.btn-logout').addEventListener('click', async () => {
+    await fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
+    window.location.href = '/login';
+  });
+
+  (async () => {
+    try {
+      const me = await fetch('/api/auth/me').then(r => r.json());
+      if (me.id) {
+        const bal = (me.balance ?? 0).toFixed(2).replace('.', ',');
+        document.getElementById('nav-balance').innerHTML =
+          `<i data-lucide="wallet" style="width:12px;height:12px"></i> ${bal} €`;
+        lucide.createIcons();
+        if (me.role === 'admin') document.getElementById('nav-admin').style.display = '';
+      }
+    } catch {}
+  })();
+
+  /* ── Mobile nav ─────────────────────────────────────── */
+  (function(){
+    const ham=document.getElementById('nav-hamburger'),navL=document.querySelector('.nav-links');
+    if(!ham)return;
+    ham.addEventListener('click',()=>{const op=navL.classList.toggle('mob-open');ham.setAttribute('aria-expanded',op);ham.innerHTML=op?'<i data-lucide="x" style="width:18px;height:18px"></i>':'<i data-lucide="menu" style="width:18px;height:18px"></i>';lucide.createIcons();});
+    document.querySelectorAll('.nav-links .nav-link').forEach(a=>a.addEventListener('click',()=>{navL.classList.remove('mob-open');ham.setAttribute('aria-expanded','false');ham.innerHTML='<i data-lucide="menu" style="width:18px;height:18px"></i>';lucide.createIcons();}));
+  })();
+
+</script>
+  <script>
+  // Balance click opens recharge or redirect
+  (function(){
+    const nb = document.getElementById('nav-balance');
+    if (!nb) return; nb.style.cursor = 'pointer';
+    nb.addEventListener('click', () => { try { location.href = '/compte'; } catch(e){ location.href = '/compte'; } });
+  })();
+  </script>
+<footer style="padding:16px 24px;display:flex;justify-content:center;gap:28px;font-size:13px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;border-top:1px solid var(--border);flex-wrap:wrap;">
+  <span>📧 <a href="mailto:dontplayaio@protonmail.com" style="color:var(--violet);text-decoration:none;">dontplayaio@protonmail.com</a></span>
+  <span>💬 <a href="https://t.me/DontPlaySupport" target="_blank" style="color:var(--violet);text-decoration:none;">Support Telegram</a></span>
+  <span>📢 <a href="https://t.me/+BGMAPKKaeBRlOGQ0" target="_blank" style="color:var(--violet);text-decoration:none;">Canal Telegram</a></span>
+</footer>
+</body>
+</html>

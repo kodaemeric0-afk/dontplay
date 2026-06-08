@@ -1,0 +1,29 @@
+{
+  "name": "dontplay",
+  "version": "1.0.0",
+  "description": "Dontplay AIO Panel",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.4.1",
+    "express-session": "^1.17.3",
+    "express-slow-down": "^2.0.1",
+    "express-validator": "^7.0.0",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.22.3",
+    "sanitize-html": "^2.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

@@ -1,0 +1,57 @@
+{
+    "65.21.124.77": {
+        "count": 1,
+        "first_attempt": 1778873141,
+        "last_attempt": 1778873141,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778873141
+            }
+        ]
+    },
+    "205.169.39.20": {
+        "count": 1,
+        "first_attempt": 1778873567,
+        "last_attempt": 1778873567,
+        "reasons": [
+            {
+                "reason": "missing_accept_header",
+                "ts": 1778873567
+            }
+        ]
+    },
+    "2001:861:c1:8080:e5b9:4f7a:c0c6:6c81": {
+        "count": 1,
+        "first_attempt": 1778874706,
+        "last_attempt": 1778874706,
+        "reasons": [
+            {
+                "reason": "missing_accept_header",
+                "ts": 1778874706
+            }
+        ]
+    },
+    "74.7.230.31": {
+        "count": 1,
+        "first_attempt": 1778875460,
+        "last_attempt": 1778875460,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778875460
+            }
+        ]
+    },
+    "52.73.244.206": {
+        "count": 1,
+        "first_attempt": 1778875990,
+        "last_attempt": 1778875990,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778875990
+            }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: /Panel/
+Disallow: /func/
+Disallow: /logs/
+Disallow: /cache/
+Disallow: /config/
+Disallow: /antibots/
+Disallow: /actions/
+Disallow: /modules/
+Disallow: /config.php
+Disallow: /*.log
+Disallow: /*.json
+Disallow: /captcha.php
+
+# Autoriser l'accès aux pages publiques
+Allow: /pages/vitrine.php
+Allow: /assets/
+Allow: /langues/

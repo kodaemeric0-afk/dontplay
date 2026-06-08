@@ -1,0 +1,65 @@
+{
+    "29647468": {
+        "requests": 1,
+        "successful": 0,
+        "failed": 1,
+        "avg_duration": 0.022907018661499023,
+        "max_duration": 0.022907018661499023,
+        "sources": {
+            "api": 1
+        },
+        "ips": {
+            "37.29.243.44": 1
+        }
+    },
+    "29647506": {
+        "requests": 2,
+        "successful": 2,
+        "failed": 0,
+        "avg_duration": 0.03848981857299805,
+        "max_duration": 0.03848981857299805,
+        "sources": {
+            "user_detect": 2
+        },
+        "ips": {
+            "81.36.62.12": 2
+        }
+    },
+    "29647507": {
+        "requests": 0,
+        "successful": 0,
+        "failed": 0,
+        "avg_duration": 0,
+        "max_duration": 0,
+        "sources": [],
+        "ips": [],
+        "cache_hits": 4
+    },
+    "29647768": {
+        "requests": 2,
+        "successful": 2,
+        "failed": 0,
+        "avg_duration": 0.03365898132324219,
+        "max_duration": 0.03365898132324219,
+        "sources": {
+            "user_detect": 2
+        },
+        "ips": {
+            "2a02:9130:2e9:d8e4:f5f5:b0b2:a8ee:2ce4": 2
+        }
+    },
+    "29647924": {
+        "requests": 3,
+        "successful": 2,
+        "failed": 1,
+        "avg_duration": 0.021547635396321613,
+        "max_duration": 0.023154020309448242,
+        "sources": {
+            "api": 1,
+            "user_detect": 2
+        },
+        "ips": {
+            "81.60.43.244": 3
+        }
+    }
+}

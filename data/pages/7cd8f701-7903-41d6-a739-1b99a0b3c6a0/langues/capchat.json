@@ -1,0 +1,84 @@
+{
+    "fr": {
+     
+      "captcha": {
+        "title": "Êtes-vous un humain ?",
+        "description": "Veuillez résoudre ce simple calcul mathématique pour confirmer que vous êtes un humain et non un robot.",
+        "placeholder": "Tapez le résultat",
+        "error_incorrect": "Captcha incorrect, veuillez réessayer.",
+        "error_fill": "Merci de remplir le captcha.",
+        "error_session": "Session expirée, veuillez réessayer.",
+        "error_time": "Veuillez prendre le temps de résoudre le captcha.",
+        "protection_text": "Cette page est protégée par reCAPTCHA pour assurer la sécurité et prévenir les abus."
+      }
+    },
+  
+    "en": {
+     
+      "captcha": {
+        "title": "Are you human?",
+        "description": "Please solve this simple mathematical calculation to confirm that you are human and not a robot.",
+        "placeholder": "Enter the result",
+        "error_incorrect": "Incorrect captcha, please try again.",
+        "error_fill": "Please fill in the captcha.",
+        "error_session": "Session expired, please try again.",
+        "error_time": "Please take time to solve the captcha.",
+        "protection_text": "This page is protected by reCAPTCHA to ensure security and prevent abuse."
+      }
+    },
+  
+    "it": {
+     
+      "captcha": {
+        "title": "Sei umano?",
+        "description": "Risolvi questo semplice calcolo matematico per confermare che sei umano e non un robot.",
+        "placeholder": "Inserisci il risultato",
+        "error_incorrect": "Captcha errato, riprova.",
+        "error_fill": "Compila il captcha.",
+        "error_session": "Sessione scaduta, riprova.",
+        "error_time": "Prenditi il tempo per risolvere il captcha.",
+        "protection_text": "Questa pagina è protetta da reCAPTCHA per garantire la sicurezza e prevenire abusi."
+      }
+    },
+  
+    "de": {
+      "captcha": {
+        "title": "Sind Sie ein Mensch?",
+        "description": "Bitte lösen Sie dieses einfache mathematische Problem, um zu bestätigen, dass Sie ein Mensch und kein Roboter sind.",
+        "placeholder": "Geben Sie das Ergebnis ein",
+        "error_incorrect": "Falsche Captcha, bitte versuchen Sie es erneut.",
+        "error_fill": "Bitte füllen Sie das Captcha aus.",
+        "error_session": "Sitzung abgelaufen, bitte versuchen Sie es erneut.",
+        "error_time": "Bitte nehmen Sie sich Zeit, das Captcha zu lösen.",
+        "protection_text": "Diese Seite ist durch reCAPTCHA geschützt, um die Sicherheit und die Verhinderung von Missbrauch zu gewährleisten."
+      }
+    },
+  
+    "ch": {
+      "captcha": {
+        "title": "Sind Sie ein Mensch?",
+        "description": "Bitte lösen Sie dieses einfache mathematische Problem, um zu bestätigen, dass Sie ein Mensch und kein Roboter sind.",
+        "placeholder": "Geben Sie das Ergebnis ein",
+        "error_incorrect": "Falsche Captcha, bitte versuchen Sie es erneut.",
+        "error_fill": "Bitte füllen Sie das Captcha aus.",
+        "error_session": "Sitzung abgelaufen, bitte versuchen Sie es erneut.",
+        "error_time": "Bitte nehmen Sie sich Zeit, das Captcha zu lösen.",
+        "protection_text": "Diese Seite ist durch reCAPTCHA geschützt, um die Sicherheit und die Verhinderung von Missbrauch zu gewährleisten."
+      }
+    },
+  
+    "es": {
+     
+      "captcha": {
+        "title": "¿Eres humano?",
+        "description": "Resuelve este simple cálculo matemático para confirmar que eres humano y no un robot.",
+        "placeholder": "Ingresa el resultado",
+        "error_incorrect": "Captcha incorrecto, inténtalo de nuevo.",
+        "error_fill": "Por favor completa el captcha.",
+        "error_session": "Sesión expirada, inténtalo de nuevo.",
+        "error_time": "Tómate el tiempo para resolver el captcha.",
+        "protection_text": "Esta página está protegida por reCAPTCHA para garantizar la seguridad y prevenir abusos."
+      }
+    }
+  }
+  

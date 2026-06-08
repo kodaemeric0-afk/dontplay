@@ -1,0 +1,15 @@
+[2026-05-13 13:59:59] IP: 212.89.24.5 | Country: ES | ISP: R Cable y Telecable Telecomunicaciones, S.A.U. | Reason: Proxy/Hosting détecté
+[2026-05-13 14:26:10] IP: 194.11.198.206 | Country: FR | ISP: Lycatel Distribution UK Limited | Reason: ISP non autorisé (redirigé vers captcha) pour FR: Lycatel Distribution UK Limited
+[2026-05-13 15:25:20] IP: 185.49.170.196 | Country: ES | ISP: OLIVE | Reason: ISP non autorisé (redirigé vers captcha) pour ES: OLIVE
+[2026-05-14 07:15:30] IP: 54.175.74.27 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 07:15:31] IP: 54.86.66.252 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 11:11:45] IP: 54.209.60.63 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 11:44:28] IP: 184.72.121.156 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 11:44:28] IP: 54.86.66.252 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 11:44:28] IP: 54.175.74.27 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 11:44:28] IP: 54.175.74.27 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 11:44:28] IP: 54.209.60.63 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 11:44:28] IP: 184.72.121.156 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 11:44:28] IP: 54.209.60.63 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-14 11:44:28] IP: 184.72.121.156 | Country: UNKNOWN | ISP: UNKNOWN | Reason: Bot détecté AVANT vérifications
+[2026-05-15 14:28:33] IP: 37.29.243.44 | Country: ES | ISP: XFERA Moviles S.A | Reason: ISP non autorisé (redirigé vers captcha) pour ES: XFERA Moviles S.A

@@ -1,0 +1,695 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dontplay — Redirections</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #06060e; --surface: rgba(255,255,255,0.035);
+      --surface-h: rgba(255,255,255,0.065);
+      --border: rgba(255,255,255,0.07); --border-h: rgba(255,255,255,0.13);
+      --text: #f0f2f8; --muted: #52556b; --muted-2: #8b8fa8;
+      --violet: #8b5cf6; --violet-d: #6d28d9; --violet-dim: rgba(139,92,246,0.12);
+      --teal: #2dd4bf; --teal-dim: rgba(45,212,191,0.1);
+      --green: #4ade80; --green-dim: rgba(74,222,128,0.1);
+      --red: #fb7185; --red-dim: rgba(251,113,133,0.1);
+      --amber: #fbbf24; --amber-dim: rgba(251,191,36,0.1);
+      --r: 16px; --r-sm: 10px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 28px 28px; pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 10% 0%, rgba(139,92,246,0.1) 0%, transparent 55%),
+                  radial-gradient(ellipse 50% 40% at 90% 90%, rgba(45,212,191,0.07) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    #loader {
+      position: fixed; inset: 0; z-index: 1000; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 24px;
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo-wrap { position: relative; width: 64px; height: 64px; }
+    .loader-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--violet);
+      border-right-color: rgba(139,92,246,0.3);
+      animation: spin 1s linear infinite;
+    }
+    .loader-logo-inner {
+      position: absolute; inset: 8px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 800; color: #fff;
+      box-shadow: 0 0 30px rgba(139,92,246,0.4);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-text {
+      font-size: 13px; font-weight: 500; color: var(--muted-2);
+      letter-spacing: .08em; text-transform: uppercase;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:.4} 50%{opacity:1} }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; padding: 0 24px; gap: 32px;
+      background: rgba(6,6,14,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo-mark {
+      width: 32px; height: 32px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-d));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px; color: #fff;
+    }
+    .nav-logo-text { font-weight: 700; font-size: 15px; color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 2px; flex: 1; }
+    .nav-link {
+      padding: 6px 12px; border-radius: 8px; font-size: 13.5px;
+      font-weight: 500; color: var(--muted-2); text-decoration: none;
+      transition: color .15s, background .15s;
+    }
+    .nav-link:hover { color: var(--text); background: var(--surface); }
+    .nav-link.active { color: var(--text); background: var(--surface-h); }
+    .nav-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+    .nav-balance {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12.5px; font-weight: 600; color: var(--muted-2);
+      padding: 5px 12px; border-radius: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+    }
+    .btn-logout {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted-2); font-size: 12.5px; font-weight: 500;
+      cursor: pointer; transition: all .15s;
+    }
+    .btn-logout:hover { color: var(--text); border-color: var(--border-h); }
+    .nav-pill-btn {
+      position: relative; width: 34px; height: 34px; border-radius: 9px;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--muted-2); transition: all .15s;
+    }
+    .nav-hamburger { display: none; background: none; border: 1px solid var(--border); border-radius: var(--r-sm); color: var(--muted-2); cursor: pointer; padding: 5px 8px; align-items: center; justify-content: center; flex-shrink: 0; transition: all .18s; }
+    .nav-hamburger:hover{color:var(--text);background:var(--surface-h);}
+    main {
+      position: relative; z-index: 1;
+      padding: calc(var(--nav-h) + 32px) 24px 60px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .page-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 32px; gap: 20px; flex-wrap: wrap; }
+    .page-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--violet); margin-bottom: 10px; }
+    .page-title { font-size: 28px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 6px; }
+    .page-sub { font-size: 14px; color: var(--muted-2); line-height: 1.6; max-width: 560px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--r-sm); font-size: 13px;
+      font-weight: 600; cursor: pointer; font-family: inherit;
+      border: none; transition: all .18s;
+    }
+    .btn-primary { background: var(--violet); color: #fff; }
+    .btn-primary:hover { background: var(--violet-d); }
+    .btn-ghost { background: var(--surface); color: var(--muted-2); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); border-color: var(--border-h); }
+    .btn-danger { background: var(--red-dim); color: var(--red); border: 1px solid rgba(251,113,133,0.2); }
+    .btn-danger:hover { background: rgba(251,113,133,0.2); }
+    .btn-sm { padding: 5px 10px; font-size: 12px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .card-title { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px; margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 16px 18px;
+    }
+    .stat-label { font-size: 11px; font-weight: 600; color: var(--muted-2); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+    .stat-val { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+    .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+    .table-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); gap: 12px; flex-wrap: wrap; }
+    .table-title { font-size: 15px; font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { font-size: 11px; font-weight: 700; color: var(--muted-2); text-transform: uppercase; letter-spacing: .07em; padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.015); white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--surface-h); }
+    td { padding: 12px 16px; font-size: 13px; vertical-align: middle; }
+    .empty-state { padding: 40px 20px; text-align: center; color: var(--muted-2); font-size: 13px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 12px; font-weight: 600; color: var(--muted-2); text-transform: uppercase; letter-spacing: .06em; }
+    .field input, .field textarea, .field select {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 9px 12px;
+      font-size: 13.5px;
+      color: var(--text);
+      font-family: inherit;
+      outline: none;
+      transition: border .18s;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--violet); }
+    .field textarea { resize: vertical; min-height: 80px; }
+    .field select option { background: #0d0d1a; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field-row.full { grid-template-columns: 1fr; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 99px;
+      font-size: 10.5px; font-weight: 700;
+    }
+    .badge-active { background: var(--green-dim); color: var(--green); border: 1px solid rgba(74,222,128,.2); }
+    .badge-inactive { background: var(--surface-h); color: var(--muted-2); border: 1px solid var(--border); }
+    .toast {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      padding: 11px 18px; border-radius: var(--r-sm);
+      font-size: 13px; font-weight: 600;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity .25s, transform .25s; pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: none; }
+    .toast.ok { background: var(--green-dim); color: var(--green); border: 1px solid rgba(74,222,128,.25); }
+    .toast.err { background: var(--red-dim); color: var(--red); border: 1px solid rgba(251,113,133,.25); }
+    .modal-bg {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; visibility: hidden;
+      transition: opacity .2s, visibility .2s;
+    }
+    .modal-bg.open { opacity: 1; visibility: visible; }
+    .modal {
+      background: #0d0d1a; border: 1px solid var(--border-h);
+      border-radius: var(--r); width: 100%; max-width: 500px;
+      padding: 28px; display: flex; flex-direction: column; gap: 18px;
+      transform: translateY(12px); transition: transform .2s;
+    }
+    .modal-bg.open .modal { transform: none; }
+    .modal-title { font-size: 18px; font-weight: 800; letter-spacing: -.01em; }
+    .modal-sub { font-size: 13px; color: var(--muted-2); margin-top: 2px; }
+    .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 4px; }
+    .anim-fade { opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s; }
+    .anim-fade.in { opacity: 1; transform: none; }
+    .domain-select {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .domain-option {
+      padding: 12px;
+      border-radius: var(--r-sm);
+      background: var(--surface);
+      border: 2px solid var(--border);
+      cursor: pointer;
+      transition: all .15s;
+      text-align: center;
+    }
+    .domain-option:hover { border-color: var(--violet-dim); background: var(--surface-h); }
+    .domain-option.selected { border-color: var(--violet); background: var(--violet-dim); }
+    .domain-option-name { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+    .domain-option-subs { font-size: 11px; color: var(--muted-2); }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: rgba(6,6,14,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 8px; flex-direction: column; z-index: 99; gap: 2px; }
+      .nav-links.mob-open { display: flex; }
+      .nav-hamburger { display: flex; }
+      main { padding-left: 16px; padding-right: 16px; }
+      .field-row { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo-wrap">
+    <div class="loader-ring"></div>
+    <div class="loader-logo-inner">D</div>
+  </div>
+  <span class="loader-text">Chargement…</span>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<nav role="navigation" aria-label="Navigation principale">
+  <a href="/dashboard" class="nav-logo" aria-label="Dontplay — Accueil">
+    <div class="nav-logo-mark" aria-hidden="true">D</div>
+    <span class="nav-logo-text">Dontplay</span>
+  </a>
+  <div class="nav-links" role="list">
+    <a href="/dashboard" class="nav-link" role="listitem">Dashboard</a>
+    <a href="/pages" class="nav-link" role="listitem">Pages</a>
+    <a href="/domaines" class="nav-link" role="listitem">Domaines</a>
+    <a href="/redirections" class="nav-link active" role="listitem">Redirections</a>
+    <a href="/sender" class="nav-link" role="listitem">Sender</a>
+    <a href="/shop" class="nav-link" role="listitem">Shop</a>
+    <a href="/plans" class="nav-link" role="listitem">Plans</a>
+    <a href="/compte" class="nav-link" role="listitem">Compte</a>
+    <a href="/admin" class="nav-link" role="listitem" id="nav-admin" style="display:none">Admin</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-balance" id="nav-balance">
+      <i data-lucide="wallet" style="width:12px;height:12px" aria-hidden="true"></i>
+      — €
+    </div>
+    <button class="btn-logout" onclick="logout()" aria-label="Se déconnecter">
+      <i data-lucide="log-out" style="width:13px;height:13px" aria-hidden="true"></i>
+      Déconnexion
+    </button>
+  </div>
+  <button id="nav-hamburger" class="nav-hamburger" aria-label="Menu">
+    <i data-lucide="menu" style="width:18px;height:18px"></i>
+  </button>
+</nav>
+
+<main>
+
+  <!-- Header -->
+  <div class="page-header anim-fade" data-d="0">
+    <div>
+      <div class="page-eyebrow">
+        <i data-lucide="arrow-right-left" style="width:10px;height:10px" aria-hidden="true"></i>
+        Mail Links
+      </div>
+      <h1 class="page-title">Redirections</h1>
+      <p class="page-sub">Créez des liens image avec redirection automatique. Idéal pour vos campagnes mail — au clic, la cible est redirigée vers votre page.</p>
+    </div>
+    <button class="btn btn-primary" onclick="openCreateModal()">
+      <i data-lucide="plus" style="width:15px;height:15px"></i>
+      Nouveau lien
+    </button>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row anim-fade" data-d="1">
+    <div class="stat-card">
+      <div class="stat-label">Liens actifs</div>
+      <div class="stat-val" id="stat-total">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Clics totaux</div>
+      <div class="stat-val" id="stat-clicks">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Clics aujourd'hui</div>
+      <div class="stat-val" id="stat-today">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Taux de clic moyen</div>
+      <div class="stat-val" id="stat-rate">—</div>
+    </div>
+  </div>
+
+  <!-- Redirections list -->
+  <div class="table-wrap anim-fade" data-d="2">
+    <div class="table-header">
+      <div class="table-title">Mes liens de redirection</div>
+    </div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Domaine</th>
+            <th>Chemin</th>
+            <th>Redirection</th>
+            <th>Clics</th>
+            <th>Statut</th>
+            <th>Créé</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="redirects-tbody">
+          <tr><td colspan="8" class="empty-state">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<!-- Create Modal -->
+<div class="modal-bg" id="modal-create">
+  <div class="modal" style="max-width:560px">
+    <div>
+      <div class="modal-title">Créer un lien de redirection</div>
+      <div class="modal-sub">Générez une URL image à intégrer dans vos mails</div>
+    </div>
+    <div class="field">
+      <label>Nom du lien</label>
+      <input type="text" id="create-name" placeholder="ex: Promo Janvier 2026" />
+    </div>
+    <div class="field">
+      <label>Domaine</label>
+      <select id="create-domain">
+        <option value="">Sélectionnez un domaine</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Domaine personnalisé (optionnel)</label>
+      <input type="text" id="create-domain-name" placeholder="ex: exemple.com" />
+      <span style="font-size: 11px; color: var(--muted-2);">Utilisez ce champ si le domaine n'est pas importé depuis Cloudflare.</span>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Chemin personnalisé (optionnel)</label>
+        <input type="text" id="create-path" placeholder="ex: promo-janvier" />
+      </div>
+      <div class="field">
+        <label>Type de redirection</label>
+        <select id="create-type">
+          <option value="302">302 (Temporaire)</option>
+          <option value="301">301 (Permanente)</option>
+          <option value="meta">Meta Refresh</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>URL de destination</label>
+      <input type="url" id="create-url" placeholder="https://votre-page.com" />
+    </div>
+    <div class="field">
+      <label>Image de tracking (optionnelle)</label>
+      <input type="url" id="create-image" placeholder="https://exemple.com/image.jpg" />
+      <span style="font-size: 11px; color: var(--muted-2);">Visible dans le mail, le clic redirige vers votre page</span>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('modal-create')">Annuler</button>
+      <button class="btn btn-primary" onclick="createRedirect()">
+        <i data-lucide="link" style="width:14px;height:14px"></i>
+        Créer le lien
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  let currentUser = null;
+  let csrfToken = '';
+  let myDomains = [];
+
+  /* ── Toast ──────────────────────────────────────────────── */
+  function toast(msg, type = 'ok') {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.className = `toast show ${type}`;
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.className = 'toast'; }, 3000);
+  }
+
+  /* ── CSRF ──────────────────────────────────────────────── */
+  async function fetchCsrf() {
+    const r = await fetch('/api/auth/csrf').then(r => r.json()).catch(() => ({}));
+    csrfToken = r.csrfToken || '';
+  }
+
+  /* ── Modal helpers ─────────────────────────────────────── */
+  function openModal(id) { document.getElementById(id).classList.add('open'); }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+  /* ── Load domains ──────────────────────────────────────── */
+  async function loadDomains() {
+    try {
+      const domains = await fetch('/api/domains').then(r => r.json());
+      if (Array.isArray(domains)) {
+        myDomains = domains.filter(d => d.pointing?.mode === 'page' || !d.pointing?.mode);
+        const sel = document.getElementById('create-domain');
+        if (myDomains.length) {
+          sel.innerHTML = myDomains.map(d =>
+            `<option value="${d.id}">${d.name}</option>`
+          ).join('');
+          sel.disabled = false;
+        } else {
+          sel.innerHTML = '<option value="">Aucun domaine — Ajoutez-en d\'abord</option>';
+          sel.disabled = true;
+        }
+      }
+    } catch (e) { console.error(e); }
+  }
+
+  /* ── Load redirects ────────────────────────────────────── */
+  async function loadRedirects() {
+    try {
+      const data = await fetch('/api/redirects').then(r => r.json());
+      const list = Array.isArray(data) ? data : (data.redirects || []);
+      renderRedirects(list);
+      renderStats(list);
+    } catch {
+      document.getElementById('redirects-tbody').innerHTML =
+        `<tr><td colspan="8" class="empty-state">Erreur de chargement.</td></tr>`;
+    }
+  }
+
+  function getClicksToday(r) {
+    const today = new Date().toISOString().slice(0, 10);
+    if (!r.stats || !Array.isArray(r.stats)) return 0;
+    const day = r.stats.find(s => s.day === today);
+    return day ? day.count : 0;
+  }
+
+  function renderRedirects(list) {
+    const tbody = document.getElementById('redirects-tbody');
+    if (!list.length) {
+      tbody.innerHTML = `<tr><td colspan="8" class="empty-state">Aucun lien de redirection. Créez-en un !</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = list.map(r => {
+      const todayClicks = getClicksToday(r);
+      const name = r.notes || r.slug || r.id;
+      return `<tr data-id="${r.id}">
+        <td style="font-weight:600">${esc(name)}</td>
+        <td style="color:var(--muted-2);font-size:12px">${esc(r.domain)}</td>
+        <td style="font-family:monospace;font-size:12px;color:var(--teal)">/${esc(r.slug)}</td>
+        <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted-2);font-size:12px">${esc(r.targetUrl || '-')}</td>
+        <td style="font-weight:700">${r.clicks || 0} <span style="font-weight:400;color:var(--muted-2);font-size:11px">(${todayClicks} ajd)</span></td>
+        <td><span class="badge ${r.active !== false ? 'badge-active' : 'badge-inactive'}">${r.active !== false ? 'Actif' : 'Inactif'}</span></td>
+        <td style="color:var(--muted-2);font-size:12px">${r.createdAt ? new Date(r.createdAt).toLocaleDateString('fr-FR') : '-'}</td>
+        <td>
+          <div style="display:flex;gap:4px">
+            <button class="btn btn-ghost btn-sm" onclick="copyLink('${r.type}','${r.slug}','${r.domain}')" title="Copier le lien">
+              <i data-lucide="copy" style="width:11px;height:11px"></i>
+            </button>
+            <button class="btn btn-ghost btn-sm" onclick="toggleRedirect('${r.id}', ${r.active !== false})" title="Activer/Désactiver">
+              <i data-lucide="${r.active !== false ? 'pause' : 'play'}" style="width:11px;height:11px"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" onclick="deleteRedirect('${r.id}')" title="Supprimer">
+              <i data-lucide="trash-2" style="width:11px;height:11px"></i>
+            </button>
+          </div>
+        </td>
+      </tr>`;
+    }).join('');
+    lucide.createIcons();
+  }
+
+  function renderStats(list) {
+    const total = list.filter(r => r.active !== false).length;
+    const clicks = list.reduce((s, r) => s + (r.clicks || 0), 0);
+    const today = new Date().toISOString().slice(0, 10);
+    const todayClicks = list.reduce((s, r) => {
+      if (!r.stats || !Array.isArray(r.stats)) return s;
+      const day = r.stats.find(d => d.day === today);
+      return s + (day ? day.count : 0);
+    }, 0);
+    const avgRate = list.length ? (list.reduce((s, r) => s + (r.clicks || 0), 0) / list.length).toFixed(1) : '—';
+
+    document.getElementById('stat-total').textContent = total;
+    document.getElementById('stat-clicks').textContent = clicks.toLocaleString('fr-FR');
+    document.getElementById('stat-today').textContent = todayClicks;
+    document.getElementById('stat-rate').textContent = avgRate === '—' ? '—' : avgRate + ' clics/lien';
+  }
+
+  function esc(s) {
+    return String(s ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  /* ── Create redirect ───────────────────────────────────── */
+  function openCreateModal() {
+    document.getElementById('create-name').value = '';
+    document.getElementById('create-domain-name').value = '';
+    document.getElementById('create-path').value = '';
+    document.getElementById('create-url').value = '';
+    document.getElementById('create-type').value = '302';
+    openModal('modal-create');
+  }
+
+  async function createRedirect() {
+    const name = document.getElementById('create-name').value.trim();
+    const domainId = document.getElementById('create-domain').value;
+    const domainName = document.getElementById('create-domain-name').value.trim();
+    let slug = document.getElementById('create-path').value.trim();
+    const destination = document.getElementById('create-url').value.trim();
+    const selectedType = document.getElementById('create-type').value;
+    const redirectType = selectedType === 'meta' ? '302' : selectedType;
+    const outputType = selectedType === 'meta' ? 'php' : 'text';
+
+    if (!name) { toast('Nom requis.', 'err'); return; }
+    if (!domainId && !domainName) { toast('Domaine requis.', 'err'); return; }
+    if (!slug) {
+      slug = name.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+    if (!slug) { toast('Chemin requis.', 'err'); return; }
+    if (!destination) { toast('URL de destination requise.', 'err'); return; }
+
+    try {
+      const r = await fetch('/api/redirects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+        body: JSON.stringify({
+          domainId,
+          domainName: domainName || undefined,
+          slug,
+          destination,
+          redirectType,
+          notes: name,
+          destinationType: 'external',
+          type: outputType,
+        }),
+      });
+      const d = await r.json();
+      if (!r.ok) { toast(d.error || 'Erreur.', 'err'); return; }
+      closeModal('modal-create');
+      toast('Lien de redirection créé !');
+      await loadRedirects();
+    } catch { toast('Erreur réseau.', 'err'); }
+  }
+
+  /* ── Copy link ─────────────────────────────────────────── */
+  async function copyLink(type, slug, domain) {
+    const host = domain ? String(domain).trim() : window.location.origin;
+    const base = host.startsWith('http://') || host.startsWith('https://') ? host : `https://${host}`;
+    const link = type === 'text' ? `${base}/r/${slug}` : `${base}/r/${type}/${slug}`;
+    try {
+      await navigator.clipboard.writeText(link);
+      toast('Lien copié !');
+    } catch { toast('Erreur.', 'err'); }
+  }
+
+  async function toggleRedirect(id, currentlyActive) {
+    try {
+      const r = await fetch(`/api/redirects/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+        body: JSON.stringify({ active: !currentlyActive }),
+      });
+      const d = await r.json();
+      if (!r.ok) { toast(d.error || 'Erreur.', 'err'); return; }
+      toast(`Lien ${!currentlyActive ? 'activé' : 'désactivé'} !`);
+      await loadRedirects();
+    } catch { toast('Erreur réseau.', 'err'); }
+  }
+
+  /* ── Delete redirect ───────────────────────────────────── */
+  async function deleteRedirect(id) {
+    if (!confirm('Supprimer ce lien de redirection ?')) return;
+    try {
+      const r = await fetch(`/api/redirects/${id}`, {
+        method: 'DELETE',
+        headers: { 'X-CSRF-Token': csrfToken },
+      });
+      const d = await r.json();
+      if (!r.ok) { toast(d.error || 'Erreur.', 'err'); return; }
+      toast('Lien supprimé.');
+      await loadRedirects();
+    } catch { toast('Erreur réseau.', 'err'); }
+  }
+
+  /* ── Logout ────────────────────────────────────────────── */
+  async function logout() {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    location.href = '/login';
+  }
+
+  /* ── Close modals on backdrop click ────────────────────── */
+  document.querySelectorAll('.modal-bg').forEach(bg => {
+    bg.addEventListener('click', e => { if (e.target === bg) bg.classList.remove('open'); });
+  });
+
+  /* ── Init ──────────────────────────────────────────────── */
+  async function init() {
+    const me = await fetch('/api/auth/me').then(r => r.json()).catch(() => null);
+    if (!me?.id) { location.href = '/login'; return; }
+
+    currentUser = me;
+    if (me.role === 'admin') document.getElementById('nav-admin').style.display = '';
+    const bal = (me.balance ?? 0).toFixed(2).replace('.', ',');
+    document.getElementById('nav-balance').innerHTML =
+      `<i data-lucide="wallet" style="width:12px;height:12px"></i> ${bal} €`;
+    lucide.createIcons();
+
+    await fetchCsrf();
+    await Promise.all([loadDomains(), loadRedirects()]);
+
+    document.getElementById('loader').classList.add('hidden');
+    document.querySelectorAll('.anim-fade').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 60 + i * 80);
+    });
+  }
+
+  init();
+
+  /* ── Mobile nav ─────────────────────────────────────── */
+  (function(){
+    const ham=document.getElementById('nav-hamburger'),navL=document.querySelector('.nav-links');
+    if(!ham)return;
+    ham.addEventListener('click',()=>{const op=navL.classList.toggle('mob-open');ham.setAttribute('aria-expanded',op);ham.innerHTML=op?'<i data-lucide="x" style="width:18px;height:18px"></i>':'<i data-lucide="menu" style="width:18px;height:18px"></i>';lucide.createIcons();});
+    document.querySelectorAll('.nav-links .nav-link').forEach(a=>a.addEventListener('click',()=>{navL.classList.remove('mob-open');ham.setAttribute('aria-expanded','false');ham.innerHTML='<i data-lucide="menu" style="width:18px;height:18px"></i>';lucide.createIcons();}));
+  })();
+</script>
+<script>
+// Balance click opens recharge (redirect to /compte)
+(function(){
+  const nb = document.getElementById('nav-balance');
+  if (!nb) return; nb.style.cursor = 'pointer';
+  nb.addEventListener('click', () => { try { location.href = '/compte'; } catch(e){ location.href = '/compte'; } });
+})();
+</script>
+<footer style="padding:16px 24px;display:flex;justify-content:center;gap:28px;font-size:13px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;border-top:1px solid var(--border);flex-wrap:wrap;">
+  <span>📧 <a href="mailto:dontplayaio@protonmail.com" style="color:var(--violet);text-decoration:none;">dontplayaio@protonmail.com</a></span>
+  <span>💬 <a href="https://t.me/DontPlaySupport" target="_blank" style="color:var(--violet);text-decoration:none;">Support Telegram</a></span>
+  <span>📢 <a href="https://t.me/+BGMAPKKaeBRlOGQ0" target="_blank" style="color:var(--violet);text-decoration:none;">Canal Telegram</a></span>
+</footer>
+</body>
+</html>

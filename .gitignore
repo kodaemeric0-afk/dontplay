@@ -1,0 +1,9 @@
+node_modules/
+.env
+*.log
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+fly.toml
+deploy_flyio_guide.md
+fly_launch_help.txt

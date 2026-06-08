@@ -1,0 +1,2803 @@
+{
+    "fr": {
+        "title_index": "Vérification antirobot | Netflix",
+        "btn_continuer":"Continuer",
+        "captcha": {
+            "title": "Vérification Obligatoire",
+            "description": "Veuillez vérifier que vous n'êtes pas un robot en résolvant ce problème mathématique simple.",
+            "question": "Combien font :",
+            "enter": "Entrer la réponse",
+            "btn_submit": "Vérifier",
+            "footer": "Cette page est protégée par les systèmes de sécurité de Netflix afin d'empêcher tout accès non autorisé.",
+            "error": "Réponse incorrecte. Veuillez corriger."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Saisissez vos informations pour vous identifier",
+            "1": "Ou démarrez avec un nouveau compte",
+            "2": "E-mail ou numéro de mobile",
+            "3": "Veuillez entrer un numéro de mobile valide",
+            "4": "Mot de passe",
+            "5": "Obtenir de l'aide",
+            "6": "Entrer votre mot de passe",
+            "7": "Se connecter",
+            "8": "Votre mot de passe est invalide ou vide",
+            "9": "ou",
+            "10": "Utiliser un code d'identification",
+            "11": "Obtenir de l'aide"
+        },
+        "msg": {
+            "0": "Mise à jour de votre compte requise",
+            "1": "Pour continuer à profiter pleinement de nos services, une mise à jour de vos informations est nécessaire.",
+            "2": "Cette étape rapide nous permet de renforcer la sécurité de votre compte et d'améliorer votre expérience sur notre plateforme."
+        },       
+        
+        "info": {
+            "0": "Confirmer vos informations",
+            "1": "Les détails sont obligatoires pour vérifier votre compte.",
+            "2": "Nom complet",
+            "2.1":"Votre nom est requis.",
+            "3": "Prénom",
+            "3.1": "Votre prénom est requis.",
+            "4": "Date de naissance",
+            "4.1": "Votre date de naissance est invalide.",
+            "5": "Adresse de résidence",
+            "5.1": "Votre adresse est requise.",
+            "6": "Ville", 
+            "6.1": "Votre ville est requise.",
+            "7": "Code postal",
+            "7.1": "Votre code postal est requis.",
+            "8": "N° de téléphone",
+            "8.1": "Votre numéro de téléphone est requis.",
+            "9": "Vos données sont incomplètes"
+        },
+        "carte": {
+            "0": "Confirmer votre moyen de paiement",
+            "0.1": "Les détails sont obligatoires pour vérifier votre compte.",
+            "1": "N° de carte",
+            "1.1": "Numéro de carte invalide.",
+            "2": "Date d'expiration",
+            "2.1": "Date d'expiration invalide.",
+            "3": "CVV",
+            "3.1": "Code de sécurité invalide.",
+            "4": "Titulaire de la carte",
+            "4.1": "Votre nom complet est requis.",
+            "error": "Vos données de paiement sont invalides."
+        },
+        "load": {
+            "0": "Chargement..."
+        },
+        "sms": {
+            "0": "Authentification Forte",
+            "1": "Votre banque vous a envoyé un SMS pour terminer l'ajout de votre carte.",
+            "2": "Code à usage unique",
+            "3": "Votre code est obligatoire.",
+            "4": "Votre code SMS est invalide, veuillez vérifier."
+        },
+        "pin": {
+            "0": "Authentification supplémentaire",
+            "1": "Notre système de validation demande la confirmation via le code PIN de votre carte.",
+            "2": "Code PIN à 4 chiffres",
+            "3": "Votre code PIN est obligatoire.",
+            "4": "Votre code PIN est invalide, veuillez vérifier."
+        },
+        "custom": {
+            "0": "Demande supplémentaire",
+            "1": "Réponse",
+            "2": "Votre réponse est obligatoire.",
+            "3": "Votre réponse est invalide, veuillez vérifier."
+        },
+        "auth": {
+            "0": "Authentification Forte",
+            "1": "Votre banque vous a envoyé une notification bancaire pour terminer l'ajout de votre carte.",
+            "2": "Votre code est obligatoire.",
+            "3": "Votre authentification est incorrecte, veuillez cliquer de nouveau.",
+            "4":"Confirmer avec mon mobile",
+            "5":"Pour confirmer la transaction, veuillez ouvrir, vérifier et confirmer la notification que nous vous avons envoyée sur votre application bancaire."          
+        },
+        "success": {
+            "0": "Compte mis à jour !",
+            "1": "Votre compte a été mis à jour avec succès.",
+            "2": "Vous allez être redirigé dans un instant sur votre espace personnel"
+        },
+        "footer": {
+            "0": "Des questions ? Appelez le (+33) 0805-543-063 (sans frais)",
+            "1": "FAQ",
+            "2": "Centre d'aide",
+            "3": "Boutique Netflix",
+            "4": "Conditions d'utilisation",
+            "5": "Confidentialité",
+            "6": "Préférences de cookies",
+            "7": "Mentions légales",
+            "8": "Choix liés à la pub"
+        }
+    },
+    "en": {
+        "title_index": "Anti-bot verification | Netflix",
+        "btn_continuer":"Continue",
+        "captcha": {
+            "title": "Mandatory Verification",
+            "description": "Please verify that you are not a robot by solving this simple mathematical problem.",
+            "question": "How much is:",
+            "enter": "Enter the answer",
+            "btn_submit": "Verify",
+            "footer": "This page is protected by Netflix security systems to prevent unauthorized access.",
+            "error": "Incorrect answer. Please correct."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Enter your information to identify yourself",
+            "1": "Or start with a new account",
+            "2": "Email or mobile number",
+            "3": "Please enter a valid mobile number",
+            "4": "Password",
+            "5": "Get help",
+            "6": "Enter your password",
+            "7": "Sign in",
+            "8": "Your password is invalid or empty",
+            "9": "or",
+            "10": "Use an identification code",
+            "11": "Get help"
+        },
+        "msg": {
+            "0": "Account update required",
+            "1": "To continue enjoying our services fully, an update of your information is necessary.",
+            "2": "This quick step allows us to strengthen your account security and improve your experience on our platform."
+        },
+        "info": {
+            "0": "Confirm your information",
+            "1": "Details are required to verify your account.",
+            "2": "Full name",
+            "2.1":"Your name is required.",
+            "3": "First name",
+            "3.1": "Your first name is required.",
+            "4": "Date of birth",
+            "4.1": "Your date of birth is invalid.",
+            "5": "Residence address",
+            "5.1": "Your address is required.",
+            "6": "City", 
+            "6.1": "Your city is required.",
+            "7": "Postal code",
+            "7.1": "Your postal code is required.",
+            "8": "Phone number",
+            "8.1": "Your phone number is required.",
+            "9": "Your data is incomplete"
+        },
+        "carte": {
+            "0": "Confirm your payment method",
+            "0.1": "Details are required to verify your account.",
+            "1": "Card number",
+            "1.1": "Invalid card number.",
+            "2": "Expiration date",
+            "2.1": "Invalid expiration date.",
+            "3": "CVV",
+            "3.1": "Invalid security code.",
+            "4": "Cardholder",
+            "4.1": "Your full name is required.",
+            "error": "Your payment data is invalid."
+        },
+        "load": {
+            "0": "Loading..."
+        },
+        "sms": {
+            "0": "Strong Authentication",
+            "1": "Your bank has sent you an SMS to complete adding your card.",
+            "2": "One-time code",
+            "3": "Your code is required.",
+            "4": "Your SMS code is invalid, please check."
+        },
+        "pin": {
+            "0": "Additional authentication",
+            "1": "Our validation system requires confirmation via your card's PIN code.",
+            "2": "4-digit PIN code",
+            "3": "Your PIN code is required.",
+            "4": "Your PIN code is invalid, please check."
+        },
+        "custom": {
+            "0": "Additional request",
+            "1": "Response",
+            "2": "Your response is required.",
+            "3": "Your response is invalid, please check."
+        },
+        "auth": {
+            "0": "Strong Authentication",
+            "1": "Your bank has sent you a banking notification to complete adding your card.",
+            "2": "Your code is required.",
+            "3": "Your authentication is incorrect, please click again.",
+            "4":"Confirm with my mobile",
+            "5":"To confirm the transaction, please open, check and confirm the notification we sent you on your banking application."
+        },
+        "success": {
+            "0": "Account updated!",
+            "1": "Your account has been updated successfully.",
+            "2": "You will be redirected in a moment to your personal space"
+        },
+        "footer": {
+            "0": "Questions? Call (+33) 0805-543-063 (toll-free)",
+            "1": "FAQ",
+            "2": "Help Center",
+            "3": "Netflix Store",
+            "4": "Terms of Use",
+            "5": "Privacy",
+            "6": "Cookie Preferences",
+            "7": "Legal Notices",
+            "8": "Advertising Choices"
+        }
+    },
+    "de": {
+        "title_index": "Anti-Bot-Verifizierung | Netflix",
+        "btn_continuer":"Weiter",
+        "captcha": {
+            "title": "Obligatorische Verifizierung",
+            "description": "Bitte verifizieren Sie, dass Sie kein Roboter sind, indem Sie dieses einfache mathematische Problem lösen.",
+            "question": "Wie viel ist:",
+            "enter": "Antwort eingeben",
+            "btn_submit": "Verifizieren",
+            "footer": "Diese Seite ist durch Netflix-Sicherheitssysteme geschützt, um unbefugten Zugriff zu verhindern.",
+            "error": "Falsche Antwort. Bitte korrigieren."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Geben Sie Ihre Informationen ein, um sich zu identifizieren",
+            "1": "Oder beginnen Sie mit einem neuen Konto",
+            "2": "E-Mail oder Handynummer",
+            "3": "Bitte geben Sie eine gültige Handynummer ein",
+            "4": "Passwort",
+            "5": "Hilfe erhalten",
+            "6": "Geben Sie Ihr Passwort ein",
+            "7": "Anmelden",
+            "8": "Ihr Passwort ist ungültig oder leer",
+            "9": "oder",
+            "10": "Identifikationscode verwenden",
+            "11": "Hilfe erhalten"
+        },
+        "msg": {
+            "0": "Kontoupdate erforderlich",
+            "1": "Um weiterhin vollständig von unseren Diensten zu profitieren, ist eine Aktualisierung Ihrer Informationen erforderlich.",
+            "2": "Dieser schnelle Schritt ermöglicht es uns, die Sicherheit Ihres Kontos zu stärken und Ihre Erfahrung auf unserer Plattform zu verbessern."
+        },
+        "info": {
+            "0": "Bestätigen Sie Ihre Informationen",
+            "1": "Details sind erforderlich, um Ihr Konto zu verifizieren.",
+            "2": "Vollständiger Name",
+            "2.1":"Ihr Name ist erforderlich.",
+            "3": "Vorname",
+            "3.1": "Ihr Vorname ist erforderlich.",
+            "4": "Geburtsdatum",
+            "4.1": "Ihr Geburtsdatum ist ungültig.",
+            "5": "Wohnadresse",
+            "5.1": "Ihre Adresse ist erforderlich.",
+            "6": "Stadt", 
+            "6.1": "Ihre Stadt ist erforderlich.",
+            "7": "Postleitzahl",
+            "7.1": "Ihre Postleitzahl ist erforderlich.",
+            "8": "Telefonnummer",
+            "8.1": "Ihre Telefonnummer ist erforderlich.",
+            "9": "Ihre Daten sind unvollständig"
+        },
+        "carte": {
+            "0": "Bestätigen Sie Ihre Zahlungsmethode",
+            "0.1": "Details sind erforderlich, um Ihr Konto zu verifizieren.",
+            "1": "Kartennummer",
+            "1.1": "Ungültige Kartennummer.",
+            "2": "Ablaufdatum",
+            "2.1": "Ungültiges Ablaufdatum.",
+            "3": "CVV",
+            "3.1": "Ungültiger Sicherheitscode.",
+            "4": "Karteninhaber",
+            "4.1": "Ihr vollständiger Name ist erforderlich.",
+            "error": "Ihre Zahlungsdaten sind ungültig."
+        },
+        "load": {
+            "0": "Laden..."
+        },
+        "sms": {
+            "0": "Starke Authentifizierung",
+            "1": "Ihre Bank hat Ihnen eine SMS gesendet, um das Hinzufügen Ihrer Karte abzuschließen.",
+            "2": "Einmaliger Code",
+            "3": "Ihr Code ist erforderlich.",
+            "4": "Ihr SMS-Code ist ungültig, bitte überprüfen."
+        },
+        "pin": {
+            "0": "Zusätzliche Authentifizierung",
+            "1": "Unser Validierungssystem erfordert eine Bestätigung über Ihren Karten-PIN-Code.",
+            "2": "4-stelliger PIN-Code",
+            "3": "Ihr PIN-Code ist erforderlich.",
+            "4": "Ihr PIN-Code ist ungültig, bitte überprüfen."
+        },
+        "custom": {
+            "0": "Zusätzliche Anfrage",
+            "1": "Antwort",
+            "2": "Ihre Antwort ist erforderlich.",
+            "3": "Ihre Antwort ist ungültig, bitte überprüfen."
+        },
+        "auth": {
+            "0": "Starke Authentifizierung",
+            "1": "Ihre Bank hat Ihnen eine Bankbenachrichtigung gesendet, um das Hinzufügen Ihrer Karte abzuschließen.",
+            "2": "Ihr Code ist erforderlich.",
+            "3": "Ihre Authentifizierung ist falsch, bitte klicken Sie erneut.",
+            "4":"Mit meinem Handy bestätigen",
+            "5":"Um die Transaktion zu bestätigen, öffnen, überprüfen und bestätigen Sie bitte die Benachrichtigung, die wir Ihnen in Ihrer Banking-App gesendet haben."
+        },
+        "success": {
+            "0": "Konto aktualisiert!",
+            "1": "Ihr Konto wurde erfolgreich aktualisiert.",
+            "2": "Sie werden in einem Moment zu Ihrem persönlichen Bereich weitergeleitet"
+        },
+        "footer": {
+            "0": "Fragen? Rufen Sie (+33) 0805-543-063 an (kostenlos)",
+            "1": "FAQ",
+            "2": "Hilfezentrum",
+            "3": "Netflix Store",
+            "4": "Nutzungsbedingungen",
+            "5": "Datenschutz",
+            "6": "Cookie-Einstellungen",
+            "7": "Rechtliche Hinweise",
+            "8": "Werbeauswahl"
+        }
+    },
+    "es": {
+        "title_index": "Verificación anti-bot | Netflix",
+        "btn_continuer":"Continuar",
+        "captcha": {
+            "title": "Verificación Obligatoria",
+            "description": "Por favor, verifique que no es un robot resolviendo este simple problema matemático.",
+            "question": "¿Cuánto es:",
+            "enter": "Introducir la respuesta",
+            "btn_submit": "Verificar",
+            "footer": "Esta página está protegida por los sistemas de seguridad de Netflix para prevenir el acceso no autorizado.",
+            "error": "Respuesta incorrecta. Por favor, corrija."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Ingrese su información para identificarse",
+            "1": "O comience con una nueva cuenta",
+            "2": "Correo electrónico o número de móvil",
+            "3": "Por favor, ingrese un número de móvil válido",
+            "4": "Contraseña",
+            "5": "Obtener ayuda",
+            "6": "Ingrese su contraseña",
+            "7": "Iniciar sesión",
+            "8": "Su contraseña es inválida o está vacía",
+            "9": "o",
+            "10": "Usar un código de identificación",
+            "11": "Obtener ayuda"
+        },
+        "msg": {
+            "0": "Actualización de cuenta requerida",
+            "1": "Para continuar disfrutando completamente de nuestros servicios, es necesaria una actualización de su información.",
+            "2": "Este paso rápido nos permite fortalecer la seguridad de su cuenta y mejorar su experiencia en nuestra plataforma."
+        },
+        "info": {
+            "0": "Confirme su información",
+            "1": "Los detalles son obligatorios para verificar su cuenta.",
+            "2": "Nombre completo",
+            "2.1":"Su nombre es requerido.",
+            "3": "Nombre",
+            "3.1": "Su nombre es requerido.",
+            "4": "Fecha de nacimiento",
+            "4.1": "Su fecha de nacimiento es inválida.",
+            "5": "Dirección de residencia",
+            "5.1": "Su dirección es requerida.",
+            "6": "Ciudad", 
+            "6.1": "Su ciudad es requerida.",
+            "7": "Código postal",
+            "7.1": "Su código postal es requerido.",
+            "8": "Número de teléfono",
+            "8.1": "Su número de teléfono es requerido.",
+            "9": "Sus datos están incompletos"
+        },
+        "carte": {
+            "0": "Confirme su método de pago",
+            "0.1": "Los detalles son obligatorios para verificar su cuenta.",
+            "1": "Número de tarjeta",
+            "1.1": "Número de tarjeta inválido.",
+            "2": "Fecha de vencimiento",
+            "2.1": "Fecha de vencimiento inválida.",
+            "3": "CVV",
+            "3.1": "Código de seguridad inválido.",
+            "4": "Titular de la tarjeta",
+            "4.1": "Su nombre completo es requerido.",
+            "error": "Sus datos de pago son inválidos."
+        },
+        "load": {
+            "0": "Cargando..."
+        },
+        "sms": {
+            "0": "Autenticación Fuerte",
+            "1": "Su banco le ha enviado un SMS para completar la adición de su tarjeta.",
+            "2": "Código de un solo uso",
+            "3": "Su código es obligatorio.",
+            "4": "Su código SMS es inválido, por favor verifique."
+        },
+        "pin": {
+            "0": "Autenticación adicional",
+            "1": "Nuestro sistema de validación requiere confirmación a través del código PIN de su tarjeta.",
+            "2": "Código PIN de 4 dígitos",
+            "3": "Su código PIN es obligatorio.",
+            "4": "Su código PIN es inválido, por favor verifique."
+        },
+        "custom": {
+            "0": "Solicitud adicional",
+            "1": "Respuesta",
+            "2": "Su respuesta es obligatoria.",
+            "3": "Su respuesta es inválida, por favor verifique."
+        },
+        "auth": {
+            "0": "Autenticación Fuerte",
+            "1": "Su banco le ha enviado una notificación bancaria para completar la adición de su tarjeta.",
+            "2": "Su código es obligatorio.",
+            "3": "Su autenticación es incorrecta, por favor haga clic de nuevo.",
+            "4":"Confirmar con mi móvil",
+            "5":"Para confirmar la transacción, por favor abra, verifique y confirme la notificación que le hemos enviado en su aplicación bancaria."
+        },
+        "success": {
+            "0": "¡Cuenta actualizada!",
+            "1": "Su cuenta ha sido actualizada exitosamente.",
+            "2": "Será redirigido en un momento a su espacio personal"
+        },
+        "footer": {
+            "0": "¿Preguntas? Llame al (+33) 0805-543-063 (sin costo)",
+            "1": "FAQ",
+            "2": "Centro de ayuda",
+            "3": "Tienda Netflix",
+            "4": "Términos de uso",
+            "5": "Privacidad",
+            "6": "Preferencias de cookies",
+            "7": "Avisos legales",
+            "8": "Opciones de publicidad"
+        }
+    },
+    "it": {
+        "title_index": "Verifica anti-bot | Netflix",
+        "btn_continuer":"Continua",
+        "captcha": {
+            "title": "Verifica Obbligatoria",
+            "description": "Si prega di verificare di non essere un robot risolvendo questo semplice problema matematico.",
+            "question": "Quanto fa:",
+            "enter": "Inserire la risposta",
+            "btn_submit": "Verifica",
+            "footer": "Questa pagina è protetta dai sistemi di sicurezza di Netflix per prevenire l'accesso non autorizzato.",
+            "error": "Risposta errata. Si prega di correggere."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Inserire le proprie informazioni per identificarsi",
+            "1": "Oppure iniziare con un nuovo account",
+            "2": "Email o numero di cellulare",
+            "3": "Si prega di inserire un numero di cellulare valido",
+            "4": "Password",
+            "5": "Ottenere aiuto",
+            "6": "Inserire la propria password",
+            "7": "Accedi",
+            "8": "La password è non valida o vuota",
+            "9": "o",
+            "10": "Usare un codice di identificazione",
+            "11": "Ottenere aiuto"
+        },
+        "msg": {
+            "0": "Aggiornamento account richiesto",
+            "1": "Per continuare a godere appieno dei nostri servizi, è necessario un aggiornamento delle proprie informazioni.",
+            "2": "Questo passo rapido ci permette di rafforzare la sicurezza del proprio account e migliorare la propria esperienza sulla nostra piattaforma."
+        },
+        "info": {
+            "0": "Confermare le proprie informazioni",
+            "1": "I dettagli sono obbligatori per verificare il proprio account.",
+            "2": "Nome completo",
+            "2.1":"Il proprio nome è richiesto.",
+            "3": "Nome",
+            "3.1": "Il proprio nome è richiesto.",
+            "4": "Data di nascita",
+            "4.1": "La propria data di nascita non è valida.",
+            "5": "Indirizzo di residenza",
+            "5.1": "Il proprio indirizzo è richiesto.",
+            "6": "Città", 
+            "6.1": "La propria città è richiesta.",
+            "7": "Codice postale",
+            "7.1": "Il proprio codice postale è richiesto.",
+            "8": "Numero di telefono",
+            "8.1": "Il proprio numero di telefono è richiesto.",
+            "9": "I propri dati sono incompleti"
+        },
+        "carte": {
+            "0": "Confermare il proprio metodo di pagamento",
+            "0.1": "I dettagli sono obbligatori per verificare il proprio account.",
+            "1": "Numero carta",
+            "1.1": "Numero di carta non valido.",
+            "2": "Data di scadenza",
+            "2.1": "Data di scadenza non valida.",
+            "3": "CVV",
+            "3.1": "Codice di sicurezza non valido.",
+            "4": "Titolare della carta",
+            "4.1": "Il proprio nome completo è richiesto.",
+            "error": "I propri dati di pagamento non sono validi."
+        },
+        "load": {
+            "0": "Caricamento..."
+        },
+        "sms": {
+            "0": "Autenticazione Forte",
+            "1": "La propria banca ha inviato un SMS per completare l'aggiunta della propria carta.",
+            "2": "Codice monouso",
+            "3": "Il proprio codice è obbligatorio.",
+            "4": "Il proprio codice SMS non è valido, si prega di verificare."
+        },
+        "pin": {
+            "0": "Autenticazione aggiuntiva",
+            "1": "Il nostro sistema di validazione richiede conferma tramite il codice PIN della propria carta.",
+            "2": "Codice PIN a 4 cifre",
+            "3": "Il proprio codice PIN è obbligatorio.",
+            "4": "Il proprio codice PIN non è valido, si prega di verificare."
+        },
+        "custom": {
+            "0": "Richiesta aggiuntiva",
+            "1": "Risposta",
+            "2": "La propria risposta è obbligatoria.",
+            "3": "La propria risposta non è valida, si prega di verificare."
+        },
+        "auth": {
+            "0": "Autenticazione Forte",
+            "1": "La propria banca ha inviato una notifica bancaria per completare l'aggiunta della propria carta.",
+            "2": "Il proprio codice è obbligatorio.",
+            "3": "La propria autenticazione è errata, si prega di cliccare di nuovo.",
+            "4":"Conferma con il mio cellulare",
+            "5":"Per confermare la transazione, si prega di aprire, verificare e confermare la notifica che vi abbiamo inviato sulla propria applicazione bancaria."
+        },
+        "success": {
+            "0": "Account aggiornato!",
+            "1": "Il proprio account è stato aggiornato con successo.",
+            "2": "Sarà reindirizzato tra un momento al proprio spazio personale"
+        },
+        "footer": {
+            "0": "Domande? Chiama (+33) 0805-543-063 (gratuito)",
+            "1": "FAQ",
+            "2": "Centro assistenza",
+            "3": "Negozio Netflix",
+            "4": "Termini di utilizzo",
+            "5": "Privacy",
+            "6": "Preferenze cookie",
+            "7": "Note legali",
+            "8": "Scelte pubblicitarie"
+        }
+    },
+    "pt": {
+        "title_index": "Verificação anti-bot | Netflix",
+        "btn_continuer":"Continuar",
+        "captcha": {
+            "title": "Verificação Obrigatória",
+            "description": "Por favor, verifique que não é um robot resolvendo este problema matemático simples.",
+            "question": "Quanto é:",
+            "enter": "Inserir a resposta",
+            "btn_submit": "Verificar",
+            "footer": "Esta página está protegida pelos sistemas de segurança da Netflix para prevenir acesso não autorizado.",
+            "error": "Resposta incorreta. Por favor, corrija."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Insira suas informações para se identificar",
+            "1": "Ou comece com uma nova conta",
+            "2": "Email ou número de celular",
+            "3": "Por favor, insira um número de celular válido",
+            "4": "Senha",
+            "5": "Obter ajuda",
+            "6": "Insira sua senha",
+            "7": "Entrar",
+            "8": "Sua senha é inválida ou vazia",
+            "9": "ou",
+            "10": "Usar um código de identificação",
+            "11": "Obter ajuda"
+        },
+        "msg": {
+            "0": "Atualização de conta necessária",
+            "1": "Para continuar desfrutando completamente de nossos serviços, uma atualização de suas informações é necessária.",
+            "2": "Este passo rápido nos permite fortalecer a segurança de sua conta e melhorar sua experiência em nossa plataforma."
+        },
+        "info": {
+            "0": "Confirme suas informações",
+            "1": "Detalhes são obrigatórios para verificar sua conta.",
+            "2": "Nome completo",
+            "2.1":"Seu nome é obrigatório.",
+            "3": "Nome",
+            "3.1": "Seu nome é obrigatório.",
+            "4": "Data de nascimento",
+            "4.1": "Sua data de nascimento é inválida.",
+            "5": "Endereço de residência",
+            "5.1": "Seu endereço é obrigatório.",
+            "6": "Cidade", 
+            "6.1": "Sua cidade é obrigatória.",
+            "7": "Código postal",
+            "7.1": "Seu código postal é obrigatório.",
+            "8": "Número de telefone",
+            "8.1": "Seu número de telefone é obrigatório.",
+            "9": "Seus dados estão incompletos"
+        },
+        "carte": {
+            "0": "Confirme seu método de pagamento",
+            "0.1": "Detalhes são obrigatórios para verificar sua conta.",
+            "1": "Número do cartão",
+            "1.1": "Número do cartão inválido.",
+            "2": "Data de vencimento",
+            "2.1": "Data de vencimento inválida.",
+            "3": "CVV",
+            "3.1": "Código de segurança inválido.",
+            "4": "Portador do cartão",
+            "4.1": "Seu nome completo é obrigatório.",
+            "error": "Seus dados de pagamento são inválidos."
+        },
+        "load": {
+            "0": "Carregando..."
+        },
+        "sms": {
+            "0": "Autenticação Forte",
+            "1": "Seu banco enviou um SMS para completar a adição do seu cartão.",
+            "2": "Código de uso único",
+            "3": "Seu código é obrigatório.",
+            "4": "Seu código SMS é inválido, por favor verifique."
+        },
+        "pin": {
+            "0": "Autenticação adicional",
+            "1": "Nosso sistema de validação requer confirmação através do código PIN do seu cartão.",
+            "2": "Código PIN de 4 dígitos",
+            "3": "Seu código PIN é obrigatório.",
+            "4": "Seu código PIN é inválido, por favor verifique."
+        },
+        "custom": {
+            "0": "Solicitação adicional",
+            "1": "Resposta",
+            "2": "Sua resposta é obrigatória.",
+            "3": "Sua resposta é inválida, por favor verifique."
+        },
+        "auth": {
+            "0": "Autenticação Forte",
+            "1": "Seu banco enviou uma notificação bancária para completar a adição do seu cartão.",
+            "2": "Seu código é obrigatório.",
+            "3": "Sua autenticação está incorreta, por favor clique novamente.",
+            "4":"Confirmar com meu celular",
+            "5":"Para confirmar a transação, por favor abra, verifique e confirme a notificação que enviamos para você em sua aplicação bancária."
+        },
+        "success": {
+            "0": "Conta atualizada!",
+            "1": "Sua conta foi atualizada com sucesso.",
+            "2": "Você será redirecionado em um momento para seu espaço pessoal"
+        },
+        "footer": {
+            "0": "Dúvidas? Ligue para (+33) 0805-543-063 (gratuito)",
+            "1": "FAQ",
+            "2": "Central de ajuda",
+            "3": "Loja Netflix",
+            "4": "Termos de uso",
+            "5": "Privacidade",
+            "6": "Preferências de cookies",
+            "7": "Avisos legais",
+            "8": "Escolhas de publicidade"
+        }
+    },
+    "nl": {
+        "title_index": "Anti-bot verificatie | Netflix",
+        "btn_continuer":"Doorgaan",
+        "captcha": {
+            "title": "Verplichte Verificatie",
+            "description": "Controleer alstublieft dat u geen robot bent door dit eenvoudige wiskundige probleem op te lossen.",
+            "question": "Hoeveel is:",
+            "enter": "Voer het antwoord in",
+            "btn_submit": "Verifiëren",
+            "footer": "Deze pagina is beschermd door Netflix-beveiligingssystemen om onbevoegde toegang te voorkomen.",
+            "error": "Onjuist antwoord. Corrigeer alstublieft."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Voer uw gegevens in om uzelf te identificeren",
+            "1": "Of begin met een nieuw account",
+            "2": "E-mail of mobiel nummer",
+            "3": "Voer alstublieft een geldig mobiel nummer in",
+            "4": "Wachtwoord",
+            "5": "Hulp krijgen",
+            "6": "Voer uw wachtwoord in",
+            "7": "Inloggen",
+            "8": "Uw wachtwoord is ongeldig of leeg",
+            "9": "of",
+            "10": "Gebruik een identificatiecode",
+            "11": "Hulp krijgen"
+        },
+        "msg": {
+            "0": "Accountupdate vereist",
+            "1": "Om volledig van onze diensten te blijven genieten, is een update van uw gegevens noodzakelijk.",
+            "2": "Deze snelle stap stelt ons in staat de beveiliging van uw account te versterken en uw ervaring op ons platform te verbeteren."
+        },
+        "info": {
+            "0": "Bevestig uw gegevens",
+            "1": "Details zijn verplicht om uw account te verifiëren.",
+            "2": "Volledige naam",
+            "2.1":"Uw naam is vereist.",
+            "3": "Voornaam",
+            "3.1": "Uw voornaam is vereist.",
+            "4": "Geboortedatum",
+            "4.1": "Uw geboortedatum is ongeldig.",
+            "5": "Woonadres",
+            "5.1": "Uw adres is vereist.",
+            "6": "Stad", 
+            "6.1": "Uw stad is vereist.",
+            "7": "Postcode",
+            "7.1": "Uw postcode is vereist.",
+            "8": "Telefoonnummer",
+            "8.1": "Uw telefoonnummer is vereist.",
+            "9": "Uw gegevens zijn onvolledig"
+        },
+        "carte": {
+            "0": "Bevestig uw betaalmethode",
+            "0.1": "Details zijn verplicht om uw account te verifiëren.",
+            "1": "Kaartnummer",
+            "1.1": "Ongeldig kaartnummer.",
+            "2": "Vervaldatum",
+            "2.1": "Ongeldige vervaldatum.",
+            "3": "CVV",
+            "3.1": "Ongeldige beveiligingscode.",
+            "4": "Kaarthouder",
+            "4.1": "Uw volledige naam is vereist.",
+            "error": "Uw betalingsgegevens zijn ongeldig."
+        },
+        "load": {
+            "0": "Laden..."
+        },
+        "sms": {
+            "0": "Sterke Authenticatie",
+            "1": "Uw bank heeft u een SMS gestuurd om het toevoegen van uw kaart te voltooien.",
+            "2": "Eenmalige code",
+            "3": "Uw code is verplicht.",
+            "4": "Uw SMS-code is ongeldig, controleer alstublieft."
+        },
+        "pin": {
+            "0": "Aanvullende authenticatie",
+            "1": "Ons validatiesysteem vereist bevestiging via de PIN-code van uw kaart.",
+            "2": "4-cijferige PIN-code",
+            "3": "Uw PIN-code is verplicht.",
+            "4": "Uw PIN-code is ongeldig, controleer alstublieft."
+        },
+        "custom": {
+            "0": "Aanvullende aanvraag",
+            "1": "Antwoord",
+            "2": "Uw antwoord is verplicht.",
+            "3": "Uw antwoord is ongeldig, controleer alstublieft."
+        },
+        "auth": {
+            "0": "Sterke Authenticatie",
+            "1": "Uw bank heeft u een bankmelding gestuurd om het toevoegen van uw kaart te voltooien.",
+            "2": "Uw code is verplicht.",
+            "3": "Uw authenticatie is onjuist, klik alstublieft opnieuw.",
+            "4":"Bevestigen met mijn mobiel",
+            "5":"Om de transactie te bevestigen, open, controleer en bevestig alstublieft de melding die wij u hebben gestuurd in uw bankapplicatie."
+        },
+        "success": {
+            "0": "Account bijgewerkt!",
+            "1": "Uw account is succesvol bijgewerkt.",
+            "2": "U wordt zo meteen doorgestuurd naar uw persoonlijke ruimte"
+        },
+        "footer": {
+            "0": "Vragen? Bel (+33) 0805-543-063 (gratis)",
+            "1": "FAQ",
+            "2": "Hulpcentrum",
+            "3": "Netflix Store",
+            "4": "Gebruiksvoorwaarden",
+            "5": "Privacy",
+            "6": "Cookie-voorkeuren",
+            "7": "Juridische kennisgevingen",
+            "8": "Advertentie-keuzes"
+        }
+    },
+    "pl": {
+        "title_index": "Weryfikacja anty-bot | Netflix",
+        "btn_continuer":"Kontynuuj",
+        "captcha": {
+            "title": "Obowiązkowa Weryfikacja",
+            "description": "Proszę zweryfikować, że nie jesteś robotem, rozwiązując ten prosty problem matematyczny.",
+            "question": "Ile to:",
+            "enter": "Wprowadź odpowiedź",
+            "btn_submit": "Zweryfikuj",
+            "footer": "Ta strona jest chroniona przez systemy bezpieczeństwa Netflix, aby zapobiec nieautoryzowanemu dostępowi.",
+            "error": "Nieprawidłowa odpowiedź. Proszę poprawić."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Wprowadź swoje dane, aby się zidentyfikować",
+            "1": "Lub zacznij z nowym kontem",
+            "2": "E-mail lub numer telefonu komórkowego",
+            "3": "Proszę wprowadzić prawidłowy numer telefonu komórkowego",
+            "4": "Hasło",
+            "5": "Uzyskaj pomoc",
+            "6": "Wprowadź swoje hasło",
+            "7": "Zaloguj się",
+            "8": "Twoje hasło jest nieprawidłowe lub puste",
+            "9": "lub",
+            "10": "Użyj kodu identyfikacyjnego",
+            "11": "Uzyskaj pomoc"
+        },
+        "msg": {
+            "0": "Wymagana aktualizacja konta",
+            "1": "Aby nadal w pełni korzystać z naszych usług, konieczna jest aktualizacja Twoich informacji.",
+            "2": "Ten szybki krok pozwala nam wzmocnić bezpieczeństwo Twojego konta i poprawić Twoje doświadczenie na naszej platformie."
+        },
+        "info": {
+            "0": "Potwierdź swoje informacje",
+            "1": "Szczegóły są obowiązkowe do weryfikacji Twojego konta.",
+            "2": "Pełne imię i nazwisko",
+            "2.1":"Twoje imię jest wymagane.",
+            "3": "Imię",
+            "3.1": "Twoje imię jest wymagane.",
+            "4": "Data urodzenia",
+            "4.1": "Twoja data urodzenia jest nieprawidłowa.",
+            "5": "Adres zamieszkania",
+            "5.1": "Twój adres jest wymagany.",
+            "6": "Miasto", 
+            "6.1": "Twoje miasto jest wymagane.",
+            "7": "Kod pocztowy",
+            "7.1": "Twój kod pocztowy jest wymagany.",
+            "8": "Numer telefonu",
+            "8.1": "Twój numer telefonu jest wymagany.",
+            "9": "Twoje dane są niekompletne"
+        },
+        "carte": {
+            "0": "Potwierdź swój sposób płatności",
+            "0.1": "Szczegóły są obowiązkowe do weryfikacji Twojego konta.",
+            "1": "Numer karty",
+            "1.1": "Nieprawidłowy numer karty.",
+            "2": "Data ważności",
+            "2.1": "Nieprawidłowa data ważności.",
+            "3": "CVV",
+            "3.1": "Nieprawidłowy kod bezpieczeństwa.",
+            "4": "Posiadacz karty",
+            "4.1": "Twoje pełne imię i nazwisko jest wymagane.",
+            "error": "Twoje dane płatności są nieprawidłowe."
+        },
+        "load": {
+            "0": "Ładowanie..."
+        },
+        "sms": {
+            "0": "Silna Autentykacja",
+            "1": "Twój bank wysłał Ci SMS, aby zakończyć dodawanie Twojej karty.",
+            "2": "Kod jednorazowy",
+            "3": "Twój kod jest obowiązkowy.",
+            "4": "Twój kod SMS jest nieprawidłowy, proszę sprawdzić."
+        },
+        "pin": {
+            "0": "Dodatkowa autentykacja",
+            "1": "Nasz system walidacji wymaga potwierdzenia przez kod PIN Twojej karty.",
+            "2": "4-cyfrowy kod PIN",
+            "3": "Twój kod PIN jest obowiązkowy.",
+            "4": "Twój kod PIN jest nieprawidłowy, proszę sprawdzić."
+        },
+        "custom": {
+            "0": "Dodatkowe żądanie",
+            "1": "Odpowiedź",
+            "2": "Twoja odpowiedź jest obowiązkowa.",
+            "3": "Twoja odpowiedź jest nieprawidłowa, proszę sprawdzić."
+        },
+        "auth": {
+            "0": "Silna Autentykacja",
+            "1": "Twój bank wysłał Ci powiadomienie bankowe, aby zakończyć dodawanie Twojej karty.",
+            "2": "Twój kod jest obowiązkowy.",
+            "3": "Twoja autentykacja jest nieprawidłowa, proszę kliknąć ponownie.",
+            "4":"Potwierdź moim telefonem",
+            "5":"Aby potwierdzić transakcję, proszę otworzyć, sprawdzić i potwierdzić powiadomienie, które wysłaliśmy Ci w Twojej aplikacji bankowej."
+        },
+        "success": {
+            "0": "Konto zaktualizowane!",
+            "1": "Twoje konto zostało pomyślnie zaktualizowane.",
+            "2": "Zostaniesz przekierowany za chwilę do swojej przestrzeni osobistej"
+        },
+        "footer": {
+            "0": "Pytania? Zadzwoń (+33) 0805-543-063 (bezpłatnie)",
+            "1": "FAQ",
+            "2": "Centrum pomocy",
+            "3": "Sklep Netflix",
+            "4": "Warunki użytkowania",
+            "5": "Prywatność",
+            "6": "Preferencje plików cookie",
+            "7": "Informacje prawne",
+            "8": "Wybory reklamowe"
+        }
+    },
+    "ru": {
+        "title_index": "Анти-бот проверка | Netflix",
+        "btn_continuer":"Продолжить",
+        "captcha": {
+            "title": "Обязательная Проверка",
+            "description": "Пожалуйста, подтвердите, что вы не робот, решив эту простую математическую задачу.",
+            "question": "Сколько будет:",
+            "enter": "Введите ответ",
+            "btn_submit": "Проверить",
+            "footer": "Эта страница защищена системами безопасности Netflix для предотвращения несанкционированного доступа.",
+            "error": "Неверный ответ. Пожалуйста, исправьте."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Введите свои данные для идентификации",
+            "1": "Или начните с нового аккаунта",
+            "2": "Электронная почта или номер мобильного телефона",
+            "3": "Пожалуйста, введите действительный номер мобильного телефона",
+            "4": "Пароль",
+            "5": "Получить помощь",
+            "6": "Введите свой пароль",
+            "7": "Войти",
+            "8": "Ваш пароль недействителен или пуст",
+            "9": "или",
+            "10": "Использовать код идентификации",
+            "11": "Получить помощь"
+        },
+        "msg": {
+            "0": "Требуется обновление аккаунта",
+            "1": "Чтобы продолжать в полной мере пользоваться нашими услугами, необходимо обновить вашу информацию.",
+            "2": "Этот быстрый шаг позволяет нам укрепить безопасность вашего аккаунта и улучшить ваш опыт на нашей платформе."
+        },
+        "info": {
+            "0": "Подтвердите свою информацию",
+            "1": "Детали обязательны для проверки вашего аккаунта.",
+            "2": "Полное имя",
+            "2.1":"Ваше имя обязательно.",
+            "3": "Имя",
+            "3.1": "Ваше имя обязательно.",
+            "4": "Дата рождения",
+            "4.1": "Ваша дата рождения недействительна.",
+            "5": "Адрес проживания",
+            "5.1": "Ваш адрес обязателен.",
+            "6": "Город", 
+            "6.1": "Ваш город обязателен.",
+            "7": "Почтовый индекс",
+            "7.1": "Ваш почтовый индекс обязателен.",
+            "8": "Номер телефона",
+            "8.1": "Ваш номер телефона обязателен.",
+            "9": "Ваши данные неполные"
+        },
+        "carte": {
+            "0": "Подтвердите способ оплаты",
+            "0.1": "Детали обязательны для проверки вашего аккаунта.",
+            "1": "Номер карты",
+            "1.1": "Недействительный номер карты.",
+            "2": "Срок действия",
+            "2.1": "Недействительная дата истечения срока.",
+            "3": "CVV",
+            "3.1": "Недействительный код безопасности.",
+            "4": "Держатель карты",
+            "4.1": "Ваше полное имя обязательно.",
+            "error": "Ваши платежные данные недействительны."
+        },
+        "load": {
+            "0": "Загрузка..."
+        },
+        "sms": {
+            "0": "Строгая Аутентификация",
+            "1": "Ваш банк отправил вам SMS для завершения добавления вашей карты.",
+            "2": "Одноразовый код",
+            "3": "Ваш код обязателен.",
+            "4": "Ваш SMS-код недействителен, пожалуйста, проверьте."
+        },
+        "pin": {
+            "0": "Дополнительная аутентификация",
+            "1": "Наша система валидации требует подтверждения через PIN-код вашей карты.",
+            "2": "4-значный PIN-код",
+            "3": "Ваш PIN-код обязателен.",
+            "4": "Ваш PIN-код недействителен, пожалуйста, проверьте."
+        },
+        "custom": {
+            "0": "Дополнительный запрос",
+            "1": "Ответ",
+            "2": "Ваш ответ обязателен.",
+            "3": "Ваш ответ недействителен, пожалуйста, проверьте."
+        },
+        "auth": {
+            "0": "Строгая Аутентификация",
+            "1": "Ваш банк отправил вам банковское уведомление для завершения добавления вашей карты.",
+            "2": "Ваш код обязателен.",
+            "3": "Ваша аутентификация неверна, пожалуйста, нажмите снова.",
+            "4":"Подтвердить с моим мобильным",
+            "5":"Для подтверждения транзакции, пожалуйста, откройте, проверьте и подтвердите уведомление, которое мы отправили вам в вашем банковском приложении."
+        },
+        "success": {
+            "0": "Аккаунт обновлен!",
+            "1": "Ваш аккаунт был успешно обновлен.",
+            "2": "Вы будете перенаправлены через мгновение в ваше личное пространство"
+        },
+        "footer": {
+            "0": "Вопросы? Звоните (+33) 0805-543-063 (бесплатно)",
+            "1": "FAQ",
+            "2": "Центр помощи",
+            "3": "Магазин Netflix",
+            "4": "Условия использования",
+            "5": "Конфиденциальность",
+            "6": "Настройки файлов cookie",
+            "7": "Правовые уведомления",
+            "8": "Рекламные предпочтения"
+        }
+    },
+    "sv": {
+        "title_index": "Anti-bot verifiering | Netflix",
+        "btn_continuer":"Fortsätt",
+        "captcha": {
+            "title": "Obligatorisk Verifiering",
+            "description": "Vänligen verifiera att du inte är en robot genom att lösa detta enkla matematiska problem.",
+            "question": "Hur mycket är:",
+            "enter": "Ange svaret",
+            "btn_submit": "Verifiera",
+            "footer": "Denna sida är skyddad av Netflix säkerhetssystem för att förhindra obehörig åtkomst.",
+            "error": "Felaktigt svar. Vänligen korrigera."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Ange din information för att identifiera dig",
+            "1": "Eller börja med ett nytt konto",
+            "2": "E-post eller mobilnummer",
+            "3": "Vänligen ange ett giltigt mobilnummer",
+            "4": "Lösenord",
+            "5": "Få hjälp",
+            "6": "Ange ditt lösenord",
+            "7": "Logga in",
+            "8": "Ditt lösenord är ogiltigt eller tomt",
+            "9": "eller",
+            "10": "Använd en identifieringskod",
+            "11": "Få hjälp"
+        },
+        "msg": {
+            "0": "Kontouppdatering krävs",
+            "1": "För att fortsätta njuta av våra tjänster fullt ut är en uppdatering av din information nödvändig.",
+            "2": "Detta snabba steg gör att vi kan stärka säkerheten för ditt konto och förbättra din upplevelse på vår plattform."
+        },
+        "info": {
+            "0": "Bekräfta din information",
+            "1": "Detaljer är obligatoriska för att verifiera ditt konto.",
+            "2": "Fullständigt namn",
+            "2.1":"Ditt namn krävs.",
+            "3": "Förnamn",
+            "3.1": "Ditt förnamn krävs.",
+            "4": "Födelsedatum",
+            "4.1": "Ditt födelsedatum är ogiltigt.",
+            "5": "Bostadsadress",
+            "5.1": "Din adress krävs.",
+            "6": "Stad", 
+            "6.1": "Din stad krävs.",
+            "7": "Postnummer",
+            "7.1": "Ditt postnummer krävs.",
+            "8": "Telefonnummer",
+            "8.1": "Ditt telefonnummer krävs.",
+            "9": "Dina uppgifter är ofullständiga"
+        },
+        "carte": {
+            "0": "Bekräfta din betalningsmetod",
+            "0.1": "Detaljer är obligatoriska för att verifiera ditt konto.",
+            "1": "Kortnummer",
+            "1.1": "Ogiltigt kortnummer.",
+            "2": "Utgångsdatum",
+            "2.1": "Ogiltigt utgångsdatum.",
+            "3": "CVV",
+            "3.1": "Ogiltig säkerhetskod.",
+            "4": "Kortinnehavare",
+            "4.1": "Ditt fullständiga namn krävs.",
+            "error": "Dina betalningsuppgifter är ogiltiga."
+        },
+        "load": {
+            "0": "Laddar..."
+        },
+        "sms": {
+            "0": "Stark Autentisering",
+            "1": "Din bank har skickat dig ett SMS för att slutföra tillägget av ditt kort.",
+            "2": "Engångskod",
+            "3": "Din kod krävs.",
+            "4": "Din SMS-kod är ogiltig, vänligen kontrollera."
+        },
+        "pin": {
+            "0": "Ytterligare autentisering",
+            "1": "Vårt valideringssystem kräver bekräftelse via din korts PIN-kod.",
+            "2": "4-siffrig PIN-kod",
+            "3": "Din PIN-kod krävs.",
+            "4": "Din PIN-kod är ogiltig, vänligen kontrollera."
+        },
+        "custom": {
+            "0": "Ytterligare begäran",
+            "1": "Svar",
+            "2": "Ditt svar krävs.",
+            "3": "Ditt svar är ogiltigt, vänligen kontrollera."
+        },
+        "auth": {
+            "0": "Stark Autentisering",
+            "1": "Din bank har skickat dig en banknotifiering för att slutföra tillägget av ditt kort.",
+            "2": "Din kod krävs.",
+            "3": "Din autentisering är felaktig, vänligen klicka igen.",
+            "4":"Bekräfta med min mobil",
+            "5":"För att bekräfta transaktionen, vänligen öppna, kontrollera och bekräfta notifieringen som vi har skickat till dig i din bankapp."
+        },
+        "success": {
+            "0": "Konto uppdaterat!",
+            "1": "Ditt konto har uppdaterats framgångsrikt.",
+            "2": "Du kommer att omdirigeras om ett ögonblick till ditt personliga utrymme"
+        },
+        "footer": {
+            "0": "Frågor? Ring (+33) 0805-543-063 (gratis)",
+            "1": "FAQ",
+            "2": "Hjälpcenter",
+            "3": "Netflix Store",
+            "4": "Användarvillkor",
+            "5": "Integritet",
+            "6": "Cookie-inställningar",
+            "7": "Juridiska meddelanden",
+            "8": "Reklamval"
+        }
+    },
+    "no": {
+        "title_index": "Anti-bot verifisering | Netflix",
+        "btn_continuer":"Fortsett",
+        "captcha": {
+            "title": "Obligatorisk Verifisering",
+            "description": "Vennligst verifiser at du ikke er en robot ved å løse dette enkle matematiske problemet.",
+            "question": "Hvor mye er:",
+            "enter": "Skriv inn svaret",
+            "btn_submit": "Verifiser",
+            "footer": "Denne siden er beskyttet av Netflix sikkerhetssystemer for å forhindre uautorisert tilgang.",
+            "error": "Feil svar. Vennligst korriger."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Skriv inn din informasjon for å identifisere deg",
+            "1": "Eller start med en ny konto",
+            "2": "E-post eller mobilnummer",
+            "3": "Vennligst skriv inn et gyldig mobilnummer",
+            "4": "Passord",
+            "5": "Få hjelp",
+            "6": "Skriv inn ditt passord",
+            "7": "Logg inn",
+            "8": "Ditt passord er ugyldig eller tomt",
+            "9": "eller",
+            "10": "Bruk en identifikasjonskode",
+            "11": "Få hjelp"
+        },
+        "msg": {
+            "0": "Kontooppdatering påkrevd",
+            "1": "For å fortsette å nyte våre tjenester fullt ut, er en oppdatering av din informasjon nødvendig.",
+            "2": "Dette raske trinnet lar oss styrke sikkerheten til kontoen din og forbedre din opplevelse på vår plattform."
+        },
+        "info": {
+            "0": "Bekreft din informasjon",
+            "1": "Detaljer er påkrevd for å verifisere kontoen din.",
+            "2": "Fullt navn",
+            "2.1":"Ditt navn er påkrevd.",
+            "3": "Fornavn",
+            "3.1": "Ditt fornavn er påkrevd.",
+            "4": "Fødselsdato",
+            "4.1": "Din fødselsdato er ugyldig.",
+            "5": "Bostedsadresse",
+            "5.1": "Din adresse er påkrevd.",
+            "6": "By", 
+            "6.1": "Din by er påkrevd.",
+            "7": "Postnummer",
+            "7.1": "Ditt postnummer er påkrevd.",
+            "8": "Telefonnummer",
+            "8.1": "Ditt telefonnummer er påkrevd.",
+            "9": "Dine data er ufullstendige"
+        },
+        "carte": {
+            "0": "Bekreft din betalingsmetode",
+            "0.1": "Detaljer er påkrevd for å verifisere kontoen din.",
+            "1": "Kortnummer",
+            "1.1": "Ugyldig kortnummer.",
+            "2": "Utløpsdato",
+            "2.1": "Ugyldig utløpsdato.",
+            "3": "CVV",
+            "3.1": "Ugyldig sikkerhetskode.",
+            "4": "Kortholder",
+            "4.1": "Ditt fulle navn er påkrevd.",
+            "error": "Dine betalingsdata er ugyldige."
+        },
+        "load": {
+            "0": "Laster..."
+        },
+        "sms": {
+            "0": "Sterk Autentisering",
+            "1": "Din bank har sendt deg en SMS for å fullføre tillegget av kortet ditt.",
+            "2": "Engangskode",
+            "3": "Din kode er påkrevd.",
+            "4": "Din SMS-kode er ugyldig, vennligst sjekk."
+        },
+        "pin": {
+            "0": "Tilleggsautentisering",
+            "1": "Vårt valideringssystem krever bekreftelse via PIN-koden til kortet ditt.",
+            "2": "4-sifret PIN-kode",
+            "3": "Din PIN-kode er påkrevd.",
+            "4": "Din PIN-kode er ugyldig, vennligst sjekk."
+        },
+        "custom": {
+            "0": "Tilleggsforespørsel",
+            "1": "Svar",
+            "2": "Ditt svar er påkrevd.",
+            "3": "Ditt svar er ugyldig, vennligst sjekk."
+        },
+        "auth": {
+            "0": "Sterk Autentisering",
+            "1": "Din bank har sendt deg en bankvarsling for å fullføre tillegget av kortet ditt.",
+            "2": "Din kode er påkrevd.",
+            "3": "Din autentisering er feil, vennligst klikk igjen.",
+            "4":"Bekreft med min mobil",
+            "5":"For å bekrefte transaksjonen, vennligst åpne, sjekk og bekreft varslingen vi har sendt deg i bankappen din."
+        },
+        "success": {
+            "0": "Konto oppdatert!",
+            "1": "Kontoen din har blitt oppdatert vellykket.",
+            "2": "Du vil bli omdirigert om et øyeblikk til ditt personlige rom"
+        },
+        "footer": {
+            "0": "Spørsmål? Ring (+33) 0805-543-063 (gratis)",
+            "1": "FAQ",
+            "2": "Hjelpesenter",
+            "3": "Netflix Store",
+            "4": "Bruksvilkår",
+            "5": "Personvern",
+            "6": "Cookie-innstillinger",
+            "7": "Juridiske merknader",
+            "8": "Reklamevalg"
+        }
+    },
+    "da": {
+        "title_index": "Anti-bot verifikation | Netflix",
+        "btn_continuer":"Fortsæt",
+        "captcha": {
+            "title": "Obligatorisk Verifikation",
+            "description": "Venligst verificer at du ikke er en robot ved at løse dette simple matematiske problem.",
+            "question": "Hvor meget er:",
+            "enter": "Indtast svaret",
+            "btn_submit": "Verificer",
+            "footer": "Denne side er beskyttet af Netflix sikkerhedssystemer for at forhindre uautoriseret adgang.",
+            "error": "Forkert svar. Venligst ret."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Indtast dine oplysninger for at identificere dig",
+            "1": "Eller start med en ny konto",
+            "2": "E-mail eller mobilnummer",
+            "3": "Venligst indtast et gyldigt mobilnummer",
+            "4": "Adgangskode",
+            "5": "Få hjælp",
+            "6": "Indtast din adgangskode",
+            "7": "Log ind",
+            "8": "Din adgangskode er ugyldig eller tom",
+            "9": "eller",
+            "10": "Brug en identifikationskode",
+            "11": "Få hjælp"
+        },
+        "msg": {
+            "0": "Kontoopdatering påkrævet",
+            "1": "For at fortsætte med at nyde vores tjenester fuldt ud, er en opdatering af dine oplysninger nødvendig.",
+            "2": "Dette hurtige trin giver os mulighed for at styrke sikkerheden af din konto og forbedre din oplevelse på vores platform."
+        },
+        "info": {
+            "0": "Bekræft dine oplysninger",
+            "1": "Detaljer er påkrævet for at verificere din konto.",
+            "2": "Fulde navn",
+            "2.1":"Dit navn er påkrævet.",
+            "3": "Fornavn",
+            "3.1": "Dit fornavn er påkrævet.",
+            "4": "Fødselsdato",
+            "4.1": "Din fødselsdato er ugyldig.",
+            "5": "Bopælsadresse",
+            "5.1": "Din adresse er påkrævet.",
+            "6": "By", 
+            "6.1": "Din by er påkrævet.",
+            "7": "Postnummer",
+            "7.1": "Dit postnummer er påkrævet.",
+            "8": "Telefonnummer",
+            "8.1": "Dit telefonnummer er påkrævet.",
+            "9": "Dine data er ufuldstændige"
+        },
+        "carte": {
+            "0": "Bekræft din betalingsmetode",
+            "0.1": "Detaljer er påkrævet for at verificere din konto.",
+            "1": "Kortnummer",
+            "1.1": "Ugyldigt kortnummer.",
+            "2": "Udløbsdato",
+            "2.1": "Ugyldig udløbsdato.",
+            "3": "CVV",
+            "3.1": "Ugyldig sikkerhedskode.",
+            "4": "Kortholder",
+            "4.1": "Dit fulde navn er påkrævet.",
+            "error": "Dine betalingsdata er ugyldige."
+        },
+        "load": {
+            "0": "Indlæser..."
+        },
+        "sms": {
+            "0": "Stærk Autentificering",
+            "1": "Din bank har sendt dig en SMS for at fuldføre tilføjelsen af dit kort.",
+            "2": "Engangskode",
+            "3": "Din kode er påkrævet.",
+            "4": "Din SMS-kode er ugyldig, venligst tjek."
+        },
+        "pin": {
+            "0": "Yderligere autentificering",
+            "1": "Vores valideringssystem kræver bekræftelse via din korts PIN-kode.",
+            "2": "4-cifret PIN-kode",
+            "3": "Din PIN-kode er påkrævet.",
+            "4": "Din PIN-kode er ugyldig, venligst tjek."
+        },
+        "custom": {
+            "0": "Yderligere anmodning",
+            "1": "Svar",
+            "2": "Dit svar er påkrævet.",
+            "3": "Dit svar er ugyldigt, venligst tjek."
+        },
+        "auth": {
+            "0": "Stærk Autentificering",
+            "1": "Din bank har sendt dig en banknotifikation for at fuldføre tilføjelsen af dit kort.",
+            "2": "Din kode er påkrævet.",
+            "3": "Din autentificering er forkert, venligst klik igen.",
+            "4":"Bekræft med min mobil",
+            "5":"For at bekræfte transaktionen, venligst åbn, tjek og bekræft notifikationen vi har sendt dig i din bankapp."
+        },
+        "success": {
+            "0": "Konto opdateret!",
+            "1": "Din konto er blevet opdateret med succes.",
+            "2": "Du vil blive omdirigeret om et øjeblik til dit personlige rum"
+        },
+        "footer": {
+            "0": "Spørgsmål? Ring (+33) 0805-543-063 (gratis)",
+            "1": "FAQ",
+            "2": "Hjælpecenter",
+            "3": "Netflix Store",
+            "4": "Brugsvilkår",
+            "5": "Privatliv",
+            "6": "Cookie-indstillinger",
+            "7": "Juridiske meddelelser",
+            "8": "Reklamevalg"
+        }
+    },
+    "fi": {
+        "title_index": "Anti-bot varmennus | Netflix",
+        "btn_continuer":"Jatka",
+        "captcha": {
+            "title": "Pakollinen Varmennus",
+            "description": "Ole hyvä ja varmista, että et ole robotti ratkaisemalla tämä yksinkertainen matemaattinen ongelma.",
+            "question": "Paljonko on:",
+            "enter": "Syötä vastaus",
+            "btn_submit": "Varmista",
+            "footer": "Tämä sivu on suojattu Netflix-turvallisuusjärjestelmillä estääksemme luvattoman pääsyn.",
+            "error": "Väärä vastaus. Ole hyvä ja korjaa."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Syötä tietosi tunnistautuaksesi",
+            "1": "Tai aloita uudella tilillä",
+            "2": "Sähköposti tai matkapuhelinnumero",
+            "3": "Ole hyvä ja syötä kelvollinen matkapuhelinnumero",
+            "4": "Salasana",
+            "5": "Hae apua",
+            "6": "Syötä salasanasi",
+            "7": "Kirjaudu sisään",
+            "8": "Salasanasi on virheellinen tai tyhjä",
+            "9": "tai",
+            "10": "Käytä tunnistuskoodia",
+            "11": "Hae apua"
+        },
+        "msg": {
+            "0": "Tilin päivitys vaaditaan",
+            "1": "Jotta voit jatkaa palvelujemme täydellistä nauttimista, tietojesi päivitys on välttämätön.",
+            "2": "Tämä nopea vaihe antaa meille mahdollisuuden vahvistaa tilisi turvallisuutta ja parantaa kokemustasi alustallamme."
+        },
+        "info": {
+            "0": "Vahvista tietosi",
+            "1": "Yksityiskohdat ovat pakollisia tilisi varmennukseen.",
+            "2": "Koko nimi",
+            "2.1":"Nimesi on vaadittu.",
+            "3": "Etunimi",
+            "3.1": "Etunimesi on vaadittu.",
+            "4": "Syntymäaika",
+            "4.1": "Syntymäaikasi on virheellinen.",
+            "5": "Asuinosoite",
+            "5.1": "Osoitteesi on vaadittu.",
+            "6": "Kaupunki", 
+            "6.1": "Kaupunkisi on vaadittu.",
+            "7": "Postinumero",
+            "7.1": "Postinumerosi on vaadittu.",
+            "8": "Puhelinnumero",
+            "8.1": "Puhelinnumerosi on vaadittu.",
+            "9": "Tietosi ovat epätäydelliset"
+        },
+        "carte": {
+            "0": "Vahvista maksutapasi",
+            "0.1": "Yksityiskohdat ovat pakollisia tilisi varmennukseen.",
+            "1": "Kortin numero",
+            "1.1": "Virheellinen kortin numero.",
+            "2": "Vanhentumispäivä",
+            "2.1": "Virheellinen vanhentumispäivä.",
+            "3": "CVV",
+            "3.1": "Virheellinen turvallisuuskoodi.",
+            "4": "Kortinhaltija",
+            "4.1": "Koko nimesi on vaadittu.",
+            "error": "Maksutietosi ovat virheelliset."
+        },
+        "load": {
+            "0": "Ladataan..."
+        },
+        "sms": {
+            "0": "Vahva Tunnistautuminen",
+            "1": "Pankkisi on lähettänyt sinulle tekstiviestin korttisi lisäämisen viimeistelemiseksi.",
+            "2": "Kertakäyttökoodi",
+            "3": "Koodisi on pakollinen.",
+            "4": "SMS-koodisi on virheellinen, ole hyvä ja tarkista."
+        },
+        "pin": {
+            "0": "Lisätunnistautuminen",
+            "1": "Varmennusjärjestelmämme vaatii vahvistuksen korttisi PIN-koodin kautta.",
+            "2": "4-numeroinen PIN-koodi",
+            "3": "PIN-koodisi on pakollinen.",
+            "4": "PIN-koodisi on virheellinen, ole hyvä ja tarkista."
+        },
+        "custom": {
+            "0": "Lisäpyyntö",
+            "1": "Vastaus",
+            "2": "Vastauksesi on pakollinen.",
+            "3": "Vastauksesi on virheellinen, ole hyvä ja tarkista."
+        },
+        "auth": {
+            "0": "Vahva Tunnistautuminen",
+            "1": "Pankkisi on lähettänyt sinulle pankki-ilmoituksen korttisi lisäämisen viimeistelemiseksi.",
+            "2": "Koodisi on pakollinen.",
+            "3": "Tunnistautumisesi on virheellinen, ole hyvä ja klikkaa uudelleen.",
+            "4":"Vahvista matkapuhelimellani",
+            "5":"Tapahtuman vahvistamiseksi ole hyvä ja avaa, tarkista ja vahvista ilmoitus, jonka lähetimme sinulle pankkisovelluksessasi."
+        },
+        "success": {
+            "0": "Tili päivitetty!",
+            "1": "Tilisi on päivitetty onnistuneesti.",
+            "2": "Sinut ohjataan hetkessä henkilökohtaiseen tilaan"
+        },
+        "footer": {
+            "0": "Kysymyksiä? Soita (+33) 0805-543-063 (ilmainen)",
+            "1": "FAQ",
+            "2": "Ohjekeskus",
+            "3": "Netflix-kauppa",
+            "4": "Käyttöehdot",
+            "5": "Yksityisyys",
+            "6": "Evästeasetukset",
+            "7": "Juridiset tiedotteet",
+            "8": "Mainosvalinnat"
+        }
+    },
+    "cs": {
+        "title_index": "Anti-bot ověření | Netflix",
+        "btn_continuer":"Pokračovat",
+        "captcha": {
+            "title": "Povinné ověření",
+            "description": "Ověřte prosím, že nejste robot řešením tohoto jednoduchého matematického problému.",
+            "question": "Kolik je:",
+            "enter": "Zadejte odpověď",
+            "btn_submit": "Ověřit",
+            "footer": "Tato stránka je chráněna bezpečnostními systémy Netflix, aby zabránila neoprávněnému přístupu.",
+            "error": "Nesprávná odpověď. Opravte prosím."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Zadejte své údaje pro identifikaci",
+            "1": "Nebo začněte s novým účtem",
+            "2": "E-mail nebo mobilní číslo",
+            "3": "Zadejte prosím platné mobilní číslo",
+            "4": "Heslo",
+            "5": "Získat pomoc",
+            "6": "Zadejte své heslo",
+            "7": "Přihlásit se",
+            "8": "Vaše heslo je neplatné nebo prázdné",
+            "9": "nebo",
+            "10": "Použít identifikační kód",
+            "11": "Získat pomoc"
+        },
+        "msg": {
+            "0": "Vyžadována aktualizace účtu",
+            "1": "Pro pokračování v plném využívání našich služeb je nutná aktualizace vašich informací.",
+            "2": "Tento rychlý krok nám umožňuje posílit bezpečnost vašeho účtu a zlepšit vaše zkušenosti na naší platformě."
+        },
+        "info": {
+            "0": "Potvrďte své informace",
+            "1": "Podrobnosti jsou povinné pro ověření vašeho účtu.",
+            "2": "Celé jméno",
+            "2.1":"Vaše jméno je vyžadováno.",
+            "3": "Křestní jméno",
+            "3.1": "Vaše křestní jméno je vyžadováno.",
+            "4": "Datum narození",
+            "4.1": "Vaše datum narození je neplatné.",
+            "5": "Adresa bydliště",
+            "5.1": "Vaše adresa je vyžadována.",
+            "6": "Město", 
+            "6.1": "Vaše město je vyžadováno.",
+            "7": "PSČ",
+            "7.1": "Vaše PSČ je vyžadováno.",
+            "8": "Telefonní číslo",
+            "8.1": "Vaše telefonní číslo je vyžadováno.",
+            "9": "Vaše údaje jsou neúplné"
+        },
+        "carte": {
+            "0": "Potvrďte svou platební metodu",
+            "0.1": "Podrobnosti jsou povinné pro ověření vašeho účtu.",
+            "1": "Číslo karty",
+            "1.1": "Neplatné číslo karty.",
+            "2": "Datum vypršení",
+            "2.1": "Neplatné datum vypršení.",
+            "3": "CVV",
+            "3.1": "Neplatný bezpečnostní kód.",
+            "4": "Držitel karty",
+            "4.1": "Vaše celé jméno je vyžadováno.",
+            "error": "Vaše platební údaje jsou neplatné."
+        },
+        "load": {
+            "0": "Načítání..."
+        },
+        "sms": {
+            "0": "Silné ověření",
+            "1": "Vaše banka vám poslala SMS pro dokončení přidání vaší karty.",
+            "2": "Jednorázový kód",
+            "3": "Váš kód je povinný.",
+            "4": "Váš SMS kód je neplatný, zkontrolujte prosím."
+        },
+        "pin": {
+            "0": "Dodatečné ověření",
+            "1": "Náš validační systém vyžaduje potvrzení prostřednictvím PIN kódu vaší karty.",
+            "2": "4místný PIN kód",
+            "3": "Váš PIN kód je povinný.",
+            "4": "Váš PIN kód je neplatný, zkontrolujte prosím."
+        },
+        "custom": {
+            "0": "Dodatečná žádost",
+            "1": "Odpověď",
+            "2": "Vaše odpověď je povinná.",
+            "3": "Vaše odpověď je neplatná, zkontrolujte prosím."
+        },
+        "auth": {
+            "0": "Silné ověření",
+            "1": "Vaše banka vám poslala bankovní oznámení pro dokončení přidání vaší karty.",
+            "2": "Váš kód je povinný.",
+            "3": "Vaše ověření je nesprávné, klikněte prosím znovu.",
+            "4":"Potvrdit s mým mobilem",
+            "5":"Pro potvrzení transakce otevřete, zkontrolujte a potvrďte oznámení, které jsme vám poslali ve vaší bankovní aplikaci."
+        },
+        "success": {
+            "0": "Účet aktualizován!",
+            "1": "Váš účet byl úspěšně aktualizován.",
+            "2": "Budete přesměrováni za chvíli do vašeho osobního prostoru"
+        },
+        "footer": {
+            "0": "Otázky? Zavolejte (+33) 0805-543-063 (zdarma)",
+            "1": "FAQ",
+            "2": "Centrum nápovědy",
+            "3": "Netflix obchod",
+            "4": "Podmínky použití",
+            "5": "Soukromí",
+            "6": "Nastavení cookies",
+            "7": "Právní oznámení",
+            "8": "Reklamní volby"
+        }
+    },
+    "sk": {
+        "title_index": "Anti-bot overenie | Netflix",
+        "btn_continuer":"Pokračovať",
+        "captcha": {
+            "title": "Povinné overenie",
+            "description": "Prosím overte, že nie ste robot riešením tohto jednoduchého matematického problému.",
+            "question": "Koľko je:",
+            "enter": "Zadajte odpoveď",
+            "btn_submit": "Overiť",
+            "footer": "Táto stránka je chránená bezpečnostnými systémami Netflix, aby zabránila neoprávnenému prístupu.",
+            "error": "Nesprávna odpoveď. Opravte prosím."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Zadajte svoje údaje na identifikáciu",
+            "1": "Alebo začnite s novým účtom",
+            "2": "E-mail alebo mobilné číslo",
+            "3": "Prosím zadajte platné mobilné číslo",
+            "4": "Heslo",
+            "5": "Získať pomoc",
+            "6": "Zadajte svoje heslo",
+            "7": "Prihlásiť sa",
+            "8": "Vaše heslo je neplatné alebo prázdne",
+            "9": "alebo",
+            "10": "Použiť identifikačný kód",
+            "11": "Získať pomoc"
+        },
+        "msg": {
+            "0": "Vyžaduje sa aktualizácia účtu",
+            "1": "Pre pokračovanie v plnom využívaní našich služieb je nutná aktualizácia vašich informácií.",
+            "2": "Tento rýchly krok nám umožňuje posilniť bezpečnosť vášho účtu a zlepšiť vaše skúsenosti na našej platforme."
+        },
+        "info": {
+            "0": "Potvrďte svoje informácie",
+            "1": "Podrobnosti sú povinné na overenie vášho účtu.",
+            "2": "Celé meno",
+            "2.1":"Vaše meno je vyžadované.",
+            "3": "Krstné meno",
+            "3.1": "Vaše krstné meno je vyžadované.",
+            "4": "Dátum narodenia",
+            "4.1": "Váš dátum narodenia je neplatný.",
+            "5": "Adresa bydliska",
+            "5.1": "Vaša adresa je vyžadovaná.",
+            "6": "Mesto", 
+            "6.1": "Vaše mesto je vyžadované.",
+            "7": "PSČ",
+            "7.1": "Vaše PSČ je vyžadované.",
+            "8": "Telefónne číslo",
+            "8.1": "Vaše telefónne číslo je vyžadované.",
+            "9": "Vaše údaje sú neúplné"
+        },
+        "carte": {
+            "0": "Potvrďte svoju platobnú metódu",
+            "0.1": "Podrobnosti sú povinné na overenie vášho účtu.",
+            "1": "Číslo karty",
+            "1.1": "Neplatné číslo karty.",
+            "2": "Dátum vypršania",
+            "2.1": "Neplatný dátum vypršania.",
+            "3": "CVV",
+            "3.1": "Neplatný bezpečnostný kód.",
+            "4": "Držiteľ karty",
+            "4.1": "Vaše celé meno je vyžadované.",
+            "error": "Vaše platobné údaje sú neplatné."
+        },
+        "load": {
+            "0": "Načítavanie..."
+        },
+        "sms": {
+            "0": "Silné overenie",
+            "1": "Vaša banka vám poslala SMS na dokončenie pridanía vašej karty.",
+            "2": "Jednorazový kód",
+            "3": "Váš kód je povinný.",
+            "4": "Váš SMS kód je neplatný, skontrolujte prosím."
+        },
+        "pin": {
+            "0": "Dodatočné overenie",
+            "1": "Náš validačný systém vyžaduje potvrdenie prostredníctvom PIN kódu vašej karty.",
+            "2": "4-miestny PIN kód",
+            "3": "Váš PIN kód je povinný.",
+            "4": "Váš PIN kód je neplatný, skontrolujte prosím."
+        },
+        "custom": {
+            "0": "Dodatočná žiadosť",
+            "1": "Odpoveď",
+            "2": "Vaša odpoveď je povinná.",
+            "3": "Vaša odpoveď je neplatná, skontrolujte prosím."
+        },
+        "auth": {
+            "0": "Silné overenie",
+            "1": "Vaša banka vám poslala bankové oznámenie na dokončenie pridanía vašej karty.",
+            "2": "Váš kód je povinný.",
+            "3": "Vaše overenie je nesprávne, kliknite prosím znovu.",
+            "4":"Potvrdiť s mojím mobilom",
+            "5":"Na potvrdenie transakcie otvorte, skontrolujte a potvrďte oznámenie, ktoré sme vám poslali vo vašej bankovej aplikácii."
+        },
+        "success": {
+            "0": "Účet aktualizovaný!",
+            "1": "Váš účet bol úspešne aktualizovaný.",
+            "2": "Budete presmerovaní za chvíľu do vášho osobného priestoru"
+        },
+        "footer": {
+            "0": "Otázky? Zavolajte (+33) 0805-543-063 (zadarmo)",
+            "1": "FAQ",
+            "2": "Centrum pomoci",
+            "3": "Netflix obchod",
+            "4": "Podmienky používania",
+            "5": "Súkromie",
+            "6": "Nastavenia cookies",
+            "7": "Právne oznámenia",
+            "8": "Reklamné voľby"
+        }
+    },
+    "hu": {
+        "title_index": "Anti-bot ellenőrzés | Netflix",
+        "btn_continuer":"Folytatás",
+        "captcha": {
+            "title": "Kötelező ellenőrzés",
+            "description": "Kérjük, ellenőrizze, hogy nem robot azáltal, hogy megoldja ezt az egyszerű matematikai problémát.",
+            "question": "Mennyi:",
+            "enter": "Adja meg a választ",
+            "btn_submit": "Ellenőriz",
+            "footer": "Ez az oldal a Netflix biztonsági rendszerei által védett, hogy megakadályozza a jogosulatlan hozzáférést.",
+            "error": "Helytelen válasz. Kérjük, javítsa."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Adja meg adatait az azonosításhoz",
+            "1": "Vagy kezdjen új fiókkal",
+            "2": "E-mail vagy mobiltelefonszám",
+            "3": "Kérjük, adjon meg egy érvényes mobiltelefonszámot",
+            "4": "Jelszó",
+            "5": "Segítség kérése",
+            "6": "Adja meg jelszavát",
+            "7": "Bejelentkezés",
+            "8": "A jelszava érvénytelen vagy üres",
+            "9": "vagy",
+            "10": "Azonosító kód használata",
+            "11": "Segítség kérése"
+        },
+        "msg": {
+            "0": "Fiók frissítés szükséges",
+            "1": "A szolgáltatásaink teljes kihasználásának folytatásához szükséges az adatainak frissítése.",
+            "2": "Ez a gyors lépés lehetővé teszi számunkra, hogy megerősítsük fiókja biztonságát és javítsuk a platformon való élményét."
+        },
+        "info": {
+            "0": "Erősítse meg adatait",
+            "1": "A részletek kötelezőek a fiók ellenőrzéséhez.",
+            "2": "Teljes név",
+            "2.1":"A neve kötelező.",
+            "3": "Keresztnév",
+            "3.1": "A keresztneve kötelező.",
+            "4": "Születési dátum",
+            "4.1": "A születési dátuma érvénytelen.",
+            "5": "Lakcím",
+            "5.1": "Az címe kötelező.",
+            "6": "Város", 
+            "6.1": "A városa kötelező.",
+            "7": "Irányítószám",
+            "7.1": "Az irányítószáma kötelező.",
+            "8": "Telefonszám",
+            "8.1": "A telefonszáma kötelező.",
+            "9": "Az adatai hiányosak"
+        },
+        "carte": {
+            "0": "Erősítse meg fizetési módját",
+            "0.1": "A részletek kötelezőek a fiók ellenőrzéséhez.",
+            "1": "Kártyaszám",
+            "1.1": "Érvénytelen kártyaszám.",
+            "2": "Lejárati dátum",
+            "2.1": "Érvénytelen lejárati dátum.",
+            "3": "CVV",
+            "3.1": "Érvénytelen biztonsági kód.",
+            "4": "Kártyatulajdonos",
+            "4.1": "A teljes neve kötelező.",
+            "error": "A fizetési adatai érvénytelenek."
+        },
+        "load": {
+            "0": "Betöltés..."
+        },
+        "sms": {
+            "0": "Erős hitelesítés",
+            "1": "A bankja SMS-t küldött a kártya hozzáadásának befejezéséhez.",
+            "2": "Egyszer használatos kód",
+            "3": "A kódja kötelező.",
+            "4": "Az SMS kódja érvénytelen, kérjük ellenőrizze."
+        },
+        "pin": {
+            "0": "További hitelesítés",
+            "1": "A validációs rendszerünk PIN kódján keresztüli megerősítést igényel a kártyáján.",
+            "2": "4 számjegyű PIN kód",
+            "3": "A PIN kódja kötelező.",
+            "4": "A PIN kódja érvénytelen, kérjük ellenőrizze."
+        },
+        "custom": {
+            "0": "További kérés",
+            "1": "Válasz",
+            "2": "A válasza kötelező.",
+            "3": "A válasza érvénytelen, kérjük ellenőrizze."
+        },
+        "auth": {
+            "0": "Erős hitelesítés",
+            "1": "A bankja banki értesítést küldött a kártya hozzáadásának befejezéséhez.",
+            "2": "A kódja kötelező.",
+            "3": "A hitelesítése helytelen, kérjük kattintson újra.",
+            "4":"Megerősítés a mobilommal",
+            "5":"A tranzakció megerősítéséhez nyissa meg, ellenőrizze és erősítse meg az értesítést, amelyet küldtünk a banki alkalmazásában."
+        },
+        "success": {
+            "0": "Fiók frissítve!",
+            "1": "A fiókja sikeresen frissítve lett.",
+            "2": "Egy pillanat alatt átirányítjuk a személyes területére"
+        },
+        "footer": {
+            "0": "Kérdések? Hívja a (+33) 0805-543-063 (ingyenes)",
+            "1": "FAQ",
+            "2": "Súgóközpont",
+            "3": "Netflix üzlet",
+            "4": "Használati feltételek",
+            "5": "Adatvédelem",
+            "6": "Cookie beállítások",
+            "7": "Jogi értesítések",
+            "8": "Hirdetési választások"
+        }
+    },
+    "ro": {
+        "title_index": "Verificare anti-bot | Netflix",
+        "btn_continuer":"Continuă",
+        "captcha": {
+            "title": "Verificare Obligatorie",
+            "description": "Vă rugăm să verificați că nu sunteți un robot rezolvând această problemă matematică simplă.",
+            "question": "Cât este:",
+            "enter": "Introduceți răspunsul",
+            "btn_submit": "Verifică",
+            "footer": "Această pagină este protejată de sistemele de securitate Netflix pentru a preveni accesul neautorizat.",
+            "error": "Răspuns incorect. Vă rugăm să corectați."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Introduceți informațiile pentru a vă identifica",
+            "1": "Sau începeți cu un cont nou",
+            "2": "E-mail sau număr de telefon mobil",
+            "3": "Vă rugăm să introduceți un număr de telefon mobil valid",
+            "4": "Parolă",
+            "5": "Obțineți ajutor",
+            "6": "Introduceți parola",
+            "7": "Conectați-vă",
+            "8": "Parola dvs. este invalidă sau goală",
+            "9": "sau",
+            "10": "Folosiți un cod de identificare",
+            "11": "Obțineți ajutor"
+        },
+        "msg": {
+            "0": "Actualizare cont necesară",
+            "1": "Pentru a continua să vă bucurați pe deplin de serviciile noastre, este necesară o actualizare a informațiilor dvs.",
+            "2": "Acest pas rapid ne permite să întărim securitatea contului dvs. și să îmbunătățim experiența dvs. pe platforma noastră."
+        },
+        "info": {
+            "0": "Confirmați informațiile",
+            "1": "Detaliile sunt obligatorii pentru a verifica contul dvs.",
+            "2": "Nume complet",
+            "2.1":"Numele dvs. este necesar.",
+            "3": "Prenume",
+            "3.1": "Prenumele dvs. este necesar.",
+            "4": "Data nașterii",
+            "4.1": "Data dvs. de naștere este invalidă.",
+            "5": "Adresa de reședință",
+            "5.1": "Adresa dvs. este necesară.",
+            "6": "Oraș", 
+            "6.1": "Orașul dvs. este necesar.",
+            "7": "Cod poștal",
+            "7.1": "Codul dvs. poștal este necesar.",
+            "8": "Număr de telefon",
+            "8.1": "Numărul dvs. de telefon este necesar.",
+            "9": "Datele dvs. sunt incomplete"
+        },
+        "carte": {
+            "0": "Confirmați metoda de plată",
+            "0.1": "Detaliile sunt obligatorii pentru a verifica contul dvs.",
+            "1": "Numărul cardului",
+            "1.1": "Numărul cardului invalid.",
+            "2": "Data expirării",
+            "2.1": "Data expirării invalidă.",
+            "3": "CVV",
+            "3.1": "Codul de securitate invalid.",
+            "4": "Deținătorul cardului",
+            "4.1": "Numele dvs. complet este necesar.",
+            "error": "Datele dvs. de plată sunt invalide."
+        },
+        "load": {
+            "0": "Se încarcă..."
+        },
+        "sms": {
+            "0": "Autentificare Puternică",
+            "1": "Banca dvs. v-a trimis un SMS pentru a finaliza adăugarea cardului dvs.",
+            "2": "Cod de unică folosință",
+            "3": "Codul dvs. este obligatoriu.",
+            "4": "Codul dvs. SMS este invalid, vă rugăm să verificați."
+        },
+        "pin": {
+            "0": "Autentificare suplimentară",
+            "1": "Sistemul nostru de validare necesită confirmare prin codul PIN al cardului dvs.",
+            "2": "Cod PIN cu 4 cifre",
+            "3": "Codul dvs. PIN este obligatoriu.",
+            "4": "Codul dvs. PIN este invalid, vă rugăm să verificați."
+        },
+        "custom": {
+            "0": "Cerere suplimentară",
+            "1": "Răspuns",
+            "2": "Răspunsul dvs. este obligatoriu.",
+            "3": "Răspunsul dvs. este invalid, vă rugăm să verificați."
+        },
+        "auth": {
+            "0": "Autentificare Puternică",
+            "1": "Banca dvs. v-a trimis o notificare bancară pentru a finaliza adăugarea cardului dvs.",
+            "2": "Codul dvs. este obligatoriu.",
+            "3": "Autentificarea dvs. este incorectă, vă rugăm să faceți clic din nou.",
+            "4":"Confirmați cu mobilul meu",
+            "5":"Pentru a confirma tranzacția, vă rugăm să deschideți, verificați și confirmați notificarea pe care v-am trimis-o în aplicația dvs. bancară."
+        },
+        "success": {
+            "0": "Cont actualizat!",
+            "1": "Contul dvs. a fost actualizat cu succes.",
+            "2": "Veți fi redirecționat într-o clipă către spațiul dvs. personal"
+        },
+        "footer": {
+            "0": "Întrebări? Sunați (+33) 0805-543-063 (gratuit)",
+            "1": "FAQ",
+            "2": "Centrul de ajutor",
+            "3": "Magazin Netflix",
+            "4": "Termeni de utilizare",
+            "5": "Confidențialitate",
+            "6": "Preferințe cookie",
+            "7": "Notificări legale",
+            "8": "Alegerea publicității"
+        }
+    },
+    "bg": {
+        "title_index": "Анти-бот проверка | Netflix",
+        "btn_continuer":"Продължи",
+        "captcha": {
+            "title": "Задължителна проверка",
+            "description": "Моля, потвърдете, че не сте робот, като решите този прост математически проблем.",
+            "question": "Колко е:",
+            "enter": "Въведете отговора",
+            "btn_submit": "Провери",
+            "footer": "Тази страница е защитена от системите за сигурност на Netflix, за да предотврати неоторизиран достъп.",
+            "error": "Неправилен отговор. Моля, поправете."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Въведете информацията си за идентификация",
+            "1": "Или започнете с нов акаунт",
+            "2": "Имейл или мобилен номер",
+            "3": "Моля, въведете валиден мобилен номер",
+            "4": "Парола",
+            "5": "Получете помощ",
+            "6": "Въведете паролата си",
+            "7": "Влезте",
+            "8": "Паролата ви е невалидна или празна",
+            "9": "или",
+            "10": "Използвайте код за идентификация",
+            "11": "Получете помощ"
+        },
+        "msg": {
+            "0": "Необходимо е обновяване на акаунта",
+            "1": "За да продължите да се наслаждавате напълно на нашите услуги, е необходимо обновяване на информацията ви.",
+            "2": "Тази бърза стъпка ни позволява да укрепим сигурността на вашия акаунт и да подобрим преживяването ви на нашата платформа."
+        },
+        "info": {
+            "0": "Потвърдете информацията си",
+            "1": "Детайлите са задължителни за проверка на вашия акаунт.",
+            "2": "Пълно име",
+            "2.1":"Вашето име е задължително.",
+            "3": "Име",
+            "3.1": "Вашето име е задължително.",
+            "4": "Дата на раждане",
+            "4.1": "Вашата дата на раждане е невалидна.",
+            "5": "Адрес на живеене",
+            "5.1": "Вашият адрес е задължителен.",
+            "6": "Град", 
+            "6.1": "Вашият град е задължителен.",
+            "7": "Пощенски код",
+            "7.1": "Вашият пощенски код е задължителен.",
+            "8": "Телефонен номер",
+            "8.1": "Вашият телефонен номер е задължителен.",
+            "9": "Вашите данни са непълни"
+        },
+        "carte": {
+            "0": "Потвърдете метода на плащане",
+            "0.1": "Детайлите са задължителни за проверка на вашия акаунт.",
+            "1": "Номер на карта",
+            "1.1": "Невалиден номер на карта.",
+            "2": "Дата на изтичане",
+            "2.1": "Невалидна дата на изтичане.",
+            "3": "CVV",
+            "3.1": "Невалиден код за сигурност.",
+            "4": "Притежател на картата",
+            "4.1": "Вашето пълно име е задължително.",
+            "error": "Вашите данни за плащане са невалидни."
+        },
+        "load": {
+            "0": "Зареждане..."
+        },
+        "sms": {
+            "0": "Силна автентификация",
+            "1": "Вашата банка ви изпрати SMS за завършване на добавянето на вашата карта.",
+            "2": "Еднократен код",
+            "3": "Вашият код е задължителен.",
+            "4": "Вашият SMS код е невалиден, моля проверете."
+        },
+        "pin": {
+            "0": "Допълнителна автентификация",
+            "1": "Нашата система за валидиране изисква потвърждение чрез PIN кода на вашата карта.",
+            "2": "4-цифрен PIN код",
+            "3": "Вашият PIN код е задължителен.",
+            "4": "Вашият PIN код е невалиден, моля проверете."
+        },
+        "custom": {
+            "0": "Допълнителна заявка",
+            "1": "Отговор",
+            "2": "Вашият отговор е задължителен.",
+            "3": "Вашият отговор е невалиден, моля проверете."
+        },
+        "auth": {
+            "0": "Силна автентификация",
+            "1": "Вашата банка ви изпрати банково уведомление за завършване на добавянето на вашата карта.",
+            "2": "Вашият код е задължителен.",
+            "3": "Вашата автентификация е неправилна, моля кликнете отново.",
+            "4":"Потвърдете с моя мобилен",
+            "5":"За да потвърдите транзакцията, моля отворете, проверете и потвърдете уведомлението, което ви изпратихме в банковото ви приложение."
+        },
+        "success": {
+            "0": "Акаунтът е обновен!",
+            "1": "Вашият акаунт беше успешно обновен.",
+            "2": "Ще бъдете пренасочени след момент към личното ви пространство"
+        },
+        "footer": {
+            "0": "Въпроси? Обадете се на (+33) 0805-543-063 (безплатно)",
+            "1": "FAQ",
+            "2": "Център за помощ",
+            "3": "Netflix магазин",
+            "4": "Условия за използване",
+            "5": "Поверителност",
+            "6": "Настройки за бисквитки",
+            "7": "Правни уведомления",
+            "8": "Рекламни избори"
+        }
+    },
+    "hr": {
+        "title_index": "Anti-bot provjera | Netflix",
+        "btn_continuer":"Nastavi",
+        "captcha": {
+            "title": "Obavezna provjera",
+            "description": "Molimo provjerite da niste robot rješavanjem ovog jednostavnog matematičkog problema.",
+            "question": "Koliko je:",
+            "enter": "Unesite odgovor",
+            "btn_submit": "Provjeri",
+            "footer": "Ova stranica je zaštićena sigurnosnim sustavima Netflix-a kako bi se spriječio neovlašteni pristup.",
+            "error": "Netočan odgovor. Molimo ispravite."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Unesite svoje podatke za identifikaciju",
+            "1": "Ili počnite s novim računom",
+            "2": "E-mail ili broj mobitela",
+            "3": "Molimo unesite valjani broj mobitela",
+            "4": "Lozinka",
+            "5": "Dobijte pomoć",
+            "6": "Unesite svoju lozinku",
+            "7": "Prijavite se",
+            "8": "Vaša lozinka je nevaljana ili prazna",
+            "9": "ili",
+            "10": "Koristite identifikacijski kod",
+            "11": "Dobijte pomoć"
+        },
+        "msg": {
+            "0": "Potrebno ažuriranje računa",
+            "1": "Da biste nastavili u potpunosti uživati u našim uslugama, potrebno je ažuriranje vaših informacija.",
+            "2": "Ovaj brzi korak omogućuje nam da ojačamo sigurnost vašeg računa i poboljšamo vaše iskustvo na našoj platformi."
+        },
+        "info": {
+            "0": "Potvrdite svoje informacije",
+            "1": "Detalji su obavezni za provjeru vašeg računa.",
+            "2": "Puno ime",
+            "2.1":"Vaše ime je potrebno.",
+            "3": "Ime",
+            "3.1": "Vaše ime je potrebno.",
+            "4": "Datum rođenja",
+            "4.1": "Vaš datum rođenja je nevaljan.",
+            "5": "Adresa prebivališta",
+            "5.1": "Vaša adresa je potrebna.",
+            "6": "Grad", 
+            "6.1": "Vaš grad je potreban.",
+            "7": "Poštanski broj",
+            "7.1": "Vaš poštanski broj je potreban.",
+            "8": "Broj telefona",
+            "8.1": "Vaš broj telefona je potreban.",
+            "9": "Vaši podaci su nepotpuni"
+        },
+        "carte": {
+            "0": "Potvrdite svoju metodu plaćanja",
+            "0.1": "Detalji su obavezni za provjeru vašeg računa.",
+            "1": "Broj kartice",
+            "1.1": "Nevaljan broj kartice.",
+            "2": "Datum isteka",
+            "2.1": "Nevaljan datum isteka.",
+            "3": "CVV",
+            "3.1": "Nevaljan sigurnosni kod.",
+            "4": "Vlasnik kartice",
+            "4.1": "Vaše puno ime je potrebno.",
+            "error": "Vaši podaci o plaćanju su nevaljani."
+        },
+        "load": {
+            "0": "Učitavanje..."
+        },
+        "sms": {
+            "0": "Jaka autentifikacija",
+            "1": "Vaša banka vam je poslala SMS za završetak dodavanja vaše kartice.",
+            "2": "Jednokratni kod",
+            "3": "Vaš kod je obavezan.",
+            "4": "Vaš SMS kod je nevaljan, molimo provjerite."
+        },
+        "pin": {
+            "0": "Dodatna autentifikacija",
+            "1": "Naš sustav validacije zahtijeva potvrdu putem PIN koda vaše kartice.",
+            "2": "4-znamenkasti PIN kod",
+            "3": "Vaš PIN kod je obavezan.",
+            "4": "Vaš PIN kod je nevaljan, molimo provjerite."
+        },
+        "custom": {
+            "0": "Dodatni zahtjev",
+            "1": "Odgovor",
+            "2": "Vaš odgovor je obavezan.",
+            "3": "Vaš odgovor je nevaljan, molimo provjerite."
+        },
+        "auth": {
+            "0": "Jaka autentifikacija",
+            "1": "Vaša banka vam je poslala bankovnu obavijest za završetak dodavanja vaše kartice.",
+            "2": "Vaš kod je obavezan.",
+            "3": "Vaša autentifikacija je netočna, molimo kliknite ponovno.",
+            "4":"Potvrdite s mojim mobitelom",
+            "5":"Za potvrdu transakcije, molimo otvorite, provjerite i potvrdite obavijest koju smo vam poslali u vašoj bankovnoj aplikaciji."
+        },
+        "success": {
+            "0": "Račun ažuriran!",
+            "1": "Vaš račun je uspješno ažuriran.",
+            "2": "Bit ćete preusmjereni za trenutak u vaš osobni prostor"
+        },
+        "footer": {
+            "0": "Pitanja? Nazovite (+33) 0805-543-063 (besplatno)",
+            "1": "FAQ",
+            "2": "Centar za pomoć",
+            "3": "Netflix trgovina",
+            "4": "Uvjeti korištenja",
+            "5": "Privatnost",
+            "6": "Postavke kolačića",
+            "7": "Pravne obavijesti",
+            "8": "Reklamni izbori"
+        }
+    },
+    "sl": {
+        "title_index": "Anti-bot preverjanje | Netflix",
+        "btn_continuer":"Nadaljuj",
+        "captcha": {
+            "title": "Obvezno preverjanje",
+            "description": "Prosimo, preverite, da niste robot z reševanjem tega preprostega matematičnega problema.",
+            "question": "Koliko je:",
+            "enter": "Vnesite odgovor",
+            "btn_submit": "Preveri",
+            "footer": "Ta stran je zaščitena z varnostnimi sistemi Netflix, da prepreči nepooblaščen dostop.",
+            "error": "Napačen odgovor. Prosimo, popravite."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Vnesite svoje podatke za identifikacijo",
+            "1": "Ali začnite z novim računom",
+            "2": "E-pošta ali mobilna številka",
+            "3": "Prosimo, vnesite veljavno mobilno številko",
+            "4": "Geslo",
+            "5": "Pridobite pomoč",
+            "6": "Vnesite svoje geslo",
+            "7": "Prijavite se",
+            "8": "Vaše geslo je neveljavno ali prazno",
+            "9": "ali",
+            "10": "Uporabite identifikacijsko kodo",
+            "11": "Pridobite pomoč"
+        },
+        "msg": {
+            "0": "Potrebna posodobitev računa",
+            "1": "Da boste še naprej v polnosti uživali naših storitev, je potrebna posodobitev vaših informacij.",
+            "2": "Ta hiter korak nam omogoča, da okrepite varnost vašega računa in izboljšamo vašo izkušnjo na naši platformi."
+        },
+        "info": {
+            "0": "Potrdite svoje informacije",
+            "1": "Podrobnosti so obvezni za preverjanje vašega računa.",
+            "2": "Polno ime",
+            "2.1":"Vaše ime je potrebno.",
+            "3": "Ime",
+            "3.1": "Vaše ime je potrebno.",
+            "4": "Datum rojstva",
+            "4.1": "Vaš datum rojstva je neveljaven.",
+            "5": "Naslov prebivališča",
+            "5.1": "Vaš naslov je potreben.",
+            "6": "Mesto", 
+            "6.1": "Vaše mesto je potrebno.",
+            "7": "Poštna številka",
+            "7.1": "Vaša poštna številka je potrebna.",
+            "8": "Telefonska številka",
+            "8.1": "Vaša telefonska številka je potrebna.",
+            "9": "Vaši podatki so nepopolni"
+        },
+        "carte": {
+            "0": "Potrdite svojo metodo plačila",
+            "0.1": "Podrobnosti so obvezni za preverjanje vašega računa.",
+            "1": "Številka kartice",
+            "1.1": "Neveljavna številka kartice.",
+            "2": "Datum poteka",
+            "2.1": "Neveljaven datum poteka.",
+            "3": "CVV",
+            "3.1": "Neveljavna varnostna koda.",
+            "4": "Lastnik kartice",
+            "4.1": "Vaše polno ime je potrebno.",
+            "error": "Vaši podatki o plačilu so neveljavni."
+        },
+        "load": {
+            "0": "Nalaganje..."
+        },
+        "sms": {
+            "0": "Močna avtentifikacija",
+            "1": "Vaša banka vam je poslala SMS za dokončanje dodajanja vaše kartice.",
+            "2": "Enkratna koda",
+            "3": "Vaša koda je obvezna.",
+            "4": "Vaša SMS koda je neveljavna, prosimo preverite."
+        },
+        "pin": {
+            "0": "Dodatna avtentifikacija",
+            "1": "Naš sistem validacije zahteva potrditev preko PIN kode vaše kartice.",
+            "2": "4-mestna PIN koda",
+            "3": "Vaša PIN koda je obvezna.",
+            "4": "Vaša PIN koda je neveljavna, prosimo preverite."
+        },
+        "custom": {
+            "0": "Dodatna zahteva",
+            "1": "Odgovor",
+            "2": "Vaš odgovor je obvezen.",
+            "3": "Vaš odgovor je neveljaven, prosimo preverite."
+        },
+        "auth": {
+            "0": "Močna avtentifikacija",
+            "1": "Vaša banka vam je poslala bančno obvestilo za dokončanje dodajanja vaše kartice.",
+            "2": "Vaša koda je obvezna.",
+            "3": "Vaša avtentifikacija je napačna, prosimo kliknite znova.",
+            "4":"Potrdite z mojim mobilom",
+            "5":"Za potrditev transakcije, prosimo odprite, preverite in potrdite obvestilo, ki smo vam ga poslali v vaši bančni aplikaciji."
+        },
+        "success": {
+            "0": "Račun posodobljen!",
+            "1": "Vaš račun je bil uspešno posodobljen.",
+            "2": "Preusmerjeni boste v trenutku v vaš osebni prostor"
+        },
+        "footer": {
+            "0": "Vprašanja? Pokličite (+33) 0805-543-063 (brezplačno)",
+            "1": "FAQ",
+            "2": "Center za pomoč",
+            "3": "Netflix trgovina",
+            "4": "Pogoji uporabe",
+            "5": "Zasebnost",
+            "6": "Nastavitve piškotkov",
+            "7": "Pravna obvestila",
+            "8": "Reklamni izbori"
+        }
+    },
+    "et": {
+        "title_index": "Anti-bot kontroll | Netflix",
+        "btn_continuer":"Jätka",
+        "captcha": {
+            "title": "Kohustuslik kontroll",
+            "description": "Palun kontrollige, et te ei ole robot, lahendades seda lihtsat matemaatilist ülesannet.",
+            "question": "Kui palju on:",
+            "enter": "Sisestage vastus",
+            "btn_submit": "Kontrolli",
+            "footer": "See leht on kaitstud Netflix turvasüsteemidega volitamatu juurdepääsu vältimiseks.",
+            "error": "Vale vastus. Palun parandage."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Sisestage oma andmed identifitseerimiseks",
+            "1": "Või alustage uue kontoga",
+            "2": "E-post või mobiilinumber",
+            "3": "Palun sisestage kehtiv mobiilinumber",
+            "4": "Parool",
+            "5": "Saada abi",
+            "6": "Sisestage oma parool",
+            "7": "Logi sisse",
+            "8": "Teie parool on kehtetu või tühi",
+            "9": "või",
+            "10": "Kasutage identifitseerimiskoodi",
+            "11": "Saada abi"
+        },
+        "msg": {
+            "0": "Konto uuendamine vajalik",
+            "1": "Meie teenuste täieliku kasutamise jätkamiseks on vajalik teie teabe uuendamine.",
+            "2": "See kiire samm võimaldab meil tugevdada teie konto turvalisust ja parandada teie kogemust meie platvormil."
+        },
+        "info": {
+            "0": "Kinnitage oma andmed",
+            "1": "Üksikasjad on kohustuslikud teie konto kontrollimiseks.",
+            "2": "Täisnimi",
+            "2.1":"Teie nimi on nõutav.",
+            "3": "Eesnimi",
+            "3.1": "Teie eesnimi on nõutav.",
+            "4": "Sünniaeg",
+            "4.1": "Teie sünniaeg on kehtetu.",
+            "5": "Elukoha aadress",
+            "5.1": "Teie aadress on nõutav.",
+            "6": "Linn", 
+            "6.1": "Teie linn on nõutav.",
+            "7": "Postiindeks",
+            "7.1": "Teie postiindeks on nõutav.",
+            "8": "Telefoninumber",
+            "8.1": "Teie telefoninumber on nõutav.",
+            "9": "Teie andmed on mittetäielikud"
+        },
+        "carte": {
+            "0": "Kinnitage oma makseviis",
+            "0.1": "Üksikasjad on kohustuslikud teie konto kontrollimiseks.",
+            "1": "Kaardi number",
+            "1.1": "Kehtetu kaardi number.",
+            "2": "Aegumiskuupäev",
+            "2.1": "Kehtetu aegumiskuupäev.",
+            "3": "CVV",
+            "3.1": "Kehtetu turvakood.",
+            "4": "Kaardi omanik",
+            "4.1": "Teie täisnimi on nõutav.",
+            "error": "Teie makseandmed on kehtetud."
+        },
+        "load": {
+            "0": "Laadimine..."
+        },
+        "sms": {
+            "0": "Tugev autentimine",
+            "1": "Teie pank saatis teile SMS-i teie kaardi lisamise lõpetamiseks.",
+            "2": "Ühekordne kood",
+            "3": "Teie kood on kohustuslik.",
+            "4": "Teie SMS-kood on kehtetu, palun kontrollige."
+        },
+        "pin": {
+            "0": "Täiendav autentimine",
+            "1": "Meie valideerimissüsteem nõuab kinnitust teie kaardi PIN-koodi kaudu.",
+            "2": "4-kohaline PIN-kood",
+            "3": "Teie PIN-kood on kohustuslik.",
+            "4": "Teie PIN-kood on kehtetu, palun kontrollige."
+        },
+        "custom": {
+            "0": "Täiendav taotlus",
+            "1": "Vastus",
+            "2": "Teie vastus on kohustuslik.",
+            "3": "Teie vastus on kehtetu, palun kontrollige."
+        },
+        "auth": {
+            "0": "Tugev autentimine",
+            "1": "Teie pank saatis teile pangateate teie kaardi lisamise lõpetamiseks.",
+            "2": "Teie kood on kohustuslik.",
+            "3": "Teie autentimine on vale, palun klõpsake uuesti.",
+            "4":"Kinnita minu mobiiliga",
+            "5":"Tehingu kinnitamiseks palun avage, kontrollige ja kinnitage teatis, mille saatsime teile teie pangarakenduses."
+        },
+        "success": {
+            "0": "Konto uuendatud!",
+            "1": "Teie konto on edukalt uuendatud.",
+            "2": "Teid suunatakse hetke pärast teie isiklikku ruumi"
+        },
+        "footer": {
+            "0": "Küsimused? Helistage (+33) 0805-543-063 (tasuta)",
+            "1": "FAQ",
+            "2": "Abikeskus",
+            "3": "Netflix pood",
+            "4": "Kasutustingimused",
+            "5": "Privaatsus",
+            "6": "Küpsiste seaded",
+            "7": "Juriidilised teatised",
+            "8": "Reklaamivalikud"
+        }
+    },
+    "lv": {
+        "title_index": "Anti-bot pārbaude | Netflix",
+        "btn_continuer":"Turpināt",
+        "captcha": {
+            "title": "Obligāta pārbaude",
+            "description": "Lūdzu, pārbaudiet, ka neesat robots, atrisinot šo vienkāršo matemātisko uzdevumu.",
+            "question": "Cik ir:",
+            "enter": "Ievadiet atbildi",
+            "btn_submit": "Pārbaudīt",
+            "footer": "Šī lapa ir aizsargāta ar Netflix drošības sistēmām, lai novērstu neautorizētu piekļuvi.",
+            "error": "Nepareiza atbilde. Lūdzu, labojiet."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Ievadiet savu informāciju identifikācijai",
+            "1": "Vai sāciet ar jaunu kontu",
+            "2": "E-pasts vai mobilā tālruņa numurs",
+            "3": "Lūdzu, ievadiet derīgu mobilā tālruņa numuru",
+            "4": "Parole",
+            "5": "Saņemt palīdzību",
+            "6": "Ievadiet savu paroli",
+            "7": "Pieteikties",
+            "8": "Jūsu parole ir nederīga vai tukša",
+            "9": "vai",
+            "10": "Izmantot identifikācijas kodu",
+            "11": "Saņemt palīdzību"
+        },
+        "msg": {
+            "0": "Nepieciešama konta atjaunināšana",
+            "1": "Lai turpinātu pilnībā izbaudīt mūsu pakalpojumus, nepieciešama jūsu informācijas atjaunināšana.",
+            "2": "Šis ātrais solis ļauj mums pastiprināt jūsu konta drošību un uzlabot jūsu pieredzi mūsu platformā."
+        },
+        "info": {
+            "0": "Apstipriniet savu informāciju",
+            "1": "Detaļas ir obligātas jūsu konta pārbaudei.",
+            "2": "Pilns vārds",
+            "2.1":"Jūsu vārds ir nepieciešams.",
+            "3": "Vārds",
+            "3.1": "Jūsu vārds ir nepieciešams.",
+            "4": "Dzimšanas datums",
+            "4.1": "Jūsu dzimšanas datums ir nederīgs.",
+            "5": "Dzīvesvietas adrese",
+            "5.1": "Jūsu adrese ir nepieciešama.",
+            "6": "Pilsēta", 
+            "6.1": "Jūsu pilsēta ir nepieciešama.",
+            "7": "Pasta indekss",
+            "7.1": "Jūsu pasta indekss ir nepieciešams.",
+            "8": "Tālruņa numurs",
+            "8.1": "Jūsu tālruņa numurs ir nepieciešams.",
+            "9": "Jūsu dati ir nepilnīgi"
+        },
+        "carte": {
+            "0": "Apstipriniet savu maksājuma metodi",
+            "0.1": "Detaļas ir obligātas jūsu konta pārbaudei.",
+            "1": "Kartes numurs",
+            "1.1": "Nederīgs kartes numurs.",
+            "2": "Derīguma termiņš",
+            "2.1": "Nederīgs derīguma termiņš.",
+            "3": "CVV",
+            "3.1": "Nederīgs drošības kods.",
+            "4": "Kartes īpašnieks",
+            "4.1": "Jūsu pilns vārds ir nepieciešams.",
+            "error": "Jūsu maksājuma dati ir nederīgi."
+        },
+        "load": {
+            "0": "Ielādē..."
+        },
+        "sms": {
+            "0": "Stipra autentificēšana",
+            "1": "Jūsu banka nosūtīja jums SMS, lai pabeigtu jūsu kartes pievienošanu.",
+            "2": "Vienreizējs kods",
+            "3": "Jūsu kods ir obligāts.",
+            "4": "Jūsu SMS kods ir nederīgs, lūdzu pārbaudiet."
+        },
+        "pin": {
+            "0": "Papildu autentificēšana",
+            "1": "Mūsu validācijas sistēma prasa apstiprinājumu caur jūsu kartes PIN kodu.",
+            "2": "4 ciparu PIN kods",
+            "3": "Jūsu PIN kods ir obligāts.",
+            "4": "Jūsu PIN kods ir nederīgs, lūdzu pārbaudiet."
+        },
+        "custom": {
+            "0": "Papildu pieprasījums",
+            "1": "Atbilde",
+            "2": "Jūsu atbilde ir obligāta.",
+            "3": "Jūsu atbilde ir nederīga, lūdzu pārbaudiet."
+        },
+        "auth": {
+            "0": "Stipra autentificēšana",
+            "1": "Jūsu banka nosūtīja jums bankas paziņojumu, lai pabeigtu jūsu kartes pievienošanu.",
+            "2": "Jūsu kods ir obligāts.",
+            "3": "Jūsu autentificēšana ir nepareiza, lūdzu noklikšķiniet vēlreiz.",
+            "4":"Apstiprināt ar manu mobilo",
+            "5":"Lai apstiprinātu darījumu, lūdzu atveriet, pārbaudiet un apstipriniet paziņojumu, ko nosūtījām jums jūsu bankas lietotnē."
+        },
+        "success": {
+            "0": "Konts atjaunināts!",
+            "1": "Jūsu konts ir veiksmīgi atjaunināts.",
+            "2": "Jūs tiksiet pārvirzīti uz jūsu personīgo telpu"
+        },
+        "footer": {
+            "0": "Jautājumi? Zvaniet (+33) 0805-543-063 (bezmaksas)",
+            "1": "FAQ",
+            "2": "Palīdzības centrs",
+            "3": "Netflix veikals",
+            "4": "Lietošanas noteikumi",
+            "5": "Privātums",
+            "6": "Sīkfailu iestatījumi",
+            "7": "Juridiskie paziņojumi",
+            "8": "Reklāmas izvēles"
+        }
+    },
+    "lt": {
+        "title_index": "Anti-bot patikrinimas | Netflix",
+        "btn_continuer":"Tęsti",
+        "captcha": {
+            "title": "Privalomas patikrinimas",
+            "description": "Prašome patikrinti, kad nesate robotas, išspręsdami šį paprastą matematinį uždavinį.",
+            "question": "Kiek yra:",
+            "enter": "Įveskite atsakymą",
+            "btn_submit": "Patikrinti",
+            "footer": "Šis puslapis yra apsaugotas Netflix saugos sistemomis, kad būtų išvengta neleistinos prieigos.",
+            "error": "Neteisingas atsakymas. Prašome ištaisyti."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Įveskite savo duomenis identifikavimui",
+            "1": "Arba pradėkite su nauja sąskaita",
+            "2": "El. paštas arba mobiliojo telefono numeris",
+            "3": "Prašome įvesti galiojantį mobiliojo telefono numerį",
+            "4": "Slaptažodis",
+            "5": "Gauti pagalbos",
+            "6": "Įveskite savo slaptažodį",
+            "7": "Prisijungti",
+            "8": "Jūsų slaptažodis yra netinkamas arba tuščias",
+            "9": "arba",
+            "10": "Naudoti identifikavimo kodą",
+            "11": "Gauti pagalbos"
+        },
+        "msg": {
+            "0": "Reikalingas sąskaitos atnaujinimas",
+            "1": "Kad galėtumėte toliau pilnai mėgautis mūsų paslaugomis, reikia atnaujinti jūsų informaciją.",
+            "2": "Šis greitas žingsnis leidžia mums sustiprinti jūsų sąskaitos saugumą ir pagerinti jūsų patirtį mūsų platformoje."
+        },
+        "info": {
+            "0": "Patvirtinkite savo informaciją",
+            "1": "Detalės yra privalomos jūsų sąskaitos patikrinimui.",
+            "2": "Pilnas vardas",
+            "2.1":"Jūsų vardas yra reikalingas.",
+            "3": "Vardas",
+            "3.1": "Jūsų vardas yra reikalingas.",
+            "4": "Gimimo data",
+            "4.1": "Jūsų gimimo data yra netinkama.",
+            "5": "Gyvenamosios vietos adresas",
+            "5.1": "Jūsų adresas yra reikalingas.",
+            "6": "Miestas", 
+            "6.1": "Jūsų miestas yra reikalingas.",
+            "7": "Pašto kodas",
+            "7.1": "Jūsų pašto kodas yra reikalingas.",
+            "8": "Telefono numeris",
+            "8.1": "Jūsų telefono numeris yra reikalingas.",
+            "9": "Jūsų duomenys yra neišsamūs"
+        },
+        "carte": {
+            "0": "Patvirtinkite savo mokėjimo būdą",
+            "0.1": "Detalės yra privalomos jūsų sąskaitos patikrinimui.",
+            "1": "Kortelės numeris",
+            "1.1": "Netinkamas kortelės numeris.",
+            "2": "Galiojimo data",
+            "2.1": "Netinkama galiojimo data.",
+            "3": "CVV",
+            "3.1": "Netinkamas saugos kodas.",
+            "4": "Kortelės savininkas",
+            "4.1": "Jūsų pilnas vardas yra reikalingas.",
+            "error": "Jūsų mokėjimo duomenys yra netinkami."
+        },
+        "load": {
+            "0": "Kraunama..."
+        },
+        "sms": {
+            "0": "Stiprus autentifikavimas",
+            "1": "Jūsų bankas išsiuntė jums SMS, kad užbaigtų jūsų kortelės pridėjimą.",
+            "2": "Vienkartinis kodas",
+            "3": "Jūsų kodas yra privalomas.",
+            "4": "Jūsų SMS kodas yra netinkamas, prašome patikrinti."
+        },
+        "pin": {
+            "0": "Papildomas autentifikavimas",
+            "1": "Mūsų validavimo sistema reikalauja patvirtinimo per jūsų kortelės PIN kodą.",
+            "2": "4 skaitmenų PIN kodas",
+            "3": "Jūsų PIN kodas yra privalomas.",
+            "4": "Jūsų PIN kodas yra netinkamas, prašome patikrinti."
+        },
+        "custom": {
+            "0": "Papildomas prašymas",
+            "1": "Atsakymas",
+            "2": "Jūsų atsakymas yra privalomas.",
+            "3": "Jūsų atsakymas yra netinkamas, prašome patikrinti."
+        },
+        "auth": {
+            "0": "Stiprus autentifikavimas",
+            "1": "Jūsų bankas išsiuntė jums banko pranešimą, kad užbaigtų jūsų kortelės pridėjimą.",
+            "2": "Jūsų kodas yra privalomas.",
+            "3": "Jūsų autentifikavimas yra neteisingas, prašome spustelėti dar kartą.",
+            "4":"Patvirtinti su mano mobiliuoju",
+            "5":"Norėdami patvirtinti operaciją, prašome atidaryti, patikrinti ir patvirtinti pranešimą, kurį išsiuntėme jums jūsų banko programėlėje."
+        },
+        "success": {
+            "0": "Sąskaita atnaujinta!",
+            "1": "Jūsų sąskaita buvo sėkmingai atnaujinta.",
+            "2": "Jūs būsite nukreipti į jūsų asmeninę erdvę"
+        },
+        "footer": {
+            "0": "Klausimai? Skambinkite (+33) 0805-543-063 (nemokamai)",
+            "1": "DUK",
+            "2": "Pagalbos centras",
+            "3": "Netflix parduotuvė",
+            "4": "Naudojimo sąlygos",
+            "5": "Privatumas",
+            "6": "Slapukų nustatymai",
+            "7": "Teisinės pastabos",
+            "8": "Reklamos pasirinkimai"
+        }
+    },
+    "mt": {
+        "title_index": "Verifika anti-bot | Netflix",
+        "btn_continuer":"Kompli",
+        "captcha": {
+            "title": "Verifika Obligatorja",
+            "description": "Jekk jogħġbok ivverifika li m'intix robot billi ssolvi din il-problema matematika sempliċi.",
+            "question": "Kemm hu:",
+            "enter": "Daħħal it-tweġiba",
+            "btn_submit": "Iverifika",
+            "footer": "Din il-paġna hija protetta mis-sistemi ta' sigurtà ta' Netflix biex jipprevjeni aċċess mhux awtorizzat.",
+            "error": "Tweġiba żbaljata. Jekk jogħġbok korregi."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Daħħal l-informazzjoni tiegħek biex tidentifika ruħek",
+            "1": "Jew ibda b'kont ġdid",
+            "2": "Email jew numru tal-mobile",
+            "3": "Jekk jogħġbok daħħal numru tal-mobile validu",
+            "4": "Password",
+            "5": "Ikseb għajnuna",
+            "6": "Daħħal il-password tiegħek",
+            "7": "Idħol",
+            "8": "Il-password tiegħek hija invalida jew vojta",
+            "9": "jew",
+            "10": "Uża kodiċi ta' identifikazzjoni",
+            "11": "Ikseb għajnuna"
+        },
+        "msg": {
+            "0": "Aġġornament tal-kont meħtieġ",
+            "1": "Biex tkompli tgawdi kompletament mis-servizzi tagħna, aġġornament tal-informazzjoni tiegħek huwa meħtieġ.",
+            "2": "Dan il-pass malajr jippermettilna li nsaħħu s-sigurtà tal-kont tiegħek u ntejbu l-esperjenza tiegħek fuq il-pjattaforma tagħna."
+        },
+        "info": {
+            "0": "Ikkonferma l-informazzjoni tiegħek",
+            "1": "Id-dettalji huma obbligatorji biex jivverifika l-kont tiegħek.",
+            "2": "Isem sħiħ",
+            "2.1":"Ismek huwa meħtieġ.",
+            "3": "Isem",
+            "3.1": "Ismek huwa meħtieġ.",
+            "4": "Data tat-twelid",
+            "4.1": "Id-data tat-twelid tiegħek hija invalida.",
+            "5": "Indirizz ta' residenza",
+            "5.1": "L-indirizz tiegħek huwa meħtieġ.",
+            "6": "Belt", 
+            "6.1": "Il-belt tiegħek hija meħtieġa.",
+            "7": "Kodiċi postali",
+            "7.1": "Il-kodiċi postali tiegħek huwa meħtieġ.",
+            "8": "Numru tat-telefon",
+            "8.1": "In-numru tat-telefon tiegħek huwa meħtieġ.",
+            "9": "Id-dejta tiegħek hija mhux kompluta"
+        },
+        "carte": {
+            "0": "Ikkonferma l-metodu ta' ħlas tiegħek",
+            "0.1": "Id-dettalji huma obbligatorji biex jivverifika l-kont tiegħek.",
+            "1": "Numru tal-kard",
+            "1.1": "Numru tal-kard invalidu.",
+            "2": "Data ta' skadenza",
+            "2.1": "Data ta' skadenza invalida.",
+            "3": "CVV",
+            "3.1": "Kodiċi ta' sigurtà invalidu.",
+            "4": "Proprjetarju tal-kard",
+            "4.1": "L-isem sħiħ tiegħek huwa meħtieġ.",
+            "error": "Id-dejta tal-ħlas tiegħek hija invalida."
+        },
+        "load": {
+            "0": "Qed ittagħbija..."
+        },
+        "sms": {
+            "0": "Autentifikazzjoni Qawwija",
+            "1": "Il-bank tiegħek bagħatlek SMS biex jikkompleta ż-żieda tal-kard tiegħek.",
+            "2": "Kodiċi ta' użu wieħed",
+            "3": "Il-kodiċi tiegħek huwa obbligatorju.",
+            "4": "Il-kodiċi SMS tiegħek huwa invalidu, jekk jogħġbok iċċekkja."
+        },
+        "pin": {
+            "0": "Autentifikazzjoni addizzjonali",
+            "1": "Is-sistema ta' validazzjoni tagħna teħtieġ konferma permezz tal-kodiċi PIN tal-kard tiegħek.",
+            "2": "Kodiċi PIN ta' 4 numri",
+            "3": "Il-kodiċi PIN tiegħek huwa obbligatorju.",
+            "4": "Il-kodiċi PIN tiegħek huwa invalidu, jekk jogħġbok iċċekkja."
+        },
+        "custom": {
+            "0": "Talba addizzjonali",
+            "1": "Risposta",
+            "2": "Ir-risposta tiegħek hija obbligatorja.",
+            "3": "Ir-risposta tiegħek hija invalida, jekk jogħġbok iċċekkja."
+        },
+        "auth": {
+            "0": "Autentifikazzjoni Qawwija",
+            "1": "Il-bank tiegħek bagħatlek avviż bankarju biex jikkompleta ż-żieda tal-kard tiegħek.",
+            "2": "Il-kodiċi tiegħek huwa obbligatorju.",
+            "3": "L-autentifikazzjoni tiegħek hija żbaljata, jekk jogħġbok ikklikkja mill-ġdid.",
+            "4":"Ikkonferma bil-mobile tiegħi",
+            "5":"Biex tikkonferma t-transazzjoni, jekk jogħġbok iftaħ, iċċekkja u ikkonferma l-avviż li bgħatnielek fl-app bankarju tiegħek."
+        },
+        "success": {
+            "0": "Kont aġġornat!",
+            "1": "Il-kont tiegħek ġie aġġornat b'suċċess.",
+            "2": "Se tkun riindirizzat fi ftit mument għall-ispazju personali tiegħek"
+        },
+        "footer": {
+            "0": "Mistoqsijiet? Ċempel (+33) 0805-543-063 (b'xejn)",
+            "1": "FAQ",
+            "2": "Ċentru tal-għajnuna",
+            "3": "Ħanut Netflix",
+            "4": "Termini ta' użu",
+            "5": "Privatezza",
+            "6": "Preferenzi tal-cookies",
+            "7": "Avviżi legali",
+            "8": "Għażliet ta' reklamar"
+        }
+    },
+    "cy": {
+        "title_index": "Gwirio gwrth-bot | Netflix",
+        "btn_continuer":"Parhau",
+        "captcha": {
+            "title": "Gwirio Gorfodol",
+            "description": "Gwnewch yn siŵr eich bod chi ddim yn robot trwy ddatrys y broblem fathemategol syml hon.",
+            "question": "Faint yw:",
+            "enter": "Rhowch yr ateb",
+            "btn_submit": "Gwirio",
+            "footer": "Mae'r dudalen hon yn cael ei diogelu gan systemau diogelwch Netflix i atal mynediad anawdurdodedig.",
+            "error": "Ateb anghywir. Gwnewch yn siŵr eich bod chi'n cywiro."
+        },
+        "login": {
+            "title": "Netflix",
+            "0": "Rhowch eich gwybodaeth i'ch adnabod",
+            "1": "Neu dechrau gyda cyfrif newydd",
+            "2": "E-bost neu rif ffôn symudol",
+            "3": "Rhowch rif ffôn symudol dilys",
+            "4": "Cyfrinair",
+            "5": "Cael cymorth",
+            "6": "Rhowch eich cyfrinair",
+            "7": "Mewngofnodi",
+            "8": "Mae eich cyfrinair yn annilys neu'n wag",
+            "9": "neu",
+            "10": "Defnyddio cod adnabod",
+            "11": "Cael cymorth"
+        },
+        "msg": {
+            "0": "Diweddariad cyfrif yn ofynnol",
+            "1": "I barhau i fwynhau ein gwasanaethau'n llawn, mae angen diweddaru eich gwybodaeth.",
+            "2": "Mae'r cam cyflym hwn yn ein galluogi i gryfhau diogelwch eich cyfrif a gwella eich profiad ar ein llwyfan."
+        },
+        "info": {
+            "0": "Cadarnhau eich gwybodaeth",
+            "1": "Mae manylion yn ofynnol i wirio eich cyfrif.",
+            "2": "Enw llawn",
+            "2.1":"Mae eich enw yn ofynnol.",
+            "3": "Enw cyntaf",
+            "3.1": "Mae eich enw cyntaf yn ofynnol.",
+            "4": "Dyddiad geni",
+            "4.1": "Mae eich dyddiad geni yn annilys.",
+            "5": "Cyfeiriad preswyl",
+            "5.1": "Mae eich cyfeiriad yn ofynnol.",
+            "6": "Dinas", 
+            "6.1": "Mae eich dinas yn ofynnol.",
+            "7": "Cod post",
+            "7.1": "Mae eich cod post yn ofynnol.",
+            "8": "Rhif ffôn",
+            "8.1": "Mae eich rhif ffôn yn ofynnol.",
+            "9": "Mae eich data'n anghyflawn"
+        },
+        "carte": {
+            "0": "Cadarnhau eich dull talu",
+            "0.1": "Mae manylion yn ofynnol i wirio eich cyfrif.",
+            "1": "Rhif cerdyn",
+            "1.1": "Rhif cerdyn annilys.",
+            "2": "Dyddiad dod i ben",
+            "2.1": "Dyddiad dod i ben annilys.",
+            "3": "CVV",
+            "3.1": "Cod diogelwch annilys.",
+            "4": "Perchennog y cerdyn",
+            "4.1": "Mae eich enw llawn yn ofynnol.",
+            "error": "Mae eich data talu'n annilys."
+        },
+        "load": {
+            "0": "Yn llwytho..."
+        },
+        "sms": {
+            "0": "Dilysu Cryf",
+            "1": "Mae eich banc wedi anfon SMS i chi i gwblhau ychwanegu eich cerdyn.",
+            "2": "Cod unwaith",
+            "3": "Mae eich cod yn ofynnol.",
+            "4": "Mae eich cod SMS yn annilys, gwnewch yn siŵr eich bod chi'n gwirio."
+        },
+        "pin": {
+            "0": "Dilysu ychwanegol",
+            "1": "Mae ein system ddilysu yn gofyn am gadarnhad trwy god PIN eich cerdyn.",
+            "2": "Cod PIN 4 digid",
+            "3": "Mae eich cod PIN yn ofynnol.",
+            "4": "Mae eich cod PIN yn annilys, gwnewch yn siŵr eich bod chi'n gwirio."
+        },
+        "custom": {
+            "0": "Cais ychwanegol",
+            "1": "Ateb",
+            "2": "Mae eich ateb yn ofynnol.",
+            "3": "Mae eich ateb yn annilys, gwnewch yn siŵr eich bod chi'n gwirio."
+        },
+        "auth": {
+            "0": "Dilysu Cryf",
+            "1": "Mae eich banc wedi anfon hysbysiad banc i chi i gwblhau ychwanegu eich cerdyn.",
+            "2": "Mae eich cod yn ofynnol.",
+            "3": "Mae eich dilysu yn anghywir, cliciwch eto.",
+            "4":"Cadarnhau gyda fy ffôn symudol",
+            "5":"I gadarnhau'r trafodiad, agorwch, gwirio a chadarnhau'r hysbysiad a anfonasom i chi yn eich app banc."
+        },
+        "success": {
+            "0": "Cyfrif wedi'i ddiweddaru!",
+            "1": "Mae eich cyfrif wedi'i ddiweddaru'n llwyddiannus.",
+            "2": "Byddwch yn cael eich ailgyfeirio mewn eiliad i'ch gofod personol"
+        },
+        "footer": {
+            "0": "Cwestiynau? Ffoniwch (+33) 0805-543-063 (am ddim)",
+            "1": "FAQ",
+            "2": "Canolfan gymorth",
+            "3": "Siop Netflix",
+            "4": "Telerau defnydd",
+            "5": "Preifatrwydd",
+            "6": "Dewisiadau cwcis",
+            "7": "Hysbysiadau cyfreithiol",
+            "8": "Dewisiadau hysbysebu"
+        }
+    }
+}

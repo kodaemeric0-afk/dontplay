@@ -1,0 +1,242 @@
+[
+    {
+        "ip": "2a02:8440:751d:9427:6889:551d:6f37:cb6",
+        "country": "FR",
+        "isp": "Societe Francaise Du Radiotelephone - SFR SA",
+        "asname": "AS15557 SOCIETE FRANCAISE DU RADIOTELEPHONE - SFR SA",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-12 12:41:11"
+    },
+    {
+        "ip": "212.89.24.4",
+        "country": "ES",
+        "isp": "R Cable y Telecable Telecomunicaciones, S.A.U.",
+        "asname": "AS12946 R CABLE Y TELECABLE TELECOMUNICACIONES, S.A.U.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-13 14:08:22"
+    },
+    {
+        "ip": "79.117.255.135",
+        "country": "ES",
+        "isp": "Digi Spain Telecom S.L.U.",
+        "asname": "AS57269 DIGI SPAIN TELECOM S.A",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-13 14:08:25"
+    },
+    {
+        "ip": "212.142.160.69",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-13 14:08:42"
+    },
+    {
+        "ip": "212.142.160.69",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-13 14:11:28"
+    },
+    {
+        "ip": "90.167.174.172",
+        "country": "ES",
+        "isp": "Orange Espagne SA",
+        "asname": "AS12479 ORANGE ESPAGNE SA",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-13 17:45:49"
+    },
+    {
+        "ip": "84.125.88.206",
+        "country": "ES",
+        "isp": "Ono",
+        "asname": "AS12430 VODAFONE ESPANA S.A.U.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-13 18:16:23"
+    },
+    {
+        "ip": "90.160.195.4",
+        "country": "ES",
+        "isp": "External Content Distribution Network",
+        "asname": "AS12479 ORANGE ESPAGNE SA",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-13 18:50:11"
+    },
+    {
+        "ip": "212.142.160.103",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-13 18:50:14"
+    },
+    {
+        "ip": "90.167.167.207",
+        "country": "ES",
+        "isp": "Orange Espagne SA",
+        "asname": "AS12479 ORANGE ESPAGNE SA",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 10:21:01"
+    },
+    {
+        "ip": "84.125.88.206",
+        "country": "ES",
+        "isp": "Ono",
+        "asname": "AS12430 VODAFONE ESPANA S.A.U.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 10:38:14"
+    },
+    {
+        "ip": "84.125.88.206",
+        "country": "ES",
+        "isp": "Ono",
+        "asname": "AS12430 VODAFONE ESPANA S.A.U.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 10:52:22"
+    },
+    {
+        "ip": "77.26.12.4",
+        "country": "ES",
+        "isp": "R Cable y Telecomunicaciones Galicia S.A.",
+        "asname": "AS12334 R CABLE Y TELECABLE TELECOMUNICACIONES, S.A.U.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 14:11:04"
+    },
+    {
+        "ip": "212.142.160.101",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 14:11:05"
+    },
+    {
+        "ip": "90.167.55.15",
+        "country": "ES",
+        "isp": "Orange Espagne SA",
+        "asname": "AS12479 ORANGE ESPAGNE SA",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 15:29:32"
+    },
+    {
+        "ip": "79.148.48.112",
+        "country": "ES",
+        "isp": "RIMA (Red IP Multi Acceso)",
+        "asname": "AS3352 TELEFONICA DE ESPANA S.A.U.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 16:37:37"
+    },
+    {
+        "ip": "85.85.29.82",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 16:42:16"
+    },
+    {
+        "ip": "85.85.29.82",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 16:42:16"
+    },
+    {
+        "ip": "85.85.29.82",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 16:42:34"
+    },
+    {
+        "ip": "85.85.29.82",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 16:42:41"
+    },
+    {
+        "ip": "85.85.29.82",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 16:44:29"
+    },
+    {
+        "ip": "93.114.159.28",
+        "country": "ES",
+        "isp": "Procono S.A.",
+        "asname": "AS34977 PROCONO S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 18:03:53"
+    },
+    {
+        "ip": "85.85.29.82",
+        "country": "ES",
+        "isp": "Euskaltel S.A.",
+        "asname": "AS12338 EUSKALTEL S.A.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-14 19:02:35"
+    },
+    {
+        "ip": "81.60.43.244",
+        "country": "ES",
+        "isp": "Vodafone Espana S.A.U.",
+        "asname": "AS12430 VODAFONE ESPANA S.A.U.",
+        "device": "mobile",
+        "authorized": true,
+        "reason": "Authorized",
+        "date": "2026-05-15 22:04:40"
+    }
+]

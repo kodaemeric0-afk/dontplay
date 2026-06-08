@@ -1,0 +1,231 @@
+{
+    "154.37.70.208": {
+        "count": 1,
+        "first_attempt": 1778783241,
+        "last_attempt": 1778783241,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778783241
+            }
+        ]
+    },
+    "193.31.56.135": {
+        "count": 1,
+        "first_attempt": 1778783243,
+        "last_attempt": 1778783243,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778783243
+            }
+        ]
+    },
+    "45.146.205.53": {
+        "count": 1,
+        "first_attempt": 1778783245,
+        "last_attempt": 1778783245,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778783245
+            }
+        ]
+    },
+    "44.250.241.195": {
+        "count": 3,
+        "first_attempt": 1778787993,
+        "last_attempt": 1778787993,
+        "reasons": [
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778787993
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778787993
+            },
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778787993
+            }
+        ]
+    },
+    "193.29.106.26": {
+        "count": 1,
+        "first_attempt": 1778807269,
+        "last_attempt": 1778807269,
+        "reasons": [
+            {
+                "reason": "blocked_isp:M247",
+                "ts": 1778807269
+            }
+        ]
+    },
+    "34.122.147.229": {
+        "count": 2,
+        "first_attempt": 1778807350,
+        "last_attempt": 1778835109,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778835109
+            }
+        ]
+    },
+    "34.72.176.129": {
+        "count": 1,
+        "first_attempt": 1778807391,
+        "last_attempt": 1778807391,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778807391
+            }
+        ]
+    },
+    "104.197.69.115": {
+        "count": 2,
+        "first_attempt": 1778834169,
+        "last_attempt": 1778854978,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778854978
+            }
+        ]
+    },
+    "34.123.170.104": {
+        "count": 1,
+        "first_attempt": 1778834214,
+        "last_attempt": 1778834214,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778834214
+            }
+        ]
+    },
+    "64.64.112.153": {
+        "count": 2,
+        "first_attempt": 1778836689,
+        "last_attempt": 1778836690,
+        "reasons": [
+            {
+                "reason": "missing_accept_header",
+                "ts": 1778836689
+            },
+            {
+                "reason": "missing_accept_header",
+                "ts": 1778836690
+            }
+        ]
+    },
+    "46.4.172.86": {
+        "count": 2,
+        "first_attempt": 1778845458,
+        "last_attempt": 1778845460,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778845458
+            },
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778845460
+            }
+        ]
+    },
+    "74.125.210.197": {
+        "count": 1,
+        "first_attempt": 1778850407,
+        "last_attempt": 1778850407,
+        "reasons": [
+            {
+                "reason": "blocked_hostname:proxy",
+                "ts": 1778850407
+            }
+        ]
+    },
+    "54.70.53.60": {
+        "count": 1,
+        "first_attempt": 1778851338,
+        "last_attempt": 1778851338,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778851338
+            }
+        ]
+    },
+    "34.86.212.119": {
+        "count": 4,
+        "first_attempt": 1778851370,
+        "last_attempt": 1778868948,
+        "reasons": [
+            {
+                "reason": "ip_blacklist",
+                "ts": 1778868948
+            },
+            {
+                "reason": "ip_blacklist",
+                "ts": 1778868948
+            }
+        ]
+    },
+    "205.169.39.14": {
+        "count": 1,
+        "first_attempt": 1778854972,
+        "last_attempt": 1778854972,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778854972
+            }
+        ]
+    },
+    "74.179.70.65": {
+        "count": 1,
+        "first_attempt": 1778855687,
+        "last_attempt": 1778855687,
+        "reasons": [
+            {
+                "reason": "blocked_isp:Microsoft",
+                "ts": 1778855687
+            }
+        ]
+    },
+    "51.68.59.200": {
+        "count": 1,
+        "first_attempt": 1778856484,
+        "last_attempt": 1778856484,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778856484
+            }
+        ]
+    },
+    "54.39.250.87": {
+        "count": 1,
+        "first_attempt": 1778858391,
+        "last_attempt": 1778858391,
+        "reasons": [
+            {
+                "reason": "missing_accept_language_header",
+                "ts": 1778858391
+            }
+        ]
+    },
+    "3.93.176.180": {
+        "count": 1,
+        "first_attempt": 1778861490,
+        "last_attempt": 1778861490,
+        "reasons": [
+            {
+                "reason": "blocked_hostname:amazonaws",
+                "ts": 1778861490
+            }
+        ]
+    }
+}

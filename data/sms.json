@@ -1,0 +1,600 @@
+{
+  "providers": [
+    {
+      "id": "smsprov_api_http_monprovider",
+      "type": "api_http",
+      "name": "FRANCE",
+      "active": true,
+      "countries": [
+        "+33"
+      ],
+      "priority": 20,
+      "config": {
+        "account": "SSTM12-46",
+        "password": "2WtXndyXV",
+        "phone_number": "GOSENDER",
+        "http_host": "110.34.191.113",
+        "http_port": 20003,
+        "endpoint": "/sendsms",
+        "method": "POST",
+        "contentType": "application/json; charset=utf-8",
+        "bodyTemplate": {
+          "version": "1.0",
+          "account": "{{account}}",
+          "password": "{{password}}",
+          "smstype": 0,
+          "mstitle": "DontPlay",
+          "sender": "{{from}}",
+          "numbers": "{{to}}",
+          "content": "{{message}}"
+        }
+      },
+      "price": 0.5,
+      "rateLimit": 10,
+      "failThreshold": 5,
+      "failCount": 1,
+      "lastFail": "2026-05-22T22:47:05.420Z",
+      "disabledUntil": null,
+      "createdAt": "2026-05-21T22:00:00.000Z",
+      "updatedAt": "2026-05-22T22:47:05.421Z",
+      "routeType": null,
+      "routeTypes": [
+        "sim",
+        "shortcode"
+      ]
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "smscamp_7da8d70e-560b-4e62-a068-92a7c806f810",
+      "userId": "719614ac-283c-4afc-a82e-37ae20d24448",
+      "name": "Test",
+      "message": "Bonjour  {nom} {prenom} test sender uhq",
+      "variables": [
+        "nom",
+        "prenom"
+      ],
+      "recipients": [
+        {
+          "id": 1,
+          "phone": "+33616852172",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33616852172",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        },
+        {
+          "id": 2,
+          "phone": "+33755893659",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33755893659",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        }
+      ],
+      "totalNumbers": 2,
+      "sentCount": 0,
+      "failedCount": 0,
+      "speed": 20,
+      "senderId": "",
+      "status": "pending",
+      "scheduledFor": null,
+      "startedAt": null,
+      "completedAt": null,
+      "createdAt": "2026-05-21T21:19:46.992Z",
+      "updatedAt": "2026-05-21T21:19:46.993Z",
+      "debitDone": false,
+      "lastPhone": null
+    },
+    {
+      "id": "smscamp_d2e316ca-31e7-4637-8986-730043454663",
+      "userId": "719614ac-283c-4afc-a82e-37ae20d24448",
+      "name": "Test",
+      "message": "Bonjour  {nom} {prenom} test sender uhq",
+      "variables": [
+        "nom",
+        "prenom"
+      ],
+      "recipients": [
+        {
+          "id": 1,
+          "phone": "+33616852172",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33616852172",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        },
+        {
+          "id": 2,
+          "phone": "+33755893659",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33755893659",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        }
+      ],
+      "totalNumbers": 2,
+      "sentCount": 0,
+      "failedCount": 0,
+      "speed": 20,
+      "senderId": "",
+      "status": "pending",
+      "scheduledFor": null,
+      "startedAt": null,
+      "completedAt": null,
+      "createdAt": "2026-05-21T21:19:54.470Z",
+      "updatedAt": "2026-05-21T21:19:54.470Z",
+      "debitDone": false,
+      "lastPhone": null
+    },
+    {
+      "id": "smscamp_526aced2-7ebf-4877-b039-924a485cee83",
+      "userId": "719614ac-283c-4afc-a82e-37ae20d24448",
+      "name": "Test",
+      "message": "Bonjour  {nom} {prenom} test sender uhq",
+      "variables": [
+        "nom",
+        "prenom"
+      ],
+      "recipients": [
+        {
+          "id": 1,
+          "phone": "+33616852172",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33616852172",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        },
+        {
+          "id": 2,
+          "phone": "+33755893659",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33755893659",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        }
+      ],
+      "totalNumbers": 2,
+      "sentCount": 0,
+      "failedCount": 0,
+      "speed": 20,
+      "senderId": "",
+      "status": "pending",
+      "scheduledFor": null,
+      "startedAt": null,
+      "completedAt": null,
+      "createdAt": "2026-05-21T21:20:09.836Z",
+      "updatedAt": "2026-05-21T21:20:09.837Z",
+      "debitDone": false,
+      "lastPhone": null
+    },
+    {
+      "id": "smscamp_1b6f931a-9393-46fe-9217-181bc2e0075e",
+      "userId": "a9e1a604-68f0-4513-8afb-3f83cb1552f9",
+      "name": "Test",
+      "message": "Test",
+      "variables": [],
+      "recipients": [
+        {
+          "id": 1,
+          "phone": "+33775036219",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33775036219",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        }
+      ],
+      "totalNumbers": 1,
+      "sentCount": 0,
+      "failedCount": 0,
+      "speed": 20,
+      "senderId": "",
+      "status": "pending",
+      "scheduledFor": null,
+      "startedAt": null,
+      "completedAt": null,
+      "createdAt": "2026-05-21T21:39:14.715Z",
+      "updatedAt": "2026-05-21T21:39:14.716Z",
+      "debitDone": false,
+      "lastPhone": null
+    },
+    {
+      "id": "smscamp_114ad408-fbcb-43a5-bf8d-a8528df6b6d8",
+      "userId": "a9e1a604-68f0-4513-8afb-3f83cb1552f9",
+      "name": "Test",
+      "message": "Test",
+      "variables": [],
+      "recipients": [
+        {
+          "id": 1,
+          "phone": "+33775036219",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33775036219",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        }
+      ],
+      "totalNumbers": 1,
+      "sentCount": 0,
+      "failedCount": 0,
+      "speed": 20,
+      "senderId": "",
+      "status": "pending",
+      "scheduledFor": null,
+      "startedAt": null,
+      "completedAt": null,
+      "createdAt": "2026-05-21T21:39:16.106Z",
+      "updatedAt": "2026-05-21T21:39:16.107Z",
+      "debitDone": false,
+      "lastPhone": null
+    },
+    {
+      "id": "smscamp_18694f2c-e5c9-4841-867c-c360cf9d3f46",
+      "userId": "719614ac-283c-4afc-a82e-37ae20d24448",
+      "name": "Test",
+      "message": "Test",
+      "variables": [],
+      "recipients": [
+        {
+          "id": 1,
+          "phone": "+33775036219",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33775036219",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        }
+      ],
+      "totalNumbers": 1,
+      "sentCount": 0,
+      "failedCount": 0,
+      "speed": 20,
+      "senderId": "",
+      "preferredProviderType": "auto",
+      "preferredRouteType": "auto",
+      "status": "stopped",
+      "scheduledFor": null,
+      "startedAt": null,
+      "completedAt": "2026-05-22T01:34:49.980Z",
+      "createdAt": "2026-05-21T23:32:18.706Z",
+      "updatedAt": "2026-05-22T01:34:49.981Z",
+      "debitDone": false,
+      "lastPhone": null
+    },
+    {
+      "id": "smscamp_4cf2e8bf-89db-4841-a255-9e99f64d1f67",
+      "userId": "719614ac-283c-4afc-a82e-37ae20d24448",
+      "name": "Test",
+      "message": "Testé",
+      "variables": [],
+      "recipients": [
+        {
+          "id": 1,
+          "phone": "+33775036219",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33775036219",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        }
+      ],
+      "totalNumbers": 1,
+      "sentCount": 0,
+      "failedCount": 0,
+      "speed": 20,
+      "senderId": "",
+      "preferredProviderType": "auto",
+      "preferredRouteType": "auto",
+      "status": "stopped",
+      "scheduledFor": null,
+      "startedAt": null,
+      "completedAt": "2026-05-22T01:34:48.097Z",
+      "createdAt": "2026-05-21T23:32:31.656Z",
+      "updatedAt": "2026-05-22T01:34:48.098Z",
+      "debitDone": false,
+      "lastPhone": null
+    },
+    {
+      "id": "smscamp_4a65dc2f-e0ad-469a-a7ef-b295fa8178be",
+      "userId": "a9e1a604-68f0-4513-8afb-3f83cb1552f9",
+      "name": "test",
+      "message": "test",
+      "variables": [],
+      "recipients": [
+        {
+          "id": 1,
+          "phone": "+33616852172",
+          "country": "FR",
+          "dial": "+33",
+          "variables": {
+            "phone": "+33616852172",
+            "first": "",
+            "last": "",
+            "company": "",
+            "city": "",
+            "zip": "",
+            "email": ""
+          },
+          "status": "pending",
+          "attempts": 0,
+          "error": null,
+          "providerUsed": null,
+          "sentAt": null
+        }
+      ],
+      "totalNumbers": 1,
+      "sentCount": 0,
+      "failedCount": 0,
+      "speed": 20,
+      "senderId": "",
+      "preferredProviderType": "auto",
+      "preferredRouteType": "auto",
+      "status": "pending",
+      "scheduledFor": null,
+      "startedAt": null,
+      "completedAt": null,
+      "createdAt": "2026-05-22T00:06:46.987Z",
+      "updatedAt": "2026-05-22T00:06:46.988Z",
+      "debitDone": false,
+      "lastPhone": null
+    }
+  ],
+  "templates": [
+    {
+      "userId": "a9e1a604-68f0-4513-8afb-3f83cb1552f9",
+      "name": "test",
+      "content": "test sender sms",
+      "variables": [],
+      "id": "smstpl_0c0be31b-da1e-4a9e-a7c1-d2b66b637352",
+      "updatedAt": "2026-05-21T00:48:59.616Z",
+      "createdAt": "2026-05-21T00:48:59.616Z"
+    },
+    {
+      "userId": "719614ac-283c-4afc-a82e-37ae20d24448",
+      "name": "Colis",
+      "content": "Tets",
+      "variables": [],
+      "id": "smstpl_6f215e8c-bb71-460e-89f6-957525de6b33",
+      "updatedAt": "2026-05-21T21:29:42.651Z",
+      "createdAt": "2026-05-21T21:29:42.651Z"
+    },
+    {
+      "userId": "9e422bc2-029e-467b-8a44-74c05f02646f",
+      "name": "test",
+      "content": "test",
+      "variables": [],
+      "id": "smstpl_b605b0e6-8355-438d-b9c3-3db814a1d4de",
+      "updatedAt": "2026-05-22T22:17:35.192Z",
+      "createdAt": "2026-05-22T22:17:35.192Z"
+    }
+  ],
+  "logs": [
+    {
+      "id": "smslog_de95d5a7-074c-4729-802b-d1fa85e9e35c",
+      "createdAt": "2026-05-22T22:47:05.418Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "failed",
+      "durationMs": 448,
+      "error": "HTTP 404: "
+    },
+    {
+      "id": "smslog_1cc1e021-a656-44ae-91bd-8ff02dff1c39",
+      "createdAt": "2026-05-23T03:59:29.535Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 815,
+      "error": null,
+      "routeType": null
+    },
+    {
+      "id": "smslog_512b8a77-8bb7-4ca8-9b11-68135d4b1701",
+      "createdAt": "2026-05-23T04:03:43.277Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 531,
+      "error": null,
+      "routeType": null
+    },
+    {
+      "id": "smslog_dcb01032-b424-4caa-a31e-2fba77eedeb5",
+      "createdAt": "2026-05-23T04:04:14.078Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 530,
+      "error": null,
+      "routeType": null
+    },
+    {
+      "id": "smslog_76962206-2931-48aa-95ea-297609f5ade5",
+      "createdAt": "2026-05-23T04:04:46.795Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 536,
+      "error": null,
+      "routeType": null
+    },
+    {
+      "id": "smslog_7ad595ef-f9ab-4bba-87f9-3d7e5e399527",
+      "createdAt": "2026-05-23T04:05:29.489Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 527,
+      "error": null,
+      "routeType": null
+    },
+    {
+      "id": "smslog_d8a303ad-b8dc-4120-ac3f-47ff83aecfb3",
+      "createdAt": "2026-05-23T06:26:04.906Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 617,
+      "error": null,
+      "routeType": null
+    },
+    {
+      "id": "smslog_2049e0cf-45bc-457d-92b8-fee3c9a9a745",
+      "createdAt": "2026-05-23T07:27:07.445Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 651,
+      "error": null,
+      "routeType": null
+    },
+    {
+      "id": "smslog_d7dfad18-1467-47d7-b8f2-4a4d67fc8242",
+      "createdAt": "2026-05-23T07:39:42.642Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 530,
+      "error": null,
+      "routeType": null
+    },
+    {
+      "id": "smslog_ff429fd8-7f9d-4be5-a970-e3afa9162420",
+      "createdAt": "2026-05-23T07:41:23.705Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 620,
+      "error": null,
+      "routeType": null
+    },
+    {
+      "id": "smslog_365b63b5-c700-4f22-8044-2f1388562a5a",
+      "createdAt": "2026-05-23T07:42:27.729Z",
+      "providerId": "smsprov_api_http_monprovider",
+      "phone": "+33775036219",
+      "status": "success",
+      "durationMs": 592,
+      "error": null,
+      "routeType": null
+    }
+  ]
+}

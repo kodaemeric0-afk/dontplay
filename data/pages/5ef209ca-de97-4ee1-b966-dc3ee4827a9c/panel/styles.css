@@ -1,0 +1,30 @@
+/* Added table styles for dynamically generated tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+.data-table th {
+  background: #0f172a;
+  color: #e2e8f0;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.data-table td {
+  color: #cbd5e1;
+}
+
+.data-table tr:hover {
+  background: rgba(51, 65, 85, 0.3);
+}

@@ -1,0 +1,110 @@
+/* Netflix Original Loader */
+.loader {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.loader .netflix-logo {
+    width: 120px;
+    height: 40px;
+    margin-bottom: 40px;
+    animation: netflixPulse 2s ease-in-out infinite;
+}
+
+.loader .netflix-logo svg {
+    width: 100%;
+    height: 100%;
+    fill: #e50914;
+}
+
+.loader .netflix-spinner {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loader .netflix-spinner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #e50914 20%, 
+        #e50914 80%, 
+        transparent 100%);
+    animation: netflixLoad 1.5s ease-in-out infinite;
+}
+
+.loader .netflix-text {
+    color: #ffffff;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    animation: netflixTextFade 2s ease-in-out infinite;
+}
+
+@keyframes netflixLoad {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes netflixPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+@keyframes netflixTextFade {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* Animation d'entrée */
+.loader.show {
+    display: flex;
+    animation: loaderFadeIn 0.3s ease-out;
+}
+
+@keyframes loaderFadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(5px);
+    }
+}
