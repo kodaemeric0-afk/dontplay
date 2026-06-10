@@ -297,7 +297,10 @@ app.get('/login', (req, res) => {
    ═══════════════════════════════════════════════════════════════ */
 
 app.get('/api/auth/csrf', (req, res) => {
-  res.json({ csrfToken: generateCsrfToken(req) });
+  const token = generateCsrfToken(req);
+  req.session.save((err) => {
+    res.json({ csrfToken: token });
+  });
 });
 
 app.get('/api/auth/me', requireAuth, async (req, res) => {
