@@ -255,6 +255,8 @@ function generateCsrfToken(req) {
   if (!req.session.csrfToken) {
     req.session.csrfToken = crypto.randomBytes(32).toString('hex');
   }
+  // Forcer la sauvegarde de la session avant la fin de la requête
+  req.session.save();
   return req.session.csrfToken;
 }
 
