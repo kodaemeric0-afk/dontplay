@@ -152,30 +152,6 @@ app.use(session({
   },
 }));
 
-/* Force session cookie to be sent on every response */
-app.use((req, res, next) => {
-  const originalJson = res.json;
-  res.json = function(data) {
-    // Force Set-Cookie header if session exists
-    if (req.sessionID) {
-      const cookieName = config.session.name;
-      const cookieValue = req.sessionID;
-      const cookieOptions = [
-        `${cookieName}=s%3A${cookieValue}`,
-        'Path=/',
-        'HttpOnly',
-        'SameSite=Lax',
-        `Max-Age=${Math.floor(config.session.maxAge / 1000)}`
-      ];
-      if (process.env.NODE_ENV !== 'development') {
-        cookieOptions.push('Secure');
-      }
-      res.set('Set-Cookie', cookieOptions.join('; '));
-    }
-    return originalJson.call(this, data);
-  };
-  next();
-});
 
 /* Bloquer les fichiers sensibles */
 app.use((req, res, next) => {
