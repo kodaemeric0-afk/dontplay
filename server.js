@@ -146,7 +146,7 @@ app.use(session({
   rolling:           true,
   cookie: {
     httpOnly:  true,
-    secure:    process.env.NODE_ENV === 'production' && process.env.ENABLE_SECURE_COOKIES !== 'false',
+    secure:    process.env.NODE_ENV === 'production',
     sameSite:  'lax',
     maxAge:    config.session.maxAge,
   },
