@@ -146,11 +146,21 @@ app.use(session({
   rolling:           true,
   cookie: {
     httpOnly:  true,
-    secure:    process.env.NODE_ENV === 'production',
+    secure:    false, // Railway gère le SSL, désactivé pour garantir l'émission du cookie
     sameSite:  'lax',
     maxAge:    config.session.maxAge,
   },
 }));
+
+/* Forcer l'initialisation de session pour chaque requête */
+app.use((req, res, next) => {
+  if (req.session && !req.session._forced) {
+    req.session._forced = true;
+    req.session.save((err) => next());
+  } else {
+    next();
+  }
+});
 
 
 /* Bloquer les fichiers sensibles */
