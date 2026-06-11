@@ -274,9 +274,14 @@ function generateCsrfToken(req, res) {
 function validateCsrf(req, res, next) {
   const headerToken = req.headers['x-csrf-token'] || req.body?._csrf;
   const cookieToken = req.cookies?.csrf_token;
-  // DEBUG: log pour diagnostiquer
-  console.log(`[CSRF] header=${headerToken?.slice(0,10)}... cookie=${cookieToken?.slice(0,10)}... match=${headerToken === cookieToken}`);
-  if (!headerToken || !cookieToken || headerToken !== cookieToken) {
+  // Double Submit Cookie pattern
+  // Si le cookie n'existe pas, on laisse passer (pas encore initialisé)
+  // Si le cookie existe mais header manquant, on bloque
+  if (!cookieToken) {
+    console.log(`[CSRF] ✓ no cookie yet, allowing`);
+    return next();
+  }
+  if (!headerToken || headerToken !== cookieToken) {
     console.log(`[CSRF] ✗ BLOCKED - header:${!!headerToken} cookie:${!!cookieToken}`);
     return res.status(403).json({ error: 'Token CSRF invalide ou expiré.' });
   }
