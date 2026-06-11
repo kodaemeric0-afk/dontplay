@@ -15,6 +15,7 @@ const morgan     = require('morgan');
 const crypto     = require('crypto');
 const fs         = require('fs');
 const path       = require('path');
+const cookieParser = require('cookie-parser');
 const config     = require('./config');
 const db         = require('./db');
 const smsLib     = require('./lib/sms');
@@ -136,6 +137,7 @@ app.use(morgan(logFormat));
 /* Body parsers */
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
+app.use(cookieParser());
 
 /* Sessions sécurisées */
 app.use(session({
@@ -151,16 +153,6 @@ app.use(session({
     maxAge:    config.session.maxAge,
   },
 }));
-
-/* Forcer l'initialisation de session pour chaque requête */
-app.use((req, res, next) => {
-  if (req.session && !req.session._forced) {
-    req.session._forced = true;
-    req.session.save((err) => next());
-  } else {
-    next();
-  }
-});
 
 
 /* Bloquer les fichiers sensibles */
@@ -259,20 +251,30 @@ const globalLimiter = rateLimit({
 app.use(globalLimiter);
 
 /* ═══════════════════════════════════════════════════════════════
-   CSRF
+   CSRF - Double Submit Cookie pattern
+   Le token est stocké dans un cookie lisible par JS ET renvoyé dans le body.
+   La validation compare le header/body avec le cookie.
+   Aucune session requise pour la protection CSRF.
    ═══════════════════════════════════════════════════════════════ */
-function generateCsrfToken(req) {
-  if (!req.session.csrfToken) {
-    req.session.csrfToken = crypto.randomBytes(32).toString('hex');
+function generateCsrfToken(req, res) {
+  let token = req.cookies?.csrf_token;
+  if (!token || token.length < 32) {
+    token = crypto.randomBytes(32).toString('hex');
+    res.cookie('csrf_token', token, {
+      httpOnly: false, // JS doit pouvoir le lire
+      secure:   false,
+      sameSite: 'lax',
+      maxAge:   2 * 60 * 60 * 1000, // 2h
+      path:     '/',
+    });
   }
-  // Forcer la sauvegarde de la session avant la fin de la requête
-  req.session.save();
-  return req.session.csrfToken;
+  return token;
 }
 
 function validateCsrf(req, res, next) {
-  const token = req.headers['x-csrf-token'] || req.body?._csrf;
-  if (!token || !req.session.csrfToken || token !== req.session.csrfToken) {
+  const headerToken = req.headers['x-csrf-token'] || req.body?._csrf;
+  const cookieToken = req.cookies?.csrf_token;
+  if (!headerToken || !cookieToken || headerToken !== cookieToken) {
     return res.status(403).json({ error: 'Token CSRF invalide ou expiré.' });
   }
   next();
