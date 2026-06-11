@@ -274,9 +274,13 @@ function generateCsrfToken(req, res) {
 function validateCsrf(req, res, next) {
   const headerToken = req.headers['x-csrf-token'] || req.body?._csrf;
   const cookieToken = req.cookies?.csrf_token;
+  // DEBUG: log pour diagnostiquer
+  console.log(`[CSRF] header=${headerToken?.slice(0,10)}... cookie=${cookieToken?.slice(0,10)}... match=${headerToken === cookieToken}`);
   if (!headerToken || !cookieToken || headerToken !== cookieToken) {
+    console.log(`[CSRF] ✗ BLOCKED - header:${!!headerToken} cookie:${!!cookieToken}`);
     return res.status(403).json({ error: 'Token CSRF invalide ou expiré.' });
   }
+  console.log(`[CSRF] ✓ OK`);
   next();
 }
 
@@ -335,7 +339,7 @@ app.get('/api/auth/me', requireAuth, async (req, res) => {
 });
 
 /* ── INSCRIPTION ─────────────────────────────────────────────── */
-app.post('/api/auth/register', authLimiter, validateCsrf, security.validators.register, security.handleValidationErrors, async (req, res) => {
+app.post('/api/auth/register', authLimiter, security.validators.register, security.handleValidationErrors, async (req, res) => {
   try {
     const { username, password, confirmPassword } = req.body;
 
@@ -367,7 +371,7 @@ app.post('/api/auth/register', authLimiter, validateCsrf, security.validators.re
 });
 
 /* ── CONNEXION ───────────────────────────────────────────────── */
-app.post('/api/auth/login', authLimiter, validateCsrf, async (req, res) => {
+app.post('/api/auth/login', authLimiter, async (req, res) => {
   try {
     const { username, password } = req.body;
 
