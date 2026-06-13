@@ -19,6 +19,26 @@
       "pages": [],
       "cloudflareToken": null,
       "pendingPayments": []
+    },
+    {
+      "id": "12345678-1234-1234-1234-123456789012",
+      "username": "test_user",
+      "passwordHash": "$2a$12$yJpSYljjtoVUVooSBfmpXu41KDl9z1md3P9PxP6VAXpHlcYgAsE72",
+      "role": "user",
+      "createdAt": "2026-06-13T13:09:23.152Z",
+      "failedLoginAttempts": 0,
+      "lockedUntil": null,
+      "lastLogin": null,
+      "balance": 100,
+      "totalSpent": 0,
+      "plan": "starter",
+      "planExpiresAt": "2026-07-13T13:09:23.152Z",
+      "planStartedAt": "2026-06-13T13:09:23.152Z",
+      "transactions": [],
+      "domains": [],
+      "pages": [],
+      "cloudflareToken": null,
+      "pendingPayments": []
     }
   ]
 }
