@@ -308,6 +308,11 @@ app.get('/api/auth/csrf', (req, res) => {
   res.json({ csrfToken: token });
 });
 
+// DEBUG: Test endpoint to debug 403 issue
+app.post('/api/test-post', (req, res) => {
+  res.json({ success: true, method: 'POST', body: req.body, message: 'POST endpoint working!' });
+});
+
 app.get('/api/auth/me', requireAuth, async (req, res) => {
   try {
     const user = await db.findUserById(req.session.userId);
