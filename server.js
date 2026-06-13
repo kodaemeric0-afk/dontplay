@@ -271,22 +271,9 @@ function generateCsrfToken(req, res) {
   return token;
 }
 
-function validateCsrf(req, res, next) {
-  // CSRF complètement désactivé pour Railway
-  // Le token CSRF est généré et renvoyé au client, mais jamais validé côté serveur
-  // Ceci est une mesure temporaire - à réimplémenter correctement en production
-  next();
-}
-
-// Middleware global CSRF bypass - s'assurer qu'aucune validation CSRF n'est appliquée
-app.use((req, res, next) => {
-  // Permettre tous les POST, même sans CSRF token valide
-  // Le frontend envoie un token, mais le serveur ne le valide jamais
-  if (['POST', 'PATCH', 'DELETE'].includes(req.method)) {
-    // Juste passer outre - pas de validation
-  }
-  next();
-});
+// CSRF validation middleware - DISABLED for Railway compatibility
+// We generate CSRF tokens but never validate them
+const validateCsrf = (req, res, next) => next();
 
 /* ═══════════════════════════════════════════════════════════════
    AUTH MIDDLEWARE
